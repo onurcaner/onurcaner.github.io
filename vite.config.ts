@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [vitePluginReact(), vitePluginTailwindcss()],
+  base: '/',
   resolve: {
     alias: [
       {
@@ -13,8 +14,4 @@ export default defineConfig({
       },
     ],
   },
-  base:
-    process.env.NODE_ENV === 'production'
-      ? 'https://onurcaner.github.io/'
-      : '/',
 });
