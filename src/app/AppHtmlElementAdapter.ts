@@ -1,14 +1,14 @@
 import { AppRootElementName } from '@/app/AppRootElementName.ts';
 
 export class AppHtmlElementAdapter {
-  private static timestamp = new Date().getTime();
-  private static isInitialized = false;
+  private static _timestamp = new Date().getTime();
+  private static _isInitialized = false;
 
   public constructor() {
-    if (AppHtmlElementAdapter.isInitialized) return;
+    if (AppHtmlElementAdapter._isInitialized) return;
 
-    AppHtmlElementAdapter.timestamp = new Date().getTime();
-    AppHtmlElementAdapter.isInitialized = true;
+    AppHtmlElementAdapter._timestamp = new Date().getTime();
+    AppHtmlElementAdapter._isInitialized = true;
 
     this.prepareIndexHtml();
   }
@@ -27,7 +27,7 @@ export class AppHtmlElementAdapter {
   }
 
   private appendTimestamp(name: string): string {
-    return `${name}-${AppHtmlElementAdapter.timestamp.toString()}`;
+    return `${name}-${AppHtmlElementAdapter._timestamp.toString()}`;
   }
 
   public getMainRootElement(): HTMLElement {
@@ -42,7 +42,7 @@ export class AppHtmlElementAdapter {
     const id = this.appendTimestamp(name);
     const htmlElement = document.getElementById(id);
     if (!htmlElement) {
-      throw new Error(`#${name} element can not be found`);
+      throw new Error(`#${id} element can not be found`);
     }
     return htmlElement;
   }
