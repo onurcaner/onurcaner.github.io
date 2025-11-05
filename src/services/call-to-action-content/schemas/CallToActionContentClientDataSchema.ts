@@ -1,13 +1,13 @@
 import { type ZodType, z } from 'zod';
 
-import { CallToActionContentShape as DAS } from '@/services/call-to-action-content/schemas/CallToActionContentShape.ts';
+import { CallToActionContentDataSchemaShape as SchemaShape } from '@/services/call-to-action-content/schemas/CallToActionContentDataSchemaShape.ts';
 import { type CallToActionContentClientData } from '@/services/call-to-action-content/types/CallToActionContentClientData.ts';
 
 export const CallToActionContentClientDataSchema: ZodType<CallToActionContentClientData> =
   z.object({
-    id: DAS.Id,
-    contentLanguageCode: DAS.ContentLanguageCode,
+    id: SchemaShape.Id,
+    contentLanguageCode: SchemaShape.ContentLanguageCode,
 
-    title: DAS.Title,
-    description: DAS.Description,
+    title: SchemaShape.Title,
+    description: SchemaShape.Description,
   });

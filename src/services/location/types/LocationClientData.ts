@@ -1,4 +1,4 @@
-import type { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
 
 export interface LocationClientData {
   id: string;
@@ -6,5 +6,5 @@ export interface LocationClientData {
 
   countryName: string;
   countryCode: string;
-  city: string;
+  cityName: string;
 }

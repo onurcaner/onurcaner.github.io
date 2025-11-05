@@ -1,5 +1,5 @@
-import { type ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
-import { type WorkExperienceCategory } from '@/services/work-experience/constants/WorkExperienceCategory.ts';
+import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { WorkExperienceCategory } from '@/services/work-experience/constants/WorkExperienceCategory.ts';
 
 export interface WorkExperienceClientData {
   id: string;

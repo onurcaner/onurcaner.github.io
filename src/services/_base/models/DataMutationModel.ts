@@ -1,6 +1,6 @@
-import { type RepositoryMutation } from '@/services/_base/repositories/RepositoryMutation.ts';
-import { type DataTransformer } from '@/services/_base/transformers/DataTransformer.ts';
-import { type DataVerifier } from '@/services/_base/verifiers/DataVerifier.ts';
+import { type RepositoryMutation } from '@/services/_base/repository-queries-and-mutations/RepositoryMutation.ts';
+import { DataTransformer } from '@/services/_base/transformers/DataTransformer.ts';
+import { DataVerifier } from '@/services/_base/verifiers/DataVerifier.ts';
 
 export class DataMutationModel<TMutationOptions, TClientData, TServerData> {
   private _repositoryMutation: RepositoryMutation<

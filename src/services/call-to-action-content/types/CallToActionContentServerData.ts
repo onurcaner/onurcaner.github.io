@@ -1,4 +1,4 @@
-import { type ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
 
 export interface CallToActionContentServerData {
   id: string;
