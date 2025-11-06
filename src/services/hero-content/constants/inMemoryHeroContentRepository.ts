@@ -1,4 +1,4 @@
-import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
 import { type HeroContentServerData } from '@/services/hero-content/types/HeroContentServerData.ts';
 
 export const inMemoryHeroContentRepository: HeroContentServerData[] = [

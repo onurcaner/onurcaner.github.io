@@ -1,6 +1,6 @@
-import { DataFindOneQueryModel } from '@/services/_base/models/DataFindOneQueryModel.ts';
+import { DataFindOneQueryModel } from '@/services/_models/DataFindOneQueryModel.ts';
 import { InMemoryExternalLinkRepositoryFindOneQuery } from '@/services/external-link/repository-queries-and-mutations/InMemoryExternalLinkRepositoryFindOneQuery.ts';
-import { ExternalLinkServerToClientDataTransformer } from '@/services/external-link/transformers/ExternalLinkServerToClientDataTransformer.ts';
+import { ExternalLinkServerDataTransformer } from '@/services/external-link/transformers/ExternalLinkServerDataTransformer.ts';
 import { type ExternalLinkClientData } from '@/services/external-link/types/ExternalLinkClientData.ts';
 import { type ExternalLinkDataQueryOptions } from '@/services/external-link/types/ExternalLinkDataQueryOptions.ts';
 import { type ExternalLinkServerData } from '@/services/external-link/types/ExternalLinkServerData.ts';
@@ -16,8 +16,7 @@ export class ExternalLinkDataFindOneQueryModel extends DataFindOneQueryModel<
     super({
       repositoryQuery: new InMemoryExternalLinkRepositoryFindOneQuery(),
       serverDataVerifier: new ExternalLinkServerDataVerifier(),
-      serverToClientDataTransformer:
-        new ExternalLinkServerToClientDataTransformer(),
+      serverDataTransformer: new ExternalLinkServerDataTransformer(),
       clientDataVerifier: new ExternalLinkClientDataVerifier(),
     });
   }

@@ -1,6 +1,6 @@
-import { DataFindOneQueryModel } from '@/services/_base/models/DataFindOneQueryModel.ts';
+import { DataFindOneQueryModel } from '@/services/_models/DataFindOneQueryModel.ts';
 import { InMemoryListRepositoryFindOneQuery } from '@/services/list/repository-queries-and-mutations/InMemoryListRepositoryFindOneQuery.ts';
-import { ListServerToClientDataTransformer } from '@/services/list/transformers/ListServerToClientDataTransformer.ts';
+import { ListServerDataTransformer } from '@/services/list/transformers/ListServerDataTransformer.ts';
 import { type ListClientData } from '@/services/list/types/ListClientData.ts';
 import { type ListDataFindOneQueryOptions } from '@/services/list/types/ListDataFindOneQueryOptions.ts';
 import { type ListServerData } from '@/services/list/types/ListServerData.ts';
@@ -16,7 +16,7 @@ export class ListDataFindOneQueryModel extends DataFindOneQueryModel<
     super({
       repositoryQuery: new InMemoryListRepositoryFindOneQuery(),
       serverDataVerifier: new ListServerDataVerifier(),
-      serverToClientDataTransformer: new ListServerToClientDataTransformer(),
+      serverDataTransformer: new ListServerDataTransformer(),
       clientDataVerifier: new ListClientDataVerifier(),
     });
   }

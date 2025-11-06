@@ -1,4 +1,4 @@
-import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
 import { WorkExperienceCategory } from '@/services/work-experience/constants/WorkExperienceCategory.ts';
 
 export interface WorkExperienceClientData {

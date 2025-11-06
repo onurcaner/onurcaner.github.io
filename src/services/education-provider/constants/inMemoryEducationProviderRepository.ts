@@ -1,4 +1,4 @@
-import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
 import { type EducationProviderServerData } from '@/services/education-provider/types/EducationProviderServerData.ts';
 
 export const inMemoryEducationProviderRepository: EducationProviderServerData[] =

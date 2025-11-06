@@ -1,4 +1,5 @@
 import eslintJs from '@eslint/js';
+import tanstackEslintPluginQuery from '@tanstack/eslint-plugin-query';
 import vitestEslintPlugin from '@vitest/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
@@ -20,6 +21,7 @@ export default defineConfig([
       eslintPluginReact.configs.flat.recommended,
       eslintPluginReact.configs.flat['jsx-runtime'],
       eslintPluginReactHook.configs.flat['recommended-latest'],
+      tanstackEslintPluginQuery.configs['flat/recommended'],
       eslintPluginJsxA11y.flatConfigs.strict,
       eslintPluginReactRefresh.configs.recommended,
       eslintPluginReactRefresh.configs.vite,

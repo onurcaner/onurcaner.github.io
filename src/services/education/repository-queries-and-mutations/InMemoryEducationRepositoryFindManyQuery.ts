@@ -1,4 +1,4 @@
-import { InMemoryRepositoryQuery } from '@/services/_base/repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
 import { inMemoryEducationRepository } from '@/services/education/constants/inMemoryEducationRepository.ts';
 import { type EducationDataFindManyQueryOptions } from '@/services/education/types/EducationDataFindManyQueryOptions.ts';
 import { type EducationServerData } from '@/services/education/types/EducationServerData.ts';
@@ -7,9 +7,9 @@ export class InMemoryEducationRepositoryFindManyQuery extends InMemoryRepository
   EducationDataFindManyQueryOptions,
   EducationServerData[]
 > {
-  protected _errorMessage = 'Could not find any "Educations"';
+  protected override _errorMessage = 'Could not find any "Educations"';
 
-  protected _retrieveData(
+  protected override _retrieveData(
     options: EducationDataFindManyQueryOptions,
   ): EducationServerData[] | null | undefined {
     const result = inMemoryEducationRepository

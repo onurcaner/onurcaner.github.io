@@ -1,6 +1,6 @@
-import { DataFindManyQueryModel } from '@/services/_base/models/DataFindManyQueryModel.ts';
+import { DataFindManyQueryModel } from '@/services/_models/DataFindManyQueryModel.ts';
 import { InMemoryEducationRepositoryFindManyQuery } from '@/services/education/repository-queries-and-mutations/InMemoryEducationRepositoryFindManyQuery.ts';
-import { EducationServerToClientDataTransformer } from '@/services/education/transformer/EducationServerToClientDataTransformer.ts';
+import { EducationServerDataTransformer } from '@/services/education/transformer/EducationServerDataTransformer.ts';
 import { type EducationClientData } from '@/services/education/types/EducationClientData.ts';
 import { type EducationDataFindManyQueryOptions } from '@/services/education/types/EducationDataFindManyQueryOptions.ts';
 import { type EducationServerData } from '@/services/education/types/EducationServerData.ts';
@@ -16,8 +16,7 @@ export class EducationDataFindManyQueryModel extends DataFindManyQueryModel<
     super({
       repositoryQuery: new InMemoryEducationRepositoryFindManyQuery(),
       serverDataVerifier: new EducationServerDataVerifier(),
-      serverToClientDataTransformer:
-        new EducationServerToClientDataTransformer(),
+      serverDataTransformer: new EducationServerDataTransformer(),
       clientDataVerifier: new EducationClientDataVerifier(),
     });
   }

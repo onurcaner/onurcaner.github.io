@@ -1,4 +1,4 @@
-import { InMemoryRepositoryQuery } from '@/services/_base/repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
 import { inMemoryCallToActionContentRepository } from '@/services/call-to-action-content/constants/inMemoryCallToActionContentRepository.ts';
 import { type CallToActionContentDataFindOneQueryOptions } from '@/services/call-to-action-content/types/CallToActionContentDataFindOneQueryOptions.ts';
 import { type CallToActionContentServerData } from '@/services/call-to-action-content/types/CallToActionContentServerData.ts';
@@ -7,9 +7,9 @@ export class InMemoryCallToActionContentRepositoryFindOneQuery extends InMemoryR
   CallToActionContentDataFindOneQueryOptions,
   CallToActionContentServerData
 > {
-  protected _errorMessage = 'Could not find "Call to Action Content"';
+  protected override _errorMessage = 'Could not find "Call to Action Content"';
 
-  protected _retrieveData(
+  protected override _retrieveData(
     options: CallToActionContentDataFindOneQueryOptions,
   ): CallToActionContentServerData | null | undefined {
     const result = inMemoryCallToActionContentRepository.find(

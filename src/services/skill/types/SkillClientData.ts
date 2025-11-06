@@ -1,4 +1,4 @@
-import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
 import { SkillCategory } from '@/services/skill/constants/SkillCategory.ts';
 import { SkillName } from '@/services/skill/constants/SkillName.ts';
 

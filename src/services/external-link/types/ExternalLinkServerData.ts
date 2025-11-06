@@ -1,4 +1,4 @@
-import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
 import { ExternalLinkName } from '@/services/external-link/constants/ExternalLinkName.ts';
 
 export interface ExternalLinkServerData {

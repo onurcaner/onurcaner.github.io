@@ -1,4 +1,4 @@
-import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
 import { type ListServerData } from '@/services/list/types/ListServerData.ts';
 
 export const inMemoryListRepository: ListServerData[] = [

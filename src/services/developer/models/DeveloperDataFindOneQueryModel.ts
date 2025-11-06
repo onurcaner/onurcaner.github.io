@@ -1,6 +1,6 @@
-import { DataFindOneQueryModel } from '@/services/_base/models/DataFindOneQueryModel.ts';
+import { DataFindOneQueryModel } from '@/services/_models/DataFindOneQueryModel.ts';
 import { InMemoryDeveloperRepositoryFindOneQuery } from '@/services/developer/repository-queries-and-mutations/InMemoryDeveloperRepositoryFindOneQuery.ts';
-import { DeveloperServerToClientDataTransformer } from '@/services/developer/transformers/DeveloperServerToClientDataTransformer.ts';
+import { DeveloperServerDataTransformer } from '@/services/developer/transformers/DeveloperServerDataTransformer.ts';
 import { type DeveloperClientData } from '@/services/developer/types/DeveloperClientData.ts';
 import { type DeveloperDataFindOneQueryOptions } from '@/services/developer/types/DeveloperDataFindOneQueryOptions.ts';
 import { type DeveloperServerData } from '@/services/developer/types/DeveloperServerData.ts';
@@ -16,8 +16,7 @@ export class DeveloperDataFindOneQueryModel extends DataFindOneQueryModel<
     super({
       repositoryQuery: new InMemoryDeveloperRepositoryFindOneQuery(),
       serverDataVerifier: new DeveloperServerDataVerifier(),
-      serverToClientDataTransformer:
-        new DeveloperServerToClientDataTransformer(),
+      serverDataTransformer: new DeveloperServerDataTransformer(),
       clientDataVerifier: new DeveloperClientDataVerifier(),
     });
   }

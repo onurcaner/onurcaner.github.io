@@ -1,4 +1,4 @@
-import { ContentLanguageCode } from '@/services/_base/constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
 import { type DeveloperServerData } from '@/services/developer/types/DeveloperServerData.ts';
 import { inMemoryExternalLinkRepository } from '@/services/external-link/constants/inMemoryExternalLinkRepository.ts';
 
