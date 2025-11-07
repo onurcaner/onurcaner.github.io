@@ -4,10 +4,10 @@ import { LocationDataSchemaShape as SchemaShape } from '@/services/location/sche
 import { type LocationClientData } from '@/services/location/types/LocationClientData.ts';
 
 export const LocationClientDataSchema: ZodType<LocationClientData> = z.object({
-  id: SchemaShape.Id,
-  contentLanguageCode: SchemaShape.ContentLanguageCode,
+  id: new SchemaShape().id,
+  contentLanguageCode: new SchemaShape().contentLanguageCode,
 
-  countryName: SchemaShape.CountryName,
-  countryCode: SchemaShape.CountryCode,
-  cityName: SchemaShape.CityName,
+  countryName: new SchemaShape().countryName,
+  countryCode: new SchemaShape().countryCode,
+  cityName: new SchemaShape().cityName,
 });

@@ -5,14 +5,14 @@ import { type WorkExperienceClientData } from '@/services/work-experience/types/
 
 export const WorkExperienceClientDataSchema: ZodType<WorkExperienceClientData> =
   z.object({
-    id: SchemaShape.Id,
-    contentLanguageCode: SchemaShape.ContentLanguageCode,
+    id: new SchemaShape().id,
+    contentLanguageCode: new SchemaShape().contentLanguageCode,
 
-    title: SchemaShape.Title,
-    associatedWorkExperienceCategories:
-      SchemaShape.AssociatedWorkExperienceCategories,
-    companyId: SchemaShape.CompanyId,
-    startDate: SchemaShape.DateObject,
-    endDate: SchemaShape.DateObject,
-    descriptionListIds: SchemaShape.DescriptionListIds,
+    title: new SchemaShape().title,
+    associatedWorkExperienceCategories: new SchemaShape()
+      .associatedWorkExperienceCategories,
+    companyId: new SchemaShape().companyId,
+    startDate: new SchemaShape().dateObject,
+    endDate: new SchemaShape().dateObject,
+    descriptionListIds: new SchemaShape().descriptionListIds,
   });

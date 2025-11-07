@@ -4,9 +4,9 @@ import { ListDataSchemaShape as SchemaShape } from '@/services/list/schemas/List
 import { type ListServerData } from '@/services/list/types/ListServerData.ts';
 
 export const ListServerDataSchema: ZodType<ListServerData> = z.object({
-  id: SchemaShape.Id,
-  content_language_code: SchemaShape.ContentLanguageCode,
+  id: new SchemaShape().id,
+  content_language_code: new SchemaShape().contentLanguageCode,
 
-  title: SchemaShape.Title,
-  items: SchemaShape.Items,
+  title: new SchemaShape().title,
+  items: new SchemaShape().items,
 });

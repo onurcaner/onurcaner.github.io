@@ -5,15 +5,15 @@ import { type EducationClientData } from '@/services/education/types/EducationCl
 
 export const EducationClientDataSchema: ZodType<EducationClientData> = z.object(
   {
-    id: SchemaShape.Id,
-    contentLanguageCode: SchemaShape.ContentLanguageCode,
+    id: new SchemaShape().id,
+    contentLanguageCode: new SchemaShape().contentLanguageCode,
 
-    title: SchemaShape.Title,
-    educationProviderId: SchemaShape.EducationProviderId,
-    startDate: SchemaShape.DateObject,
-    endDate: SchemaShape.DateObject,
-    gradeType: SchemaShape.GradeType,
-    gradeValue: SchemaShape.GradeValue,
-    descriptionListIds: SchemaShape.DescriptionListIds,
+    title: new SchemaShape().title,
+    educationProviderId: new SchemaShape().educationProviderId,
+    startDate: new SchemaShape().dateObject,
+    endDate: new SchemaShape().dateObject,
+    gradeType: new SchemaShape().gradeType,
+    gradeValue: new SchemaShape().gradeValue,
+    descriptionListIds: new SchemaShape().descriptionListIds,
   },
 );

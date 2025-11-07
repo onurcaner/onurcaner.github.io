@@ -1,16 +1,20 @@
 import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
 import { inMemoryWorkExperienceRepository } from '@/services/work-experience/constants/inMemoryWorkExperienceRepository.ts';
-import { type WorkExperienceDataFindManyQueryOptions } from '@/services/work-experience/types/WorkExperienceDataFindManyQueryOptions.ts';
 import { type WorkExperienceServerData } from '@/services/work-experience/types/WorkExperienceServerData.ts';
+import { type WorkExperiencesDataQueryOptions } from '@/services/work-experience/types/WorkExperiencesDataQueryOptions.ts';
 
 export class InMemoryWorkExperienceRepositoryFindManyQuery extends InMemoryRepositoryQuery<
-  WorkExperienceDataFindManyQueryOptions,
+  WorkExperiencesDataQueryOptions,
   WorkExperienceServerData[]
 > {
-  protected override _errorMessage = 'Could not find any "Skills"';
+  protected override _createErrorMessage(
+    options: WorkExperiencesDataQueryOptions,
+  ): string {
+    return `Could not find "Work Experiences Data" for content language code: ${options.contentLanguageCode}`;
+  }
 
   protected override _retrieveData(
-    options: WorkExperienceDataFindManyQueryOptions,
+    options: WorkExperiencesDataQueryOptions,
   ): WorkExperienceServerData[] | null | undefined {
     const result = inMemoryWorkExperienceRepository
       .filter(

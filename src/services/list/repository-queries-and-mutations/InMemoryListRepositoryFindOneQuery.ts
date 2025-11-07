@@ -1,16 +1,20 @@
 import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
 import { inMemoryListRepository } from '@/services/list/constants/inMemoryListRepository.ts';
-import { type ListDataFindOneQueryOptions } from '@/services/list/types/ListDataFindOneQueryOptions.ts';
+import { type ListDataQueryOptions } from '@/services/list/types/ListDataQueryOptions.ts';
 import { type ListServerData } from '@/services/list/types/ListServerData.ts';
 
 export class InMemoryListRepositoryFindOneQuery extends InMemoryRepositoryQuery<
-  ListDataFindOneQueryOptions,
+  ListDataQueryOptions,
   ListServerData
 > {
-  protected override _errorMessage = 'Could not find "List"';
+  protected override _createErrorMessage(
+    options: ListDataQueryOptions,
+  ): string {
+    return `Could not find "List Data" for id: ${options.id}`;
+  }
 
   protected override _retrieveData(
-    options: ListDataFindOneQueryOptions,
+    options: ListDataQueryOptions,
   ): ListServerData | null | undefined {
     const result = inMemoryListRepository.find(
       (data) => data.id === options.id,

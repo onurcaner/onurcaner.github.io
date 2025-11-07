@@ -1,12 +1,18 @@
 import { z } from 'zod';
 
-import { ContentLanguageCodeSchema } from '@/services/_schemas/ContentLanguageCodeSchema.ts';
-import { type SchemaShape } from '@/services/_types/SchemaShape.ts';
+import { contentLanguageCodeSchema } from '@/services/_schemas/contentLanguageCodeSchema.ts';
 
-export const ListDataSchemaShape = {
-  Id: z.uuidv4(),
-  ContentLanguageCode: ContentLanguageCodeSchema,
-
-  Title: z.string().max(100),
-  Items: z.array(z.string().max(100)).max(20),
-} satisfies SchemaShape;
+export class ListDataSchemaShape {
+  public get id() {
+    return z.uuidv4();
+  }
+  public get contentLanguageCode() {
+    return contentLanguageCodeSchema;
+  }
+  public get title() {
+    return z.string().max(100);
+  }
+  public get items() {
+    return z.array(this.title).max(20);
+  }
+}

@@ -1,13 +1,24 @@
 import { z } from 'zod';
 
-import { ContentLanguageCodeSchema } from '@/services/_schemas/ContentLanguageCodeSchema.ts';
-import { type SchemaShape } from '@/services/_types/SchemaShape.ts';
+import { contentLanguageCodeSchema } from '@/services/_schemas/contentLanguageCodeSchema.ts';
 
-export const LocationDataSchemaShape = {
-  Id: z.uuidv4(),
-  ContentLanguageCode: ContentLanguageCodeSchema,
-
-  CountryName: z.string().max(100),
-  CountryCode: z.string().length(2),
-  CityName: z.string().max(100),
-} satisfies SchemaShape;
+export class LocationDataSchemaShape {
+  public get id() {
+    return z.uuidv4();
+  }
+  public get contentLanguageCode() {
+    return contentLanguageCodeSchema;
+  }
+  private get _name() {
+    return z.string().max(100);
+  }
+  public get countryName() {
+    return this._name;
+  }
+  public get countryCode() {
+    return z.string().length(2);
+  }
+  public get cityName() {
+    return this._name;
+  }
+}

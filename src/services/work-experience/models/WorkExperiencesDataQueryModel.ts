@@ -1,23 +1,23 @@
-import { DataFindManyQueryModel } from '@/services/_models/DataFindManyQueryModel.ts';
+import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryWorkExperienceRepositoryFindManyQuery } from '@/services/work-experience/repository-queries-and-mutations/InMemoryWorkExperienceRepositoryFindManyQuery.ts';
 import { WorkExperienceServerDataTransformer } from '@/services/work-experience/transformers/WorkExperienceServerDataTransformer.ts';
 import { type WorkExperienceClientData } from '@/services/work-experience/types/WorkExperienceClientData.ts';
-import { type WorkExperienceDataFindManyQueryOptions } from '@/services/work-experience/types/WorkExperienceDataFindManyQueryOptions.ts';
 import { type WorkExperienceServerData } from '@/services/work-experience/types/WorkExperienceServerData.ts';
+import { type WorkExperiencesDataQueryOptions } from '@/services/work-experience/types/WorkExperiencesDataQueryOptions.ts';
 import { WorkExperienceClientDataVerifier } from '@/services/work-experience/verifiers/WorkExperienceClientDataVerifier.ts';
 import { WorkExperienceServerDataVerifier } from '@/services/work-experience/verifiers/WorkExperienceServerDataVerifier.ts';
 
-export class WorkExperienceDataFindManyQueryModel extends DataFindManyQueryModel<
-  WorkExperienceDataFindManyQueryOptions,
+export class WorkExperiencesDataQueryModel extends DataQueryModel<
+  WorkExperiencesDataQueryOptions,
   WorkExperienceServerData,
   WorkExperienceClientData
 > {
-  public constructor() {
-    super({
-      repositoryQuery: new InMemoryWorkExperienceRepositoryFindManyQuery(),
-      serverDataVerifier: new WorkExperienceServerDataVerifier(),
-      serverDataTransformer: new WorkExperienceServerDataTransformer(),
-      clientDataVerifier: new WorkExperienceClientDataVerifier(),
-    });
-  }
+  protected override _repositoryQuery =
+    new InMemoryWorkExperienceRepositoryFindManyQuery();
+  protected override _serverDataVerifier =
+    new WorkExperienceServerDataVerifier();
+  protected override _serverDataTransformer =
+    new WorkExperienceServerDataTransformer();
+  protected override _clientDataVerifier =
+    new WorkExperienceClientDataVerifier();
 }

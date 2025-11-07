@@ -4,11 +4,17 @@ export abstract class DataTransformer<TFrom, TTo> {
   public transform(data: TFrom): Promise<TTo>;
   public transform(data: TFrom[]): Promise<TTo[]>;
   public transform(data: TFrom | TFrom[]): Promise<TTo | TTo[]> {
-    if (!Array.isArray(data)) {
-      return this._transformOne(data);
-    }
+    return Array.isArray(data)
+      ? this.transformMany(data)
+      : this.transformOne(data);
+  }
 
-    const promises = data.map((piece) => this._transformOne(piece));
+  public transformOne(data: TFrom): Promise<TTo> {
+    return this._transformOne(data);
+  }
+
+  public transformMany(data: TFrom[]): Promise<TTo[]> {
+    const promises = data.map((data) => this._transformOne(data));
     return Promise.all(promises);
   }
 }

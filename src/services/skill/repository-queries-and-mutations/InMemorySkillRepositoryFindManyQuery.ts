@@ -1,16 +1,20 @@
 import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
 import { inMemorySkillRepository } from '@/services/skill/constants/inMemorySkillRepository.ts';
-import { type SkillDataFindManyQueryOptions } from '@/services/skill/types/SkillDataFindManyQueryOptions.ts';
 import { type SkillServerData } from '@/services/skill/types/SkillServerData.ts';
+import { type SkillsDataQueryOptions } from '@/services/skill/types/SkillsDataQueryOptions.ts';
 
 export class InMemorySkillRepositoryFindManyQuery extends InMemoryRepositoryQuery<
-  SkillDataFindManyQueryOptions,
+  SkillsDataQueryOptions,
   SkillServerData[]
 > {
-  protected override _errorMessage = 'Could not find any "Skills"';
+  protected override _createErrorMessage(
+    options: SkillsDataQueryOptions,
+  ): string {
+    return `Could not find "Skills Data" for content language code: ${options.contentLanguageCode}`;
+  }
 
   protected override _retrieveData(
-    options: SkillDataFindManyQueryOptions,
+    options: SkillsDataQueryOptions,
   ): SkillServerData[] | null | undefined {
     const result = inMemorySkillRepository
       .filter(

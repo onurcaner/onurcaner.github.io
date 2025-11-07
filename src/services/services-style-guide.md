@@ -4,10 +4,10 @@
 
 This example outlines how a model retrieves and prepares data for use in the app.
 
-1. Somewhere in the app, a new instance of AbcDataGetAllModel is created.
+1. Somewhere in the app, a new instance of AbcDataQueryModel is created.
 2. The model uses AbcRepositoryGetAllQuery to retrieve data from the server.
 3. The model uses AbcServerDataValidator to validate the server-side response.
-4. The model uses AbcServerToClientDataTransformer to convert server data to client-friendly format. This includes:
+4. The model uses AbcServerDataTransformer to convert server data to client-friendly format. This includes:
    - Converting ISO strings to objects
    - Renaming keys from snake_case to camelCase
 5. The model uses AbcClientDataValidator to validate the transformed client-side data.
@@ -36,7 +36,7 @@ The validated client data is now ready for consumption by the app.
 
 ## Compound Components
 
-### 1. Models
+### 1. Data Models
 
 - Orchestrate the entire data flow: fetching, validating, transforming.
 - Serve as the primary interface for the rest of the app.

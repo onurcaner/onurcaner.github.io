@@ -1,16 +1,20 @@
 import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
 import { inMemoryEducationRepository } from '@/services/education/constants/inMemoryEducationRepository.ts';
-import { type EducationDataFindManyQueryOptions } from '@/services/education/types/EducationDataFindManyQueryOptions.ts';
 import { type EducationServerData } from '@/services/education/types/EducationServerData.ts';
+import { type EducationsDataQueryOptions } from '@/services/education/types/EducationsDataQueryOptions.ts';
 
 export class InMemoryEducationRepositoryFindManyQuery extends InMemoryRepositoryQuery<
-  EducationDataFindManyQueryOptions,
+  EducationsDataQueryOptions,
   EducationServerData[]
 > {
-  protected override _errorMessage = 'Could not find any "Educations"';
+  protected override _createErrorMessage(
+    options: EducationsDataQueryOptions,
+  ): string {
+    return `Could not find "Educations Data" for content language code: ${options.contentLanguageCode}`;
+  }
 
   protected override _retrieveData(
-    options: EducationDataFindManyQueryOptions,
+    options: EducationsDataQueryOptions,
   ): EducationServerData[] | null | undefined {
     const result = inMemoryEducationRepository
       .filter(

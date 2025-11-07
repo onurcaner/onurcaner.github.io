@@ -4,10 +4,10 @@ import { CompanyDataSchemaShape as SchemaShape } from '@/services/company/schema
 import { type CompanyClientData } from '@/services/company/types/CompanyClientData.ts';
 
 export const CompanyClientDataSchema: ZodType<CompanyClientData> = z.object({
-  id: SchemaShape.Id,
-  contentLanguageCode: SchemaShape.ContentLanguageCode,
+  id: new SchemaShape().id,
+  contentLanguageCode: new SchemaShape().contentLanguageCode,
 
-  name: SchemaShape.Name,
-  webPageUrl: SchemaShape.WebPageUrl,
-  locationId: SchemaShape.LocationId,
+  name: new SchemaShape().name,
+  webPageUrl: new SchemaShape().webPageUrl,
+  locationId: new SchemaShape().locationId,
 });

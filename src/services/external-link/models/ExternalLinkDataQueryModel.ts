@@ -1,4 +1,4 @@
-import { DataFindOneQueryModel } from '@/services/_models/DataFindOneQueryModel.ts';
+import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryExternalLinkRepositoryFindOneQuery } from '@/services/external-link/repository-queries-and-mutations/InMemoryExternalLinkRepositoryFindOneQuery.ts';
 import { ExternalLinkServerDataTransformer } from '@/services/external-link/transformers/ExternalLinkServerDataTransformer.ts';
 import { type ExternalLinkClientData } from '@/services/external-link/types/ExternalLinkClientData.ts';
@@ -7,17 +7,15 @@ import { type ExternalLinkServerData } from '@/services/external-link/types/Exte
 import { ExternalLinkClientDataVerifier } from '@/services/external-link/verifiers/ExternalLinkClientDataVerifier.ts';
 import { ExternalLinkServerDataVerifier } from '@/services/external-link/verifiers/ExternalLinkServerDataVerifier.ts';
 
-export class ExternalLinkDataFindOneQueryModel extends DataFindOneQueryModel<
+export class ExternalLinkDataQueryModel extends DataQueryModel<
   ExternalLinkDataQueryOptions,
   ExternalLinkServerData,
   ExternalLinkClientData
 > {
-  public constructor() {
-    super({
-      repositoryQuery: new InMemoryExternalLinkRepositoryFindOneQuery(),
-      serverDataVerifier: new ExternalLinkServerDataVerifier(),
-      serverDataTransformer: new ExternalLinkServerDataTransformer(),
-      clientDataVerifier: new ExternalLinkClientDataVerifier(),
-    });
-  }
+  protected override _repositoryQuery =
+    new InMemoryExternalLinkRepositoryFindOneQuery();
+  protected override _serverDataVerifier = new ExternalLinkServerDataVerifier();
+  protected override _serverDataTransformer =
+    new ExternalLinkServerDataTransformer();
+  protected override _clientDataVerifier = new ExternalLinkClientDataVerifier();
 }

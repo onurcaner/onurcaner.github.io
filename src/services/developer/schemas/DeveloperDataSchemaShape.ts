@@ -1,15 +1,25 @@
 import { z } from 'zod';
 
-import { ContentLanguageCodeSchema } from '@/services/_schemas/ContentLanguageCodeSchema.ts';
-import { type SchemaShape } from '@/services/_types/SchemaShape.ts';
+import { contentLanguageCodeSchema } from '@/services/_schemas/contentLanguageCodeSchema.ts';
 import { ExternalLinkDataSchemaShape } from '@/services/external-link/schemas/ExternalLinkDataSchemaShape.ts';
 
-export const DeveloperDataSchemaShape = {
-  Id: z.uuidv4(),
-  ContentLanguageCode: ContentLanguageCodeSchema,
-
-  Name: z.string().max(100),
-  JobTitle: z.string().max(100),
-  ExternalLinkIds: z.array(ExternalLinkDataSchemaShape.Id).max(20),
-  IsOpenToWork: z.boolean(),
-} satisfies SchemaShape;
+export class DeveloperDataSchemaShape {
+  public get id() {
+    return z.uuidv4();
+  }
+  public get contentLanguageCode() {
+    return contentLanguageCodeSchema;
+  }
+  public get name() {
+    return z.string().max(20);
+  }
+  public get jobTitle() {
+    return z.string().max(100);
+  }
+  public get externalLinkIds() {
+    return z.array(new ExternalLinkDataSchemaShape().id).max(20);
+  }
+  public get isOpenToWork() {
+    return z.boolean();
+  }
+}

@@ -5,9 +5,9 @@ import { type HeroContentServerData } from '@/services/hero-content/types/HeroCo
 
 export const HeroContentServerDataSchema: ZodType<HeroContentServerData> =
   z.object({
-    id: SchemaShape.Id,
-    content_language_code: SchemaShape.ContentLanguageCode,
+    id: new SchemaShape().id,
+    content_language_code: new SchemaShape().contentLanguageCode,
 
-    title: SchemaShape.Title,
-    description: SchemaShape.Description,
+    title: new SchemaShape().title,
+    description: new SchemaShape().description,
   });

@@ -4,10 +4,10 @@ import { SkillDataSchemaShape as SchemaShape } from '@/services/skill/schemas/Sk
 import { type SkillServerData } from '@/services/skill/types/SkillServerData.ts';
 
 export const SkillServerDataSchema: ZodType<SkillServerData> = z.object({
-  id: SchemaShape.Id,
-  content_language_code: SchemaShape.ContentLanguageCode,
+  id: new SchemaShape().id,
+  content_language_code: new SchemaShape().contentLanguageCode,
 
-  name: SchemaShape.Name,
-  label: SchemaShape.Label,
-  associated_skill_categories: SchemaShape.AssociatedSkillCategories,
+  name: new SchemaShape().name,
+  label: new SchemaShape().label,
+  associated_skill_categories: new SchemaShape().associatedSkillCategories,
 });

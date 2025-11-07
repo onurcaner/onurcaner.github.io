@@ -5,12 +5,12 @@ import { type DeveloperServerData } from '@/services/developer/types/DeveloperSe
 
 export const DeveloperServerDataSchema: ZodType<DeveloperServerData> = z.object(
   {
-    id: SchemaShape.Id,
-    content_language_code: SchemaShape.ContentLanguageCode,
+    id: new SchemaShape().id,
+    content_language_code: new SchemaShape().contentLanguageCode,
 
-    name: SchemaShape.Name,
-    job_title: SchemaShape.JobTitle,
-    external_link_ids: SchemaShape.ExternalLinkIds,
-    is_open_to_work: SchemaShape.IsOpenToWork,
+    name: new SchemaShape().name,
+    job_title: new SchemaShape().jobTitle,
+    external_link_ids: new SchemaShape().externalLinkIds,
+    is_open_to_work: new SchemaShape().isOpenToWork,
   },
 );

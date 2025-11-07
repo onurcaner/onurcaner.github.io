@@ -1,16 +1,20 @@
 import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
 import { inMemoryCompanyRepository } from '@/services/company/constants/inMemoryCompanyRepository.ts';
-import { type CompanyDataFindOneQueryOptions } from '@/services/company/types/CompanyDataFindOneQueryOptions.ts';
+import { type CompanyDataQueryOptions } from '@/services/company/types/CompanyDataQueryOptions.ts';
 import { type CompanyServerData } from '@/services/company/types/CompanyServerData.ts';
 
 export class InMemoryCompanyRepositoryFindOneQuery extends InMemoryRepositoryQuery<
-  CompanyDataFindOneQueryOptions,
+  CompanyDataQueryOptions,
   CompanyServerData
 > {
-  protected override _errorMessage = 'Could not find "Company"';
+  protected override _createErrorMessage(
+    options: CompanyDataQueryOptions,
+  ): string {
+    return `Could not find "Company Data" for id: ${options.id}`;
+  }
 
   protected override _retrieveData(
-    options: CompanyDataFindOneQueryOptions,
+    options: CompanyDataQueryOptions,
   ): CompanyServerData | null | undefined {
     const result = inMemoryCompanyRepository.find(
       (data) => data.id === options.id,

@@ -5,10 +5,10 @@ import { type ExternalLinkServerData } from '@/services/external-link/types/Exte
 
 export const ExternalLinkServerDataSchema: ZodType<ExternalLinkServerData> =
   z.object({
-    id: SchemaShape.Id,
-    content_language_code: SchemaShape.ContentLanguageCode,
+    id: new SchemaShape().id,
+    content_language_code: new SchemaShape().contentLanguageCode,
 
-    name: SchemaShape.Name,
-    label: SchemaShape.Label,
-    url: SchemaShape.Url,
+    name: new SchemaShape().name,
+    label: new SchemaShape().label,
+    url: new SchemaShape().url,
   });

@@ -1,19 +1,31 @@
 import { z } from 'zod';
 
-import { ContentLanguageCodeSchema } from '@/services/_schemas/ContentLanguageCodeSchema.ts';
-import { type SchemaShape } from '@/services/_types/SchemaShape.ts';
+import { contentLanguageCodeSchema } from '@/services/_schemas/contentLanguageCodeSchema.ts';
 import { ExternalLinkName } from '@/services/external-link/constants/ExternalLinkName.ts';
 
-export const ExternalLinkDataSchemaShape = {
-  Id: z.uuidv4(),
-  ContentLanguageCode: ContentLanguageCodeSchema,
+export class ExternalLinkDataSchemaShape {
+  public get id() {
+    return z.uuidv4();
+  }
+  public get contentLanguageCode() {
+    return contentLanguageCodeSchema;
+  }
+  public get name() {
+    return z.enum(this._externalLinkNames);
+  }
+  public get label() {
+    return z.string().max(100);
+  }
+  public get url() {
+    return z.url();
+  }
 
-  Name: z.enum([
-    ExternalLinkName.GitHub,
-    ExternalLinkName.LinkedIn,
-    ExternalLinkName.PersonalPage,
-    ExternalLinkName.Other,
-  ]),
-  Label: z.string().max(100),
-  Url: z.url(),
-} satisfies SchemaShape;
+  private get _externalLinkNames() {
+    return [
+      ExternalLinkName.GitHub,
+      ExternalLinkName.LinkedIn,
+      ExternalLinkName.PersonalPage,
+      ExternalLinkName.Other,
+    ];
+  }
+}

@@ -5,9 +5,9 @@ import { type CallToActionContentClientData } from '@/services/call-to-action-co
 
 export const CallToActionContentClientDataSchema: ZodType<CallToActionContentClientData> =
   z.object({
-    id: SchemaShape.Id,
-    contentLanguageCode: SchemaShape.ContentLanguageCode,
+    id: new SchemaShape().id,
+    contentLanguageCode: new SchemaShape().contentLanguageCode,
 
-    title: SchemaShape.Title,
-    description: SchemaShape.Description,
+    title: new SchemaShape().title,
+    description: new SchemaShape().description,
   });

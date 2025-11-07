@@ -1,23 +1,21 @@
-import { DataFindOneQueryModel } from '@/services/_models/DataFindOneQueryModel.ts';
+import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryHeroContentRepositoryFindOneQuery } from '@/services/hero-content/repository-queries-and-mutations/InMemoryHeroContentRepositoryFindOneQuery.ts';
 import { HeroContentServerDataTransformer } from '@/services/hero-content/transformers/HeroContentServerDataTransformer.ts';
 import { type HeroContentClientData } from '@/services/hero-content/types/HeroContentClientData.ts';
-import { type HeroContentDataFindOneQueryOptions } from '@/services/hero-content/types/HeroContentDataFindOneQueryOptions.ts';
+import { type HeroContentDataQueryOptions } from '@/services/hero-content/types/HeroContentDataQueryOptions.ts';
 import { type HeroContentServerData } from '@/services/hero-content/types/HeroContentServerData.ts';
 import { HeroContentClientDataVerifier } from '@/services/hero-content/verifiers/HeroContentClientDataVerifier.ts';
 import { HeroContentServerDataVerifier } from '@/services/hero-content/verifiers/HeroContentServerDataVerifier.ts';
 
-export class HeroContentDataFindOneQueryModel extends DataFindOneQueryModel<
-  HeroContentDataFindOneQueryOptions,
+export class HeroContentDataQueryModel extends DataQueryModel<
+  HeroContentDataQueryOptions,
   HeroContentServerData,
   HeroContentClientData
 > {
-  public constructor() {
-    super({
-      repositoryQuery: new InMemoryHeroContentRepositoryFindOneQuery(),
-      serverDataVerifier: new HeroContentServerDataVerifier(),
-      serverDataTransformer: new HeroContentServerDataTransformer(),
-      clientDataVerifier: new HeroContentClientDataVerifier(),
-    });
-  }
+  protected override _repositoryQuery =
+    new InMemoryHeroContentRepositoryFindOneQuery();
+  protected override _serverDataVerifier = new HeroContentServerDataVerifier();
+  protected override _serverDataTransformer =
+    new HeroContentServerDataTransformer();
+  protected override _clientDataVerifier = new HeroContentClientDataVerifier();
 }

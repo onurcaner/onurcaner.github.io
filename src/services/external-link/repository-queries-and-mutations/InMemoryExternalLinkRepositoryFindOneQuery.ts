@@ -7,7 +7,11 @@ export class InMemoryExternalLinkRepositoryFindOneQuery extends InMemoryReposito
   ExternalLinkDataQueryOptions,
   ExternalLinkServerData
 > {
-  protected override _errorMessage = 'Could not find "External Link"';
+  protected override _createErrorMessage(
+    options: ExternalLinkDataQueryOptions,
+  ): string {
+    return `Could not find "External Link Data" for id: ${options.id}`;
+  }
 
   protected override _retrieveData(
     options: ExternalLinkDataQueryOptions,

@@ -4,10 +4,10 @@ import { SkillDataSchemaShape as SchemaShape } from '@/services/skill/schemas/Sk
 import { type SkillClientData } from '@/services/skill/types/SkillClientData.ts';
 
 export const SkillClientDataSchema: ZodType<SkillClientData> = z.object({
-  id: SchemaShape.Id,
-  contentLanguageCode: SchemaShape.ContentLanguageCode,
+  id: new SchemaShape().id,
+  contentLanguageCode: new SchemaShape().contentLanguageCode,
 
-  name: SchemaShape.Name,
-  label: SchemaShape.Label,
-  associatedSkillCategories: SchemaShape.AssociatedSkillCategories,
+  name: new SchemaShape().name,
+  label: new SchemaShape().label,
+  associatedSkillCategories: new SchemaShape().associatedSkillCategories,
 });

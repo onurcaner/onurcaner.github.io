@@ -5,10 +5,10 @@ import { type EducationProviderClientData } from '@/services/education-provider/
 
 export const EducationProviderClientDataSchema: ZodType<EducationProviderClientData> =
   z.object({
-    id: SchemaShape.Id,
-    contentLanguageCode: SchemaShape.ContentLanguageCode,
+    id: new SchemaShape().id,
+    contentLanguageCode: new SchemaShape().contentLanguageCode,
 
-    name: SchemaShape.Name,
-    webPageUrl: SchemaShape.WebPageUrl,
-    locationId: SchemaShape.LocationId,
+    name: new SchemaShape().name,
+    webPageUrl: new SchemaShape().webPageUrl,
+    locationId: new SchemaShape().locationId,
   });
