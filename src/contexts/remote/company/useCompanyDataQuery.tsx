@@ -16,7 +16,9 @@ export const useCompanyDataQuery: DataQueryHook<
   );
 
   const query = useSuspenseQuery({
-    queryFn: () => new CompanyDataQueryModel().query(options),
+    queryFn: (): Promise<CompanyClientData> => {
+      return new CompanyDataQueryModel().query(options);
+    },
     queryKey: cachingOptions.keys,
     staleTime: cachingOptions.staleTimeInMs,
     refetchInterval: cachingOptions.refetchingIntervalInMs,

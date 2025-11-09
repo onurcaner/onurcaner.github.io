@@ -1,3 +1,4 @@
+import { QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryExternalLinkRepositoryFindOneQuery } from '@/services/external-link/repository-queries-and-mutations/InMemoryExternalLinkRepositoryFindOneQuery.ts';
 import { ExternalLinkServerDataTransformer } from '@/services/external-link/transformers/ExternalLinkServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { ExternalLinkServerDataVerifier } from '@/services/external-link/verifie
 export class ExternalLinkDataQueryModel extends DataQueryModel<
   ExternalLinkDataQueryOptions,
   ExternalLinkServerData,
-  ExternalLinkClientData
+  ExternalLinkClientData,
+  QueryMode.One
 > {
   protected override _repositoryQuery =
     new InMemoryExternalLinkRepositoryFindOneQuery();

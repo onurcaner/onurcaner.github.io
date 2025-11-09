@@ -1,3 +1,4 @@
+import { QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryDeveloperRepositoryFindOneQuery } from '@/services/developer/repository-queries-and-mutations/InMemoryDeveloperRepositoryFindOneQuery.ts';
 import { DeveloperServerDataTransformer } from '@/services/developer/transformers/DeveloperServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { DeveloperServerDataVerifier } from '@/services/developer/verifiers/Deve
 export class DeveloperDataQueryModel extends DataQueryModel<
   DeveloperDataQueryOptions,
   DeveloperServerData,
-  DeveloperClientData
+  DeveloperClientData,
+  QueryMode.One
 > {
   protected override _repositoryQuery =
     new InMemoryDeveloperRepositoryFindOneQuery();

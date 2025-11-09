@@ -1,3 +1,4 @@
+import { QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemorySkillRepositoryFindManyQuery } from '@/services/skill/repository-queries-and-mutations/InMemorySkillRepositoryFindManyQuery.ts';
 import { SkillServerDataTransformer } from '@/services/skill/transformers/SkillServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { SkillServerDataVerifier } from '@/services/skill/verifiers/SkillServerD
 export class SkillsDataQueryModel extends DataQueryModel<
   SkillsDataQueryOptions,
   SkillServerData,
-  SkillClientData
+  SkillClientData,
+  QueryMode.Many
 > {
   protected override _repositoryQuery =
     new InMemorySkillRepositoryFindManyQuery();

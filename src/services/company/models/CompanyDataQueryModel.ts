@@ -1,3 +1,4 @@
+import { type QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryCompanyRepositoryFindOneQuery } from '@/services/company/repository-queries-and-mutations/InMemoryCompanyRepositoryFindOneQuery.ts';
 import { CompanyServerDataTransformer } from '@/services/company/transformers/CompanyServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { CompanyServerDataVerifier } from '@/services/company/verifiers/CompanyS
 export class CompanyDataQueryModel extends DataQueryModel<
   CompanyDataQueryOptions,
   CompanyServerData,
-  CompanyClientData
+  CompanyClientData,
+  QueryMode.One
 > {
   protected override _repositoryQuery =
     new InMemoryCompanyRepositoryFindOneQuery();

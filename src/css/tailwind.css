@@ -1,0 +1,117 @@
+@import 'tailwindcss';
+
+@theme {
+  --breakpoint-sm: 20rem;
+  --breakpoint-md: 30rem;
+  --breakpoint-lg: 40rem;
+  --breakpoint-xl: 60rem;
+  --breakpoint-2xl: 80rem;
+
+  --container-8xl: 96rem;
+  --container-9xl: 112rem;
+  --container-10xl: 120rem;
+
+  --text-0750rem: 0.75rem;
+  --text-0750rem--line-height: calc(1.125 / 0.75);
+  --text-0875rem: 0.875rem;
+  --text-0875rem--line-height: calc(1.25 / 0.875);
+  --text-1000rem: 1rem;
+  --text-1000rem--line-height: calc(1.5 / 1);
+  --text-1125rem: 1.125rem;
+  --text-1125rem--line-height: calc(1.75 / 1.125);
+  --text-1250rem: 1.25rem;
+  --text-1250rem--line-height: calc(1.75 / 1.25);
+  --text-1500rem: 1.5rem;
+  --text-1500rem--line-height: calc(2 / 1.5);
+  --text-1750rem: 1.75rem;
+  --text-1750rem--line-height: calc(2.25 / 1.75);
+  --text-2000rem: 2rem;
+  --text-2000rem--line-height: calc(2.25 / 2);
+  --text-2250rem: 2.25rem;
+  --text-2250rem--line-height: calc(2.5 / 2.25);
+  --text-2500rem: 2.5rem;
+  --text-2500rem--line-height: 1;
+  --text-3000rem: 3rem;
+  --text-3000rem--line-height: 1;
+  --text-3500rem: 3.5rem;
+  --text-3500rem--line-height: 1;
+  --text-4000rem: 4rem;
+  --text-4000rem--line-height: 1;
+  --text-5000rem: 5rem;
+  --text-5000rem--line-height: 1;
+  --text-6000rem: 6rem;
+  --text-6000rem--line-height: 1;
+  --text-7000rem: 7rem;
+  --text-7000rem--line-height: 1;
+  --text-8000rem: 8rem;
+  --text-8000rem--line-height: 1;
+
+  --blur-xs: 0.25rem;
+  --blur-sm: 0.5rem;
+  --blur-md: 0.75rem;
+  --blur-lg: 1rem;
+  --blur-xl: 1.25rem;
+  --blur-2xl: 1.5rem;
+  --blur-3xl: 1.75rem;
+  --blur-4xl: 2rem;
+
+  --ease-out: cubic-bezier(0.05, 0.95, 0.05, 1);
+  --transition-duration-out: 1s;
+}
+
+@theme inline {
+  --color-neutral-50: var(--color-neutral-50);
+  --color-neutral-100: var(--color-neutral-100);
+  --color-neutral-150: var(--color-neutral-150);
+  --color-neutral-200: var(--color-neutral-200);
+  --color-neutral-250: var(--color-neutral-250);
+  --color-neutral-300: var(--color-neutral-300);
+  --color-neutral-350: var(--color-neutral-350);
+  --color-neutral-400: var(--color-neutral-400);
+  --color-neutral-450: var(--color-neutral-450);
+  --color-neutral-500: var(--color-neutral-500);
+  --color-neutral-550: var(--color-neutral-550);
+  --color-neutral-600: var(--color-neutral-600);
+  --color-neutral-650: var(--color-neutral-650);
+  --color-neutral-700: var(--color-neutral-700);
+  --color-neutral-750: var(--color-neutral-750);
+  --color-neutral-800: var(--color-neutral-800);
+  --color-neutral-850: var(--color-neutral-850);
+  --color-neutral-900: var(--color-neutral-900);
+  --color-neutral-950: var(--color-neutral-950);
+
+  --color-accent-50: var(--color-accent-50);
+  --color-accent-100: var(--color-accent-100);
+  --color-accent-150: var(--color-accent-150);
+  --color-accent-200: var(--color-accent-200);
+  --color-accent-250: var(--color-accent-250);
+  --color-accent-300: var(--color-accent-300);
+  --color-accent-350: var(--color-accent-350);
+  --color-accent-400: var(--color-accent-400);
+  --color-accent-450: var(--color-accent-450);
+  --color-accent-500: var(--color-accent-500);
+  --color-accent-550: var(--color-accent-550);
+  --color-accent-600: var(--color-accent-600);
+  --color-accent-650: var(--color-accent-650);
+  --color-accent-700: var(--color-accent-700);
+  --color-accent-750: var(--color-accent-750);
+  --color-accent-800: var(--color-accent-800);
+  --color-accent-850: var(--color-accent-850);
+  --color-accent-900: var(--color-accent-900);
+  --color-accent-950: var(--color-accent-950);
+
+  --font-theme: var(--font-theme);
+  --tracking-theme: var(--tracking-theme);
+
+  --border-width-theme: var(--border-thickness-theme);
+  --radius-theme: var(--border-radius-theme);
+  --perspective-theme: 80rem;
+}
+
+@utility text-fill-color-transparent {
+  -webkit-text-fill-color: transparent;
+}
+
+@utility animation-duration-* {
+  animation-duration: calc(--value(integer) * 1ms);
+}

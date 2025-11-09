@@ -14,13 +14,15 @@ export const useCallToActionContentDataQuery: DataQueryHook<
   const cachingOptions =
     new CallToActionContentDataQueryCachingOptionsCreator().create(options);
 
-  const query = useSuspenseQuery({
-    queryFn: () => new CallToActionContentDataQueryModel().query(options),
+  const { data } = useSuspenseQuery({
+    queryFn: (): Promise<CallToActionContentClientData> => {
+      return new CallToActionContentDataQueryModel().query(options);
+    },
     queryKey: cachingOptions.keys,
     staleTime: cachingOptions.staleTimeInMs,
     refetchInterval: cachingOptions.refetchingIntervalInMs,
     gcTime: cachingOptions.cacheLifespanInMs,
   });
 
-  return query.data;
+  return data;
 };

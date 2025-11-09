@@ -1,3 +1,4 @@
+import { type QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryCallToActionContentRepositoryFindOneQuery } from '@/services/call-to-action-content/repository-queries-and-mutations/InMemoryCallToActionContentRepositoryFindOneQuery.ts';
 import { CallToActionContentServerDataTransformer } from '@/services/call-to-action-content/transformers/CallToActionContentServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { CallToActionContentServerDataVerifier } from '@/services/call-to-action
 export class CallToActionContentDataQueryModel extends DataQueryModel<
   CallToActionContentDataQueryOptions,
   CallToActionContentServerData,
-  CallToActionContentClientData
+  CallToActionContentClientData,
+  QueryMode.One
 > {
   protected override _repositoryQuery =
     new InMemoryCallToActionContentRepositoryFindOneQuery();

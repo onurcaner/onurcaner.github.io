@@ -1,3 +1,4 @@
+import { QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryEducationProviderRepositoryFindOneQuery } from '@/services/education-provider/repository-queries-and-mutations/InMemoryEducationProviderRepositoryFindOneQuery.ts';
 import { EducationProviderServerDataTransformer } from '@/services/education-provider/transformers/EducationProviderServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { EducationProviderServerDataVerifier } from '@/services/education-provid
 export class EducationProviderDataQueryModel extends DataQueryModel<
   EducationProviderDataQueryOptions,
   EducationProviderServerData,
-  EducationProviderClientData
+  EducationProviderClientData,
+  QueryMode.One
 > {
   protected override _repositoryQuery =
     new InMemoryEducationProviderRepositoryFindOneQuery();

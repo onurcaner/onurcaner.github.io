@@ -1,3 +1,4 @@
+import { QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryLocationRepositoryFindOneQuery } from '@/services/location/repository-queries-and-mutations/InMemoryLocationRepositoryFindOneQuery.ts';
 import { LocationServerDataTransformer } from '@/services/location/transformers/LocationServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { LocationServerDataVerifier } from '@/services/location/verifiers/Locati
 export class LocationDataQueryModel extends DataQueryModel<
   LocationDataQueryOptions,
   LocationServerData,
-  LocationClientData
+  LocationClientData,
+  QueryMode.One
 > {
   protected override _repositoryQuery =
     new InMemoryLocationRepositoryFindOneQuery();

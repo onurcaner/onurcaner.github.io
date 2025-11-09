@@ -1,3 +1,4 @@
+import { QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryHeroContentRepositoryFindOneQuery } from '@/services/hero-content/repository-queries-and-mutations/InMemoryHeroContentRepositoryFindOneQuery.ts';
 import { HeroContentServerDataTransformer } from '@/services/hero-content/transformers/HeroContentServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { HeroContentServerDataVerifier } from '@/services/hero-content/verifiers
 export class HeroContentDataQueryModel extends DataQueryModel<
   HeroContentDataQueryOptions,
   HeroContentServerData,
-  HeroContentClientData
+  HeroContentClientData,
+  QueryMode.One
 > {
   protected override _repositoryQuery =
     new InMemoryHeroContentRepositoryFindOneQuery();

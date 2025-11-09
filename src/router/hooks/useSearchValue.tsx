@@ -8,7 +8,7 @@ export function useSearchValue<TValue extends string>({
   key: string;
   defaultValue: TValue;
   replace?: boolean;
-}) {
+}): [TValue, (newValue: TValue) => void] {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const value = (searchParams.get(key) ?? defaultValue) as TValue;
@@ -21,5 +21,5 @@ export function useSearchValue<TValue extends string>({
     setSearchParams(searchParams, { replace });
   };
 
-  return { value, changeValue } as const;
+  return [value, changeValue] as const;
 }

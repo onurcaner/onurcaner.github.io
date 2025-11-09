@@ -1,3 +1,4 @@
+import { QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryListRepositoryFindOneQuery } from '@/services/list/repository-queries-and-mutations/InMemoryListRepositoryFindOneQuery.ts';
 import { ListServerDataTransformer } from '@/services/list/transformers/ListServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { ListServerDataVerifier } from '@/services/list/verifiers/ListServerData
 export class ListDataQueryModel extends DataQueryModel<
   ListDataQueryOptions,
   ListServerData,
-  ListClientData
+  ListClientData,
+  QueryMode.One
 > {
   protected override _repositoryQuery =
     new InMemoryListRepositoryFindOneQuery();

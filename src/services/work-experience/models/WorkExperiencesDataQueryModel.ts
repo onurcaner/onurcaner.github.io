@@ -1,3 +1,4 @@
+import { QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryWorkExperienceRepositoryFindManyQuery } from '@/services/work-experience/repository-queries-and-mutations/InMemoryWorkExperienceRepositoryFindManyQuery.ts';
 import { WorkExperienceServerDataTransformer } from '@/services/work-experience/transformers/WorkExperienceServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { WorkExperienceServerDataVerifier } from '@/services/work-experience/ver
 export class WorkExperiencesDataQueryModel extends DataQueryModel<
   WorkExperiencesDataQueryOptions,
   WorkExperienceServerData,
-  WorkExperienceClientData
+  WorkExperienceClientData,
+  QueryMode.Many
 > {
   protected override _repositoryQuery =
     new InMemoryWorkExperienceRepositoryFindManyQuery();

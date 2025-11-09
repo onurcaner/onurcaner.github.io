@@ -1,3 +1,4 @@
+import { QueryMode } from '@/services/_constants/QueryMode.ts';
 import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
 import { InMemoryEducationRepositoryFindManyQuery } from '@/services/education/repository-queries-and-mutations/InMemoryEducationRepositoryFindManyQuery.ts';
 import { EducationServerDataTransformer } from '@/services/education/transformer/EducationServerDataTransformer.ts';
@@ -10,7 +11,8 @@ import { EducationServerDataVerifier } from '@/services/education/verifiers/Educ
 export class EducationsDataQueryModel extends DataQueryModel<
   EducationsDataQueryOptions,
   EducationServerData,
-  EducationClientData
+  EducationClientData,
+  QueryMode.Many
 > {
   protected override _repositoryQuery =
     new InMemoryEducationRepositoryFindManyQuery();
