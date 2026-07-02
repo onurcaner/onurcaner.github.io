@@ -14,12 +14,12 @@ export class WorkExperiencesDataQueryModel extends DataQueryModel<
   WorkExperienceClientData,
   QueryMode.Many
 > {
-  protected override _repositoryQuery =
-    new InMemoryWorkExperienceRepositoryFindManyQuery();
-  protected override _serverDataVerifier =
-    new WorkExperienceServerDataVerifier();
-  protected override _serverDataTransformer =
-    new WorkExperienceServerDataTransformer();
-  protected override _clientDataVerifier =
-    new WorkExperienceClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryWorkExperienceRepositoryFindManyQuery(),
+      serverDataVerifier: new WorkExperienceServerDataVerifier(),
+      serverDataTransformer: new WorkExperienceServerDataTransformer(),
+      clientDataVerifier: new WorkExperienceClientDataVerifier(),
+    });
+  }
 }

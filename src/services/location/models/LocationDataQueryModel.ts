@@ -14,10 +14,12 @@ export class LocationDataQueryModel extends DataQueryModel<
   LocationClientData,
   QueryMode.One
 > {
-  protected override _repositoryQuery =
-    new InMemoryLocationRepositoryFindOneQuery();
-  protected override _serverDataVerifier = new LocationServerDataVerifier();
-  protected override _serverDataTransformer =
-    new LocationServerDataTransformer();
-  protected override _clientDataVerifier = new LocationClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryLocationRepositoryFindOneQuery(),
+      serverDataVerifier: new LocationServerDataVerifier(),
+      serverDataTransformer: new LocationServerDataTransformer(),
+      clientDataVerifier: new LocationClientDataVerifier(),
+    });
+  }
 }

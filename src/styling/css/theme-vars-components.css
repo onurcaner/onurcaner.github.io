@@ -1,0 +1,7 @@
+:root {
+  --component-header-background-color: var(--theme-color-neutral-900);
+  --component-header-border-color: var(--theme-color-neutral-800);
+
+  --component-developer-name-text-color: var(--theme-color-neutral-350);
+  --component-developer-job-title-text-color: var(--theme-color-neutral-400);
+}

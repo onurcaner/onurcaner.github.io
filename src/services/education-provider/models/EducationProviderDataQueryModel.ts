@@ -14,12 +14,12 @@ export class EducationProviderDataQueryModel extends DataQueryModel<
   EducationProviderClientData,
   QueryMode.One
 > {
-  protected override _repositoryQuery =
-    new InMemoryEducationProviderRepositoryFindOneQuery();
-  protected override _serverDataVerifier =
-    new EducationProviderServerDataVerifier();
-  protected override _serverDataTransformer =
-    new EducationProviderServerDataTransformer();
-  protected override _clientDataVerifier =
-    new EducationProviderClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryEducationProviderRepositoryFindOneQuery(),
+      serverDataVerifier: new EducationProviderServerDataVerifier(),
+      serverDataTransformer: new EducationProviderServerDataTransformer(),
+      clientDataVerifier: new EducationProviderClientDataVerifier(),
+    });
+  }
 }

@@ -23,11 +23,12 @@
 
 - Theme dependent
 - - Typography
-- - Spacing
+- - Borders
 - - Colors
 - - Icons
 - Theme independent
 - - Animations
+- - Spacing
 
 ## Meta Management
 
@@ -83,7 +84,7 @@
 ## Sections
 
 - Header
-- Hero
+- HeroSection
 - Education
 - Experience
 - Skills

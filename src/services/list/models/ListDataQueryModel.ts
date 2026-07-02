@@ -14,9 +14,12 @@ export class ListDataQueryModel extends DataQueryModel<
   ListClientData,
   QueryMode.One
 > {
-  protected override _repositoryQuery =
-    new InMemoryListRepositoryFindOneQuery();
-  protected override _serverDataVerifier = new ListServerDataVerifier();
-  protected override _serverDataTransformer = new ListServerDataTransformer();
-  protected override _clientDataVerifier = new ListClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryListRepositoryFindOneQuery(),
+      serverDataVerifier: new ListServerDataVerifier(),
+      serverDataTransformer: new ListServerDataTransformer(),
+      clientDataVerifier: new ListClientDataVerifier(),
+    });
+  }
 }

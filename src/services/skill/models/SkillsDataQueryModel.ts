@@ -14,9 +14,12 @@ export class SkillsDataQueryModel extends DataQueryModel<
   SkillClientData,
   QueryMode.Many
 > {
-  protected override _repositoryQuery =
-    new InMemorySkillRepositoryFindManyQuery();
-  protected override _serverDataVerifier = new SkillServerDataVerifier();
-  protected override _serverDataTransformer = new SkillServerDataTransformer();
-  protected override _clientDataVerifier = new SkillClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemorySkillRepositoryFindManyQuery(),
+      serverDataVerifier: new SkillServerDataVerifier(),
+      serverDataTransformer: new SkillServerDataTransformer(),
+      clientDataVerifier: new SkillClientDataVerifier(),
+    });
+  }
 }

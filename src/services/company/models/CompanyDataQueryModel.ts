@@ -14,10 +14,12 @@ export class CompanyDataQueryModel extends DataQueryModel<
   CompanyClientData,
   QueryMode.One
 > {
-  protected override _repositoryQuery =
-    new InMemoryCompanyRepositoryFindOneQuery();
-  protected override _serverDataVerifier = new CompanyServerDataVerifier();
-  protected override _serverDataTransformer =
-    new CompanyServerDataTransformer();
-  protected override _clientDataVerifier = new CompanyClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryCompanyRepositoryFindOneQuery(),
+      serverDataVerifier: new CompanyServerDataVerifier(),
+      serverDataTransformer: new CompanyServerDataTransformer(),
+      clientDataVerifier: new CompanyClientDataVerifier(),
+    });
+  }
 }

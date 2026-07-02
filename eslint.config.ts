@@ -34,7 +34,7 @@ export default defineConfig([
       sourceType: 'module',
       parser: typescriptEslint.parser,
       parserOptions: {
-        project: true,
+        // project: true,
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
         ecmaFeatures: {

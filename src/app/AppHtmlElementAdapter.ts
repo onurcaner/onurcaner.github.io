@@ -10,13 +10,12 @@ export class AppHtmlElementAdapter {
     AppHtmlElementAdapter._timestamp = new Date().getTime();
     AppHtmlElementAdapter._isInitialized = true;
 
-    this.prepareIndexHtml();
+    this._affectIndexHtml();
   }
 
-  private prepareIndexHtml(): void {
+  private _affectIndexHtml(): void {
     const ids: string[] = [AppRootElementName.Portal, AppRootElementName.Main]
-      .map(this.appendTimestamp.bind(this))
-      .slice()
+      .map(this._createId.bind(this))
       .reverse();
 
     ids.forEach((id): void => {
@@ -26,20 +25,20 @@ export class AppHtmlElementAdapter {
     });
   }
 
-  private appendTimestamp(name: string): string {
+  private _createId(name: string): string {
     return `${name}-${AppHtmlElementAdapter._timestamp.toString()}`;
   }
 
   public getMainRootElement(): HTMLElement {
-    return this.getHtmlElement(AppRootElementName.Main);
+    return this._getHtmlElement(AppRootElementName.Main);
   }
 
   public getPortalRootElement(): HTMLElement {
-    return this.getHtmlElement(AppRootElementName.Portal);
+    return this._getHtmlElement(AppRootElementName.Portal);
   }
 
-  private getHtmlElement(name: string): HTMLElement {
-    const id = this.appendTimestamp(name);
+  private _getHtmlElement(name: string): HTMLElement {
+    const id = this._createId(name);
     const htmlElement = document.getElementById(id);
     if (!htmlElement) {
       throw new Error(`#${id} element can not be found`);

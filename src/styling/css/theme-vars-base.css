@@ -1,0 +1,25 @@
+/* Typography and Sharpness */
+:root {
+  --theme-font-family: 'Inter', sans-serif;
+  --theme-letter-spacing: 0em;
+  --theme-font-weight-thin: 100;
+  --theme-font-weight-extralight: 200;
+  --theme-font-weight-light: 300;
+  --theme-font-weight-normal: 400;
+  --theme-font-weight-medium: 500;
+  --theme-font-weight-semibold: 600;
+  --theme-font-weight-bold: 700;
+  --theme-font-weight-extrabold: 800;
+  --theme-font-weight-black: 900;
+
+  --theme-border-thickness: 0.125rem;
+  --theme-border-radius: 0.5rem;
+}
+
+/* 3D and Perspective */
+:root {
+  --theme-perspective: 80rem;
+
+  --theme-background-opacity: 90%;
+  --theme-elevation-step: 0.25rem;
+}

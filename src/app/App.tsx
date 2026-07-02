@@ -1,16 +1,21 @@
 import { type ReactElement, Suspense } from 'react';
 
+import { GlobalContextsProvider } from '@/contexts/global/GlobalContextsProvider.tsx';
 import { AppQueryClientProvider } from '@/contexts/remote/_components/AppQueryClientProvider.tsx';
-import '@/css/base-theme.css';
-import '@/css/tailwind.css';
 import { AppRouter } from '@/router/components/AppRouter.tsx';
+import '@/styling/css/tailwind-base.css';
+import '@/styling/css/theme-vars-base.css';
+import '@/styling/css/theme-vars-colors.css';
+import '@/styling/css/theme-vars-components.css';
 
 export function App(): ReactElement {
   return (
-    <AppQueryClientProvider>
-      <Suspense fallback={<p>Loading...</p>}>
-        <AppRouter />
-      </Suspense>
-    </AppQueryClientProvider>
+    <GlobalContextsProvider>
+      <AppQueryClientProvider>
+        <Suspense fallback={<p>Loading...</p>}>
+          <AppRouter />
+        </Suspense>
+      </AppQueryClientProvider>
+    </GlobalContextsProvider>
   );
 }

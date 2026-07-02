@@ -8,7 +8,7 @@ export function DeveloperJobTitle(): ReactElement {
   const developer = useDeveloperDataQuery({ contentLanguageCode: language });
 
   return (
-    <p className="text-1000rem leading-none font-normal text-neutral-400 capitalize">
+    <p className="text-1000rem leading-none font-normal text-(--component-developer-job-title-text-color) capitalize">
       {developer.jobTitle}
     </p>
   );

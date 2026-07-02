@@ -14,12 +14,12 @@ export class CallToActionContentDataQueryModel extends DataQueryModel<
   CallToActionContentClientData,
   QueryMode.One
 > {
-  protected override _repositoryQuery =
-    new InMemoryCallToActionContentRepositoryFindOneQuery();
-  protected override _serverDataVerifier =
-    new CallToActionContentServerDataVerifier();
-  protected override _serverDataTransformer =
-    new CallToActionContentServerDataTransformer();
-  protected override _clientDataVerifier =
-    new CallToActionContentClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryCallToActionContentRepositoryFindOneQuery(),
+      serverDataVerifier: new CallToActionContentServerDataVerifier(),
+      serverDataTransformer: new CallToActionContentServerDataTransformer(),
+      clientDataVerifier: new CallToActionContentClientDataVerifier(),
+    });
+  }
 }

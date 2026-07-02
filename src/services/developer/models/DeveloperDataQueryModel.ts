@@ -14,10 +14,12 @@ export class DeveloperDataQueryModel extends DataQueryModel<
   DeveloperClientData,
   QueryMode.One
 > {
-  protected override _repositoryQuery =
-    new InMemoryDeveloperRepositoryFindOneQuery();
-  protected override _serverDataVerifier = new DeveloperServerDataVerifier();
-  protected override _serverDataTransformer =
-    new DeveloperServerDataTransformer();
-  protected override _clientDataVerifier = new DeveloperClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryDeveloperRepositoryFindOneQuery(),
+      serverDataVerifier: new DeveloperServerDataVerifier(),
+      serverDataTransformer: new DeveloperServerDataTransformer(),
+      clientDataVerifier: new DeveloperClientDataVerifier(),
+    });
+  }
 }

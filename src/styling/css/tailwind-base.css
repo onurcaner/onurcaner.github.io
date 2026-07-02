@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+/* Tailwind Theme Overrides */
+@theme {
+  --breakpoint-sm: 30rem; /* 480px */
+  --breakpoint-md: 40rem; /* 640px */
+  --breakpoint-lg: 60rem; /* 960px */
+  --breakpoint-xl: 80rem; /* 1240px */
+  --breakpoint-2xl: 120rem; /* 1920px */
+}
+@theme inline {
+  --font-weight-thin: var(--theme-font-weight-thin);
+  --font-weight-extralight: var(--theme-font-weight-extralight);
+  --font-weight-light: var(--theme-font-weight-light);
+  --font-weight-normal: var(--theme-font-weight-normal);
+  --font-weight-medium: var(--theme-font-weight-medium);
+  --font-weight-semibold: var(--theme-font-weight-semibold);
+  --font-weight-bold: var(--theme-font-weight-bold);
+  --font-weight-extrabold: var(--theme-font-weight-extrabold);
+  --font-weight-black: var(--theme-font-weight-black);
+}
+
+/* Tailwind Theme Extensions */
+@theme {
+  --container-8xl: 96rem;
+  --container-9xl: 112rem;
+  --container-10xl: 120rem;
+
+  --text-3: 0.75rem;
+  --text-3--line-height: calc(1.125 / 0.75);
+  --text-3-5: 0.875rem;
+  --text-3-5--line-height: calc(1.25 / 0.875);
+  --text-4: 1rem;
+  --text-4--line-height: calc(1.5 / 1);
+  --text-4-5: 1.125rem;
+  --text-4-5--line-height: calc(1.75 / 1.125);
+  --text-5: 1.25rem;
+  --text-5--line-height: calc(1.75 / 1.25);
+  --text-6: 1.5rem;
+  --text-6--line-height: calc(2 / 1.5);
+  --text-7: 1.75rem;
+  --text-7--line-height: calc(2.25 / 1.75);
+  --text-8: 2rem;
+  --text-8--line-height: calc(2.25 / 2);
+  --text-9: 2.25rem;
+  --text-9--line-height: calc(2.5 / 2.25);
+  --text-10: 2.5rem;
+  --text-10--line-height: 1;
+  --text-12: 3rem;
+  --text-12--line-height: 1;
+  --text-14: 3.5rem;
+  --text-14--line-height: 1;
+  --text-16: 4rem;
+  --text-16--line-height: 1;
+  --text-20: 5rem;
+  --text-20--line-height: 1;
+  --text-24: 6rem;
+  --text-24--line-height: 1;
+  --text-28: 7rem;
+  --text-28--line-height: 1;
+  --text-32: 8rem;
+  --text-32--line-height: 1;
+
+  /*--text-0750rem: 0.75rem;*/
+  /*--text-0750rem--line-height: calc(1.125 / 0.75);*/
+  /*--text-0875rem: 0.875rem;*/
+  /*--text-0875rem--line-height: calc(1.25 / 0.875);*/
+  /*--text-1000rem: 1rem;*/
+  /*--text-1000rem--line-height: calc(1.5 / 1);*/
+  /*--text-1125rem: 1.125rem;*/
+  /*--text-1125rem--line-height: calc(1.75 / 1.125);*/
+  /*--text-1250rem: 1.25rem;*/
+  /*--text-1250rem--line-height: calc(1.75 / 1.25);*/
+  /*--text-1500rem: 1.5rem;*/
+  /*--text-1500rem--line-height: calc(2 / 1.5);*/
+  /*--text-1750rem: 1.75rem;*/
+  /*--text-1750rem--line-height: calc(2.25 / 1.75);*/
+  /*--text-2000rem: 2rem;*/
+  /*--text-2000rem--line-height: calc(2.25 / 2);*/
+  /*--text-2250rem: 2.25rem;*/
+  /*--text-2250rem--line-height: calc(2.5 / 2.25);*/
+  /*--text-2500rem: 2.5rem;*/
+  /*--text-2500rem--line-height: 1;*/
+  /*--text-3000rem: 3rem;*/
+  /*--text-3000rem--line-height: 1;*/
+  /*--text-3500rem: 3.5rem;*/
+  /*--text-3500rem--line-height: 1;*/
+  /*--text-4000rem: 4rem;*/
+  /*--text-4000rem--line-height: 1;*/
+  /*--text-5000rem: 5rem;*/
+  /*--text-5000rem--line-height: 1;*/
+  /*--text-6000rem: 6rem;*/
+  /*--text-6000rem--line-height: 1;*/
+  /*--text-7000rem: 7rem;*/
+  /*--text-7000rem--line-height: 1;*/
+  /*--text-8000rem: 8rem;*/
+  /*--text-8000rem--line-height: 1;*/
+}
+@theme inline {
+}
+
+/* Tailwind Utility Extensions  */
+@utility text-fill-color-transparent {
+  -webkit-text-fill-color: transparent;
+}
+@utility animation-duration-* {
+  animation-duration: calc(--value(integer) * 1ms);
+}

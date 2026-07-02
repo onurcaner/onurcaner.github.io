@@ -8,7 +8,7 @@ export function DeveloperName(): ReactElement {
   const developer = useDeveloperDataQuery({ contentLanguageCode: language });
 
   return (
-    <p className="text-1000rem text-neutral-350 leading-none font-medium uppercase">
+    <p className="text-4 font-semibold text-(--component-developer-name-text-color) uppercase">
       {developer.name}
     </p>
   );

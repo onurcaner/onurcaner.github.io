@@ -14,10 +14,12 @@ export class EducationsDataQueryModel extends DataQueryModel<
   EducationClientData,
   QueryMode.Many
 > {
-  protected override _repositoryQuery =
-    new InMemoryEducationRepositoryFindManyQuery();
-  protected override _serverDataVerifier = new EducationServerDataVerifier();
-  protected override _serverDataTransformer =
-    new EducationServerDataTransformer();
-  protected override _clientDataVerifier = new EducationClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryEducationRepositoryFindManyQuery(),
+      serverDataVerifier: new EducationServerDataVerifier(),
+      serverDataTransformer: new EducationServerDataTransformer(),
+      clientDataVerifier: new EducationClientDataVerifier(),
+    });
+  }
 }

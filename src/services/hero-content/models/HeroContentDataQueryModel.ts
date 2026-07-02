@@ -14,10 +14,12 @@ export class HeroContentDataQueryModel extends DataQueryModel<
   HeroContentClientData,
   QueryMode.One
 > {
-  protected override _repositoryQuery =
-    new InMemoryHeroContentRepositoryFindOneQuery();
-  protected override _serverDataVerifier = new HeroContentServerDataVerifier();
-  protected override _serverDataTransformer =
-    new HeroContentServerDataTransformer();
-  protected override _clientDataVerifier = new HeroContentClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryHeroContentRepositoryFindOneQuery(),
+      serverDataVerifier: new HeroContentServerDataVerifier(),
+      serverDataTransformer: new HeroContentServerDataTransformer(),
+      clientDataVerifier: new HeroContentClientDataVerifier(),
+    });
+  }
 }

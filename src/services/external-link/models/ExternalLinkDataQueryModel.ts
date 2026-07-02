@@ -14,10 +14,12 @@ export class ExternalLinkDataQueryModel extends DataQueryModel<
   ExternalLinkClientData,
   QueryMode.One
 > {
-  protected override _repositoryQuery =
-    new InMemoryExternalLinkRepositoryFindOneQuery();
-  protected override _serverDataVerifier = new ExternalLinkServerDataVerifier();
-  protected override _serverDataTransformer =
-    new ExternalLinkServerDataTransformer();
-  protected override _clientDataVerifier = new ExternalLinkClientDataVerifier();
+  public constructor() {
+    super({
+      repositoryQuery: new InMemoryExternalLinkRepositoryFindOneQuery(),
+      serverDataVerifier: new ExternalLinkServerDataVerifier(),
+      serverDataTransformer: new ExternalLinkServerDataTransformer(),
+      clientDataVerifier: new ExternalLinkClientDataVerifier(),
+    });
+  }
 }
