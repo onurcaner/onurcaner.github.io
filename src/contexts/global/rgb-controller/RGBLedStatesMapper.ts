@@ -1,4 +1,4 @@
-import { type RGBLedState } from '@/styling/_types/RGBLedState.ts';
+import { type RGBLedState } from '@/contexts/global/rgb-controller/RGBLedState.ts';
 
 export interface RGBLedStatesMapper {
   map: (rgbLedStates: RGBLedState[]) => RGBLedState[];

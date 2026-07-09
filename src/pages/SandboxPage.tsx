@@ -58,7 +58,7 @@ export function SandboxPage(): ReactElement {
       <div className="relative grid">
         <div className="relative z-1 col-span-full row-span-full">
           <RGBText
-            rgbDiffuserBackgroundClassName="bg-white/20" /* theme dependent maybe */
+            rgbDiffuserBackgroundClassName="bg-white/0" /* theme dependent maybe */
             parentBackgroundClassName="bg-neutral-600"
           >
             <p className="text-5">{lorem}</p>
