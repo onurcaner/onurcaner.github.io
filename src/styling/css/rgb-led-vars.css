@@ -1,0 +1,11 @@
+:root {
+  --rgb-led-0-normal-color: white;
+  --rgb-led-0-normal-transition-duration: 10ms;
+  --rgb-led-0-normal-transition-timing-function: ease-out;
+  --rgb-led-0-normal-fallback-color-opacity: 0;
+
+  --rgb-led-0-alternative-color: white;
+  --rgb-led-0-alternative-transition-duration: 10ms;
+  --rgb-led-0-alternative-transition-timing-function: ease-out;
+  --rgb-led-0-alternative-fallback-color-opacity: 0;
+}

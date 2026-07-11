@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 
-import { Developer } from '@/components/Developer.tsx';
+import { Developer } from '@/components/Developer/Developer.tsx';
 import { useElementsRefContext } from '@/contexts/global/ref/useElementsRefContext.tsx';
 
 export function Header(): ReactElement {

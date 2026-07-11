@@ -1,51 +1,7 @@
 import { type ReactElement } from 'react';
 
-import { RGBText } from '@/components/RGBText.tsx';
-
-// function RGBText({
-//   children,
-// }: {
-//   children: ReactElement;
-//   parentBackgroundClassName: string;
-//   rgbDiffuserBackgroundClassName: string;
-// }): ReactElement {
-//   return (
-//     <div className="relative grid">
-//       <div className="relative z-3 col-span-full row-span-full bg-neutral-700 text-black mix-blend-screen">
-//         {children}
-//       </div>
-//
-//       <div
-//         className="relative z-2 col-span-full row-span-full bg-black text-white mix-blend-multiply"
-//         aria-hidden={true}
-//       >
-//         {children}
-//       </div>
-//
-//       <div className="absolute top-0 right-0 bottom-0 left-0 z-1 bg-white/50 backdrop-blur-lg" />
-//       <div className="absolute top-0 right-0 bottom-0 left-0 z-0 grid">
-//         <div className="grid grid-cols-8">
-//           <div className="bg-transparent"></div>
-//           <div className="bg-red-500"></div>
-//           <div className="bg-green-500"></div>
-//           <div className="bg-blue-500"></div>
-//           <div className="bg-blue-500"></div>
-//           <div className="bg-green-500"></div>
-//           <div className="bg-red-500"></div>
-//           <div className="bg-transparent"></div>
-//           {/*<div className="bg-neutral-300"></div>*/}
-//           {/*<div className="bg-red-300"></div>*/}
-//           {/*<div className="bg-green-300"></div>*/}
-//           {/*<div className="bg-blue-300"></div>*/}
-//           {/*<div className="bg-neutral-300"></div>*/}
-//           {/*<div className="bg-red-300"></div>*/}
-//           {/*<div className="bg-green-300"></div>*/}
-//           {/*<div className="bg-blue-300"></div>*/}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+import { Glow } from '@/components/Glow.tsx';
+import { RGBBackground } from '@/components/RGB/RGBBackground.tsx';
 
 export function SandboxPage(): ReactElement {
   const lorem =
@@ -54,15 +10,26 @@ export function SandboxPage(): ReactElement {
   const lor = 'Lorem';
 
   return (
-    <div className="grid grid-cols-2 bg-neutral-600 p-16">
+    <div className="grid grid-cols-2 bg-neutral-900 p-16">
       <div className="relative grid">
-        <div className="relative z-1 col-span-full row-span-full">
-          <RGBText
-            rgbDiffuserBackgroundClassName="bg-white/0" /* theme dependent maybe */
-            parentBackgroundClassName="bg-neutral-600"
-          >
-            <p className="text-5">{lorem}</p>
-          </RGBText>
+        <div className="relative z-1 col-span-full row-span-full min-h-128">
+          <Glow elevationStep={8}>
+            <div className="h-full w-full overflow-hidden rounded-2xl">
+              <RGBBackground
+                ledIndicesMatrix={[
+                  [0, 1, 2, 3, 4, 5, 6, 7],
+                  [1, null, null, null, null, null, null, 8],
+                  [2, null, null, null, null, null, null, 9],
+                  [3, null, null, null, null, null, null, 10],
+                  [4, null, null, null, null, null, null, 11],
+                  [5, null, null, null, null, null, null, 13],
+                  [6, null, null, null, null, null, null, 13],
+                  [7, 8, 9, 10, 11, 12, 13, 14],
+                ]}
+                isUsingAlternative={true}
+              />
+            </div>
+          </Glow>
         </div>
       </div>
     </div>

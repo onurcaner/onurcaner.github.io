@@ -1,23 +1,29 @@
 import { type ReactElement } from 'react';
 
+import type { RGBBaseProps } from '@/components/RGB/RGBBaseProps.ts';
 import { useRGBControllerContext } from '@/contexts/global/rgb-controller/useRGBControllerContext.tsx';
 
+interface RGBLedBoxProps extends RGBBaseProps {
+  ledIndex: number;
+  isFallbackForced?: boolean;
+}
+
 export function RGBLedBox({
-  ledNumber,
-  isAlternative,
-  fallbackColor,
-}: {
-  ledNumber: number;
-  isAlternative: boolean;
-  fallbackColor?: string;
-}): ReactElement {
+  ledIndex,
+  isUsingAlternative,
+  preferredNormalFallbackColor = 'lime',
+  preferredAlternativeFallbackColor = 'magenta',
+  isFallbackForced = false,
+}: RGBLedBoxProps): ReactElement {
   const { normalRGBLedStates, alternativeRGBLedStates } =
     useRGBControllerContext();
 
-  const state = isAlternative
-    ? alternativeRGBLedStates.at(ledNumber)
-    : normalRGBLedStates.at(ledNumber);
-
+  const fallbackColor = isUsingAlternative
+    ? preferredAlternativeFallbackColor
+    : preferredNormalFallbackColor;
+  const state = isUsingAlternative
+    ? alternativeRGBLedStates.at(ledIndex)
+    : normalRGBLedStates.at(ledIndex);
   if (!state) throw new Error();
 
   return (

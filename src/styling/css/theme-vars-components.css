@@ -1,5 +1,6 @@
 :root {
   --component-rgb-diffuser-background-color: oklch(1 0 0 / 0%);
+  --component-rgb-diffuser-blur-length: 0.5rem;
 
   --component-header-background-color: var(--theme-color-neutral-900);
   --component-header-border-color: var(--theme-color-neutral-800);
