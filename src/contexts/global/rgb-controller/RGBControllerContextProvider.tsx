@@ -1,64 +1,64 @@
 import {
   type ReactElement,
   type ReactNode,
-  useEffect,
-  useRef,
+  useCallback,
   useState,
 } from 'react';
 
-import type { RGBControllerConfig } from '@/contexts/global/rgb-controller/RGBControllerConfig.ts';
+import { type RGBControllerConfig } from '@/contexts/global/rgb-controller/RGBControllerConfig.ts';
 import { RGBControllerContext } from '@/contexts/global/rgb-controller/RGBControllerContext.tsx';
+import { RGBLedType } from '@/contexts/global/rgb-controller/RGBLedCSSVarAdapter/RGBLedType.ts';
 import { type RGBLedState } from '@/contexts/global/rgb-controller/RGBLedState.ts';
 import { testRGBControllerConfig } from '@/contexts/global/rgb-controller/testRGBControllerConfig.ts';
+import { useRGBControllerDOMEffect } from '@/contexts/global/rgb-controller/useRGBControllerDOMEffect.tsx';
+import { useRGBControllerTimerEffect } from '@/contexts/global/rgb-controller/useRGBControllerTimerEffect.tsx';
 
 export function RGBControllerContextProvider({
   children,
 }: {
   children: ReactNode;
 }): ReactElement {
+  const [rgbControllerConfig, setRGBControllerConfig] =
+    useState<RGBControllerConfig>(() => testRGBControllerConfig);
   const [normalRGBLedStates, setNormalRGBLedStates] = useState<RGBLedState[]>(
-    () => testRGBControllerConfig.initialNormalRGBLedStates,
+    () => rgbControllerConfig.initialNormalRGBLedStates,
   );
   const [alternativeRGBLedStates, setAlternativeRGBLedStates] = useState<
     RGBLedState[]
-  >(() => testRGBControllerConfig.initialAlternativeRGBLedStates);
+  >(() => rgbControllerConfig.initialAlternativeRGBLedStates);
 
-  const reInitialize = (newConfig: RGBControllerConfig): void => {
-    setNormalRGBLedStates(newConfig.initialNormalRGBLedStates);
-    setAlternativeRGBLedStates(newConfig.initialAlternativeRGBLedStates);
-  };
+  const changeRGBControllerConfig = useCallback(
+    (newConfig: RGBControllerConfig): void => {
+      setRGBControllerConfig(newConfig);
+      setNormalRGBLedStates(newConfig.initialNormalRGBLedStates);
+      setAlternativeRGBLedStates(newConfig.initialAlternativeRGBLedStates);
+    },
+    [],
+  );
 
-  const timerId = useRef<number>(0);
-  useEffect(() => {
-    const handleInterval = (): void => {
-      setNormalRGBLedStates((normalRGBLedStates) =>
-        testRGBControllerConfig.normalRGBLedStatesMapper.map(
-          normalRGBLedStates,
-        ),
-      );
-      setAlternativeRGBLedStates((alternativeRGBLedStates) =>
-        testRGBControllerConfig.alternativeRGBLedStatesMapper.map(
-          alternativeRGBLedStates,
-        ),
-      );
-    };
+  useRGBControllerTimerEffect({
+    rgbControllerConfig: rgbControllerConfig,
+    setRGBLedStates: setNormalRGBLedStates,
+  });
+  useRGBControllerTimerEffect({
+    rgbControllerConfig: rgbControllerConfig,
+    setRGBLedStates: setAlternativeRGBLedStates,
+  });
 
-    timerId.current = setInterval(
-      handleInterval,
-      testRGBControllerConfig.tickPeriodMs,
-    );
-
-    return () => {
-      clearInterval(timerId.current);
-    };
-  }, []);
+  // DOM Effects
+  useRGBControllerDOMEffect({
+    rgbLedStates: normalRGBLedStates,
+    rgbLedType: RGBLedType.Normal,
+  });
+  useRGBControllerDOMEffect({
+    rgbLedStates: alternativeRGBLedStates,
+    rgbLedType: RGBLedType.Alternative,
+  });
 
   return (
     <RGBControllerContext
       value={{
-        normalRGBLedStates,
-        alternativeRGBLedStates,
-        reInitialize,
+        changeRGBControllerConfig: changeRGBControllerConfig,
       }}
     >
       {children}

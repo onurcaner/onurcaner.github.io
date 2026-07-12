@@ -22,4 +22,6 @@
 
   --theme-background-opacity: 90%;
   --theme-elevation-step: 0.25rem;
+
+  --theme-blur-shadow-opacity: 100%;
 }

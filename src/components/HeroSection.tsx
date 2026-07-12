@@ -15,7 +15,7 @@ export function HeroSection(): ReactElement {
   return (
     <div
       ref={heroSectionRef as RefObject<HTMLDivElement>}
-      className="grid min-h-screen grid-rows-[max-content_1fr] bg-neutral-800 px-16 py-20"
+      className="grid min-h-screen grid-rows-[max-content_1fr] bg-black px-16 py-20"
     >
       <NonFixedHeaderPlaceholder />
       <div className="">

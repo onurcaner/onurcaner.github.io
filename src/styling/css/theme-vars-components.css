@@ -1,10 +1,9 @@
 :root {
   --component-rgb-diffuser-background-color: oklch(1 0 0 / 0%);
-  --component-rgb-diffuser-blur-length: 0.5rem;
+  --component-rgb-diffuser-blur-length: 1rem;
 
   --component-header-background-color: var(--theme-color-neutral-900);
-  --component-header-border-color: var(--theme-color-neutral-800);
 
-  --component-developer-name-text-color: var(--theme-color-neutral-350);
+  --component-developer-name-text-color: var(--theme-color-neutral-300);
   --component-developer-job-title-text-color: var(--theme-color-neutral-400);
 }

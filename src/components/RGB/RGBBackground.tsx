@@ -5,13 +5,19 @@ import { RGBLedGrid } from '@/components/RGB/RGBLedGrid.tsx';
 
 interface RGBBackgroundProps extends RGBBaseProps {
   ledIndicesMatrix: (number | null)[][];
+  className?: string;
 }
 
-export function RGBBackground(props: RGBBackgroundProps): ReactElement {
+export function RGBBackground({
+  className,
+  ...restProps
+}: RGBBackgroundProps): ReactElement {
   return (
-    <div className="relative h-full w-full">
-      <BackdropBlurLayer />
-      <RGBLedGridLayer {...props} />
+    <div className={className}>
+      <div className="relative h-full w-full">
+        <BackdropBlurLayer />
+        <RGBLedGridLayer {...restProps} />
+      </div>
     </div>
   );
 }

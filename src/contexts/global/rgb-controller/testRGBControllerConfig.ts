@@ -23,7 +23,7 @@ export const testRGBControllerConfig: RGBControllerConfig = {
   initialAlternativeRGBLedStates: Array.from({ length: 144 }).map(
     (_, index): RGBLedState => ({
       color: index % 36 === 0 ? 'white' : 'black',
-      isPreferringFallbackColor: index % 72 === 0,
+      isPreferringFallbackColor: index % 36 !== 0,
       transitionDuration: index % 36 === 0 ? '100ms' : '2000ms',
       transitionTimingFunction: 'ease-out',
     }),

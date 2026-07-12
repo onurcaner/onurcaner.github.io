@@ -1,11 +1,11 @@
 import { type ReactElement } from 'react';
 
-import type { RGBBaseProps } from '@/components/RGB/RGBBaseProps.ts';
-import { useRGBControllerContext } from '@/contexts/global/rgb-controller/useRGBControllerContext.tsx';
+import { type RGBBaseProps } from '@/components/RGB/RGBBaseProps.ts';
+import { RGBLedCSSVarAdapter } from '@/contexts/global/rgb-controller/RGBLedCSSVarAdapter/RGBLedCSSVarAdapter.ts';
+import { RGBLedType } from '@/contexts/global/rgb-controller/RGBLedCSSVarAdapter/RGBLedType.ts';
 
 interface RGBLedBoxProps extends RGBBaseProps {
-  ledIndex: number;
-  isFallbackForced?: boolean;
+  ledIndex: number | null;
 }
 
 export function RGBLedBox({
@@ -13,29 +13,47 @@ export function RGBLedBox({
   isUsingAlternative,
   preferredNormalFallbackColor = 'lime',
   preferredAlternativeFallbackColor = 'magenta',
-  isFallbackForced = false,
 }: RGBLedBoxProps): ReactElement {
-  const { normalRGBLedStates, alternativeRGBLedStates } =
-    useRGBControllerContext();
-
-  const fallbackColor = isUsingAlternative
-    ? preferredAlternativeFallbackColor
-    : preferredNormalFallbackColor;
-  const state = isUsingAlternative
-    ? alternativeRGBLedStates.at(ledIndex)
-    : normalRGBLedStates.at(ledIndex);
-  if (!state) throw new Error();
+  const rgbLedCSSVarAdapter = new RGBLedCSSVarAdapter({
+    rgbLedIndex: ledIndex ?? 0,
+    rgbLedType: isUsingAlternative ? RGBLedType.Alternative : RGBLedType.Normal,
+  });
+  const isFallbackForced = ledIndex === null;
 
   return (
-    <div
-      style={{
-        backgroundColor: state.isPreferringFallbackColor
-          ? fallbackColor
-          : state.color,
-        transitionProperty: 'background-color',
-        transitionDuration: state.transitionDuration,
-        transitionTimingFunction: state.transitionTimingFunction,
-      }}
-    />
+    <div className="relative grid">
+      <div
+        className="col-span-full row-span-full"
+        style={{
+          backgroundColor: rgbLedCSSVarAdapter.generateColorCSSVar(),
+          transitionProperty: 'background-color, opacity',
+          transitionDuration:
+            rgbLedCSSVarAdapter.generateTransitionDurationCSSVar(),
+          transitionTimingFunction:
+            rgbLedCSSVarAdapter.generateTransitionTimingFunctionCSSVar(),
+          opacity: isFallbackForced
+            ? '0%'
+            : `calc(100% - ${rgbLedCSSVarAdapter.generateFallbackColorOpacityCSSVar()})`,
+          // willChange: 'background-color, opacity',
+        }}
+      />
+      <div
+        className="col-span-full row-span-full"
+        style={{
+          backgroundColor: isUsingAlternative
+            ? preferredAlternativeFallbackColor
+            : preferredNormalFallbackColor,
+          transitionProperty: 'background-color, opacity',
+          transitionDuration:
+            rgbLedCSSVarAdapter.generateTransitionDurationCSSVar(),
+          transitionTimingFunction:
+            rgbLedCSSVarAdapter.generateTransitionTimingFunctionCSSVar(),
+          opacity: isFallbackForced
+            ? '100%'
+            : rgbLedCSSVarAdapter.generateFallbackColorOpacityCSSVar(),
+          // willChange: 'background-color, opacity',
+        }}
+      />
+    </div>
   );
 }

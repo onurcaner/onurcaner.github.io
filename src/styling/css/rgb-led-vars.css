@@ -1,11 +1,11 @@
 :root {
-  --rgb-led-0-normal-color: white;
-  --rgb-led-0-normal-transition-duration: 10ms;
-  --rgb-led-0-normal-transition-timing-function: ease-out;
-  --rgb-led-0-normal-fallback-color-opacity: 0;
+  --rgb-led-n-normal-color: white;
+  --rgb-led-n-normal-transition-duration: 10ms;
+  --rgb-led-n-normal-transition-timing-function: ease-out;
+  --rgb-led-n-normal-fallback-color-opacity: 0;
 
-  --rgb-led-0-alternative-color: white;
-  --rgb-led-0-alternative-transition-duration: 10ms;
-  --rgb-led-0-alternative-transition-timing-function: ease-out;
-  --rgb-led-0-alternative-fallback-color-opacity: 0;
+  --rgb-led-n-alternative-color: white;
+  --rgb-led-n-alternative-transition-duration: 10ms;
+  --rgb-led-n-alternative-transition-timing-function: ease-out;
+  --rgb-led-n-alternative-fallback-color-opacity: 0;
 }
