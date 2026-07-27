@@ -1,4 +1,4 @@
-import { RGBLedType } from '@/contexts/global/rgb-controller/RGBLedCSSVarAdapter/RGBLedType.ts';
+import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
 
 enum PropertySuffix {
   Color = 'color',
@@ -8,8 +8,8 @@ enum PropertySuffix {
 }
 
 export class RGBLedCSSVarAdapter {
-  private _ledIndex: string;
-  private _ledType: RGBLedType;
+  private _rgbLedIndex: string;
+  private _rgbLedType: RGBLedType;
 
   public constructor({
     rgbLedIndex,
@@ -18,8 +18,8 @@ export class RGBLedCSSVarAdapter {
     rgbLedIndex: number;
     rgbLedType: RGBLedType;
   }) {
-    this._ledIndex = rgbLedIndex.toString();
-    this._ledType = rgbLedType;
+    this._rgbLedIndex = rgbLedIndex.toString();
+    this._rgbLedType = rgbLedType;
   }
 
   public generateColorPropertyName(): string {
@@ -51,7 +51,7 @@ export class RGBLedCSSVarAdapter {
   }
 
   private _generatePrefix(): string {
-    return `--rgb-led-${this._ledIndex}-${this._ledType}-`;
+    return `--rgb-led-${this._rgbLedIndex}-${this._rgbLedType}-`;
   }
 
   private _makeCSSVar(propertyName: string): string {

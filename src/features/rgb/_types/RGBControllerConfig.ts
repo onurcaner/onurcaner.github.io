@@ -1,5 +1,5 @@
-import { type RGBLedState } from '@/contexts/global/rgb-controller/RGBLedState.ts';
-import { type RGBLedStatesMapper } from '@/contexts/global/rgb-controller/RGBLedStatesMapper.ts';
+import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
+import { type RGBLedStatesMapper } from '@/features/rgb/_types/RGBLedStatesMapper.ts';
 
 export interface RGBControllerConfig {
   initialNormalRGBLedStates: RGBLedState[];

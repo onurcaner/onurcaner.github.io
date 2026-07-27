@@ -1,7 +1,7 @@
 import { type ReactElement } from 'react';
 
 import { BlurShadow } from '@/components/BlurShadow.tsx';
-import { RGBBackground } from '@/components/RGB/RGBBackground.tsx';
+import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
 
 export function SandboxPage(): ReactElement {
   // const lorem =

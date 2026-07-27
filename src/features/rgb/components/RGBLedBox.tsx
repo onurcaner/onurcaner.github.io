@@ -1,10 +1,10 @@
 import { type ReactElement } from 'react';
 
-import { type RGBBaseProps } from '@/components/RGB/RGBBaseProps.ts';
-import { RGBLedCSSVarAdapter } from '@/contexts/global/rgb-controller/RGBLedCSSVarAdapter/RGBLedCSSVarAdapter.ts';
-import { RGBLedType } from '@/contexts/global/rgb-controller/RGBLedCSSVarAdapter/RGBLedType.ts';
+import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
+import { type RGBBaseComponentProps } from '@/features/rgb/_types/RGBBaseComponentProps.ts';
+import { RGBLedCSSVarAdapter } from '@/features/rgb/utils/RGBLedCSSVarAdapter.ts';
 
-interface RGBLedBoxProps extends RGBBaseProps {
+interface RGBLedBoxProps extends RGBBaseComponentProps {
   ledIndex: number | null;
 }
 

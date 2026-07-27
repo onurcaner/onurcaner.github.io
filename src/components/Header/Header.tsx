@@ -2,8 +2,8 @@ import { type ReactElement } from 'react';
 
 import { BlurShadow } from '@/components/BlurShadow.tsx';
 import { Developer } from '@/components/Developer/Developer.tsx';
-import { RGBBackground } from '@/components/RGB/RGBBackground.tsx';
 import { useElementsRefContext } from '@/contexts/global/ref/useElementsRefContext.tsx';
+import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
 
 export function Header(): ReactElement {
   const { headerRef } = useElementsRefContext();
@@ -19,22 +19,28 @@ export function Header(): ReactElement {
           <Developer />
           <div className="text-white">MENU</div>
         </div>
+
         {/* Border */}
         <RGBBackground
-          ledIndicesMatrix={[[0, 1, 2, 3, 4, 5, 6, 7]]}
-          isUsingAlternative={true}
           className="relative z-1 h-(--theme-border-thickness)"
+          ledIndicesMatrix={[[0, 1, 2, 3, 4, 5, 6, 7]]}
+          isUsingAlternative={false}
+          preferredNormalFallbackColor="var(--component-header-normal-border-color)"
+          preferredAlternativeFallbackColor="var(--component-header-normal-border-color)"
         />
+
         {/* Shadow */}
         <div className="absolute top-0 right-0 bottom-0 left-0 z-0 grid">
           <div className="relative z-1 col-span-full row-span-full bg-(--component-header-background-color)" />
           <BlurShadow
-            elevationStep={2}
+            elevationStep={1}
             className="relative z-0 col-span-full row-span-full grid"
           >
             <RGBBackground
               ledIndicesMatrix={[[0, 1, 2, 3, 4, 5, 6, 7]]}
-              isUsingAlternative={true}
+              isUsingAlternative={false}
+              preferredNormalFallbackColor="var(--component-header-normal-border-color)"
+              preferredAlternativeFallbackColor="var(--component-header-normal-border-color)"
             />
           </BlurShadow>
         </div>

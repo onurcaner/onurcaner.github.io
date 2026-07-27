@@ -5,13 +5,13 @@ import {
   useState,
 } from 'react';
 
-import { type RGBControllerConfig } from '@/contexts/global/rgb-controller/RGBControllerConfig.ts';
-import { RGBControllerContext } from '@/contexts/global/rgb-controller/RGBControllerContext.tsx';
-import { RGBLedType } from '@/contexts/global/rgb-controller/RGBLedCSSVarAdapter/RGBLedType.ts';
-import { type RGBLedState } from '@/contexts/global/rgb-controller/RGBLedState.ts';
-import { testRGBControllerConfig } from '@/contexts/global/rgb-controller/testRGBControllerConfig.ts';
-import { useRGBControllerDOMEffect } from '@/contexts/global/rgb-controller/useRGBControllerDOMEffect.tsx';
-import { useRGBControllerTimerEffect } from '@/contexts/global/rgb-controller/useRGBControllerTimerEffect.tsx';
+import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
+import { testRGBControllerConfig } from '@/features/rgb/_constants/testRGBControllerConfig.ts';
+import { type RGBControllerConfig } from '@/features/rgb/_types/RGBControllerConfig.ts';
+import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
+import { RGBControllerContext } from '@/features/rgb/contexts/RGBControllerContext.tsx';
+import { useRGBControllerDOMEffect } from '@/features/rgb/contexts/useRGBControllerDOMEffect.tsx';
+import { useRGBControllerTimerEffect } from '@/features/rgb/contexts/useRGBControllerTimerEffect.tsx';
 
 export function RGBControllerContextProvider({
   children,
@@ -38,11 +38,8 @@ export function RGBControllerContextProvider({
 
   useRGBControllerTimerEffect({
     rgbControllerConfig: rgbControllerConfig,
-    setRGBLedStates: setNormalRGBLedStates,
-  });
-  useRGBControllerTimerEffect({
-    rgbControllerConfig: rgbControllerConfig,
-    setRGBLedStates: setAlternativeRGBLedStates,
+    setNormalRGBLedStates: setNormalRGBLedStates,
+    setAlternativeRGBLedStates: setAlternativeRGBLedStates,
   });
 
   // DOM Effects

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { RGBControllerContext } from '@/contexts/global/rgb-controller/RGBControllerContext.tsx';
+import { RGBControllerContext } from '@/features/rgb/contexts/RGBControllerContext.tsx';
 
 export function useRGBControllerContext() {
   const context = useContext(RGBControllerContext);

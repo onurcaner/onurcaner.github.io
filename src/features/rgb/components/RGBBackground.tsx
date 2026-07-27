@@ -1,9 +1,9 @@
 import { type ReactElement } from 'react';
 
-import { type RGBBaseProps } from '@/components/RGB/RGBBaseProps.ts';
-import { RGBLedGrid } from '@/components/RGB/RGBLedGrid.tsx';
+import { type RGBBaseComponentProps } from '@/features/rgb/_types/RGBBaseComponentProps.ts';
+import { RGBLedGrid } from '@/features/rgb/components/RGBLedGrid.tsx';
 
-interface RGBBackgroundProps extends RGBBaseProps {
+interface RGBBackgroundProps extends RGBBaseComponentProps {
   ledIndicesMatrix: (number | null)[][];
   className?: string;
 }

@@ -1,10 +1,10 @@
 import { type ReactElement } from 'react';
 
-import { type RGBBaseProps } from '@/components/RGB/RGBBaseProps.ts';
-import { RGBLedGrid } from '@/components/RGB/RGBLedGrid.tsx';
+import { type RGBBaseComponentProps } from '@/features/rgb/_types/RGBBaseComponentProps.ts';
+import { RGBLedGrid } from '@/features/rgb/components/RGBLedGrid.tsx';
 import { ClassNameJoiner } from '@/utils/ClassNameJoiner.ts';
 
-interface RGBTextProps extends RGBBaseProps {
+interface RGBTextProps extends RGBBaseComponentProps {
   children: ReactElement;
   parentBackgroundClassName: string; /* Required for background color matching */
   ledIndicesMatrix: number[][];
@@ -77,7 +77,7 @@ function BackdropBlurLayer(): ReactElement {
   );
 }
 
-interface RGBLedGridLayerProps extends RGBBaseProps {
+interface RGBLedGridLayerProps extends RGBBaseComponentProps {
   ledIndicesMatrix: number[][];
 }
 

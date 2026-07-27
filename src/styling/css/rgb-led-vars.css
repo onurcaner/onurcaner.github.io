@@ -1,3 +1,4 @@
+/* Will be affected by RGB Controller */
 :root {
   --rgb-led-n-normal-color: white;
   --rgb-led-n-normal-transition-duration: 10ms;
