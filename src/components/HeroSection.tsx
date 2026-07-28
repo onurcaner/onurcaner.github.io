@@ -1,12 +1,12 @@
 import { type ReactElement, type RefObject } from 'react';
 
 import { NonFixedHeaderPlaceholder } from '@/components/Header/NonFixedHeaderPlaceholder.tsx';
-import { useElementsRefContext } from '@/contexts/global/ref/useElementsRefContext.tsx';
+import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { useHeroContentDataQuery } from '@/contexts/remote/hero-content/useHeroContentDataQuery.tsx';
 import { useLanguageContext } from '@/contexts/url/language/useLanguageContext.tsx';
 
 export function HeroSection(): ReactElement {
-  const { heroSectionRef } = useElementsRefContext();
+  const { heroSectionRef } = useDomRefsContext();
   const [language] = useLanguageContext();
   const { title, description } = useHeroContentDataQuery({
     contentLanguageCode: language,

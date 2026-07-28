@@ -1,20 +1,21 @@
 import { type ReactElement } from 'react';
 
 import { type RGBBaseComponentProps } from '@/features/rgb/_types/RGBBaseComponentProps.ts';
+import { type RGBLedIndex } from '@/features/rgb/_types/RGBLedIndex.ts';
 import { RGBLedBox } from '@/features/rgb/components/RGBLedBox.tsx';
 
 interface RGBLedGridProps extends RGBBaseComponentProps {
-  ledIndicesMatrix: (number | null)[][];
+  indicesMatrix: RGBLedIndex[][];
 }
 
 export function RGBLedGrid({
-  ledIndicesMatrix,
+  indicesMatrix,
   isUsingAlternative,
   preferredNormalFallbackColor,
   preferredAlternativeFallbackColor,
 }: RGBLedGridProps): ReactElement {
-  const rowCount = ledIndicesMatrix.length;
-  const columnCount = ledIndicesMatrix[0].length;
+  const rowCount = indicesMatrix.length;
+  const columnCount = indicesMatrix[0].length;
 
   return (
     <div
@@ -24,11 +25,11 @@ export function RGBLedGrid({
         gridTemplateColumns: `repeat(${String(columnCount)}, minmax(0, 1fr))`,
       }}
     >
-      {ledIndicesMatrix.map((ledIndicesRow, rowIndex) =>
-        ledIndicesRow.map((ledIndex, columnIndex) => (
+      {indicesMatrix.map((indicesRow, rowIndex) =>
+        indicesRow.map((ledIndex, columnIndex) => (
           <RGBLedBox
             key={`${rowIndex.toString()}_${columnIndex.toString()}`}
-            ledIndex={ledIndex}
+            rgbLedIndex={ledIndex}
             isUsingAlternative={isUsingAlternative}
             preferredNormalFallbackColor={preferredNormalFallbackColor}
             preferredAlternativeFallbackColor={

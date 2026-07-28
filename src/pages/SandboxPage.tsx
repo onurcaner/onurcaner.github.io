@@ -19,7 +19,7 @@ export function SandboxPage(): ReactElement {
             className="h-full w-full overflow-hidden rounded-2xl"
           >
             <RGBBackground
-              ledIndicesMatrix={[
+              indicesMatrix={[
                 [0, 1, 2, 3, 4, 5, 6, 7],
                 [1, null, null, null, null, null, null, 8],
                 [2, null, null, null, null, null, null, 9],

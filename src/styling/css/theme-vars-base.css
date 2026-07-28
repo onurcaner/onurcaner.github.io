@@ -25,3 +25,8 @@
 
   --theme-blur-shadow-opacity: 100%;
 }
+
+/* Animation */
+:root {
+  --theme-transition-timing-function-ease-out: 'cubic-bezier(0.16, 1, 0.3, 1)'; /* easeOutExpo */
+}

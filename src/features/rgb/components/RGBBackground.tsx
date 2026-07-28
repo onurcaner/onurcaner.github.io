@@ -1,10 +1,11 @@
 import { type ReactElement } from 'react';
 
 import { type RGBBaseComponentProps } from '@/features/rgb/_types/RGBBaseComponentProps.ts';
+import type { RGBLedIndex } from '@/features/rgb/_types/RGBLedIndex.ts';
 import { RGBLedGrid } from '@/features/rgb/components/RGBLedGrid.tsx';
 
 interface RGBBackgroundProps extends RGBBaseComponentProps {
-  ledIndicesMatrix: (number | null)[][];
+  indicesMatrix: RGBLedIndex[][];
   className?: string;
 }
 
@@ -29,7 +30,7 @@ function BackdropBlurLayer(): ReactElement {
 }
 
 function RGBLedGridLayer({
-  ledIndicesMatrix,
+  indicesMatrix,
   isUsingAlternative,
   preferredNormalFallbackColor,
   preferredAlternativeFallbackColor,
@@ -37,7 +38,7 @@ function RGBLedGridLayer({
   return (
     <div className="absolute top-0 right-0 bottom-0 left-0 z-0 grid">
       <RGBLedGrid
-        ledIndicesMatrix={ledIndicesMatrix}
+        indicesMatrix={indicesMatrix}
         isUsingAlternative={isUsingAlternative}
         preferredNormalFallbackColor={preferredNormalFallbackColor}
         preferredAlternativeFallbackColor={preferredAlternativeFallbackColor}

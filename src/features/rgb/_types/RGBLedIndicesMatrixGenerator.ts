@@ -1,3 +1,6 @@
+import { type RGBLedIndex } from '@/features/rgb/_types/RGBLedIndex.ts';
+
 export interface RGBLedIndicesMatrixGenerator {
-  generate: () => (number | null)[][];
+  generate: () => RGBLedIndex[][];
+  reset: () => void;
 }

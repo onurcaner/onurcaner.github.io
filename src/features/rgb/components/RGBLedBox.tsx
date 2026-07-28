@@ -2,23 +2,24 @@ import { type ReactElement } from 'react';
 
 import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
 import { type RGBBaseComponentProps } from '@/features/rgb/_types/RGBBaseComponentProps.ts';
+import type { RGBLedIndex } from '@/features/rgb/_types/RGBLedIndex.ts';
 import { RGBLedCSSVarAdapter } from '@/features/rgb/utils/RGBLedCSSVarAdapter.ts';
 
 interface RGBLedBoxProps extends RGBBaseComponentProps {
-  ledIndex: number | null;
+  rgbLedIndex: RGBLedIndex;
 }
 
 export function RGBLedBox({
-  ledIndex,
+  rgbLedIndex,
   isUsingAlternative,
   preferredNormalFallbackColor = 'lime',
   preferredAlternativeFallbackColor = 'magenta',
 }: RGBLedBoxProps): ReactElement {
   const rgbLedCSSVarAdapter = new RGBLedCSSVarAdapter({
-    rgbLedIndex: ledIndex ?? 0,
+    rgbLedIndex: rgbLedIndex ?? 0,
     rgbLedType: isUsingAlternative ? RGBLedType.Alternative : RGBLedType.Normal,
   });
-  const isFallbackForced = ledIndex === null;
+  const isFallbackForced = rgbLedIndex === null;
 
   return (
     <div className="relative grid">

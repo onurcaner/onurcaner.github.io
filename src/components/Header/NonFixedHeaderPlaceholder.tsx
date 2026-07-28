@@ -1,10 +1,10 @@
 import { type ReactElement } from 'react';
 
-import { useElementsRefContext } from '@/contexts/global/ref/useElementsRefContext.tsx';
+import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { useRectSize } from '@/hooks/useRectSize.tsx';
 
 export function NonFixedHeaderPlaceholder(): ReactElement {
-  const { headerRef } = useElementsRefContext();
+  const { headerRef } = useDomRefsContext();
 
   const { height: headerHeight } = useRectSize(headerRef);
 

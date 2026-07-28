@@ -2,11 +2,15 @@ import { type ReactElement } from 'react';
 
 import { BlurShadow } from '@/components/BlurShadow.tsx';
 import { Developer } from '@/components/Developer/Developer.tsx';
-import { useElementsRefContext } from '@/contexts/global/ref/useElementsRefContext.tsx';
+import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
+import { useThemeControllerContext } from '@/features/theme/contexts/useThemeControllerContext.ts';
 
 export function Header(): ReactElement {
-  const { headerRef } = useElementsRefContext();
+  const { headerRef } = useDomRefsContext();
+  const { rgbLedIndicesMatricesMap } = useThemeControllerContext();
+
+  const indicesMatrix = rgbLedIndicesMatricesMap.header.generate();
 
   return (
     <header
@@ -23,7 +27,7 @@ export function Header(): ReactElement {
         {/* Border */}
         <RGBBackground
           className="relative z-1 h-(--theme-border-thickness)"
-          ledIndicesMatrix={[[0, 1, 2, 3, 4, 5, 6, 7]]}
+          indicesMatrix={indicesMatrix}
           isUsingAlternative={false}
           preferredNormalFallbackColor="var(--component-header-normal-border-color)"
           preferredAlternativeFallbackColor="var(--component-header-normal-border-color)"
@@ -37,7 +41,7 @@ export function Header(): ReactElement {
             className="relative z-0 col-span-full row-span-full grid"
           >
             <RGBBackground
-              ledIndicesMatrix={[[0, 1, 2, 3, 4, 5, 6, 7]]}
+              indicesMatrix={indicesMatrix}
               isUsingAlternative={false}
               preferredNormalFallbackColor="var(--component-header-normal-border-color)"
               preferredAlternativeFallbackColor="var(--component-header-normal-border-color)"
