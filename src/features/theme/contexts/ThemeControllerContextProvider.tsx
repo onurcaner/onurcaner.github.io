@@ -2,7 +2,7 @@ import { type ReactElement, type ReactNode, useState } from 'react';
 
 import { type ThemeControllerConfig } from '@/features/theme/_types/ThemeControllerConfig.ts';
 import { ThemeControllerContext } from '@/features/theme/contexts/ThemeControllerContext.ts';
-import { TestThemeThemeControllerConfig } from '@/features/theme/themes/TestThemeThemeControllerConfig.ts';
+import { TestThemeThemeControllerConfig } from '@/styling/themes/TestThemeThemeControllerConfig.ts';
 
 export function ThemeControllerContextProvider({
   children,

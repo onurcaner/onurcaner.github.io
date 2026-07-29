@@ -3,4 +3,5 @@ import { type RGBLedIndicesMatrixGenerator } from '@/features/rgb/_types/RGBLedI
 export interface RGBLedIndicesMatricesMap {
   header: RGBLedIndicesMatrixGenerator;
   developerName: RGBLedIndicesMatrixGenerator;
+  developerJobTitle: RGBLedIndicesMatrixGenerator;
 }

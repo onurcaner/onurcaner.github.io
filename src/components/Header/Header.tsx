@@ -10,6 +10,7 @@ export function Header(): ReactElement {
   const { headerRef } = useDomRefsContext();
   const { rgbLedIndicesMatricesMap } = useThemeControllerContext();
 
+  rgbLedIndicesMatricesMap.header.reset();
   const indicesMatrix = rgbLedIndicesMatricesMap.header.generate();
 
   return (

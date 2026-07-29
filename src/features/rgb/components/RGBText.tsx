@@ -1,19 +1,20 @@
 import { type ReactElement } from 'react';
 
 import { type RGBBaseComponentProps } from '@/features/rgb/_types/RGBBaseComponentProps.ts';
+import { type RGBLedIndex } from '@/features/rgb/_types/RGBLedIndex.ts';
 import { RGBLedGrid } from '@/features/rgb/components/RGBLedGrid.tsx';
 import { ClassNameJoiner } from '@/utils/ClassNameJoiner.ts';
 
 interface RGBTextProps extends RGBBaseComponentProps {
   children: ReactElement;
   parentBackgroundClassName: string; /* Required for background color matching */
-  ledIndicesMatrix: number[][];
+  rgbLedIndicesMatrix: RGBLedIndex[][];
 }
 
 export function RGBText({
   children,
   parentBackgroundClassName,
-  ledIndicesMatrix,
+  rgbLedIndicesMatrix,
   isUsingAlternative,
   preferredNormalFallbackColor,
   preferredAlternativeFallbackColor,
@@ -28,7 +29,7 @@ export function RGBText({
       <BackgroundClipTextFilterLayer>{children}</BackgroundClipTextFilterLayer>
       <BackdropBlurLayer />
       <RGBLedGridLayer
-        ledIndicesMatrix={ledIndicesMatrix}
+        ledIndicesMatrix={rgbLedIndicesMatrix}
         isUsingAlternative={isUsingAlternative}
         preferredNormalFallbackColor={preferredNormalFallbackColor}
         preferredAlternativeFallbackColor={preferredAlternativeFallbackColor}
@@ -78,7 +79,7 @@ function BackdropBlurLayer(): ReactElement {
 }
 
 interface RGBLedGridLayerProps extends RGBBaseComponentProps {
-  ledIndicesMatrix: number[][];
+  ledIndicesMatrix: RGBLedIndex[][];
 }
 
 function RGBLedGridLayer({
@@ -90,7 +91,7 @@ function RGBLedGridLayer({
   return (
     <div className="absolute top-0 right-0 bottom-0 left-0 z-0 grid">
       <RGBLedGrid
-        indicesMatrix={ledIndicesMatrix}
+        rgbLedIndicesMatrix={ledIndicesMatrix}
         isUsingAlternative={isUsingAlternative}
         preferredNormalFallbackColor={preferredNormalFallbackColor}
         preferredAlternativeFallbackColor={preferredAlternativeFallbackColor}
