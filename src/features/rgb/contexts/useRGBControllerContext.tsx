@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { RGBControllerContext } from '@/features/rgb/contexts/RGBControllerContext.tsx';
 
-export function useRGBControllerContext() {
+export function useRGBControllerContext(): object {
   const context = useContext(RGBControllerContext);
   if (!context) {
     throw new Error(

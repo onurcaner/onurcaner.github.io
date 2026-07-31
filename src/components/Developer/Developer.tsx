@@ -1,7 +1,7 @@
 import { type ReactElement } from 'react';
 
-import { DeveloperJobTitle } from '@/components/Developer/DeveloperJobTitle.tsx';
-import { DeveloperName } from '@/components/Developer/DeveloperName.tsx';
+import { DeveloperJobTitle } from './DeveloperJobTitle.tsx';
+import { DeveloperName } from './DeveloperName.tsx';
 
 export function Developer(): ReactElement {
   return (

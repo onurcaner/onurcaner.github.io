@@ -3,15 +3,15 @@ import type { ReactElement } from 'react';
 import { useDeveloperDataQuery } from '@/contexts/remote/developer/useDeveloperDataQuery.tsx';
 import { useLanguageContext } from '@/contexts/url/language/useLanguageContext.tsx';
 import { RGBText } from '@/features/rgb/components/RGBText.tsx';
-import { useThemeControllerContext } from '@/features/theme/contexts/useThemeControllerContext.ts';
+import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 export function DeveloperName(): ReactElement {
   const [language] = useLanguageContext();
   const developer = useDeveloperDataQuery({ contentLanguageCode: language });
-  const { rgbLedIndicesMatricesMap } = useThemeControllerContext();
+  const { rgbLedIndicesMatrixGenerators } = useThemeContext();
 
-  rgbLedIndicesMatricesMap.developerName.reset();
-  const indicesMatrix = rgbLedIndicesMatricesMap.developerName.generate();
+  rgbLedIndicesMatrixGenerators.developerName.reset();
+  const indicesMatrix = rgbLedIndicesMatrixGenerators.developerName.generate();
 
   return (
     <RGBText

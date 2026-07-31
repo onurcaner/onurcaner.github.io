@@ -1,6 +1,6 @@
 import { type ReactElement, type ReactNode, useRef } from 'react';
 
-import { DomRefsContext } from '@/contexts/global/dom-refs/DomRefsContext.tsx';
+import { DomRefsContext } from '@/contexts/global/dom-refs/contexts/DomRefsContext.tsx';
 
 export function DomRefsContextProvider({
   children,
@@ -13,8 +13,8 @@ export function DomRefsContextProvider({
   return (
     <DomRefsContext
       value={{
-        headerRef,
-        heroSectionRef,
+        headerRef: headerRef,
+        heroSectionRef: heroSectionRef,
       }}
     >
       {children}

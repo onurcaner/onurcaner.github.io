@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
+import { type ReactElement, useEffect } from 'react';
 
 import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
 import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
 import { RGBLedCSSVarAdapter } from '@/features/rgb/utils/RGBLedCSSVarAdapter.ts';
 
-export function useRGBControllerDOMEffect({
+export function RGBControllerDOMEffect({
   rgbLedStates,
   rgbLedType,
 }: {
   rgbLedStates: RGBLedState[];
   rgbLedType: RGBLedType;
-}): void {
+}): ReactElement {
   useEffect(() => {
     const root = document.documentElement;
     rgbLedStates.forEach((rgbLedState, rgbLedIndex) => {
@@ -36,4 +36,6 @@ export function useRGBControllerDOMEffect({
       );
     });
   }, [rgbLedStates, rgbLedType]);
+
+  return <></>;
 }

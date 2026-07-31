@@ -1,15 +1,21 @@
-import { type Dispatch, type SetStateAction, useEffect, useRef } from 'react';
+import {
+  type Dispatch,
+  type ReactElement,
+  type SetStateAction,
+  useEffect,
+  useRef,
+} from 'react';
 
 import { type RGBControllerConfig } from '@/features/rgb/_types/RGBControllerConfig.ts';
 import { type RGBControllerState } from '@/features/rgb/_types/RGBControllerState.ts';
 
-export function useRGBControllerTimerEffect({
+export function RGBControllerTimerEffect({
   rgbControllerConfig,
   setRGBControllerState,
 }: {
   rgbControllerConfig: RGBControllerConfig;
   setRGBControllerState: Dispatch<SetStateAction<RGBControllerState>>;
-}): void {
+}): ReactElement {
   const timerId = useRef<number | null>(null);
 
   useEffect(() => {
@@ -38,4 +44,6 @@ export function useRGBControllerTimerEffect({
       timerId.current = null;
     };
   }, [rgbControllerConfig, setRGBControllerState]);
+
+  return <></>;
 }

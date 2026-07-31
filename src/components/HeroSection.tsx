@@ -1,7 +1,7 @@
 import { type ReactElement, type RefObject } from 'react';
 
 import { NonFixedHeaderPlaceholder } from '@/components/Header/NonFixedHeaderPlaceholder.tsx';
-import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
+import { useDomRefsContext } from '@/contexts/global/dom-refs/contexts/useDomRefsContext.tsx';
 import { useHeroContentDataQuery } from '@/contexts/remote/hero-content/useHeroContentDataQuery.tsx';
 import { useLanguageContext } from '@/contexts/url/language/useLanguageContext.tsx';
 

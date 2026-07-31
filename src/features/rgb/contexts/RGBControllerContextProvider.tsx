@@ -4,8 +4,8 @@ import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
 import { type RGBControllerConfig } from '@/features/rgb/_types/RGBControllerConfig.ts';
 import { type RGBControllerState } from '@/features/rgb/_types/RGBControllerState.ts';
 import { RGBControllerContext } from '@/features/rgb/contexts/RGBControllerContext.tsx';
-import { useRGBControllerDOMEffect } from '@/features/rgb/contexts/useRGBControllerDOMEffect.tsx';
-import { useRGBControllerTimerEffect } from '@/features/rgb/contexts/useRGBControllerTimerEffect.tsx';
+import { RGBControllerDOMEffect } from '@/features/rgb/contexts/RGBControllerDOMEffect.tsx';
+import { RGBControllerTimerEffect } from '@/features/rgb/contexts/RGBControllerTimerEffect.tsx';
 
 export function RGBControllerContextProvider({
   children,
@@ -31,30 +31,30 @@ export function RGBControllerContextProvider({
     }));
   }, [rgbControllerConfig]);
 
-  // Timer Effect
-  useRGBControllerTimerEffect({
-    rgbControllerConfig: rgbControllerConfig,
-    setRGBControllerState: setRgbControllerState,
-  });
-
-  // DOM Effects
-  useRGBControllerDOMEffect({
-    rgbLedStates: rgbControllerState.normalRGBLedStates,
-    rgbLedType: RGBLedType.Normal,
-  });
-  useRGBControllerDOMEffect({
-    rgbLedStates: rgbControllerState.alternativeRGBLedStates,
-    rgbLedType: RGBLedType.Alternative,
-  });
-
   return (
-    <RGBControllerContext
-      // value={{
-      //   changeConfig: changeRGBControllerConfig,
-      // }}
-      value={{}}
-    >
-      {children}
-    </RGBControllerContext>
+    <>
+      <RGBControllerTimerEffect
+        rgbControllerConfig={rgbControllerConfig}
+        setRGBControllerState={setRgbControllerState}
+      />
+
+      <RGBControllerDOMEffect
+        rgbLedStates={rgbControllerState.normalRGBLedStates}
+        rgbLedType={RGBLedType.Normal}
+      />
+      <RGBControllerDOMEffect
+        rgbLedStates={rgbControllerState.alternativeRGBLedStates}
+        rgbLedType={RGBLedType.Alternative}
+      />
+
+      <RGBControllerContext
+        // value={{
+        //   changeConfig: changeRGBControllerConfig,
+        // }}
+        value={{}}
+      >
+        {children}
+      </RGBControllerContext>
+    </>
   );
 }

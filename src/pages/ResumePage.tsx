@@ -8,7 +8,7 @@ export function ResumePage(): ReactElement {
     <>
       <Header />
       <HeroSection />
-      <div className="h-screen bg-red-200" />
+      <div className="h-[200vh] bg-red-200" />
     </>
   );
 }

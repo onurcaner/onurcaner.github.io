@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 
-import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
+import { useDomRefsContext } from '@/contexts/global/dom-refs/contexts/useDomRefsContext.tsx';
 import { useRectSize } from '@/hooks/useRectSize.tsx';
 
 export function NonFixedHeaderPlaceholder(): ReactElement {
