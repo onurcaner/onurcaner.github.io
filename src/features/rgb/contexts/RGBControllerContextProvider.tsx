@@ -1,11 +1,12 @@
 import { type ReactElement, type ReactNode, useEffect, useState } from 'react';
 
-import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
-import { type RGBControllerConfig } from '@/features/rgb/_types/RGBControllerConfig.ts';
-import { type RGBControllerState } from '@/features/rgb/_types/RGBControllerState.ts';
-import { RGBControllerContext } from '@/features/rgb/contexts/RGBControllerContext.tsx';
-import { RGBControllerDOMEffect } from '@/features/rgb/contexts/RGBControllerDOMEffect.tsx';
-import { RGBControllerTimerEffect } from '@/features/rgb/contexts/RGBControllerTimerEffect.tsx';
+import { RGBLedType } from '../_constants/RGBLedType.ts';
+import { type RGBControllerConfig } from '../_types/RGBControllerConfig.ts';
+import { type RGBControllerState } from '../_types/RGBControllerState.ts';
+
+import { RGBControllerContext } from './RGBControllerContext.tsx';
+import { RGBControllerDOMEffect } from './RGBControllerDOMEffect.tsx';
+import { RGBControllerTimerEffect } from './RGBControllerTimerEffect.tsx';
 
 export function RGBControllerContextProvider({
   children,
@@ -47,14 +48,7 @@ export function RGBControllerContextProvider({
         rgbLedType={RGBLedType.Alternative}
       />
 
-      <RGBControllerContext
-        // value={{
-        //   changeConfig: changeRGBControllerConfig,
-        // }}
-        value={{}}
-      >
-        {children}
-      </RGBControllerContext>
+      <RGBControllerContext value={{}}>{children}</RGBControllerContext>
     </>
   );
 }

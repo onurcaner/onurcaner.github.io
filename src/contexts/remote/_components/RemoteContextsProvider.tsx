@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { type ReactElement, type ReactNode, useState } from 'react';
 
-export function AppQueryClientProvider({
+export function RemoteContextsProvider({
   children,
 }: {
   children: ReactNode;

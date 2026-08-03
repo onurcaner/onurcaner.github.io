@@ -1,6 +1,6 @@
-import { LinearMatrixDirection } from '@/features/rgb/_types/LinearMatrixDirection.ts';
-import { type RGBLedIndex } from '@/features/rgb/_types/RGBLedIndex.ts';
-import { type RGBLedIndicesMatrixGenerator } from '@/features/rgb/_types/RGBLedIndicesMatrixGenerator.ts';
+import { LinearMatrixDirection } from '../../_types/LinearMatrixDirection.ts';
+import { type RGBLedIndex } from '../../_types/RGBLedIndex.ts';
+import { type RGBLedIndicesMatrixGenerator } from '../../_types/RGBLedIndicesMatrixGenerator.ts';
 
 export class LinearRGBLedIndicesMatrixGenerator implements RGBLedIndicesMatrixGenerator {
   private _initialStartIndex: number;

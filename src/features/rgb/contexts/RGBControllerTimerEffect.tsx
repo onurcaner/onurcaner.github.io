@@ -6,8 +6,8 @@ import {
   useRef,
 } from 'react';
 
-import { type RGBControllerConfig } from '@/features/rgb/_types/RGBControllerConfig.ts';
-import { type RGBControllerState } from '@/features/rgb/_types/RGBControllerState.ts';
+import { type RGBControllerConfig } from '../_types/RGBControllerConfig.ts';
+import { type RGBControllerState } from '../_types/RGBControllerState.ts';
 
 export function RGBControllerTimerEffect({
   rgbControllerConfig,
@@ -34,7 +34,7 @@ export function RGBControllerTimerEffect({
 
     timerId.current ??= setInterval(
       handleInterval,
-      rgbControllerConfig.tickPeriodMs,
+      rgbControllerConfig.tickIntervalMs,
     );
 
     return () => {

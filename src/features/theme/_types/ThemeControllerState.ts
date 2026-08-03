@@ -1,4 +1,4 @@
-import { type ThemeControllerConfig } from '@/features/theme/_types/ThemeControllerConfig.ts';
+import { type ThemeControllerConfig } from './ThemeControllerConfig.ts';
 
 export interface ThemeControllerState {
   config: ThemeControllerConfig;

@@ -9,8 +9,8 @@ import {
 export function useRectSize(
   ref: RefObject<HTMLElement | null>,
 ): Pick<CSSProperties, 'width' | 'height'> {
-  const [width, setWidth] = useState<number | undefined>(undefined);
-  const [height, setHeight] = useState<number | undefined>(undefined);
+  const [width, setWidth] = useState<CSSProperties['width']>(undefined);
+  const [height, setHeight] = useState<CSSProperties['height']>(undefined);
 
   const handler = useCallback(() => {
     if (!ref.current) return;

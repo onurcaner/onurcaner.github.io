@@ -6,8 +6,9 @@ import {
   useTransform,
   useVelocity,
 } from 'motion/react';
-import { type ReactElement } from 'react';
+import { type ReactElement, useState } from 'react';
 
+import { ElevationStep } from '@/constants/ElevationSteps.ts';
 import { useDomRefsContext } from '@/contexts/global/dom-refs/contexts/useDomRefsContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
@@ -24,6 +25,16 @@ export function Header(): ReactElement {
   // Elevated State
   const { headerRef, heroSectionRef } = useDomRefsContext();
   const { rgbLedIndicesMatrixGenerators } = useThemeContext();
+
+  // Local State
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handlePointerEnter = (): void => {
+    setIsHovered(true);
+  };
+  const handlePointerLeave = (): void => {
+    setIsHovered(false);
+  };
 
   // Scroll Spy
   const { scrollY: pageScrollMotionValue } = useScroll({ axis: 'y' });
@@ -65,10 +76,12 @@ export function Header(): ReactElement {
   return (
     <motion.header
       ref={headerRef}
-      className="fixed top-0 right-0 left-0 grid bg-(--component-header-background-color) transition-transform duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
+      className="fixed top-0 right-0 left-0 grid bg-(--theme-component-header-background-color) transition-transform duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
       style={{
         translateY: translateYMotionValue,
       }}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
     >
       <div className="relative">
         {/* Contents */}
@@ -85,24 +98,24 @@ export function Header(): ReactElement {
         {/* Border */}
         <RGBBackground
           className="relative z-1 h-(--theme-border-thickness)"
-          indicesMatrix={indicesMatrix}
-          isUsingAlternative={false}
-          preferredNormalFallbackColor="var(--component-header-normal-border-color)"
-          preferredAlternativeFallbackColor="var(--component-header-normal-border-color)"
+          rgbLedIndicesMatrix={indicesMatrix}
+          isUsingAlternativeColors={isHovered}
+          preferredNormalFallbackColor="var(--theme-component-header-normal-border-color)"
+          preferredAlternativeFallbackColor="var(--theme-component-header-normal-border-color)"
         />
 
         {/* Shadow */}
         <div className="absolute top-0 right-0 bottom-0 left-0 z-0 grid">
-          <div className="relative z-1 col-span-full row-span-full bg-(--component-header-background-color)" />
+          <div className="relative z-1 col-span-full row-span-full bg-(--theme-component-header-background-color)" />
           <BlurShadow
-            elevationStep={1}
+            elevationStep={ElevationStep.Header}
             className="relative z-0 col-span-full row-span-full grid"
           >
             <RGBBackground
-              indicesMatrix={indicesMatrix}
-              isUsingAlternative={false}
-              preferredNormalFallbackColor="var(--component-header-normal-border-color)"
-              preferredAlternativeFallbackColor="var(--component-header-normal-border-color)"
+              rgbLedIndicesMatrix={indicesMatrix}
+              isUsingAlternativeColors={isHovered}
+              preferredNormalFallbackColor="var(--theme-component-header-normal-border-color)"
+              preferredAlternativeFallbackColor="var(--theme-component-header-normal-border-color)"
             />
           </BlurShadow>
         </div>

@@ -1,4 +1,4 @@
-import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
+import { RGBLedType } from '../_constants/RGBLedType.ts';
 
 enum PropertySuffix {
   Color = 'color',

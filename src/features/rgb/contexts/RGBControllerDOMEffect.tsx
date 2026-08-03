@@ -1,8 +1,8 @@
 import { type ReactElement, useEffect } from 'react';
 
-import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
-import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
-import { RGBLedCSSVarAdapter } from '@/features/rgb/utils/RGBLedCSSVarAdapter.ts';
+import { RGBLedType } from '../_constants/RGBLedType.ts';
+import { type RGBLedState } from '../_types/RGBLedState.ts';
+import { RGBLedCSSVarAdapter } from '../utils/RGBLedCSSVarAdapter.ts';
 
 export function RGBControllerDOMEffect({
   rgbLedStates,

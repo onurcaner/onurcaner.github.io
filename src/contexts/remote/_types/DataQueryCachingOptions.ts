@@ -1,5 +1,5 @@
-import { type DataCachingKeys } from '@/contexts/remote/_types/DataCachingKeys.ts';
-import { type DataQueryCachingTimingOptions } from '@/contexts/remote/_types/DataQueryCachingTimingOptions.ts';
+import { type DataCachingKeys } from './DataCachingKeys.ts';
+import { type DataQueryCachingTimingOptions } from './DataQueryCachingTimingOptions.ts';
 
 export interface DataQueryCachingOptions extends DataQueryCachingTimingOptions {
   keys: DataCachingKeys;

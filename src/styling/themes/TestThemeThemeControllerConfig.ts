@@ -4,7 +4,8 @@ import { ThemeName } from '@/features/theme/_constants/ThemeName.ts';
 import { ThemeSharpness } from '@/features/theme/_constants/ThemeSharpness.ts';
 import { type RGBLedIndicesMatrixGenerators } from '@/features/theme/_types/RGBLedIndicesMatrixGenerators.ts';
 import { type ThemeControllerConfig } from '@/features/theme/_types/ThemeControllerConfig.ts';
-import { TestThemeRGBControllerConfig } from '@/styling/themes/TestThemeRGBControllerConfig.ts';
+
+import { TestThemeRGBControllerConfig } from './TestThemeRGBControllerConfig.ts';
 
 export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
   public themeName = ThemeName.Test;

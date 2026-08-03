@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { DomRefsContext } from '@/contexts/global/dom-refs/contexts/DomRefsContext.tsx';
+import { DomRefsContext } from './DomRefsContext.tsx';
 
 export function useDomRefsContext() {
   const context = useContext(DomRefsContext);

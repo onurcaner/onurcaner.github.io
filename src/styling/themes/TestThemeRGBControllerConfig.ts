@@ -36,7 +36,7 @@ export class TestThemeRGBControllerConfig implements RGBControllerConfig {
       'var(--theme-transition-timing-function-ease-out)',
   }));
 
-  public tickPeriodMs = 1000;
+  public tickIntervalMs = 250;
 
   public normalRGBLedStatesMapper = new LinearRGBLedStatesMapper([1, 0, 0, 0]);
   public alternativeRGBLedStatesMapper = new LinearRGBLedStatesMapper([

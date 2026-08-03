@@ -1,6 +1,6 @@
 import { type ReactElement, type ReactNode, useRef } from 'react';
 
-import { DomRefsContext } from '@/contexts/global/dom-refs/contexts/DomRefsContext.tsx';
+import { DomRefsContext } from './DomRefsContext.tsx';
 
 export function DomRefsContextProvider({
   children,

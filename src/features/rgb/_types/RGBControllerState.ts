@@ -1,4 +1,4 @@
-import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
+import { type RGBLedState } from './RGBLedState.ts';
 
 export interface RGBControllerState {
   normalRGBLedStates: RGBLedState[];

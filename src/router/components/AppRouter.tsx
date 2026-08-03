@@ -3,7 +3,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 
 import { ResumePage } from '@/pages/ResumePage.tsx';
 import { SandboxPage } from '@/pages/SandboxPage.tsx';
-import { RoutePath } from '@/router/constants/RoutePath.ts';
+
+import { RoutePath } from '../constants/RoutePath.ts';
 
 export function AppRouter(): ReactElement {
   return (

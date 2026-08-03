@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import { type ReactElement, useState } from 'react';
 
 import { useDeveloperDataQuery } from '@/contexts/remote/developer/useDeveloperDataQuery.tsx';
 import { useLanguageContext } from '@/contexts/url/language/useLanguageContext.tsx';
@@ -10,15 +10,20 @@ export function DeveloperName(): ReactElement {
   const developer = useDeveloperDataQuery({ contentLanguageCode: language });
   const { rgbLedIndicesMatrixGenerators } = useThemeContext();
 
+  const [isHovered, setIsHovered] = useState(false);
+
   rgbLedIndicesMatrixGenerators.developerName.reset();
   const indicesMatrix = rgbLedIndicesMatrixGenerators.developerName.generate();
 
   return (
     <RGBText
-      parentBackgroundClassName="bg-(--component-header-background-color)"
+      parentBackgroundClassName="bg-(--theme-component-header-background-color)"
       rgbLedIndicesMatrix={indicesMatrix}
-      isUsingAlternative={false}
-      preferredNormalFallbackColor="var(--component-developer-name-text-color)"
+      isUsingAlternativeColors={isHovered}
+      preferredNormalFallbackColor="var(--theme-component-developer-name-text-color)"
+      preferredAlternativeFallbackColor="var(--theme-component-developer-name-text-color--hover)"
+      onPointerEnter={setIsHovered.bind(null, true)}
+      onPointerLeave={setIsHovered.bind(null, false)}
     >
       <p className="text-4 font-semibold uppercase">{developer.name}</p>
     </RGBText>

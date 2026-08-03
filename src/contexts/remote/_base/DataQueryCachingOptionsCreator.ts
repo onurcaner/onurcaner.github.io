@@ -1,10 +1,10 @@
-import { DataName } from '@/contexts/remote/_constants/DataName.ts';
-import { DataType } from '@/contexts/remote/_constants/DataType.ts';
-import { DefaultDataCachingTime } from '@/contexts/remote/_constants/DefaultDataCachingTime.ts';
-import type { DataCachingPrimaryKeys } from '@/contexts/remote/_types/DataCachingPrimaryKeys.ts';
-import { type DataCachingSecondaryKeys } from '@/contexts/remote/_types/DataCachingSecondaryKeys.ts';
-import { type DataQueryCachingOptions } from '@/contexts/remote/_types/DataQueryCachingOptions.ts';
-import { type DataQueryCachingTimingOptions } from '@/contexts/remote/_types/DataQueryCachingTimingOptions.ts';
+import { DataName } from '../_constants/DataName.ts';
+import { DataType } from '../_constants/DataType.ts';
+import { DefaultDataCachingTime } from '../_constants/DefaultDataCachingTime.ts';
+import { type DataCachingPrimaryKeys } from '../_types/DataCachingPrimaryKeys.ts';
+import { type DataCachingSecondaryKeys } from '../_types/DataCachingSecondaryKeys.ts';
+import { type DataQueryCachingOptions } from '../_types/DataQueryCachingOptions.ts';
+import { type DataQueryCachingTimingOptions } from '../_types/DataQueryCachingTimingOptions.ts';
 
 export abstract class DataQueryCachingOptionsCreator<TQueryOptions> {
   protected abstract _dataName: DataName;
@@ -28,11 +28,12 @@ export abstract class DataQueryCachingOptionsCreator<TQueryOptions> {
     return [this._dataName, this._dataType];
   }
 
+  // Override when necessary
   protected _createDataCachingTimingOptions(): DataQueryCachingTimingOptions {
     return {
-      staleTimeInMs: DefaultDataCachingTime.StaleTimeInMs,
-      refetchingIntervalInMs: DefaultDataCachingTime.RefetchingIntervalInMs,
-      cacheLifespanInMs: DefaultDataCachingTime.CacheLifeSpanInMs,
+      staleTimeMs: DefaultDataCachingTime.StaleTimeMs,
+      refetchingIntervalMs: DefaultDataCachingTime.RefetchingIntervalMs,
+      cacheLifespanMs: DefaultDataCachingTime.CacheLifeSpanMs,
     };
   }
 }

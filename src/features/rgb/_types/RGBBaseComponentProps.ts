@@ -1,5 +1,5 @@
 export interface RGBBaseComponentProps {
-  isUsingAlternative: boolean;
+  isUsingAlternativeColors: boolean;
   preferredNormalFallbackColor?: string;
   preferredAlternativeFallbackColor?: string;
 }

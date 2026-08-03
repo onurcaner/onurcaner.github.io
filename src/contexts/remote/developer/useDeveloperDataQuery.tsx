@@ -1,11 +1,13 @@
 /* eslint-disable @tanstack/query/exhaustive-deps */
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-import { type DataQueryHook } from '@/contexts/remote/_types/DataQueryHook.ts';
-import { DeveloperDataQueryCachingOptionsCreator } from '@/contexts/remote/developer/DeveloperDataQueryCachingOptionsCreator.ts';
 import { DeveloperDataQueryModel } from '@/services/developer/models/DeveloperDataQueryModel.ts';
 import { type DeveloperClientData } from '@/services/developer/types/DeveloperClientData.ts';
 import { type DeveloperDataQueryOptions } from '@/services/developer/types/DeveloperDataQueryOptions.ts';
+
+import { type DataQueryHook } from '../_types/DataQueryHook.ts';
+
+import { DeveloperDataQueryCachingOptionsCreator } from './DeveloperDataQueryCachingOptionsCreator.ts';
 
 export const useDeveloperDataQuery: DataQueryHook<
   DeveloperDataQueryOptions,
@@ -20,9 +22,9 @@ export const useDeveloperDataQuery: DataQueryHook<
       return new DeveloperDataQueryModel().query(options);
     },
     queryKey: cachingOptions.keys,
-    staleTime: cachingOptions.staleTimeInMs,
-    refetchInterval: cachingOptions.refetchingIntervalInMs,
-    gcTime: cachingOptions.cacheLifespanInMs,
+    staleTime: cachingOptions.staleTimeMs,
+    refetchInterval: cachingOptions.refetchingIntervalMs,
+    gcTime: cachingOptions.cacheLifespanMs,
   });
 
   return query.data;

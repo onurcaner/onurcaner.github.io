@@ -1,11 +1,13 @@
 /* eslint-disable @tanstack/query/exhaustive-deps */
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-import { type DataQueryHook } from '@/contexts/remote/_types/DataQueryHook.ts';
-import { LocationDataQueryCachingOptionsCreator } from '@/contexts/remote/location/LocationDataQueryCachingOptionsCreator.ts';
 import { LocationDataQueryModel } from '@/services/location/models/LocationDataQueryModel.ts';
 import { type LocationClientData } from '@/services/location/types/LocationClientData.ts';
 import { type LocationDataQueryOptions } from '@/services/location/types/LocationDataQueryOptions.ts';
+
+import { type DataQueryHook } from '../_types/DataQueryHook.ts';
+
+import { LocationDataQueryCachingOptionsCreator } from './LocationDataQueryCachingOptionsCreator.ts';
 
 export const useLocationDataQuery: DataQueryHook<
   LocationDataQueryOptions,
@@ -20,9 +22,9 @@ export const useLocationDataQuery: DataQueryHook<
       return new LocationDataQueryModel().query(options);
     },
     queryKey: cachingOptions.keys,
-    staleTime: cachingOptions.staleTimeInMs,
-    refetchInterval: cachingOptions.refetchingIntervalInMs,
-    gcTime: cachingOptions.cacheLifespanInMs,
+    staleTime: cachingOptions.staleTimeMs,
+    refetchInterval: cachingOptions.refetchingIntervalMs,
+    gcTime: cachingOptions.cacheLifespanMs,
   });
 
   return data;

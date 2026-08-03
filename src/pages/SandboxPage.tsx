@@ -19,7 +19,7 @@ export function SandboxPage(): ReactElement {
             className="h-full w-full overflow-hidden rounded-2xl"
           >
             <RGBBackground
-              indicesMatrix={[
+              rgbLedIndicesMatrix={[
                 [0, 1, 2, 3, 4, 5, 6, 7],
                 [1, null, null, null, null, null, null, 8],
                 [2, null, null, null, null, null, null, 9],
@@ -29,7 +29,7 @@ export function SandboxPage(): ReactElement {
                 [6, null, null, null, null, null, null, 13],
                 [7, 8, 9, 10, 11, 12, 13, 14],
               ]}
-              isUsingAlternative={true}
+              isUsingAlternativeColors={true}
               preferredNormalFallbackColor="var(--theme-color-neutral-900)"
               preferredAlternativeFallbackColor="var(--theme-color-neutral-900)"
             />

@@ -1,9 +1,9 @@
 import { type ReactElement } from 'react';
 
-import { RGBLedType } from '@/features/rgb/_constants/RGBLedType.ts';
-import { type RGBBaseComponentProps } from '@/features/rgb/_types/RGBBaseComponentProps.ts';
-import type { RGBLedIndex } from '@/features/rgb/_types/RGBLedIndex.ts';
-import { RGBLedCSSVarAdapter } from '@/features/rgb/utils/RGBLedCSSVarAdapter.ts';
+import { RGBLedType } from '../_constants/RGBLedType.ts';
+import { type RGBBaseComponentProps } from '../_types/RGBBaseComponentProps.ts';
+import { type RGBLedIndex } from '../_types/RGBLedIndex.ts';
+import { RGBLedCSSVarAdapter } from '../utils/RGBLedCSSVarAdapter.ts';
 
 interface RGBLedBoxProps extends RGBBaseComponentProps {
   rgbLedIndex: RGBLedIndex;
@@ -11,13 +11,15 @@ interface RGBLedBoxProps extends RGBBaseComponentProps {
 
 export function RGBLedBox({
   rgbLedIndex,
-  isUsingAlternative,
+  isUsingAlternativeColors,
   preferredNormalFallbackColor = 'lime',
   preferredAlternativeFallbackColor = 'magenta',
 }: RGBLedBoxProps): ReactElement {
   const rgbLedCSSVarAdapter = new RGBLedCSSVarAdapter({
     rgbLedIndex: rgbLedIndex ?? 0,
-    rgbLedType: isUsingAlternative ? RGBLedType.Alternative : RGBLedType.Normal,
+    rgbLedType: isUsingAlternativeColors
+      ? RGBLedType.Alternative
+      : RGBLedType.Normal,
   });
   const isFallbackForced = rgbLedIndex === null;
 
@@ -35,13 +37,13 @@ export function RGBLedBox({
           opacity: isFallbackForced
             ? '0%'
             : `calc(100% - ${rgbLedCSSVarAdapter.generateFallbackColorOpacityCSSVar()})`,
-          // willChange: 'background-color, opacity',
+          willChange: 'background-color, opacity',
         }}
       />
       <div
         className="col-span-full row-span-full"
         style={{
-          backgroundColor: isUsingAlternative
+          backgroundColor: isUsingAlternativeColors
             ? preferredAlternativeFallbackColor
             : preferredNormalFallbackColor,
           transitionProperty: 'background-color, opacity',
@@ -52,7 +54,7 @@ export function RGBLedBox({
           opacity: isFallbackForced
             ? '100%'
             : rgbLedCSSVarAdapter.generateFallbackColorOpacityCSSVar(),
-          // willChange: 'background-color, opacity',
+          willChange: 'background-color, opacity',
         }}
       />
     </div>

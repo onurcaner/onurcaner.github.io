@@ -1,5 +1,5 @@
-import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
-import { type RGBLedStatesMapper } from '@/features/rgb/_types/RGBLedStatesMapper.ts';
+import { type RGBLedState } from '../_types/RGBLedState.ts';
+import { type RGBLedStatesMapper } from '../_types/RGBLedStatesMapper.ts';
 
 enum MovementDirection {
   Forward = 'forward',

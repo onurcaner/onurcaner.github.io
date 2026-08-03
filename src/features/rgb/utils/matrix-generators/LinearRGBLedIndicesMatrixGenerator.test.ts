@@ -1,7 +1,8 @@
 import { describe, expect, test } from 'vitest';
 
-import { LinearMatrixDirection } from '@/features/rgb/_types/LinearMatrixDirection.ts';
-import { LinearRGBLedIndicesMatrixGenerator } from '@/features/rgb/utils/matrix-generators/LinearRGBLedIndicesMatrixGenerator.ts';
+import { LinearMatrixDirection } from '../../_types/LinearMatrixDirection.ts';
+
+import { LinearRGBLedIndicesMatrixGenerator } from './LinearRGBLedIndicesMatrixGenerator.ts';
 
 describe('LinearRGBLedIndicesMatrixGenerator()', () => {
   describe('ToRight', () => {

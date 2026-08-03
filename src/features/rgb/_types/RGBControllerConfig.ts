@@ -1,10 +1,10 @@
-import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
-import { type RGBLedStatesMapper } from '@/features/rgb/_types/RGBLedStatesMapper.ts';
+import { type RGBLedState } from './RGBLedState.ts';
+import { type RGBLedStatesMapper } from './RGBLedStatesMapper.ts';
 
 export interface RGBControllerConfig {
   initialNormalRGBLedStates: RGBLedState[];
   initialAlternativeRGBLedStates: RGBLedState[];
-  tickPeriodMs: number;
+  tickIntervalMs: number;
   normalRGBLedStatesMapper: RGBLedStatesMapper;
   alternativeRGBLedStatesMapper: RGBLedStatesMapper;
 }

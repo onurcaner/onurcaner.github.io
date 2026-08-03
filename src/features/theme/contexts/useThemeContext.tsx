@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 
-import { type ThemeContextActions } from '@/features/theme/_types/ThemeContextActions.ts';
-import { type ThemeContextState } from '@/features/theme/_types/ThemeContextState.ts';
-import { ThemeContext } from '@/features/theme/contexts/ThemeContext.tsx';
+import { type ThemeContextActions } from '../_types/ThemeContextActions.ts';
+import { type ThemeContextState } from '../_types/ThemeContextState.ts';
+
+import { ThemeContext } from './ThemeContext.tsx';
 
 export function useThemeContext(): ThemeContextState & ThemeContextActions {
   const context = useContext(ThemeContext);

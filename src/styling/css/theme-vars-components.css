@@ -1,10 +1,17 @@
 :root {
-  --component-rgb-diffuser-background-color: oklch(1 0 0 / 0%);
-  --component-rgb-diffuser-blur-length: 0.5rem;
+  --theme-component-rgb-diffuser-color: oklch(1 0 0 / 0%);
+  --theme-component-rgb-diffuser-blur-length: 0.5rem;
 
-  --component-header-background-color: var(--theme-color-neutral-900);
-  --component-header-normal-border-color: var(--theme-color-neutral-700);
+  /* Header */
+  --theme-component-header-background-color: var(--theme-color-neutral-900);
+  --theme-component-header-normal-border-color: var(--theme-color-neutral-700);
 
-  --component-developer-name-text-color: var(--theme-color-neutral-300);
-  --component-developer-job-title-text-color: var(--theme-color-neutral-400);
+  /* Developer */
+  --theme-component-developer-name-text-color: var(--theme-color-neutral-300);
+  --theme-component-developer-name-text-color--hover: var(
+    --theme-color-neutral-200
+  );
+  --theme-component-developer-job-title-text-color: var(
+    --theme-color-neutral-400
+  );
 }

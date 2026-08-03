@@ -1,11 +1,13 @@
 /* eslint-disable @tanstack/query/exhaustive-deps */
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-import { type DataQueryHook } from '@/contexts/remote/_types/DataQueryHook.ts';
-import { ExternalLinkDataQueryCachingOptionsCreator } from '@/contexts/remote/external-link/ExternalLinkDataQueryCachingOptionsCreator.ts';
 import { ExternalLinkDataQueryModel } from '@/services/external-link/models/ExternalLinkDataQueryModel.ts';
 import { type ExternalLinkClientData } from '@/services/external-link/types/ExternalLinkClientData.ts';
 import { type ExternalLinkDataQueryOptions } from '@/services/external-link/types/ExternalLinkDataQueryOptions.ts';
+
+import { type DataQueryHook } from '../_types/DataQueryHook.ts';
+
+import { ExternalLinkDataQueryCachingOptionsCreator } from './ExternalLinkDataQueryCachingOptionsCreator.ts';
 
 export const useExternalLinkDataQuery: DataQueryHook<
   ExternalLinkDataQueryOptions,
@@ -19,9 +21,9 @@ export const useExternalLinkDataQuery: DataQueryHook<
       return new ExternalLinkDataQueryModel().query(options);
     },
     queryKey: cachingOptions.keys,
-    staleTime: cachingOptions.staleTimeInMs,
-    refetchInterval: cachingOptions.refetchingIntervalInMs,
-    gcTime: cachingOptions.cacheLifespanInMs,
+    staleTime: cachingOptions.staleTimeMs,
+    refetchInterval: cachingOptions.refetchingIntervalMs,
+    gcTime: cachingOptions.cacheLifespanMs,
   });
 
   return data;
