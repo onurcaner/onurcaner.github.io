@@ -1,7 +1,8 @@
 import { type ZodType, z } from 'zod';
 
-import { WorkExperienceDataSchemaShape as SchemaShape } from '@/services/work-experience/schemas/WorkExperienceDataSchemaShape.ts';
-import { type WorkExperienceServerData } from '@/services/work-experience/types/WorkExperienceServerData.ts';
+import { type WorkExperienceServerData } from '../types/WorkExperienceServerData.ts';
+
+import { WorkExperienceDataSchemaShape as SchemaShape } from './WorkExperienceDataSchemaShape.ts';
 
 export const WorkExperienceServerDataSchema: ZodType<WorkExperienceServerData> =
   z.object({

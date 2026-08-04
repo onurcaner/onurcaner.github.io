@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type SkillClientData } from '@/services/skill/types/SkillClientData.ts';
-import { type SkillServerData } from '@/services/skill/types/SkillServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type SkillClientData } from '../types/SkillClientData.ts';
+import { type SkillServerData } from '../types/SkillServerData.ts';
 
 export class SkillServerDataTransformer extends DataTransformer<
   SkillServerData,

@@ -1,15 +1,16 @@
 import { z } from 'zod';
 
-import { contentLanguageCodeSchema } from '@/services/_schemas/contentLanguageCodeSchema.ts';
-import { SkillCategory } from '@/services/skill/constants/SkillCategory.ts';
-import { SkillName } from '@/services/skill/constants/SkillName.ts';
+import { ContentLanguageCodeSchema } from '../../_schemas/ContentLanguageCodeSchema.ts';
+
+import { SkillCategory } from '../constants/SkillCategory.ts';
+import { SkillName } from '../constants/SkillName.ts';
 
 export class SkillDataSchemaShape {
   public get id() {
     return z.uuidv4();
   }
   public get contentLanguageCode() {
-    return contentLanguageCodeSchema;
+    return ContentLanguageCodeSchema;
   }
   public get name() {
     return z.enum(this._skillNames);

@@ -1,15 +1,15 @@
 import { z } from 'zod';
 
-import { contentLanguageCodeSchema } from '@/services/_schemas/contentLanguageCodeSchema.ts';
-import { EducationProviderDataSchemaShape } from '@/services/education-provider/schemas/EducationProviderDataSchemaShape.ts';
-import { ListDataSchemaShape } from '@/services/list/schemas/ListDataSchemaShape.ts';
+import { ContentLanguageCodeSchema } from '../../_schemas/ContentLanguageCodeSchema.ts';
+import { EducationProviderDataSchemaShape } from '../../education-provider/schemas/EducationProviderDataSchemaShape.ts';
+import { ListDataSchemaShape } from '../../list/schemas/ListDataSchemaShape.ts';
 
 export class EducationDataSchemaShape {
   public get id() {
     return z.uuidv4();
   }
   public get contentLanguageCode() {
-    return contentLanguageCodeSchema;
+    return ContentLanguageCodeSchema;
   }
   public get title() {
     return z.string().max(100);

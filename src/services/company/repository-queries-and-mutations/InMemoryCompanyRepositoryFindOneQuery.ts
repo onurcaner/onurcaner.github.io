@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemoryCompanyRepository } from '@/services/company/constants/inMemoryCompanyRepository.ts';
-import { type CompanyDataQueryOptions } from '@/services/company/types/CompanyDataQueryOptions.ts';
-import { type CompanyServerData } from '@/services/company/types/CompanyServerData.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemoryCompanyRepository } from '../constants/InMemoryCompanyRepository.ts';
+import { type CompanyDataQueryOptions } from '../types/CompanyDataQueryOptions.ts';
+import { type CompanyServerData } from '../types/CompanyServerData.ts';
 
 export class InMemoryCompanyRepositoryFindOneQuery extends InMemoryRepositoryQuery<
   CompanyDataQueryOptions,
@@ -16,9 +17,7 @@ export class InMemoryCompanyRepositoryFindOneQuery extends InMemoryRepositoryQue
   protected override _retrieveData(
     options: CompanyDataQueryOptions,
   ): CompanyServerData | null | undefined {
-    const result = inMemoryCompanyRepository.find(
-      (data) => data.id === options.id,
-    );
-    return result ?? null;
+    const { repository } = new InMemoryCompanyRepository();
+    return repository.find((data) => data.id === options.id);
   }
 }

@@ -1,5 +1,6 @@
-import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
-import { WorkExperienceCategory } from '@/services/work-experience/constants/WorkExperienceCategory.ts';
+import { ContentLanguageCode } from '../../_constants/ContentLanguageCode.ts';
+
+import { WorkExperienceCategory } from '../constants/WorkExperienceCategory.ts';
 
 export interface WorkExperiencesDataQueryOptions {
   contentLanguageCode: ContentLanguageCode;

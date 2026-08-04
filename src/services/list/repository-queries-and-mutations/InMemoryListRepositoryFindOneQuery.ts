@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemoryListRepository } from '@/services/list/constants/inMemoryListRepository.ts';
-import { type ListDataQueryOptions } from '@/services/list/types/ListDataQueryOptions.ts';
-import { type ListServerData } from '@/services/list/types/ListServerData.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemoryListRepository } from '../constants/InMemoryListRepository.ts';
+import { type ListDataQueryOptions } from '../types/ListDataQueryOptions.ts';
+import { type ListServerData } from '../types/ListServerData.ts';
 
 export class InMemoryListRepositoryFindOneQuery extends InMemoryRepositoryQuery<
   ListDataQueryOptions,
@@ -16,10 +17,8 @@ export class InMemoryListRepositoryFindOneQuery extends InMemoryRepositoryQuery<
   protected override _retrieveData(
     options: ListDataQueryOptions,
   ): ListServerData | null | undefined {
-    const result = inMemoryListRepository.find(
-      (data) => data.id === options.id,
-    );
+    const { repository } = new InMemoryListRepository();
 
-    return result ?? null;
+    return repository.find((data) => data.id === options.id);
   }
 }

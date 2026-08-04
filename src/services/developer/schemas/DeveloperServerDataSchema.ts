@@ -1,7 +1,8 @@
 import { type ZodType, z } from 'zod';
 
-import { DeveloperDataSchemaShape as SchemaShape } from '@/services/developer/schemas/DeveloperDataSchemaShape.ts';
-import { type DeveloperServerData } from '@/services/developer/types/DeveloperServerData.ts';
+import { type DeveloperServerData } from '../types/DeveloperServerData.ts';
+
+import { DeveloperDataSchemaShape as SchemaShape } from './DeveloperDataSchemaShape.ts';
 
 export const DeveloperServerDataSchema: ZodType<DeveloperServerData> = z.object(
   {

@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type LocationClientData } from '@/services/location/types/LocationClientData.ts';
-import { type LocationServerData } from '@/services/location/types/LocationServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type LocationClientData } from '../types/LocationClientData.ts';
+import { type LocationServerData } from '../types/LocationServerData.ts';
 
 export class LocationServerDataTransformer extends DataTransformer<
   LocationServerData,

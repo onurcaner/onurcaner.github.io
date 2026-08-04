@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type CompanyClientData } from '@/services/company/types/CompanyClientData.ts';
-import { type CompanyServerData } from '@/services/company/types/CompanyServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type CompanyClientData } from '../types/CompanyClientData.ts';
+import { type CompanyServerData } from '../types/CompanyServerData.ts';
 
 export class CompanyServerDataTransformer extends DataTransformer<
   CompanyServerData,

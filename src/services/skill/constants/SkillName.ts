@@ -3,7 +3,7 @@ export enum SkillName {
   Git = 'git',
   HTML = 'html',
   JavaScript = 'javascript',
-  NextJs = 'nextjs',
+  NextJs = 'next.js',
   React = 'react',
   SASS = 'sass',
   TailwindCSS = 'tailwindcss',

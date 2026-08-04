@@ -1,12 +1,13 @@
-import { QueryMode } from '@/services/_constants/QueryMode.ts';
-import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
-import { InMemoryExternalLinkRepositoryFindOneQuery } from '@/services/external-link/repository-queries-and-mutations/InMemoryExternalLinkRepositoryFindOneQuery.ts';
-import { ExternalLinkServerDataTransformer } from '@/services/external-link/transformers/ExternalLinkServerDataTransformer.ts';
-import { type ExternalLinkClientData } from '@/services/external-link/types/ExternalLinkClientData.ts';
-import { type ExternalLinkDataQueryOptions } from '@/services/external-link/types/ExternalLinkDataQueryOptions.ts';
-import { type ExternalLinkServerData } from '@/services/external-link/types/ExternalLinkServerData.ts';
-import { ExternalLinkClientDataVerifier } from '@/services/external-link/verifiers/ExternalLinkClientDataVerifier.ts';
-import { ExternalLinkServerDataVerifier } from '@/services/external-link/verifiers/ExternalLinkServerDataVerifier.ts';
+import { QueryMode } from '../../_constants/QueryMode.ts';
+import { DataQueryModel } from '../../_models/DataQueryModel.ts';
+
+import { InMemoryExternalLinkRepositoryFindOneQuery } from '../repository-queries-and-mutations/InMemoryExternalLinkRepositoryFindOneQuery.ts';
+import { ExternalLinkServerDataTransformer } from '../transformers/ExternalLinkServerDataTransformer.ts';
+import { type ExternalLinkClientData } from '../types/ExternalLinkClientData.ts';
+import { type ExternalLinkDataQueryOptions } from '../types/ExternalLinkDataQueryOptions.ts';
+import { type ExternalLinkServerData } from '../types/ExternalLinkServerData.ts';
+import { ExternalLinkClientDataVerifier } from '../verifiers/ExternalLinkClientDataVerifier.ts';
+import { ExternalLinkServerDataVerifier } from '../verifiers/ExternalLinkServerDataVerifier.ts';
 
 export class ExternalLinkDataQueryModel extends DataQueryModel<
   ExternalLinkDataQueryOptions,

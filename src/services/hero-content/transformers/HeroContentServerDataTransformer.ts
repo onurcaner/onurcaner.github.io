@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type HeroContentClientData } from '@/services/hero-content/types/HeroContentClientData.ts';
-import { type HeroContentServerData } from '@/services/hero-content/types/HeroContentServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type HeroContentClientData } from '../types/HeroContentClientData.ts';
+import { type HeroContentServerData } from '../types/HeroContentServerData.ts';
 
 export class HeroContentServerDataTransformer extends DataTransformer<
   HeroContentServerData,

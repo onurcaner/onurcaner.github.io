@@ -1,7 +1,8 @@
 import { type ZodType, z } from 'zod';
 
-import { EducationProviderDataSchemaShape as SchemaShape } from '@/services/education-provider/schemas/EducationProviderDataSchemaShape.ts';
-import { type EducationProviderClientData } from '@/services/education-provider/types/EducationProviderClientData.ts';
+import { type EducationProviderClientData } from '../types/EducationProviderClientData.ts';
+
+import { EducationProviderDataSchemaShape as SchemaShape } from './EducationProviderDataSchemaShape.ts';
 
 export const EducationProviderClientDataSchema: ZodType<EducationProviderClientData> =
   z.object({

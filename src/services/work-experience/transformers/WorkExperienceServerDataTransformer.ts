@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type WorkExperienceClientData } from '@/services/work-experience/types/WorkExperienceClientData.ts';
-import { type WorkExperienceServerData } from '@/services/work-experience/types/WorkExperienceServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type WorkExperienceClientData } from '../types/WorkExperienceClientData.ts';
+import { type WorkExperienceServerData } from '../types/WorkExperienceServerData.ts';
 
 export class WorkExperienceServerDataTransformer extends DataTransformer<
   WorkExperienceServerData,

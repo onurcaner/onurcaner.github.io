@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type DeveloperClientData } from '@/services/developer/types/DeveloperClientData.ts';
-import { type DeveloperServerData } from '@/services/developer/types/DeveloperServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type DeveloperClientData } from '../types/DeveloperClientData.ts';
+import { type DeveloperServerData } from '../types/DeveloperServerData.ts';
 
 export class DeveloperServerDataTransformer extends DataTransformer<
   DeveloperServerData,

@@ -1,14 +1,14 @@
 import { z } from 'zod';
 
-import { contentLanguageCodeSchema } from '@/services/_schemas/contentLanguageCodeSchema.ts';
-import { ExternalLinkDataSchemaShape } from '@/services/external-link/schemas/ExternalLinkDataSchemaShape.ts';
+import { ContentLanguageCodeSchema } from '../../_schemas/ContentLanguageCodeSchema.ts';
+import { ExternalLinkDataSchemaShape } from '../../external-link/schemas/ExternalLinkDataSchemaShape.ts';
 
 export class DeveloperDataSchemaShape {
   public get id() {
     return z.uuidv4();
   }
   public get contentLanguageCode() {
-    return contentLanguageCodeSchema;
+    return ContentLanguageCodeSchema;
   }
   public get name() {
     return z.string().max(20);

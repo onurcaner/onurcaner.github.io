@@ -1,16 +1,17 @@
 import { z } from 'zod';
 
-import { contentLanguageCodeSchema } from '@/services/_schemas/contentLanguageCodeSchema.ts';
-import { CompanyDataSchemaShape } from '@/services/company/schemas/CompanyDataSchemaShape.ts';
-import { ListDataSchemaShape } from '@/services/list/schemas/ListDataSchemaShape.ts';
-import { WorkExperienceCategory } from '@/services/work-experience/constants/WorkExperienceCategory.ts';
+import { ContentLanguageCodeSchema } from '../../_schemas/ContentLanguageCodeSchema.ts';
+import { CompanyDataSchemaShape } from '../../company/schemas/CompanyDataSchemaShape.ts';
+import { ListDataSchemaShape } from '../../list/schemas/ListDataSchemaShape.ts';
+
+import { WorkExperienceCategory } from '../constants/WorkExperienceCategory.ts';
 
 export class WorkExperienceDataSchemaShape {
   public get id() {
     return z.uuidv4();
   }
   public get contentLanguageCode() {
-    return contentLanguageCodeSchema;
+    return ContentLanguageCodeSchema;
   }
   public get title() {
     return z.string().max(100);

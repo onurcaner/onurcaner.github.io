@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemoryEducationProviderRepository } from '@/services/education-provider/constants/inMemoryEducationProviderRepository.ts';
-import { type EducationProviderDataQueryOptions } from '@/services/education-provider/types/EducationProviderDataQueryOptions.ts';
-import { type EducationProviderServerData } from '@/services/education-provider/types/EducationProviderServerData.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemoryEducationProviderRepository } from '../constants/InMemoryEducationProviderRepository.ts';
+import { type EducationProviderDataQueryOptions } from '../types/EducationProviderDataQueryOptions.ts';
+import { type EducationProviderServerData } from '../types/EducationProviderServerData.ts';
 
 export class InMemoryEducationProviderRepositoryFindOneQuery extends InMemoryRepositoryQuery<
   EducationProviderDataQueryOptions,
@@ -16,9 +17,7 @@ export class InMemoryEducationProviderRepositoryFindOneQuery extends InMemoryRep
   protected override _retrieveData(
     options: EducationProviderDataQueryOptions,
   ): EducationProviderServerData | null | undefined {
-    const result = inMemoryEducationProviderRepository.find(
-      (data) => data.id === options.id,
-    );
-    return result ?? null;
+    const { repository } = new InMemoryEducationProviderRepository();
+    return repository.find((data) => data.id === options.id);
   }
 }

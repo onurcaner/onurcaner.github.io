@@ -1,6 +1,7 @@
-import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
-import { SkillCategory } from '@/services/skill/constants/SkillCategory.ts';
-import { SkillName } from '@/services/skill/constants/SkillName.ts';
+import { ContentLanguageCode } from '../../_constants/ContentLanguageCode.ts';
+
+import { SkillCategory } from '../constants/SkillCategory.ts';
+import { SkillName } from '../constants/SkillName.ts';
 
 export interface SkillServerData {
   id: string;

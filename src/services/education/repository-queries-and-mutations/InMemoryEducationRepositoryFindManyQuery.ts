@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemoryEducationRepository } from '@/services/education/constants/inMemoryEducationRepository.ts';
-import { type EducationServerData } from '@/services/education/types/EducationServerData.ts';
-import { type EducationsDataQueryOptions } from '@/services/education/types/EducationsDataQueryOptions.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemoryEducationRepository } from '../constants/InMemoryEducationRepository.ts';
+import { type EducationServerData } from '../types/EducationServerData.ts';
+import { type EducationsDataQueryOptions } from '../types/EducationsDataQueryOptions.ts';
 
 export class InMemoryEducationRepositoryFindManyQuery extends InMemoryRepositoryQuery<
   EducationsDataQueryOptions,
@@ -16,7 +17,8 @@ export class InMemoryEducationRepositoryFindManyQuery extends InMemoryRepository
   protected override _retrieveData(
     options: EducationsDataQueryOptions,
   ): EducationServerData[] | null | undefined {
-    const result = inMemoryEducationRepository
+    const { repository } = new InMemoryEducationRepository();
+    const result = repository
       .filter(
         (data) => data.content_language_code === options.contentLanguageCode,
       )

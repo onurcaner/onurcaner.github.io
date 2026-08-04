@@ -1,10 +1,12 @@
-import { InMemoryRepositorySetting } from '@/services/_constants/InMemoryRepositorySetting.ts';
-import { type RepositoryQuery } from '@/services/_types/RepositoryQuery.ts';
 import { RandomIntegerGenerator } from '@/utils/RandomIntegerGenerator.ts';
 
-export abstract class InMemoryRepositoryQuery<TQueryOptions, TServerData>
-  implements RepositoryQuery<TQueryOptions, TServerData>
-{
+import { InMemoryRepositorySetting } from '../_constants/InMemoryRepositorySetting.ts';
+import { type RepositoryQuery } from '../_types/RepositoryQuery.ts';
+
+export abstract class InMemoryRepositoryQuery<
+  TQueryOptions,
+  TServerData,
+> implements RepositoryQuery<TQueryOptions, TServerData> {
   protected abstract _createErrorMessage(options: TQueryOptions): string;
 
   protected abstract _retrieveData(

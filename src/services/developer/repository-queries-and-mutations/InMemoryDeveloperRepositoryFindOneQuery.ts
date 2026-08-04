@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemoryDeveloperRepository } from '@/services/developer/constants/inMemoryDeveloperRepository.ts';
-import { type DeveloperDataQueryOptions } from '@/services/developer/types/DeveloperDataQueryOptions.ts';
-import { type DeveloperServerData } from '@/services/developer/types/DeveloperServerData.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemoryDeveloperRepository } from '../constants/InMemoryDeveloperRepository.ts';
+import { type DeveloperDataQueryOptions } from '../types/DeveloperDataQueryOptions.ts';
+import { type DeveloperServerData } from '../types/DeveloperServerData.ts';
 
 export class InMemoryDeveloperRepositoryFindOneQuery extends InMemoryRepositoryQuery<
   DeveloperDataQueryOptions,
@@ -16,9 +17,10 @@ export class InMemoryDeveloperRepositoryFindOneQuery extends InMemoryRepositoryQ
   protected override _retrieveData(
     options: DeveloperDataQueryOptions,
   ): DeveloperServerData | null | undefined {
-    const result = inMemoryDeveloperRepository.find(
+    const { repository } = new InMemoryDeveloperRepository();
+
+    return repository.find(
       (data) => data.content_language_code === options.contentLanguageCode,
     );
-    return result ?? null;
   }
 }

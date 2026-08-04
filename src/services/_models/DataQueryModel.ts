@@ -1,7 +1,7 @@
-import { QueryMode } from '@/services/_constants/QueryMode.ts';
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type RepositoryQuery } from '@/services/_types/RepositoryQuery.ts';
-import { DataVerifier } from '@/services/_verifiers/DataVerifier.ts';
+import { QueryMode } from '../_constants/QueryMode.ts';
+import { DataTransformer } from '../_transformers/DataTransformer.ts';
+import { type RepositoryQuery } from '../_types/RepositoryQuery.ts';
+import { DataVerifier } from '../_verifiers/DataVerifier.ts';
 
 export class DataQueryModel<
   TQueryOptions,

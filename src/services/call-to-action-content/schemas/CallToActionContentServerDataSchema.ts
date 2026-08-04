@@ -1,7 +1,8 @@
 import { type ZodType, z } from 'zod';
 
-import { CallToActionContentDataSchemaShape as SchemaShape } from '@/services/call-to-action-content/schemas/CallToActionContentDataSchemaShape.ts';
-import { type CallToActionContentServerData } from '@/services/call-to-action-content/types/CallToActionContentServerData.ts';
+import { type CallToActionContentServerData } from '../types/CallToActionContentServerData.ts';
+
+import { CallToActionContentDataSchemaShape as SchemaShape } from './CallToActionContentDataSchemaShape.ts';
 
 export const CallToActionContentServerDataSchema: ZodType<CallToActionContentServerData> =
   z.object({

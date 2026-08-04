@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemorySkillRepository } from '@/services/skill/constants/inMemorySkillRepository.ts';
-import { type SkillServerData } from '@/services/skill/types/SkillServerData.ts';
-import { type SkillsDataQueryOptions } from '@/services/skill/types/SkillsDataQueryOptions.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemorySkillRepository } from '../constants/InMemorySkillRepository.ts';
+import { type SkillServerData } from '../types/SkillServerData.ts';
+import { type SkillsDataQueryOptions } from '../types/SkillsDataQueryOptions.ts';
 
 export class InMemorySkillRepositoryFindManyQuery extends InMemoryRepositoryQuery<
   SkillsDataQueryOptions,
@@ -16,7 +17,8 @@ export class InMemorySkillRepositoryFindManyQuery extends InMemoryRepositoryQuer
   protected override _retrieveData(
     options: SkillsDataQueryOptions,
   ): SkillServerData[] | null | undefined {
-    const result = inMemorySkillRepository
+    const { repository } = new InMemorySkillRepository();
+    const result = repository
       .filter(
         (data) => data.content_language_code === options.contentLanguageCode,
       )

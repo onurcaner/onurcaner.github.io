@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemoryLocationRepository } from '@/services/location/constants/inMemoryLocationRepository.ts';
-import type { LocationDataQueryOptions } from '@/services/location/types/LocationDataQueryOptions.ts';
-import type { LocationServerData } from '@/services/location/types/LocationServerData.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemoryLocationRepository } from '../constants/InMemoryLocationRepository.ts';
+import { type LocationDataQueryOptions } from '../types/LocationDataQueryOptions.ts';
+import { type LocationServerData } from '../types/LocationServerData.ts';
 
 export class InMemoryLocationRepositoryFindOneQuery extends InMemoryRepositoryQuery<
   LocationDataQueryOptions,
@@ -16,9 +17,8 @@ export class InMemoryLocationRepositoryFindOneQuery extends InMemoryRepositoryQu
   protected override _retrieveData(
     options: LocationDataQueryOptions,
   ): LocationServerData | null | undefined {
-    const result = inMemoryLocationRepository.find(
-      (data) => data.id === options.id,
-    );
-    return result ?? null;
+    const { repository } = new InMemoryLocationRepository();
+
+    return repository.find((data) => data.id === options.id);
   }
 }

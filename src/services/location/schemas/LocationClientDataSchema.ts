@@ -1,7 +1,8 @@
 import { type ZodType, z } from 'zod';
 
-import { LocationDataSchemaShape as SchemaShape } from '@/services/location/schemas/LocationDataSchemaShape.ts';
-import { type LocationClientData } from '@/services/location/types/LocationClientData.ts';
+import { type LocationClientData } from '../types/LocationClientData.ts';
+
+import { LocationDataSchemaShape as SchemaShape } from './LocationDataSchemaShape.ts';
 
 export const LocationClientDataSchema: ZodType<LocationClientData> = z.object({
   id: new SchemaShape().id,

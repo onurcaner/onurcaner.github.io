@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemoryWorkExperienceRepository } from '@/services/work-experience/constants/inMemoryWorkExperienceRepository.ts';
-import { type WorkExperienceServerData } from '@/services/work-experience/types/WorkExperienceServerData.ts';
-import { type WorkExperiencesDataQueryOptions } from '@/services/work-experience/types/WorkExperiencesDataQueryOptions.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemoryWorkExperienceRepository } from '../constants/InMemoryWorkExperienceRepository.ts';
+import { type WorkExperienceServerData } from '../types/WorkExperienceServerData.ts';
+import { type WorkExperiencesDataQueryOptions } from '../types/WorkExperiencesDataQueryOptions.ts';
 
 export class InMemoryWorkExperienceRepositoryFindManyQuery extends InMemoryRepositoryQuery<
   WorkExperiencesDataQueryOptions,
@@ -16,7 +17,8 @@ export class InMemoryWorkExperienceRepositoryFindManyQuery extends InMemoryRepos
   protected override _retrieveData(
     options: WorkExperiencesDataQueryOptions,
   ): WorkExperienceServerData[] | null | undefined {
-    const result = inMemoryWorkExperienceRepository
+    const { repository } = new InMemoryWorkExperienceRepository();
+    const result = repository
       .filter(
         (data) => data.content_language_code === options.contentLanguageCode,
       )

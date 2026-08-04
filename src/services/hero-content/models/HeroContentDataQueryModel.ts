@@ -1,12 +1,13 @@
-import { QueryMode } from '@/services/_constants/QueryMode.ts';
-import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
-import { InMemoryHeroContentRepositoryFindOneQuery } from '@/services/hero-content/repository-queries-and-mutations/InMemoryHeroContentRepositoryFindOneQuery.ts';
-import { HeroContentServerDataTransformer } from '@/services/hero-content/transformers/HeroContentServerDataTransformer.ts';
-import { type HeroContentClientData } from '@/services/hero-content/types/HeroContentClientData.ts';
-import { type HeroContentDataQueryOptions } from '@/services/hero-content/types/HeroContentDataQueryOptions.ts';
-import { type HeroContentServerData } from '@/services/hero-content/types/HeroContentServerData.ts';
-import { HeroContentClientDataVerifier } from '@/services/hero-content/verifiers/HeroContentClientDataVerifier.ts';
-import { HeroContentServerDataVerifier } from '@/services/hero-content/verifiers/HeroContentServerDataVerifier.ts';
+import { QueryMode } from '../../_constants/QueryMode.ts';
+import { DataQueryModel } from '../../_models/DataQueryModel.ts';
+
+import { InMemoryHeroContentRepositoryFindOneQuery } from '../repository-queries-and-mutations/InMemoryHeroContentRepositoryFindOneQuery.ts';
+import { HeroContentServerDataTransformer } from '../transformers/HeroContentServerDataTransformer.ts';
+import { type HeroContentClientData } from '../types/HeroContentClientData.ts';
+import { type HeroContentDataQueryOptions } from '../types/HeroContentDataQueryOptions.ts';
+import { type HeroContentServerData } from '../types/HeroContentServerData.ts';
+import { HeroContentClientDataVerifier } from '../verifiers/HeroContentClientDataVerifier.ts';
+import { HeroContentServerDataVerifier } from '../verifiers/HeroContentServerDataVerifier.ts';
 
 export class HeroContentDataQueryModel extends DataQueryModel<
   HeroContentDataQueryOptions,

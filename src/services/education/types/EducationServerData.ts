@@ -1,4 +1,4 @@
-import { ContentLanguageCode } from '@/services/_constants/ContentLanguageCode.ts';
+import { ContentLanguageCode } from '../../_constants/ContentLanguageCode.ts';
 
 export interface EducationServerData {
   id: string;

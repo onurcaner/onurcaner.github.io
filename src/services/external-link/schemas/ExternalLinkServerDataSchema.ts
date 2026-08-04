@@ -1,7 +1,8 @@
 import { type ZodType, z } from 'zod';
 
-import { ExternalLinkDataSchemaShape as SchemaShape } from '@/services/external-link/schemas/ExternalLinkDataSchemaShape.ts';
-import { type ExternalLinkServerData } from '@/services/external-link/types/ExternalLinkServerData.ts';
+import { type ExternalLinkServerData } from '../types/ExternalLinkServerData.ts';
+
+import { ExternalLinkDataSchemaShape as SchemaShape } from './ExternalLinkDataSchemaShape.ts';
 
 export const ExternalLinkServerDataSchema: ZodType<ExternalLinkServerData> =
   z.object({

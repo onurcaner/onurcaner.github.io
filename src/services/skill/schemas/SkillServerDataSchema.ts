@@ -1,7 +1,8 @@
 import { type ZodType, z } from 'zod';
 
-import { SkillDataSchemaShape as SchemaShape } from '@/services/skill/schemas/SkillDataSchemaShape.ts';
-import { type SkillServerData } from '@/services/skill/types/SkillServerData.ts';
+import { type SkillServerData } from '../types/SkillServerData.ts';
+
+import { SkillDataSchemaShape as SchemaShape } from './SkillDataSchemaShape.ts';
 
 export const SkillServerDataSchema: ZodType<SkillServerData> = z.object({
   id: new SchemaShape().id,

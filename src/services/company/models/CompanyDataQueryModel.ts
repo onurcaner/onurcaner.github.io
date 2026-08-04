@@ -1,12 +1,13 @@
-import { type QueryMode } from '@/services/_constants/QueryMode.ts';
-import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
-import { InMemoryCompanyRepositoryFindOneQuery } from '@/services/company/repository-queries-and-mutations/InMemoryCompanyRepositoryFindOneQuery.ts';
-import { CompanyServerDataTransformer } from '@/services/company/transformers/CompanyServerDataTransformer.ts';
-import { type CompanyClientData } from '@/services/company/types/CompanyClientData.ts';
-import { type CompanyDataQueryOptions } from '@/services/company/types/CompanyDataQueryOptions.ts';
-import { type CompanyServerData } from '@/services/company/types/CompanyServerData.ts';
-import { CompanyClientDataVerifier } from '@/services/company/verifiers/CompanyClientDataVerifier.ts';
-import { CompanyServerDataVerifier } from '@/services/company/verifiers/CompanyServerDataVerifier.ts';
+import { QueryMode } from '../../_constants/QueryMode.ts';
+import { DataQueryModel } from '../../_models/DataQueryModel.ts';
+
+import { InMemoryCompanyRepositoryFindOneQuery } from '../repository-queries-and-mutations/InMemoryCompanyRepositoryFindOneQuery.ts';
+import { CompanyServerDataTransformer } from '../transformers/CompanyServerDataTransformer.ts';
+import { type CompanyClientData } from '../types/CompanyClientData.ts';
+import { type CompanyDataQueryOptions } from '../types/CompanyDataQueryOptions.ts';
+import { type CompanyServerData } from '../types/CompanyServerData.ts';
+import { CompanyClientDataVerifier } from '../verifiers/CompanyClientDataVerifier.ts';
+import { CompanyServerDataVerifier } from '../verifiers/CompanyServerDataVerifier.ts';
 
 export class CompanyDataQueryModel extends DataQueryModel<
   CompanyDataQueryOptions,

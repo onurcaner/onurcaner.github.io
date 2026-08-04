@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemoryExternalLinkRepository } from '@/services/external-link/constants/inMemoryExternalLinkRepository.ts';
-import { type ExternalLinkDataQueryOptions } from '@/services/external-link/types/ExternalLinkDataQueryOptions.ts';
-import { type ExternalLinkServerData } from '@/services/external-link/types/ExternalLinkServerData.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemoryExternalLinkRepository } from '../constants/InMemoryExternalLinkRepository.ts';
+import { type ExternalLinkDataQueryOptions } from '../types/ExternalLinkDataQueryOptions.ts';
+import { type ExternalLinkServerData } from '../types/ExternalLinkServerData.ts';
 
 export class InMemoryExternalLinkRepositoryFindOneQuery extends InMemoryRepositoryQuery<
   ExternalLinkDataQueryOptions,
@@ -16,9 +17,7 @@ export class InMemoryExternalLinkRepositoryFindOneQuery extends InMemoryReposito
   protected override _retrieveData(
     options: ExternalLinkDataQueryOptions,
   ): ExternalLinkServerData | null | undefined {
-    const result = inMemoryExternalLinkRepository.find(
-      (data) => data.id === options.id,
-    );
-    return result ?? null;
+    const { repository } = new InMemoryExternalLinkRepository();
+    return repository.find((data) => data.id === options.id);
   }
 }

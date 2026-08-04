@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type CallToActionContentClientData } from '@/services/call-to-action-content/types/CallToActionContentClientData.ts';
-import { type CallToActionContentServerData } from '@/services/call-to-action-content/types/CallToActionContentServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type CallToActionContentClientData } from '../types/CallToActionContentClientData.ts';
+import { type CallToActionContentServerData } from '../types/CallToActionContentServerData.ts';
 
 export class CallToActionContentServerDataTransformer extends DataTransformer<
   CallToActionContentServerData,

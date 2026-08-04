@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type EducationClientData } from '@/services/education/types/EducationClientData.ts';
-import { type EducationServerData } from '@/services/education/types/EducationServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type EducationClientData } from '../types/EducationClientData.ts';
+import { type EducationServerData } from '../types/EducationServerData.ts';
 
 export class EducationServerDataTransformer extends DataTransformer<
   EducationServerData,

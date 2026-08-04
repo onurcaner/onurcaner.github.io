@@ -1,12 +1,13 @@
-import { QueryMode } from '@/services/_constants/QueryMode.ts';
-import { DataQueryModel } from '@/services/_models/DataQueryModel.ts';
-import { InMemoryDeveloperRepositoryFindOneQuery } from '@/services/developer/repository-queries-and-mutations/InMemoryDeveloperRepositoryFindOneQuery.ts';
-import { DeveloperServerDataTransformer } from '@/services/developer/transformers/DeveloperServerDataTransformer.ts';
-import { type DeveloperClientData } from '@/services/developer/types/DeveloperClientData.ts';
-import { type DeveloperDataQueryOptions } from '@/services/developer/types/DeveloperDataQueryOptions.ts';
-import { type DeveloperServerData } from '@/services/developer/types/DeveloperServerData.ts';
-import { DeveloperClientDataVerifier } from '@/services/developer/verifiers/DeveloperClientDataVerifier.ts';
-import { DeveloperServerDataVerifier } from '@/services/developer/verifiers/DeveloperServerDataVerifier.ts';
+import { QueryMode } from '../../_constants/QueryMode.ts';
+import { DataQueryModel } from '../../_models/DataQueryModel.ts';
+
+import { InMemoryDeveloperRepositoryFindOneQuery } from '../repository-queries-and-mutations/InMemoryDeveloperRepositoryFindOneQuery.ts';
+import { DeveloperServerDataTransformer } from '../transformers/DeveloperServerDataTransformer.ts';
+import { type DeveloperClientData } from '../types/DeveloperClientData.ts';
+import { type DeveloperDataQueryOptions } from '../types/DeveloperDataQueryOptions.ts';
+import { type DeveloperServerData } from '../types/DeveloperServerData.ts';
+import { DeveloperClientDataVerifier } from '../verifiers/DeveloperClientDataVerifier.ts';
+import { DeveloperServerDataVerifier } from '../verifiers/DeveloperServerDataVerifier.ts';
 
 export class DeveloperDataQueryModel extends DataQueryModel<
   DeveloperDataQueryOptions,

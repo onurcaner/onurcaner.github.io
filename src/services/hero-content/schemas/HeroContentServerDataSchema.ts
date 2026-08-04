@@ -1,7 +1,8 @@
 import { type ZodType, z } from 'zod';
 
-import { HeroContentDataSchemaShape as SchemaShape } from '@/services/hero-content/schemas/HeroContentDataSchemaShape.ts';
-import { type HeroContentServerData } from '@/services/hero-content/types/HeroContentServerData.ts';
+import { type HeroContentServerData } from '../types/HeroContentServerData.ts';
+
+import { HeroContentDataSchemaShape as SchemaShape } from './HeroContentDataSchemaShape.ts';
 
 export const HeroContentServerDataSchema: ZodType<HeroContentServerData> =
   z.object({

@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type ListClientData } from '@/services/list/types/ListClientData.ts';
-import { type ListServerData } from '@/services/list/types/ListServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type ListClientData } from '../types/ListClientData.ts';
+import { type ListServerData } from '../types/ListServerData.ts';
 
 export class ListServerDataTransformer extends DataTransformer<
   ListServerData,

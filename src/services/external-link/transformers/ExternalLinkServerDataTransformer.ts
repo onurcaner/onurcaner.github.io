@@ -1,6 +1,7 @@
-import { DataTransformer } from '@/services/_transformers/DataTransformer.ts';
-import { type ExternalLinkClientData } from '@/services/external-link/types/ExternalLinkClientData.ts';
-import { type ExternalLinkServerData } from '@/services/external-link/types/ExternalLinkServerData.ts';
+import { DataTransformer } from '../../_transformers/DataTransformer.ts';
+
+import { type ExternalLinkClientData } from '../types/ExternalLinkClientData.ts';
+import { type ExternalLinkServerData } from '../types/ExternalLinkServerData.ts';
 
 export class ExternalLinkServerDataTransformer extends DataTransformer<
   ExternalLinkServerData,

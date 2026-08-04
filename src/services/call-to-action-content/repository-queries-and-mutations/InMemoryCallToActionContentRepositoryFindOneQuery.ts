@@ -1,7 +1,8 @@
-import { InMemoryRepositoryQuery } from '@/services/_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
-import { inMemoryCallToActionContentRepository } from '@/services/call-to-action-content/constants/inMemoryCallToActionContentRepository.ts';
-import { type CallToActionContentDataQueryOptions } from '@/services/call-to-action-content/types/CallToActionContentDataQueryOptions.ts';
-import { type CallToActionContentServerData } from '@/services/call-to-action-content/types/CallToActionContentServerData.ts';
+import { InMemoryRepositoryQuery } from '../../_repository-queries-and-mutations/InMemoryRepositoryQuery.ts';
+
+import { InMemoryCallToActionContentRepository } from '../constants/InMemoryCallToActionContentRepository.ts';
+import { type CallToActionContentDataQueryOptions } from '../types/CallToActionContentDataQueryOptions.ts';
+import { type CallToActionContentServerData } from '../types/CallToActionContentServerData.ts';
 
 export class InMemoryCallToActionContentRepositoryFindOneQuery extends InMemoryRepositoryQuery<
   CallToActionContentDataQueryOptions,
@@ -16,9 +17,9 @@ export class InMemoryCallToActionContentRepositoryFindOneQuery extends InMemoryR
   protected override _retrieveData(
     options: CallToActionContentDataQueryOptions,
   ): CallToActionContentServerData | null | undefined {
-    const result = inMemoryCallToActionContentRepository.find(
+    const { repository } = new InMemoryCallToActionContentRepository();
+    return repository.find(
       (data) => data.content_language_code === options.contentLanguageCode,
     );
-    return result ?? null;
   }
 }

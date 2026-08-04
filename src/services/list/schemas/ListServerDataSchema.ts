@@ -1,7 +1,8 @@
 import { type ZodType, z } from 'zod';
 
-import { ListDataSchemaShape as SchemaShape } from '@/services/list/schemas/ListDataSchemaShape.ts';
-import { type ListServerData } from '@/services/list/types/ListServerData.ts';
+import { type ListServerData } from '../types/ListServerData.ts';
+
+import { ListDataSchemaShape as SchemaShape } from './ListDataSchemaShape.ts';
 
 export const ListServerDataSchema: ZodType<ListServerData> = z.object({
   id: new SchemaShape().id,
