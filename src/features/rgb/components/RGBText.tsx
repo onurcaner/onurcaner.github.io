@@ -16,7 +16,8 @@ type ReactDivProps = DetailedHTMLProps<
   HTMLDivElement
 >;
 
-interface RGBTextProps extends RGBBaseComponentProps, ReactDivProps {
+interface RGBTextProps
+  extends RGBBaseComponentProps, Omit<ReactDivProps, 'className'> {
   children: ReactElement;
   parentBackgroundClassName: string; /* Required for background color matching */
   rgbLedIndicesMatrix: RGBLedIndex[][];
@@ -32,7 +33,7 @@ export function RGBText({
   ...restProps
 }: RGBTextProps): ReactElement {
   return (
-    <div {...restProps} className="relative grid">
+    <div {...restProps} className="relative z-0 grid">
       <BackgroundColorMatchingFilterLayer
         parentBackgroundClassName={parentBackgroundClassName}
       >

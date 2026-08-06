@@ -37,7 +37,7 @@ export function RGBLedBox({
           opacity: isFallbackForced
             ? '0%'
             : `calc(100% - ${rgbLedCSSVarAdapter.generateFallbackColorOpacityCSSVar()})`,
-          willChange: 'background-color, opacity',
+          willChange: 'background-color, opacity, transition-duration',
         }}
       />
       <div
@@ -54,7 +54,7 @@ export function RGBLedBox({
           opacity: isFallbackForced
             ? '100%'
             : rgbLedCSSVarAdapter.generateFallbackColorOpacityCSSVar(),
-          willChange: 'background-color, opacity',
+          willChange: 'background-color, opacity, transition-duration',
         }}
       />
     </div>

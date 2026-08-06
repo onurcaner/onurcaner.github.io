@@ -6,13 +6,13 @@ import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 export function DeveloperJobTitle(): ReactElement {
-  const [language] = useLanguageContext();
+  const { language } = useLanguageContext();
   const developer = useDeveloperDataQuery({ contentLanguageCode: language });
   const { rgbLedIndicesMatrixGenerators } = useThemeContext();
 
   rgbLedIndicesMatrixGenerators.developerJobTitle.reset();
   const rgbIndicesMatrix =
-    rgbLedIndicesMatrixGenerators.developerName.generate();
+    rgbLedIndicesMatrixGenerators.developerJobTitle.generate();
 
   return (
     <RGBText

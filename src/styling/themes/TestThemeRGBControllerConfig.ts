@@ -2,16 +2,23 @@ import { type RGBControllerConfig } from '@/features/rgb/_types/RGBControllerCon
 import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
 import { LinearRGBLedStatesMapper } from '@/features/rgb/utils/LinearRGBLedStatesMapper.ts';
 
+enum Option {
+  TickIntervalMs = 500,
+}
+
 export class TestThemeRGBControllerConfig implements RGBControllerConfig {
   public initialNormalRGBLedStates: RGBLedState[] = Array.from({
     length: 144,
   }).map((_, index): RGBLedState => ({
     color:
-      index % 48 === 0
+      index % 48 === 47
         ? `oklch(0.72 0.12 ${(index * 3).toString()})`
         : 'oklch(0 0 0)',
-    isPreferringFallbackColor: index % 48 !== 0,
-    transitionDuration: index % 48 === 0 ? '200ms' : '8000ms',
+    isPreferringFallbackColor: index % 48 !== 47,
+    transitionDuration:
+      index % 48 === 47
+        ? `${Option.TickIntervalMs.toString()}ms`
+        : `${(Option.TickIntervalMs * 5).toString()}ms`,
     transitionTimingFunction:
       'var(--theme-transition-timing-function-ease-out)',
   }));
@@ -20,23 +27,23 @@ export class TestThemeRGBControllerConfig implements RGBControllerConfig {
     length: 144,
   }).map((_, index): RGBLedState => ({
     color:
-      index % 48 === 0 || index % 48 === 1 || index % 48 === 2
+      index % 48 === 47 || index % 48 === 46 || index % 48 === 45
         ? `oklch(0.72 0.12 ${(index * 3).toString()})`
         : 'oklch(0 0 0)',
     isPreferringFallbackColor: !(
-      index % 48 === 0 ||
-      index % 48 === 1 ||
-      index % 48 === 2
+      index % 48 === 47 ||
+      index % 48 === 46 ||
+      index % 48 === 45
     ),
     transitionDuration:
-      index % 48 === 0 || index % 48 === 1 || index % 48 === 2
-        ? '200ms'
-        : '8000ms',
+      index % 48 === 47 || index % 48 === 46 || index % 48 === 45
+        ? `${Option.TickIntervalMs.toString()}ms`
+        : `${(Option.TickIntervalMs * 5).toString()}ms`,
     transitionTimingFunction:
       'var(--theme-transition-timing-function-ease-out)',
   }));
 
-  public tickIntervalMs = 250;
+  public tickIntervalMs = Option.TickIntervalMs;
 
   public normalRGBLedStatesMapper = new LinearRGBLedStatesMapper([1, 0, 0, 0]);
   public alternativeRGBLedStatesMapper = new LinearRGBLedStatesMapper([

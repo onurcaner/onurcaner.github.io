@@ -87,7 +87,7 @@
 - HeroSection
 - Education
 - Experience
-- Skills
+- SkillsList
 - Call to Action
 - Footer
 

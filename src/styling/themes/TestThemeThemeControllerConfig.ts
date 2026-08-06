@@ -12,7 +12,7 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
   public themeSharpness = ThemeSharpness.Neutral;
   public rgbControllerConfig = new TestThemeRGBControllerConfig();
   public rgbLedIndicesMatrixGenerators: RGBLedIndicesMatrixGenerators = {
-    header: new LinearRGBLedIndicesMatrixGenerator({
+    headerBorder: new LinearRGBLedIndicesMatrixGenerator({
       startIndex: 0,
       length: 72,
       boundaryIndex: 144,
@@ -28,7 +28,58 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
     }),
     developerJobTitle: new LinearRGBLedIndicesMatrixGenerator({
       startIndex: 6,
+      length: 6,
+      boundaryIndex: 144,
+      stackSize: 1,
+      direction: LinearMatrixDirection.ToRight,
+    }),
+
+    heroSectionBorder: new LinearRGBLedIndicesMatrixGenerator({
+      startIndex: 72,
+      length: 72,
+      boundaryIndex: 144,
+      stackSize: 1,
+      direction: LinearMatrixDirection.ToRight,
+    }),
+    heroSectionTitle: new LinearRGBLedIndicesMatrixGenerator({
+      startIndex: 0,
+      length: 36,
+      boundaryIndex: 144,
+      stackSize: 1,
+      direction: LinearMatrixDirection.ToRight,
+    }),
+    heroSectionDescription: new LinearRGBLedIndicesMatrixGenerator({
+      startIndex: 36,
+      length: 36,
+      boundaryIndex: 144,
+      stackSize: 1,
+      direction: LinearMatrixDirection.ToRight,
+    }),
+
+    skillsSectionHeading: new LinearRGBLedIndicesMatrixGenerator({
+      startIndex: 0,
       length: 8,
+      boundaryIndex: 144,
+      stackSize: 1,
+      direction: LinearMatrixDirection.ToRight,
+    }),
+    skillBorder: new LinearRGBLedIndicesMatrixGenerator({
+      startIndex: 0,
+      length: 4,
+      boundaryIndex: 144,
+      stackSize: 1,
+      direction: LinearMatrixDirection.ToRight,
+    }),
+    skillIcon: new LinearRGBLedIndicesMatrixGenerator({
+      startIndex: 0,
+      length: 4,
+      boundaryIndex: 144,
+      stackSize: 1,
+      direction: LinearMatrixDirection.ToRight,
+    }),
+    skillLabel: new LinearRGBLedIndicesMatrixGenerator({
+      startIndex: 0,
+      length: 4,
       boundaryIndex: 144,
       stackSize: 1,
       direction: LinearMatrixDirection.ToRight,

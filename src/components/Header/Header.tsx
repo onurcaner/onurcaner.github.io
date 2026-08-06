@@ -70,20 +70,20 @@ export function Header(): ReactElement {
     ['2.5rem', '1.25rem'],
   );
 
-  rgbLedIndicesMatrixGenerators.header.reset();
-  const indicesMatrix = rgbLedIndicesMatrixGenerators.header.generate();
+  rgbLedIndicesMatrixGenerators.headerBorder.reset();
+  const indicesMatrix = rgbLedIndicesMatrixGenerators.headerBorder.generate();
 
   return (
     <motion.header
       ref={headerRef}
-      className="fixed top-0 right-0 left-0 grid bg-(--theme-component-header-background-color) transition-transform duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
+      className="fixed top-0 right-0 left-0 z-10 grid bg-(--theme-component-header-background-color) transition-transform duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
       style={{
         translateY: translateYMotionValue,
       }}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
     >
-      <div className="relative">
+      <div className="relative z-0">
         {/* Contents */}
         <motion.div
           className="max-w-8xl relative z-2 mx-auto flex items-center justify-between px-16 transition-[padding] duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
@@ -100,8 +100,8 @@ export function Header(): ReactElement {
           className="relative z-1 h-(--theme-border-thickness)"
           rgbLedIndicesMatrix={indicesMatrix}
           isUsingAlternativeColors={isHovered}
-          preferredNormalFallbackColor="var(--theme-component-header-normal-border-color)"
-          preferredAlternativeFallbackColor="var(--theme-component-header-normal-border-color)"
+          preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
+          preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
         />
 
         {/* Shadow */}

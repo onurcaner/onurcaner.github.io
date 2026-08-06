@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 export enum ElevationStep {
-  Header = 1,
+  Header = 2,
+  HeroSection = 2,
+  SkillItem = 2,
 }

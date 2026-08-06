@@ -6,7 +6,7 @@ import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 export function DeveloperName(): ReactElement {
-  const [language] = useLanguageContext();
+  const { language } = useLanguageContext();
   const developer = useDeveloperDataQuery({ contentLanguageCode: language });
   const { rgbLedIndicesMatrixGenerators } = useThemeContext();
 
