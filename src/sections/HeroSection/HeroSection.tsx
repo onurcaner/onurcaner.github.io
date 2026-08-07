@@ -12,11 +12,12 @@ import { HeroSectionTitle } from './HeroSectionTitle.tsx';
 
 export function HeroSection(): ReactElement {
   const { heroSectionRef } = useDomRefsContext();
-  const { rgbLedIndicesMatrixGenerators } = useThemeContext();
+  const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
-  rgbLedIndicesMatrixGenerators.heroSectionBorder.reset();
   const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixGenerators.heroSectionBorder.generate();
+    rgbLedIndicesMatrixCreators.heroSectionBorder.createMatrix({
+      waterfallIndex: 0,
+    });
 
   return (
     <div className="relative z-0">
@@ -26,7 +27,7 @@ export function HeroSection(): ReactElement {
         className="relative z-1 grid min-h-screen grid-rows-[max-content_1fr] bg-(--theme-component-hero-section-background-color)"
       >
         <HeroSectionFakeHeader />
-        <div className="max-w-8xl mx-auto grid w-full justify-start self-center px-16 py-20">
+        <div className="max-w-9xl mx-auto grid w-full justify-start self-center px-16 pt-20 pb-40">
           <HeroSectionTitle />
           <HeroSectionDescription />
         </div>

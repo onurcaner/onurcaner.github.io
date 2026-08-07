@@ -15,7 +15,7 @@ export class InMemoryEducationRepository implements InMemoryRepository<Education
           education_provider_id: '6afc4871-7312-42ac-8741-3bbaa417cf3c',
           start_date: new Date('2010-09').toISOString(),
           end_date: new Date('2014-06').toISOString(),
-          grade_type: 'GPA',
+          grade_type: 'CGPA',
           grade_value: '92.44%',
           description_list_ids: [],
         },

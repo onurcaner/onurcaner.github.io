@@ -9,12 +9,18 @@ export function DomRefsContextProvider({
 }): ReactElement {
   const headerRef = useRef<HTMLElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
+  const skillsSectionRef = useRef<HTMLElement | null>(null);
+  const educationSectionRef = useRef<HTMLElement | null>(null);
+  const workExperienceSectionRef = useRef<HTMLElement | null>(null);
 
   return (
     <DomRefsContext
       value={{
         headerRef: headerRef,
         heroSectionRef: heroSectionRef,
+        skillsSectionRef: skillsSectionRef,
+        educationSectionRef: educationSectionRef,
+        workExperienceSectionRef: workExperienceSectionRef,
       }}
     >
       {children}

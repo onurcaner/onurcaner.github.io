@@ -9,6 +9,7 @@
   --breakpoint-2xl: 120rem; /* 1920px */
 }
 @theme inline {
+  --font-sans: var(--theme-font-family);
   --font-weight-thin: var(--theme-font-weight-thin);
   --font-weight-extralight: var(--theme-font-weight-extralight);
   --font-weight-light: var(--theme-font-weight-light);
@@ -52,6 +53,8 @@
   --text-14--line-height: 1;
   --text-16: 4rem;
   --text-16--line-height: 1;
+  --text-18: 4.5rem;
+  --text-18--line-height: 1;
   --text-20: 5rem;
   --text-20--line-height: 1;
   --text-24: 6rem;

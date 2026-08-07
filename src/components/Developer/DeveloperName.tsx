@@ -8,12 +8,13 @@ import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 export function DeveloperName(): ReactElement {
   const { language } = useLanguageContext();
   const developer = useDeveloperDataQuery({ contentLanguageCode: language });
-  const { rgbLedIndicesMatrixGenerators } = useThemeContext();
+  const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
   const [isHovered, setIsHovered] = useState(false);
 
-  rgbLedIndicesMatrixGenerators.developerName.reset();
-  const indicesMatrix = rgbLedIndicesMatrixGenerators.developerName.generate();
+  const indicesMatrix = rgbLedIndicesMatrixCreators.developerName.createMatrix({
+    waterfallIndex: 0,
+  });
 
   return (
     <RGBText
@@ -25,7 +26,7 @@ export function DeveloperName(): ReactElement {
       onPointerEnter={setIsHovered.bind(null, true)}
       onPointerLeave={setIsHovered.bind(null, false)}
     >
-      <p className="text-4 font-semibold uppercase">{developer.name}</p>
+      <p className="text-4 font-medium uppercase">{developer.name}</p>
     </RGBText>
   );
 }

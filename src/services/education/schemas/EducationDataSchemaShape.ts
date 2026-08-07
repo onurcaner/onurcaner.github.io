@@ -21,7 +21,7 @@ export class EducationDataSchemaShape {
     return z.date();
   }
   public get dateIso() {
-    return z.iso.date();
+    return z.iso.datetime();
   }
   public get gradeType() {
     return z.string().max(20);

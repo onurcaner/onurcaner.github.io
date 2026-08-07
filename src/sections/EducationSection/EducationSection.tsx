@@ -6,32 +6,32 @@ import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 import { SectionHeading } from '../_components/SectionHeading.tsx';
 
-import { SkillsList } from './SkillsList.tsx';
+import { EducationsList } from './EducationsList.tsx';
 
-export function SkillsSection(): ReactElement {
-  const { skillsSectionRef } = useDomRefsContext();
+export function EducationSection(): ReactElement {
+  const { educationSectionRef } = useDomRefsContext();
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
   return (
     <section
       className="relative z-0 grid min-h-screen content-center items-center py-40"
-      ref={skillsSectionRef}
+      ref={educationSectionRef}
     >
       <div className="justify-self-start">
         <SectionHeading
-          iconName={IconName.Box}
-          iconRGBLedIndicesMatrix={rgbLedIndicesMatrixCreators.skillsSectionHeadingIcon.createMatrix(
+          iconName={IconName.GraduationCap}
+          iconRGBLedIndicesMatrix={rgbLedIndicesMatrixCreators.educationSectionHeadingIcon.createMatrix(
             { waterfallIndex: 0 },
           )}
-          textRGBLedIndicesMatrix={rgbLedIndicesMatrixCreators.skillsSectionHeadingText.createMatrix(
+          textRGBLedIndicesMatrix={rgbLedIndicesMatrixCreators.educationSectionHeadingText.createMatrix(
             { waterfallIndex: 0 },
           )}
         >
-          Skills
+          Education
         </SectionHeading>
       </div>
 
-      <SkillsList />
+      <EducationsList />
     </section>
   );
 }

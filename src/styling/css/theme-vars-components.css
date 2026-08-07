@@ -5,15 +5,15 @@
   /* Header */
   --theme-component-header-background-color: var(--theme-color-neutral-800);
   --theme-component-header-border-color--normal: var(--theme-color-neutral-700);
-  --theme-component-header-border-color--hover: var(--theme-color-neutral-700);
+  --theme-component-header-border-color--hover: var(--theme-color-neutral-600);
 
   /* Developer */
-  --theme-component-developer-name-text-color: var(--theme-color-neutral-300);
+  --theme-component-developer-name-text-color: var(--theme-color-neutral-200);
   --theme-component-developer-name-text-color--hover: var(
-    --theme-color-neutral-200
+    --theme-color-neutral-100
   );
   --theme-component-developer-job-title-text-color: var(
-    --theme-color-neutral-400
+    --theme-color-neutral-300
   );
 
   /* Hero Section */
@@ -32,16 +32,13 @@
 
   /* Sections */
   --theme-component-section-background-color: var(--theme-color-neutral-900);
-  --theme-component-section-heading-text-color: var(--theme-color-neutral-300);
+  --theme-component-section-heading-text-color: var(--theme-color-neutral-400);
+  --theme-component-section-heading-icon-color: var(--theme-color-neutral-500);
 
   /* Skills Section */
-  --theme-component-skill-background-color: var(--theme-color-neutral-800);
-  --theme-component-skill-border-color--normal: var(
-    --theme-component-header-border-color--normal
-  );
-  --theme-component-skill-border-color--hover: var(
-    --theme-component-header-border-color--hover
-  );
+  --theme-component-skill-background-color: var(--theme-color-neutral-900);
+  --theme-component-skill-border-color--normal: var(--theme-color-neutral-800);
+  --theme-component-skill-border-color--hover: var(--theme-color-neutral-700);
   --theme-component-skill-icon-color--normal: var(--theme-color-neutral-400);
   --theme-component-skill-icon-color--hover: var(--theme-color-neutral-300);
   --theme-component-skill-label-text-color--normal: var(
@@ -50,4 +47,15 @@
   --theme-component-skill-label-text-color--hover: var(
     --theme-color-neutral-200
   );
+
+  /* Education Section */
+  --theme-component-education-title-text-color: var(--theme-color-neutral-300);
+  --theme-component-education-date-text-color: var(--theme-color-neutral-300);
+  --theme-component-education-provider-text-color: var(
+    --theme-color-neutral-200
+  );
+  --theme-component-education-location-text-color: var(
+    --theme-color-neutral-200
+  );
+  --theme-component-education-grade-text-color: var(--theme-color-neutral-100);
 }

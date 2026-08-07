@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import { type ReactElement } from 'react';
 
 import { useDeveloperDataQuery } from '@/contexts/remote/developer/useDeveloperDataQuery.tsx';
 import { useLanguageContext } from '@/contexts/url/language/useLanguageContext.tsx';
@@ -8,11 +8,12 @@ import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 export function DeveloperJobTitle(): ReactElement {
   const { language } = useLanguageContext();
   const developer = useDeveloperDataQuery({ contentLanguageCode: language });
-  const { rgbLedIndicesMatrixGenerators } = useThemeContext();
+  const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
-  rgbLedIndicesMatrixGenerators.developerJobTitle.reset();
   const rgbIndicesMatrix =
-    rgbLedIndicesMatrixGenerators.developerJobTitle.generate();
+    rgbLedIndicesMatrixCreators.developerJobTitle.createMatrix({
+      waterfallIndex: 0,
+    });
 
   return (
     <RGBText
@@ -21,7 +22,7 @@ export function DeveloperJobTitle(): ReactElement {
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-developer-job-title-text-color)"
     >
-      <p className="text-4 font-normal capitalize">{developer.jobTitle}</p>
+      <p className="text-4 font-light capitalize">{developer.jobTitle}</p>
     </RGBText>
   );
 }

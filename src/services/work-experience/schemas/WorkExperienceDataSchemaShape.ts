@@ -28,7 +28,7 @@ export class WorkExperienceDataSchemaShape {
     return z.date();
   }
   public get dateIso() {
-    return z.iso.date();
+    return z.iso.datetime();
   }
   public get descriptionListIds() {
     return z.array(new ListDataSchemaShape().id).max(20);

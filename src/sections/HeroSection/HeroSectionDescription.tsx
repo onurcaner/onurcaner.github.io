@@ -10,11 +10,12 @@ export function HeroSectionDescription(): ReactElement {
   const { description } = useHeroContentDataQuery({
     contentLanguageCode: language,
   });
-  const { rgbLedIndicesMatrixGenerators } = useThemeContext();
+  const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
-  rgbLedIndicesMatrixGenerators.heroSectionDescription.reset();
   const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixGenerators.heroSectionDescription.generate();
+    rgbLedIndicesMatrixCreators.heroSectionDescription.createMatrix({
+      waterfallIndex: 0,
+    });
 
   return (
     <RGBText
@@ -23,7 +24,7 @@ export function HeroSectionDescription(): ReactElement {
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-hero-section-description-text-color)"
     >
-      <p className="text-5 max-w-[40em] font-normal">{description}</p>
+      <p className="text-5 max-w-[40em] font-light">{description}</p>
     </RGBText>
   );
 }

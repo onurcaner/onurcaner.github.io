@@ -24,7 +24,7 @@ enum ScrollDirection {
 export function Header(): ReactElement {
   // Elevated State
   const { headerRef, heroSectionRef } = useDomRefsContext();
-  const { rgbLedIndicesMatrixGenerators } = useThemeContext();
+  const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
   // Local State
   const [isHovered, setIsHovered] = useState(false);
@@ -70,8 +70,9 @@ export function Header(): ReactElement {
     ['2.5rem', '1.25rem'],
   );
 
-  rgbLedIndicesMatrixGenerators.headerBorder.reset();
-  const indicesMatrix = rgbLedIndicesMatrixGenerators.headerBorder.generate();
+  const indicesMatrix = rgbLedIndicesMatrixCreators.headerBorder.createMatrix({
+    waterfallIndex: 0,
+  });
 
   return (
     <motion.header
@@ -86,7 +87,7 @@ export function Header(): ReactElement {
       <div className="relative z-0">
         {/* Contents */}
         <motion.div
-          className="max-w-8xl relative z-2 mx-auto flex items-center justify-between px-16 transition-[padding] duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
+          className="max-w-9xl relative z-2 mx-auto flex items-center justify-between px-16 transition-[padding] duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
           style={{
             paddingBlock: paddingBlockMotionValue,
           }}
@@ -114,8 +115,8 @@ export function Header(): ReactElement {
             <RGBBackground
               rgbLedIndicesMatrix={indicesMatrix}
               isUsingAlternativeColors={isHovered}
-              preferredNormalFallbackColor="var(--theme-component-header-normal-border-color)"
-              preferredAlternativeFallbackColor="var(--theme-component-header-normal-border-color)"
+              preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
+              preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
             />
           </BlurShadow>
         </div>

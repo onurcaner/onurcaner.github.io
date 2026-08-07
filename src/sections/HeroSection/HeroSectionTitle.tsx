@@ -10,11 +10,12 @@ export function HeroSectionTitle(): ReactElement {
   const { title } = useHeroContentDataQuery({
     contentLanguageCode: language,
   });
-  const { rgbLedIndicesMatrixGenerators } = useThemeContext();
+  const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
-  rgbLedIndicesMatrixGenerators.heroSectionTitle.reset();
   const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixGenerators.heroSectionTitle.generate();
+    rgbLedIndicesMatrixCreators.heroSectionTitle.createMatrix({
+      waterfallIndex: 0,
+    });
 
   return (
     <RGBText
@@ -23,7 +24,7 @@ export function HeroSectionTitle(): ReactElement {
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-hero-section-title-text-color)"
     >
-      <h1 className="text-16 mb-5 font-bold uppercase">{title}</h1>
+      <h1 className="text-16 mb-6 font-extrabold uppercase">{title}</h1>
     </RGBText>
   );
 }

@@ -29,8 +29,8 @@ export function ThemeContextProvider({
         themeName: themeControllerState.config.themeName,
         themeSharpness: themeControllerState.config.themeSharpness,
         rgbControllerConfig: themeControllerState.config.rgbControllerConfig,
-        rgbLedIndicesMatrixGenerators:
-          themeControllerState.config.rgbLedIndicesMatrixGenerators,
+        rgbLedIndicesMatrixCreators:
+          themeControllerState.config.rgbLedIndicesMatrixCreators,
         changeConfig: changeThemeControllerConfig,
       }}
     >
