@@ -1,7 +1,7 @@
 import { type ReactElement } from 'react';
 
 import { IconName } from '@/assets/_constants/IconName.ts';
-import { useDomRefsContext } from '@/contexts/global/dom-refs/contexts/useDomRefsContext.tsx';
+import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 import { SectionHeading } from '../_components/SectionHeading.tsx';

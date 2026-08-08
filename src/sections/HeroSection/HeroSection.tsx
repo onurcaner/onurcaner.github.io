@@ -2,7 +2,7 @@ import { type ReactElement, type RefObject } from 'react';
 
 import { BlurShadow } from '@/components/BlurShadow.tsx';
 import { ElevationStep } from '@/constants/ElevationSteps.ts';
-import { useDomRefsContext } from '@/contexts/global/dom-refs/contexts/useDomRefsContext.tsx';
+import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 

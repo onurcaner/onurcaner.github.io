@@ -35,10 +35,14 @@
   --theme-component-section-heading-text-color: var(--theme-color-neutral-400);
   --theme-component-section-heading-icon-color: var(--theme-color-neutral-500);
 
-  /* Skills Section */
-  --theme-component-skill-background-color: var(--theme-color-neutral-900);
-  --theme-component-skill-border-color--normal: var(--theme-color-neutral-800);
-  --theme-component-skill-border-color--hover: var(--theme-color-neutral-700);
+  /* Skills */
+  --theme-component-skill-card-background-color: var(--theme-color-neutral-900);
+  --theme-component-skill-card-border-color--normal: var(
+    --theme-color-neutral-800
+  );
+  --theme-component-skill-card-border-color--hover: var(
+    --theme-color-neutral-700
+  );
   --theme-component-skill-icon-color--normal: var(--theme-color-neutral-400);
   --theme-component-skill-icon-color--hover: var(--theme-color-neutral-300);
   --theme-component-skill-label-text-color--normal: var(
@@ -48,14 +52,22 @@
     --theme-color-neutral-200
   );
 
+  /* Education and Work Experience */
+  --theme-component-education-and-work-experience-title-text-color: var(
+    --theme-color-neutral-300
+  );
+  --theme-component-education-and-work-experience-date-range-text-color: var(
+    --theme-color-neutral-300
+  );
+  --theme-component-education-provider-and-company-name-text-color: var(
+    --theme-color-neutral-200
+  );
+  --theme-component-education-provider-and-company-location-text-color: var(
+    --theme-color-neutral-200
+  );
+
   /* Education Section */
-  --theme-component-education-title-text-color: var(--theme-color-neutral-300);
-  --theme-component-education-date-text-color: var(--theme-color-neutral-300);
-  --theme-component-education-provider-text-color: var(
-    --theme-color-neutral-200
-  );
-  --theme-component-education-location-text-color: var(
-    --theme-color-neutral-200
-  );
   --theme-component-education-grade-text-color: var(--theme-color-neutral-100);
+
+  /* Work Experience */
 }

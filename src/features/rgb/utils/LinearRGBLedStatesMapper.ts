@@ -26,16 +26,16 @@ export class LinearRGBLedStatesMapper implements RGBLedStatesMapper {
 
     this._movements = [
       ...Array.from({ length: movementPattern[0] }).map(
-        (_) => MovementDirection.Forward,
+        () => MovementDirection.Forward,
       ),
       ...Array.from({ length: movementPattern[1] }).map(
-        (_) => MovementDirection.Pause,
+        () => MovementDirection.Pause,
       ),
       ...Array.from({ length: movementPattern[2] }).map(
-        (_) => MovementDirection.Backward,
+        () => MovementDirection.Backward,
       ),
       ...Array.from({ length: movementPattern[3] }).map(
-        (_) => MovementDirection.Pause,
+        () => MovementDirection.Pause,
       ),
     ];
   }

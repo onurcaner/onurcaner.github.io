@@ -9,7 +9,7 @@ export function EducationsList(): ReactElement {
   const educations = useEducationsDataQuery({ contentLanguageCode: language });
 
   return (
-    <ul className="relative z-0 grid gap-y-16">
+    <ul className="relative z-0 grid gap-y-12">
       {educations.map((education) => (
         <EducationItem key={education.id} education={education} />
       ))}

@@ -1,6 +1,6 @@
 import { type RefObject } from 'react';
 
-export interface DomRefsContextState {
+export interface _DomRefsContextState {
   headerRef: RefObject<HTMLElement | null>;
   heroSectionRef: RefObject<HTMLElement | null>;
   skillsSectionRef: RefObject<HTMLElement | null>;

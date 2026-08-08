@@ -4,7 +4,7 @@ import { RGBControllerContextProvider } from '@/features/rgb/contexts/RGBControl
 import { ThemeContextProvider } from '@/features/theme/contexts/ThemeContextProvider.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
-import { DomRefsContextProvider } from './dom-refs/contexts/DomRefsContextProvider.tsx';
+import { DomRefsContextProvider } from './dom-refs/DomRefsContextProvider.tsx';
 
 export function GlobalContextsProvider({
   children,
