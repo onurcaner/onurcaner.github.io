@@ -4,8 +4,8 @@ import { type RGBLedIndicesMatrixCreator } from '../_types/RGBLedIndicesMatrixCr
 
 export class BasicRGBLedIndicesMatrixCreator implements RGBLedIndicesMatrixCreator {
   public templateMatrix: RGBLedIndex[][];
+  public waterfallLength: number;
   private _boundaryIndex = 144;
-  private _waterfallLength: number;
 
   public constructor({
     templateMatrix,
@@ -15,13 +15,13 @@ export class BasicRGBLedIndicesMatrixCreator implements RGBLedIndicesMatrixCreat
     waterfallLength: number;
   }) {
     this.templateMatrix = templateMatrix;
-    this._waterfallLength = waterfallLength;
+    this.waterfallLength = waterfallLength;
   }
 
   public createMatrix({
     templateMatrix = this.templateMatrix,
     waterfallIndex,
-    waterfallLength = this._waterfallLength,
+    waterfallLength = this.waterfallLength,
   }: {
     templateMatrix?: RGBLedIndex[][];
     waterfallIndex: number;

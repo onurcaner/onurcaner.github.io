@@ -1,3 +1,4 @@
+import type { MotionValue } from 'motion';
 import {
   motion,
   useMotionValue,
@@ -6,10 +7,12 @@ import {
   useTransform,
   useVelocity,
 } from 'motion/react';
-import { type ReactElement, useState } from 'react';
+import { type ReactElement } from 'react';
 
 import { ElevationStep } from '@/constants/ElevationSteps.ts';
 import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
+import { HoverContextProvider } from '@/contexts/local/hover-context/HoverContextProvider.tsx';
+import { useHoverContext } from '@/contexts/local/hover-context/useHoverContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
@@ -22,27 +25,29 @@ enum ScrollDirection {
 }
 
 export function Header(): ReactElement {
-  // Elevated State
+  return (
+    <HoverContextProvider>
+      <HeaderController />
+    </HoverContextProvider>
+  );
+}
+
+export function HeaderController(): ReactElement {
+  // Hooks - Elevated State
   const { headerRef, heroSectionRef } = useDomRefsContext();
-  const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
-  // Local State
-  const [isHovered, setIsHovered] = useState(false);
+  // Hooks - Local State
+  const { onPointerEnter, onPointerLeave } = useHoverContext();
 
-  const handlePointerEnter = (): void => {
-    setIsHovered(true);
-  };
-  const handlePointerLeave = (): void => {
-    setIsHovered(false);
-  };
-
-  // Scroll Spy
+  // Motion Hooks - Scroll
   const { scrollY: pageScrollMotionValue } = useScroll({ axis: 'y' });
   const { scrollYProgress: heroScrollYProgressMotionValue } = useScroll({
     target: heroSectionRef,
     offset: ['start start', 'end start'],
     axis: 'y',
   });
+
+  // Motion Hooks - Event
   const pageScrollVelocityMotionValue = useVelocity(pageScrollMotionValue);
   const scrollDirectionMotionValue = useMotionValue(ScrollDirection.Down);
   useMotionValueEvent(
@@ -56,6 +61,17 @@ export function Header(): ReactElement {
     },
   );
 
+  // Motion Hooks - Transformed Values
+  const paddingBlockMotionValue = useTransform(
+    heroScrollYProgressMotionValue,
+    [0, 1],
+    ['2.5rem', '1.25rem'],
+  );
+  const borderThicknessMotionValue = useTransform(
+    heroScrollYProgressMotionValue,
+    (heroScrollYProgress) =>
+      heroScrollYProgress === 0 ? '0rem' : 'var(--theme-border-thickness)',
+  ) as MotionValue<string>;
   const translateYMotionValue = useTransform(
     [heroScrollYProgressMotionValue, scrollDirectionMotionValue],
     ([scrollProgress, scrollDirection]: number[]) => {
@@ -64,63 +80,126 @@ export function Header(): ReactElement {
       return scrollProgress === 1 ? '-100%' : '0%';
     },
   );
-  const paddingBlockMotionValue = useTransform(
-    heroScrollYProgressMotionValue,
-    [0, 1],
-    ['2.5rem', '1.25rem'],
-  );
-
-  const indicesMatrix = rgbLedIndicesMatrixCreators.headerBorder.createMatrix({
-    waterfallIndex: 0,
-  });
 
   return (
     <motion.header
       ref={headerRef}
-      className="fixed top-0 right-0 left-0 z-10 grid bg-(--theme-component-header-background-color) transition-transform duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
+      className="fixed top-0 right-0 left-0 z-10 grid transition-transform duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
       style={{
         translateY: translateYMotionValue,
       }}
-      onPointerEnter={handlePointerEnter}
-      onPointerLeave={handlePointerLeave}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
     >
       <div className="relative z-0">
-        {/* Contents */}
-        <motion.div
-          className="max-w-9xl relative z-2 mx-auto flex items-center justify-between px-16 transition-[padding] duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
-          style={{
-            paddingBlock: paddingBlockMotionValue,
-          }}
-        >
-          <Developer />
-          <div className="text-white">MENU</div>
-        </motion.div>
-
-        {/* Border */}
-        <RGBBackground
-          className="relative z-1 h-(--theme-border-thickness)"
-          rgbLedIndicesMatrix={indicesMatrix}
-          isUsingAlternativeColors={isHovered}
-          preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
-          preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
+        <HeaderContentLayer
+          paddingBlockMotionValue={paddingBlockMotionValue}
+          borderThicknessMotionValue={borderThicknessMotionValue}
         />
-
-        {/* Shadow */}
-        <div className="absolute top-0 right-0 bottom-0 left-0 z-0 grid">
-          <div className="relative z-1 col-span-full row-span-full bg-(--theme-component-header-background-color)" />
-          <BlurShadow
-            elevationStep={ElevationStep.Header}
-            className="relative z-0 col-span-full row-span-full grid"
-          >
-            <RGBBackground
-              rgbLedIndicesMatrix={indicesMatrix}
-              isUsingAlternativeColors={isHovered}
-              preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
-              preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
-            />
-          </BlurShadow>
-        </div>
+        <HeaderBorderLayer />
+        <HeaderBlurShadowLayer
+          borderThicknessMotionValue={borderThicknessMotionValue}
+        />
       </div>
     </motion.header>
   );
 }
+
+function HeaderContentLayer({
+  paddingBlockMotionValue,
+  borderThicknessMotionValue,
+}: {
+  paddingBlockMotionValue: MotionValue<string>;
+  borderThicknessMotionValue: MotionValue<string>;
+}): ReactElement {
+  const correctedPaddingBlockMotionValue = useTransform(
+    [paddingBlockMotionValue, borderThicknessMotionValue],
+    ([paddingBlock, borderThickness]: string[]) => {
+      return `calc(${paddingBlock} - ${borderThickness} + var(--theme-border-thickness))`;
+    },
+  );
+
+  return (
+    <div className="relative z-2 bg-(--theme-component-header-background-color)">
+      <motion.div
+        className="max-w-9xl mx-auto flex w-full items-center justify-between px-16 transition-[padding,margin] duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
+        style={{
+          paddingBlock: correctedPaddingBlockMotionValue,
+          marginBlock: borderThicknessMotionValue,
+        }}
+      >
+        <Developer />
+        <div className="text-white">MENU</div>
+      </motion.div>
+    </div>
+  );
+}
+
+function HeaderBorderLayer(): ReactElement {
+  const { rgbLedIndicesMatrixCreators } = useThemeContext();
+  const { isHovered } = useHoverContext();
+
+  return (
+    <RGBBackground
+      className="absolute top-0 right-0 bottom-0 left-0 z-1"
+      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorder.createMatrix(
+        { waterfallIndex: 0 },
+      )}
+      isUsingAlternativeColors={isHovered}
+      preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
+      preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
+    />
+  );
+}
+
+function HeaderBlurShadowLayer({
+  borderThicknessMotionValue,
+}: {
+  borderThicknessMotionValue: MotionValue<string>;
+}): ReactElement {
+  const { rgbLedIndicesMatrixCreators } = useThemeContext();
+  const { isHovered } = useHoverContext();
+
+  const opacityMotionValue = useTransform(
+    borderThicknessMotionValue,
+    (borderThickness) => (borderThickness === '0rem' ? '0%' : '100%'),
+  );
+
+  return (
+    <motion.div
+      className="transition-opacity duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)"
+      style={{
+        opacity: opacityMotionValue,
+      }}
+    >
+      <BlurShadow
+        elevationStep={ElevationStep.Header}
+        className="absolute top-0 right-0 bottom-0 left-0 z-0 grid"
+      >
+        <RGBBackground
+          rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorder.createMatrix(
+            { waterfallIndex: 0 },
+          )}
+          isUsingAlternativeColors={isHovered}
+          preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
+          preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
+        />
+      </BlurShadow>
+    </motion.div>
+  );
+}
+
+// <div className="absolute top-0 right-0 bottom-0 left-0 z-0 grid">
+//   <div className="relative z-1 col-span-full row-span-full bg-(--theme-component-header-background-color)" />
+//   <BlurShadow
+//     elevationStep={ElevationStep.Header}
+//     className="relative z-0 col-span-full row-span-full grid"
+//   >
+//     <RGBBackground
+//       rgbLedIndicesMatrix={indicesMatrix}
+//       isUsingAlternativeColors={isHovered}
+//       preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
+//       preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
+//     />
+//   </BlurShadow>
+// </div>;

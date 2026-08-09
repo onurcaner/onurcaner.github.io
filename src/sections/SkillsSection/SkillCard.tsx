@@ -38,7 +38,7 @@ function SkillCardContentLayer({ skill, index }: SkillCardProps): ReactElement {
 
   return (
     <div
-      className="relative z-2 m-(--theme-border-thickness) grid content-between justify-items-center gap-y-9 overflow-hidden rounded-(--theme-border-radius) bg-(--theme-component-skill-card-background-color) px-16 py-20"
+      className="relative z-2 m-(--theme-border-thickness) grid content-between justify-items-center gap-y-7 overflow-hidden rounded-(--theme-border-radius) bg-(--theme-component-skill-card-background-color) px-16 py-20"
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
     >

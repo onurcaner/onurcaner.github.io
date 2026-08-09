@@ -1,15 +1,20 @@
 import { type ReactElement } from 'react';
 
-import { EducationSlashWorkExperienceTitle } from '@/sections/EducationSlashWorkExperience/EducationSlashWorkExperienceTitle.tsx';
 import { type EducationClientData } from '@/services/education/types/EducationClientData.ts';
+
+import { EducationSlashWorkExperienceTitle } from '../EducationSlashWorkExperience/components/EducationSlashWorkExperienceTitle.tsx';
 
 export function EducationTitle({
   education,
+  educationIndex,
 }: {
   education: EducationClientData;
+  educationIndex: number;
 }): ReactElement {
   return (
-    <EducationSlashWorkExperienceTitle>
+    <EducationSlashWorkExperienceTitle
+      educationSlashWorkExperienceIndex={educationIndex}
+    >
       {education.title}
     </EducationSlashWorkExperienceTitle>
   );

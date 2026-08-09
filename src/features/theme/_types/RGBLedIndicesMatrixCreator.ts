@@ -2,6 +2,7 @@ import { type RGBLedIndex } from '@/features/rgb/_types/RGBLedIndex.ts';
 
 export interface RGBLedIndicesMatrixCreator {
   templateMatrix: RGBLedIndex[][];
+  waterfallLength: number;
   createMatrix: (options: {
     templateMatrix?: RGBLedIndex[][];
     waterfallIndex: number;

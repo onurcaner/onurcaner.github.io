@@ -16,8 +16,10 @@ export function RGBControllerTimerEffect({
   rgbControllerConfig: RGBControllerConfig;
   setRGBControllerState: Dispatch<SetStateAction<RGBControllerState>>;
 }): ReactElement {
+  // Hooks - Local State
   const timerId = useRef<number | null>(null);
 
+  // Hooks - Effects
   useEffect(() => {
     const handleInterval = (): void => {
       setRGBControllerState((state) => ({

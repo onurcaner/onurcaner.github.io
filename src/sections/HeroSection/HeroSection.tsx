@@ -12,46 +12,71 @@ import { HeroSectionTitle } from './HeroSectionTitle.tsx';
 
 export function HeroSection(): ReactElement {
   const { heroSectionRef } = useDomRefsContext();
+
+  return (
+    <div
+      className="relative z-0"
+      ref={heroSectionRef as RefObject<HTMLDivElement>}
+    >
+      <HeroContentLayer />
+      <HeroBorderLayer />
+      <HeroBlurShadowLayer />
+    </div>
+  );
+}
+
+function HeroContentLayer(): ReactElement {
+  return (
+    <div className="relative z-1 grid min-h-screen grid-rows-[max-content_1fr] bg-(--theme-component-hero-section-background-color)">
+      <HeroSectionFakeHeader />
+      <div className="max-w-9xl mx-auto grid w-full justify-items-start self-center px-16 pt-20 pb-40">
+        <HeroSectionTitle />
+        <HeroSectionDescription />
+      </div>
+    </div>
+  );
+}
+
+function HeroBorderLayer(): ReactElement {
+  // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
+  // Derived States
   const rgbLedIndicesMatrix =
     rgbLedIndicesMatrixCreators.heroSectionBorder.createMatrix({
       waterfallIndex: 0,
     });
 
   return (
-    <div className="relative z-0">
-      {/* Actual Component */}
-      <div
-        ref={heroSectionRef as RefObject<HTMLDivElement>}
-        className="relative z-1 grid min-h-screen grid-rows-[max-content_1fr] bg-(--theme-component-hero-section-background-color)"
-      >
-        <HeroSectionFakeHeader />
-        <div className="max-w-9xl mx-auto grid w-full justify-start self-center px-16 pt-20 pb-40">
-          <HeroSectionTitle />
-          <HeroSectionDescription />
-        </div>
-      </div>
+    <RGBBackground
+      className="relative z-1 h-(--theme-border-thickness)"
+      rgbLedIndicesMatrix={rgbLedIndicesMatrix}
+      isUsingAlternativeColors={false}
+      preferredNormalFallbackColor="var(--theme-component-hero-section-border-color)"
+    />
+  );
+}
 
-      {/* Border */}
+function HeroBlurShadowLayer(): ReactElement {
+  // Hooks - Elevated States
+  const { rgbLedIndicesMatrixCreators } = useThemeContext();
+
+  // Derived States
+  const rgbLedIndicesMatrix =
+    rgbLedIndicesMatrixCreators.heroSectionBorder.createMatrix({
+      waterfallIndex: 0,
+    });
+
+  return (
+    <BlurShadow
+      className="absolute top-0 right-0 bottom-0 left-0 z-0 grid"
+      elevationStep={ElevationStep.HeroSection}
+    >
       <RGBBackground
-        className="relative z-1 h-(--theme-border-thickness)"
         rgbLedIndicesMatrix={rgbLedIndicesMatrix}
         isUsingAlternativeColors={false}
-        preferredNormalFallbackColor="var(--theme-component-hero-section-border-color)"
+        preferredNormalFallbackColor="var(--theme-component-hero-section-background-color)"
       />
-
-      {/* Shadow */}
-      <BlurShadow
-        className="absolute top-0 right-0 bottom-0 left-0 z-0 grid"
-        elevationStep={ElevationStep.HeroSection}
-      >
-        <RGBBackground
-          rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-          isUsingAlternativeColors={false}
-          preferredNormalFallbackColor="var(--theme-component-hero-section-background-color)"
-        />
-      </BlurShadow>
-    </div>
+    </BlurShadow>
   );
 }

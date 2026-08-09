@@ -18,9 +18,9 @@ export function SkillsList(): ReactElement {
   });
 
   return (
-    <ul className="relative z-0 grid grid-cols-4 gap-x-16 gap-y-20">
+    <ul className="relative z-0 grid grid-cols-3 gap-x-16 gap-y-20">
       {skills.map((skill, i) => (
-        <SkillItem key={[skill.id, i].join('_')} skill={skill} index={i} />
+        <SkillItem key={skill.id} skill={skill} index={i} />
       ))}
     </ul>
   );

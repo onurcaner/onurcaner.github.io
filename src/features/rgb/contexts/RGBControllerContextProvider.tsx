@@ -15,6 +15,7 @@ export function RGBControllerContextProvider({
   children: ReactNode;
   rgbControllerConfig: RGBControllerConfig;
 }): ReactElement {
+  // Hooks - Local State
   const [rgbControllerState, setRgbControllerState] =
     useState<RGBControllerState>({
       normalRGBLedStates: rgbControllerConfig.initialNormalRGBLedStates,
@@ -22,6 +23,7 @@ export function RGBControllerContextProvider({
         rgbControllerConfig.initialAlternativeRGBLedStates,
     });
 
+  // Hooks - Effects
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setRgbControllerState((state) => ({

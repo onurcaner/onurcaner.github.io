@@ -1,8 +1,12 @@
 import { type ReactElement } from 'react';
-import { RiBox3Fill } from 'react-icons/ri';
-import { RiGraduationCapFill } from 'react-icons/ri';
+import { FaBriefcase } from 'react-icons/fa6';
+import {
+  RiBox3Fill,
+  RiGraduationCapFill,
+  RiSubtractFill,
+} from 'react-icons/ri';
 
-import { IconName } from '@/assets/_constants/IconName.ts';
+import { IconName } from '../_constants/IconName.ts';
 
 export function UIIcon({ iconName }: { iconName: IconName }): ReactElement {
   switch (iconName) {
@@ -12,8 +16,18 @@ export function UIIcon({ iconName }: { iconName: IconName }): ReactElement {
       );
     }
 
+    case IconName.BriefCase: {
+      return <FaBriefcase />;
+    }
+
     case IconName.GraduationCap: {
       return <RiGraduationCapFill />;
+    }
+
+    case IconName.Minus: {
+      return (
+        <RiSubtractFill className="-m-[calc((128/74.67-1)*(74.67/128)*0.5em)] text-[calc(128/74.67*1em)]" />
+      );
     }
   }
 

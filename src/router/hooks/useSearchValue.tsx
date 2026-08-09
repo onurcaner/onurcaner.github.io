@@ -9,9 +9,11 @@ export function useSearchValue<TValue extends string>({
   defaultValue: TValue;
   replace?: boolean;
 }): [TValue, (newValue: TValue) => void] {
+  // Hooks - Elevated State
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const value = (searchParams.get(key) ?? defaultValue) as TValue;
+  // Derived States and Actions
+  const searchValue = (searchParams.get(key) ?? defaultValue) as TValue;
   const changeValue = (newValue: TValue): void => {
     searchParams.set(key, newValue);
     if (searchParams.get(key) === defaultValue) {
@@ -21,5 +23,5 @@ export function useSearchValue<TValue extends string>({
     setSearchParams(searchParams, { replace });
   };
 
-  return [value, changeValue] as const;
+  return [searchValue, changeValue] as const;
 }

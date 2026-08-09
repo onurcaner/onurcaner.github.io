@@ -6,12 +6,14 @@ import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 export function HeroSectionDescription(): ReactElement {
+  // Hooks - Elevated States
   const { language } = useLanguageContext();
   const { description } = useHeroContentDataQuery({
     contentLanguageCode: language,
   });
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
+  // Derived States
   const rgbLedIndicesMatrix =
     rgbLedIndicesMatrixCreators.heroSectionDescription.createMatrix({
       waterfallIndex: 0,

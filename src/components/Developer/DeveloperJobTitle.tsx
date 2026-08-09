@@ -6,10 +6,12 @@ import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 export function DeveloperJobTitle(): ReactElement {
+  // Hooks - Elevated State
   const { language } = useLanguageContext();
   const developer = useDeveloperDataQuery({ contentLanguageCode: language });
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
+  // Derived State
   const rgbIndicesMatrix =
     rgbLedIndicesMatrixCreators.developerJobTitle.createMatrix({
       waterfallIndex: 0,

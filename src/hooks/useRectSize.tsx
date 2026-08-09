@@ -12,22 +12,22 @@ export function useRectSize(
   const [width, setWidth] = useState<CSSProperties['width']>(undefined);
   const [height, setHeight] = useState<CSSProperties['height']>(undefined);
 
-  const handler = useCallback(() => {
+  const refreshStates = useCallback(() => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     setWidth(rect.width);
     setHeight(rect.height);
   }, [ref]);
 
-  useEffect(handler, [handler]);
+  useEffect(refreshStates, [refreshStates]);
 
   useEffect(() => {
-    const onResize = handler;
-    window.addEventListener('resize', onResize);
+    const handleResize = refreshStates;
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener('resize', handleResize);
     };
-  }, [handler]);
+  }, [refreshStates]);
 
   return { width, height };
 }

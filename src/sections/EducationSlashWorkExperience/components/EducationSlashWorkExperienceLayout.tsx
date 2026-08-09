@@ -5,14 +5,14 @@ export function EducationSlashWorkExperienceLayout({
   EducationProviderSlashCompanyName,
   EducationProviderSlashCompanyLocation,
   EducationSlashWorkExperienceDateRange,
-  EducationGrade,
+  EducationGradeSlashWorkExperienceLevel,
   DescriptionListsList,
 }: {
   EducationSlashWorkExperienceTitle: ReactElement;
   EducationProviderSlashCompanyName: ReactElement;
   EducationProviderSlashCompanyLocation: ReactElement;
   EducationSlashWorkExperienceDateRange: ReactElement;
-  EducationGrade?: ReactElement;
+  EducationGradeSlashWorkExperienceLevel: ReactElement;
   DescriptionListsList?: ReactElement;
 }): ReactElement {
   return (
@@ -38,11 +38,13 @@ export function EducationSlashWorkExperienceLayout({
       </div>
 
       {/* Grade */}
-      {EducationGrade && <div className="col-span-full">{EducationGrade}</div>}
+      <div className="col-span-full justify-self-start">
+        {EducationGradeSlashWorkExperienceLevel}
+      </div>
 
       {/* Lists */}
       {DescriptionListsList && (
-        <div className="col-span-full">{DescriptionListsList}</div>
+        <div className="col-span-full mt-4">{DescriptionListsList}</div>
       )}
     </div>
   );

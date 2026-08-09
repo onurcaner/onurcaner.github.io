@@ -3,8 +3,8 @@ export class RandomIntegerGenerator {
     if (maximum < minimum)
       throw new Error('maximum has to be greater than minimum');
 
-    const difference = maximum - minimum;
-    const number = minimum + Math.round(difference * Math.random());
-    return number;
+    const maxDifference = maximum - minimum;
+    const randomDifference = Math.round(maxDifference * Math.random());
+    return minimum + randomDifference;
   }
 }

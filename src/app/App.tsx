@@ -12,10 +12,21 @@ export function App(): ReactElement {
   return (
     <GlobalContextsProvider>
       <RemoteContextsProvider>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loading />}>
           <AppRouter />
         </Suspense>
       </RemoteContextsProvider>
     </GlobalContextsProvider>
+  );
+}
+
+function Loading(): ReactElement {
+  return (
+    <div className="grid h-screen w-screen content-center items-center justify-center justify-items-center bg-(--theme-component-hero-section-background-color)">
+      <div className="mb-10 h-40 w-40 animate-spin rounded-full border-[2rem] border-(--theme-component-hero-section-description-text-color) border-b-transparent" />
+      <p className="text-10 text-(--theme-component-hero-section-description-text-color)">
+        Loading...
+      </p>
+    </div>
   );
 }

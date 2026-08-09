@@ -31,7 +31,7 @@ export function ThemeContextProvider({
         rgbControllerConfig: themeControllerState.config.rgbControllerConfig,
         rgbLedIndicesMatrixCreators:
           themeControllerState.config.rgbLedIndicesMatrixCreators,
-        changeConfig: changeThemeControllerConfig,
+        changeThemeControllerConfig: changeThemeControllerConfig,
       }}
     >
       {children}
