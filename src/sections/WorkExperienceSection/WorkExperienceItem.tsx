@@ -1,6 +1,5 @@
 import { type ReactElement } from 'react';
 
-import { WorkExperienceLevel } from '@/sections/WorkExperienceSection/WorkExperienceLevel.tsx';
 import { type WorkExperienceClientData } from '@/services/work-experience/types/WorkExperienceClientData.ts';
 
 import { EducationSlashWorkExperienceLayout } from '../EducationSlashWorkExperience/components/EducationSlashWorkExperienceLayout.tsx';
@@ -9,6 +8,7 @@ import { CompanyLocation } from './CompanyLocation.tsx';
 import { CompanyName } from './CompanyName.tsx';
 import { WorkExperienceDateRange } from './WorkExperienceDateRange.tsx';
 import { WorkExperienceDescriptionListsList } from './WorkExperienceDescriptionListsList.tsx';
+import { WorkExperienceLevel } from './WorkExperienceLevel.tsx';
 import { WorkExperienceTitle } from './WorkExperienceTitle.tsx';
 
 export function WorkExperienceItem({

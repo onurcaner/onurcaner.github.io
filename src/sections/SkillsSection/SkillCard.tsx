@@ -38,7 +38,7 @@ function SkillCardContentLayer({ skill, index }: SkillCardProps): ReactElement {
 
   return (
     <div
-      className="relative z-2 m-(--theme-border-thickness) grid content-between justify-items-center gap-y-7 overflow-hidden rounded-(--theme-border-radius) bg-(--theme-component-skill-card-background-color) px-16 py-20"
+      className="relative z-2 m-(--theme-border-thickness) grid content-between gap-y-7 overflow-hidden rounded-(--theme-border-radius) bg-(--theme-component-skill-card-background-color) px-16 py-20 text-center"
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
     >
@@ -56,7 +56,7 @@ function SkillCardBorderLayer({ index }: SkillCardProps): ReactElement {
     <RGBBackground
       className="absolute top-0 right-0 bottom-0 left-0 z-1 overflow-hidden rounded-(--theme-border-radius)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.skillBorder.createMatrix(
-        { waterfallIndex: index },
+        { waterfallCount: index },
       )}
       isUsingAlternativeColors={isHovered}
       preferredNormalFallbackColor="var(--theme-component-skill-card-border-color--normal)"
@@ -76,7 +76,7 @@ function SkillCardBlurShadowLayer({ index }: SkillCardProps): ReactElement {
     >
       <RGBBackground
         rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.skillBorder.createMatrix(
-          { waterfallIndex: index },
+          { waterfallCount: index },
         )}
         isUsingAlternativeColors={isHovered}
         preferredNormalFallbackColor="var(--theme-component-skill-card-border-color--normal)"

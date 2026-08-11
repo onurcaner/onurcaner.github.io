@@ -3,7 +3,9 @@ import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
 import { LinearRGBLedStatesMapper } from '@/features/rgb/utils/LinearRGBLedStatesMapper.ts';
 
 enum Option {
-  TickIntervalMs = 500000,
+  TickIntervalMs = 1000,
+  Period = 12,
+  TransitionDurationMs = 0,
 }
 
 export class TestThemeRGBControllerConfig implements RGBControllerConfig {
@@ -11,28 +13,40 @@ export class TestThemeRGBControllerConfig implements RGBControllerConfig {
     length: 144,
   }).map((_, index): RGBLedState => ({
     color:
-      index % 12 === 2
+      index % Option.Period === 2
         ? `oklch(0.72 0.12 ${((index * 360) / 144).toString()})`
         : 'oklch(0 0 0)',
-    isPreferringFallbackColor: index % 12 !== 2,
-    transitionDuration: '0s',
-    transitionTimingFunction: 'linear',
+    isPreferringFallbackColor: index % Option.Period !== 2,
+    transitionDuration:
+      index % Option.Period === 2
+        ? `${(Option.TransitionDurationMs * 2).toString()}ms`
+        : `${(Option.TransitionDurationMs * 10).toString()}ms`,
+    transitionTimingFunction:
+      'var(--theme-transition-timing-function-ease-out)',
   }));
 
   public initialAlternativeRGBLedStates: RGBLedState[] = Array.from({
     length: 144,
   }).map((_, index): RGBLedState => ({
     color:
-      index % 12 === 2 || index % 12 === 1 || index % 12 === 0
+      index % Option.Period === 2 ||
+      index % Option.Period === 1 ||
+      index % Option.Period === 0
         ? `oklch(0.72 0.12 ${((index * 360) / 144).toString()})`
         : 'oklch(0 0 0)',
     isPreferringFallbackColor: !(
-      index % 12 === 2 ||
-      index % 12 === 1 ||
-      index % 12 === 0
+      index % Option.Period === 2 ||
+      index % Option.Period === 1 ||
+      index % Option.Period === 0
     ),
-    transitionDuration: '0s',
-    transitionTimingFunction: 'linear',
+    transitionDuration:
+      index % Option.Period === 2 ||
+      index % Option.Period === 1 ||
+      index % Option.Period === 0
+        ? `${(Option.TransitionDurationMs * 2).toString()}ms`
+        : `${(Option.TransitionDurationMs * 10).toString()}ms`,
+    transitionTimingFunction:
+      'var(--theme-transition-timing-function-ease-out)',
   }));
 
   public tickIntervalMs = Option.TickIntervalMs;

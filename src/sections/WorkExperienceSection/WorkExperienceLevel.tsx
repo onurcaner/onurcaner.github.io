@@ -15,7 +15,7 @@ export function WorkExperienceLevel({
     <EducationGradeSlashWorkExperienceLevel
       educationSlashWorkExperienceIndex={workExperienceIndex}
     >
-      Not Implemented...{workExperience.contentLanguageCode.slice(0, 0)}
+      Level: {workExperience.level}
     </EducationGradeSlashWorkExperienceLevel>
   );
 }

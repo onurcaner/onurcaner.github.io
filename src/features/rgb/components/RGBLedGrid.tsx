@@ -15,6 +15,7 @@ export function RGBLedGrid({
   preferredNormalFallbackColor,
   preferredAlternativeFallbackColor,
 }: RGBLedGridProps): ReactElement {
+  // Derived State
   const rowCount = rgbLedIndicesMatrix.length;
   const columnCount = rgbLedIndicesMatrix[0].length;
 

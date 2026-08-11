@@ -29,7 +29,7 @@ function HeroContentLayer(): ReactElement {
   return (
     <div className="relative z-1 grid min-h-screen grid-rows-[max-content_1fr] bg-(--theme-component-hero-section-background-color)">
       <HeroSectionFakeHeader />
-      <div className="max-w-9xl mx-auto grid w-full justify-items-start self-center px-16 pt-20 pb-40">
+      <div className="max-w-9xl mx-auto grid w-full justify-start self-center px-16 pt-20 pb-40">
         <HeroSectionTitle />
         <HeroSectionDescription />
       </div>
@@ -38,19 +38,12 @@ function HeroContentLayer(): ReactElement {
 }
 
 function HeroBorderLayer(): ReactElement {
-  // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
-
-  // Derived States
-  const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixCreators.heroSectionBorder.createMatrix({
-      waterfallIndex: 0,
-    });
 
   return (
     <RGBBackground
       className="relative z-1 h-(--theme-border-thickness)"
-      rgbLedIndicesMatrix={rgbLedIndicesMatrix}
+      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionBorder.createMatrix()}
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-hero-section-border-color)"
     />
@@ -58,14 +51,7 @@ function HeroBorderLayer(): ReactElement {
 }
 
 function HeroBlurShadowLayer(): ReactElement {
-  // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
-
-  // Derived States
-  const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixCreators.heroSectionBorder.createMatrix({
-      waterfallIndex: 0,
-    });
 
   return (
     <BlurShadow
@@ -73,7 +59,7 @@ function HeroBlurShadowLayer(): ReactElement {
       elevationStep={ElevationStep.HeroSection}
     >
       <RGBBackground
-        rgbLedIndicesMatrix={rgbLedIndicesMatrix}
+        rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionBorder.createMatrix()}
         isUsingAlternativeColors={false}
         preferredNormalFallbackColor="var(--theme-component-hero-section-background-color)"
       />

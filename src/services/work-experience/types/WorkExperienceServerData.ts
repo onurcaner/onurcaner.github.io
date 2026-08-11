@@ -11,5 +11,6 @@ export interface WorkExperienceServerData {
   company_id: string;
   start_date: string;
   end_date: string;
+  level: string;
   description_list_ids: string[];
 }

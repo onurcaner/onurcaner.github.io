@@ -18,7 +18,7 @@ export function SkillCardLabel({
     <RGBText
       parentBackgroundClassName="bg-(--theme-component-skill-card-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.skillLabel.createMatrix({
-        waterfallIndex: index,
+        waterfallCount: index,
       })}
       isUsingAlternativeColors={isHovered}
       preferredNormalFallbackColor="var(--theme-component-skill-label-text-color--normal)"

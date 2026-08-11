@@ -21,6 +21,7 @@ export function RGBLedBox({
       ? RGBLedType.Alternative
       : RGBLedType.Normal,
   });
+
   const isFallbackForced = rgbLedIndex === null;
 
   return (

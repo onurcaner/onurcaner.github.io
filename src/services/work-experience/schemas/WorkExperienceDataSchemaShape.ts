@@ -30,6 +30,9 @@ export class WorkExperienceDataSchemaShape {
   public get dateIso() {
     return z.iso.datetime();
   }
+  public get level() {
+    return z.string().max(100);
+  }
   public get descriptionListIds() {
     return z.array(new ListDataSchemaShape().id).max(20);
   }

@@ -2,7 +2,7 @@ import { type ReactElement } from 'react';
 
 import { useEducationsDataQuery } from '@/contexts/remote/education/useEducationsDataQuery.tsx';
 import { useLanguageContext } from '@/contexts/url/language/useLanguageContext.tsx';
-import { EducationSlashWorkExperienceWaterfallContextProvider } from '@/sections/EducationSlashWorkExperience/contexts/EducationSlashWorkExperienceWaterfallContextProvider.tsx';
+import { EducationSlashWorkExperienceWaterfallOffsetsContextProvider } from '@/sections/EducationSlashWorkExperience/contexts/EducationSlashWorkExperienceWaterfallOffsetsContextProvider.tsx';
 
 import { EducationSlashWorkExperienceDescriptionListItemCountContextProvider } from '../EducationSlashWorkExperience/contexts/EducationSlashWorkExperienceDescriptionListItemCountContextProvider.tsx';
 
@@ -16,9 +16,7 @@ export function EducationsList(): ReactElement {
     <EducationSlashWorkExperienceDescriptionListItemCountContextProvider
       educationSlashWorkExperienceCount={educations.length}
     >
-      <EducationSlashWorkExperienceWaterfallContextProvider
-        educationSlashWorkExperienceCount={educations.length}
-      >
+      <EducationSlashWorkExperienceWaterfallOffsetsContextProvider>
         <ul className="relative z-0 grid gap-y-20">
           {educations.map((education, i) => (
             <EducationItem
@@ -28,7 +26,7 @@ export function EducationsList(): ReactElement {
             />
           ))}
         </ul>
-      </EducationSlashWorkExperienceWaterfallContextProvider>
+      </EducationSlashWorkExperienceWaterfallOffsetsContextProvider>
     </EducationSlashWorkExperienceDescriptionListItemCountContextProvider>
   );
 }

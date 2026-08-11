@@ -11,5 +11,6 @@ export interface WorkExperienceClientData {
   companyId: string;
   startDate: Date;
   endDate: Date;
+  level: string;
   descriptionListIds: string[];
 }

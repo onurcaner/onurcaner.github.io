@@ -14,15 +14,10 @@ export function DeveloperName(): ReactElement {
   // Hooks - Local State
   const [isHovered, setIsHovered] = useState(false);
 
-  // Derived State
-  const indicesMatrix = rgbLedIndicesMatrixCreators.developerName.createMatrix({
-    waterfallIndex: 0,
-  });
-
   return (
     <RGBText
       parentBackgroundClassName="bg-(--theme-component-header-background-color)"
-      rgbLedIndicesMatrix={indicesMatrix}
+      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.developerName.createMatrix()}
       isUsingAlternativeColors={isHovered}
       preferredNormalFallbackColor="var(--theme-component-developer-name-text-color)"
       preferredAlternativeFallbackColor="var(--theme-component-developer-name-text-color--hover)"

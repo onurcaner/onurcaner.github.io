@@ -20,9 +20,7 @@ export function SectionLayout({
       className="relative z-0 grid min-h-screen content-center items-center py-40"
       ref={sectionRef}
     >
-      <SectionHeading className="justify-self-start" iconName={sectionIconName}>
-        {sectionTitle}
-      </SectionHeading>
+      <SectionHeading iconName={sectionIconName}>{sectionTitle}</SectionHeading>
 
       {children}
     </section>

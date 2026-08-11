@@ -20,7 +20,7 @@ export function SkillCardIcon({
     <RGBText
       parentBackgroundClassName="bg-(--theme-component-skill-card-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.skillIcon.createMatrix({
-        waterfallIndex: index,
+        waterfallCount: index,
       })}
       isUsingAlternativeColors={isHovered}
       preferredNormalFallbackColor="var(--theme-component-skill-icon-color--normal)"

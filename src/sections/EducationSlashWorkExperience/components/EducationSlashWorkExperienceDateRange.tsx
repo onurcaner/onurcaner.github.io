@@ -4,6 +4,8 @@ import { useLanguageContext } from '@/contexts/url/language/useLanguageContext.t
 import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
+import { useEducationSlashWorkExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashWorkExperienceWaterfallOffsetsContext.tsx';
+
 export function EducationSlashWorkExperienceDateRange({
   startDate,
   endDate,
@@ -18,12 +20,17 @@ export function EducationSlashWorkExperienceDateRange({
   // Hooks - Elevated States
   const { language } = useLanguageContext();
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
+  const { educationSlashWorkExperienceWaterfallOffsets } =
+    useEducationSlashWorkExperienceWaterfallOffsetsContext();
 
   // Derived States
   const rgbLedIndicesMatrix =
     rgbLedIndicesMatrixCreators.educationSlashWorkExperienceDateRange.createMatrix(
       {
-        waterfallIndex: educationSlashWorkExperienceIndex,
+        waterfallLength: educationSlashWorkExperienceWaterfallOffsets.at(
+          educationSlashWorkExperienceIndex,
+        ),
+        waterfallCount: 1,
       },
     );
 

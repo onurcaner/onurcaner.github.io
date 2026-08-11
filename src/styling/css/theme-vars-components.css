@@ -1,6 +1,6 @@
 :root {
   --theme-component-rgb-diffuser-color: oklch(1 0 0 / 0%);
-  --theme-component-rgb-diffuser-blur-length: 0rem;
+  --theme-component-rgb-diffuser-blur-length: 0.5rem;
 
   /* Header */
   --theme-component-header-background-color: var(--theme-color-neutral-800);
@@ -71,10 +71,10 @@
   --theme-component-education-slash-work-experience-description-list-title-text-color: var(
     --theme-color-neutral-300
   );
-  --theme-component-education-slash-work-experience-description-list-item-text-color: var(
-    --theme-color-neutral-300
-  );
   --theme-component-education-slash-work-experience-description-list-item-icon-color: var(
     --theme-color-neutral-400
+  );
+  --theme-component-education-slash-work-experience-description-list-item-text-color: var(
+    --theme-color-neutral-300
   );
 }

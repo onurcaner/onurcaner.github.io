@@ -6,23 +6,16 @@ import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 export function HeroSectionDescription(): ReactElement {
-  // Hooks - Elevated States
   const { language } = useLanguageContext();
   const { description } = useHeroContentDataQuery({
     contentLanguageCode: language,
   });
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
-  // Derived States
-  const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixCreators.heroSectionDescription.createMatrix({
-      waterfallIndex: 0,
-    });
-
   return (
     <RGBText
       parentBackgroundClassName="bg-(--theme-component-hero-section-background-color)"
-      rgbLedIndicesMatrix={rgbLedIndicesMatrix}
+      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionDescription.createMatrix()}
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-hero-section-description-text-color)"
     >

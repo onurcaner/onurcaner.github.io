@@ -19,6 +19,7 @@ export class WorkExperienceServerDataTransformer extends DataTransformer<
       companyId: data.company_id,
       startDate: new Date(data.start_date),
       endDate: new Date(data.end_date),
+      level: data.level,
       descriptionListIds: data.description_list_ids,
     });
   }

@@ -13,17 +13,11 @@ export function HeroSectionTitle(): ReactElement {
   });
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
 
-  // Derived States
-  const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixCreators.heroSectionTitle.createMatrix({
-      waterfallIndex: 0,
-    });
-
   return (
     <div className="mb-6">
       <RGBText
         parentBackgroundClassName="bg-(--theme-component-hero-section-background-color)"
-        rgbLedIndicesMatrix={rgbLedIndicesMatrix}
+        rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionTitle.createMatrix()}
         isUsingAlternativeColors={false}
         preferredNormalFallbackColor="var(--theme-component-hero-section-title-text-color)"
       >

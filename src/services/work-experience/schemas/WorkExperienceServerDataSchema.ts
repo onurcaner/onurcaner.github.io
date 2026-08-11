@@ -15,5 +15,6 @@ export const WorkExperienceServerDataSchema: ZodType<WorkExperienceServerData> =
     company_id: new SchemaShape().companyId,
     start_date: new SchemaShape().dateIso,
     end_date: new SchemaShape().dateIso,
+    level: new SchemaShape().level,
     description_list_ids: new SchemaShape().descriptionListIds,
   });

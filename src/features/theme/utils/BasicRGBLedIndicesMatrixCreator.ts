@@ -4,34 +4,45 @@ import { type RGBLedIndicesMatrixCreator } from '../_types/RGBLedIndicesMatrixCr
 
 export class BasicRGBLedIndicesMatrixCreator implements RGBLedIndicesMatrixCreator {
   public templateMatrix: RGBLedIndex[][];
-  public waterfallLength: number;
-  private _boundaryIndex = 144;
+  public selfLength: number;
+  public groupLength: number;
+  private _boundaryIndex;
 
   public constructor({
     templateMatrix,
-    waterfallLength,
+    selfLength,
+    groupLength,
+    boundaryIndex,
   }: {
     templateMatrix: RGBLedIndex[][];
-    waterfallLength: number;
+    selfLength: number;
+    groupLength: number;
+    boundaryIndex: number;
   }) {
     this.templateMatrix = templateMatrix;
-    this.waterfallLength = waterfallLength;
+    this.selfLength = selfLength;
+    this.groupLength = groupLength;
+    this._boundaryIndex = boundaryIndex;
   }
 
-  public createMatrix({
-    templateMatrix = this.templateMatrix,
-    waterfallIndex,
-    waterfallLength = this.waterfallLength,
-  }: {
-    templateMatrix?: RGBLedIndex[][];
-    waterfallIndex: number;
-    waterfallLength?: number;
-  }): RGBLedIndex[][] {
+  public createMatrix(
+    options:
+      | {
+          templateMatrix?: RGBLedIndex[][];
+          waterfallCount: number;
+          waterfallLength?: number;
+        }
+      | undefined,
+  ): RGBLedIndex[][] {
+    const templateMatrix = options?.templateMatrix ?? this.templateMatrix;
+    const waterfallCount = options?.waterfallCount ?? 0;
+    const waterfallLength = options?.waterfallLength ?? this.groupLength;
+
     return templateMatrix.map((row) =>
       row.map((rgbLedIndex) => {
         if (rgbLedIndex === null) return null;
 
-        const addAmount = waterfallIndex * waterfallLength;
+        const addAmount = waterfallCount * waterfallLength;
         const level = Math.floor(rgbLedIndex / this._boundaryIndex);
         const offset = rgbLedIndex % this._boundaryIndex;
 

@@ -142,9 +142,7 @@ function HeaderBorderLayer(): ReactElement {
   return (
     <RGBBackground
       className="absolute top-0 right-0 bottom-0 left-0 z-1"
-      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorder.createMatrix(
-        { waterfallIndex: 0 },
-      )}
+      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorder.createMatrix()}
       isUsingAlternativeColors={isHovered}
       preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
       preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
@@ -157,9 +155,11 @@ function HeaderBlurShadowLayer({
 }: {
   borderThicknessMotionValue: MotionValue<string>;
 }): ReactElement {
+  // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
   const { isHovered } = useHoverContext();
 
+  // Hooks - Local States
   const opacityMotionValue = useTransform(
     borderThicknessMotionValue,
     (borderThickness) => (borderThickness === '0rem' ? '0%' : '100%'),
@@ -177,9 +177,7 @@ function HeaderBlurShadowLayer({
         className="absolute top-0 right-0 bottom-0 left-0 z-0 grid"
       >
         <RGBBackground
-          rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorder.createMatrix(
-            { waterfallIndex: 0 },
-          )}
+          rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorder.createMatrix()}
           isUsingAlternativeColors={isHovered}
           preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
           preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
@@ -188,18 +186,3 @@ function HeaderBlurShadowLayer({
     </motion.div>
   );
 }
-
-// <div className="absolute top-0 right-0 bottom-0 left-0 z-0 grid">
-//   <div className="relative z-1 col-span-full row-span-full bg-(--theme-component-header-background-color)" />
-//   <BlurShadow
-//     elevationStep={ElevationStep.Header}
-//     className="relative z-0 col-span-full row-span-full grid"
-//   >
-//     <RGBBackground
-//       rgbLedIndicesMatrix={indicesMatrix}
-//       isUsingAlternativeColors={isHovered}
-//       preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
-//       preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
-//     />
-//   </BlurShadow>
-// </div>;

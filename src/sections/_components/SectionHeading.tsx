@@ -20,7 +20,7 @@ export function SectionHeading({
   return (
     <div
       className={new ClassNameJoiner().join(
-        'mb-10 flex items-center gap-x-4',
+        'mb-10 grid grid-cols-[max-content_minmax(0,1fr)] items-center gap-x-4',
         className,
       )}
     >
@@ -43,7 +43,7 @@ function SectionIcon({
   // Derived States
   const rgbLedIndicesMatrix =
     rgbLedIndicesMatrixCreators.sectionHeadingIcon.createMatrix({
-      waterfallIndex: index,
+      waterfallCount: index,
     });
 
   return (
@@ -53,7 +53,7 @@ function SectionIcon({
       parentBackgroundClassName="bg-(--theme-component-section-background-color)"
       preferredNormalFallbackColor="var(--theme-component-section-heading-icon-color)"
     >
-      <div className="text-8" aria-hidden={true}>
+      <div className="text-8 px-0.5" aria-hidden={true}>
         <UIIcon iconName={iconName} />
       </div>
     </RGBText>
@@ -73,7 +73,7 @@ function SectionTitle({
   // Derived States
   const rgbLedIndicesMatrix =
     rgbLedIndicesMatrixCreators.sectionHeadingTitle.createMatrix({
-      waterfallIndex: index,
+      waterfallCount: index,
     });
 
   return (
