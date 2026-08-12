@@ -35,7 +35,7 @@
   --theme-component-section-heading-text-color: var(--theme-color-neutral-400);
   --theme-component-section-heading-icon-color: var(--theme-color-neutral-500);
 
-  /* Skills */
+  /* Skills Section */
   --theme-component-skill-card-background-color: var(--theme-color-neutral-900);
   --theme-component-skill-card-border-color--normal: var(
     --theme-color-neutral-800
@@ -52,7 +52,7 @@
     --theme-color-neutral-200
   );
 
-  /* Education / Work Experience */
+  /* Education / Work Experience Sections */
   --theme-component-education-slash-work-experience-title-text-color: var(
     --theme-color-neutral-300
   );
@@ -76,5 +76,24 @@
   );
   --theme-component-education-slash-work-experience-description-list-item-text-color: var(
     --theme-color-neutral-300
+  );
+
+  /* Call to Action Section */
+  --theme-component-call-to-action-section-background-color: var(
+    --theme-component-hero-section-background-color
+  );
+  --theme-component-call-to-action-section-title-text-color: var(
+    --theme-component-hero-section-title-text-color
+  );
+  --theme-component-call-to-action-section-description-text-color: var(
+    --theme-component-hero-section-description-text-color
+  );
+  --theme-component-call-to-action-section-border-color: var(
+    --theme-component-header-border-color--normal
+  );
+
+  /* Footer */
+  --theme-component-footer-background-color: var(
+    --theme-component-header-background-color
   );
 }

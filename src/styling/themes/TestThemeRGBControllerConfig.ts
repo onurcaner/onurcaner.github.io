@@ -3,7 +3,7 @@ import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
 import { LinearRGBLedStatesMapper } from '@/features/rgb/utils/LinearRGBLedStatesMapper.ts';
 
 enum Option {
-  TickIntervalMs = 1000,
+  TickIntervalMs = 10000000,
   Period = 12,
   TransitionDurationMs = 0,
 }

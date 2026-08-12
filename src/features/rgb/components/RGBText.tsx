@@ -4,8 +4,6 @@ import {
   type ReactElement,
 } from 'react';
 
-import { ClassNameJoiner } from '@/utils/ClassNameJoiner.ts';
-
 import { type RGBBaseComponentProps } from '../_types/RGBBaseComponentProps.ts';
 import { type RGBLedIndex } from '../_types/RGBLedIndex.ts';
 
@@ -16,16 +14,15 @@ type ReactDivProps = DetailedHTMLProps<
   HTMLDivElement
 >;
 
-interface RGBTextProps
-  extends RGBBaseComponentProps, Omit<ReactDivProps, 'className'> {
+interface RGBTextProps extends RGBBaseComponentProps, ReactDivProps {
   children: ReactElement;
-  parentBackgroundClassName: string; /* Required for background color matching */
+  parentBackgroundColor: string; /* Required for background color matching */
   rgbLedIndicesMatrix: RGBLedIndex[][];
 }
 
 export function RGBText({
   children,
-  parentBackgroundClassName,
+  parentBackgroundColor,
   rgbLedIndicesMatrix,
   isUsingAlternativeColors,
   preferredNormalFallbackColor,
@@ -33,37 +30,41 @@ export function RGBText({
   ...restProps
 }: RGBTextProps): ReactElement {
   return (
-    <div {...restProps} className="relative z-0 grid">
-      <BackgroundColorMatchingFilterLayer
-        parentBackgroundClassName={parentBackgroundClassName}
-      >
-        {children}
-      </BackgroundColorMatchingFilterLayer>
-      <BackgroundClipTextFilterLayer>{children}</BackgroundClipTextFilterLayer>
-      <BackdropBlurLayer />
-      <RGBLedGridLayer
-        rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-        isUsingAlternativeColors={isUsingAlternativeColors}
-        preferredNormalFallbackColor={preferredNormalFallbackColor}
-        preferredAlternativeFallbackColor={preferredAlternativeFallbackColor}
-      />
+    <div {...restProps}>
+      <div className="relative z-0 grid h-full w-full">
+        <BackgroundColorMatchingFilterLayer
+          parentBackgroundColor={parentBackgroundColor}
+        >
+          {children}
+        </BackgroundColorMatchingFilterLayer>
+        <BackgroundClipTextFilterLayer>
+          {children}
+        </BackgroundClipTextFilterLayer>
+        <BackdropBlurLayer />
+        <RGBLedGridLayer
+          rgbLedIndicesMatrix={rgbLedIndicesMatrix}
+          isUsingAlternativeColors={isUsingAlternativeColors}
+          preferredNormalFallbackColor={preferredNormalFallbackColor}
+          preferredAlternativeFallbackColor={preferredAlternativeFallbackColor}
+        />
+      </div>
     </div>
   );
 }
 
 function BackgroundColorMatchingFilterLayer({
   children,
-  parentBackgroundClassName,
+  parentBackgroundColor,
 }: {
   children: ReactElement;
-  parentBackgroundClassName: string;
+  parentBackgroundColor: string;
 }): ReactElement {
   return (
     <div
-      className={new ClassNameJoiner().join(
-        'relative z-3 col-span-full row-span-full text-black mix-blend-screen',
-        parentBackgroundClassName,
-      )}
+      className="relative z-3 col-span-full row-span-full text-black mix-blend-screen"
+      style={{
+        backgroundColor: parentBackgroundColor,
+      }}
     >
       {children}
     </div>

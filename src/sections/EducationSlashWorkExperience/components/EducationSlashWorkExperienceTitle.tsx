@@ -28,7 +28,7 @@ export function EducationSlashWorkExperienceTitle({
 
   return (
     <RGBText
-      parentBackgroundClassName="bg-(--theme-component-section-background-color)"
+      parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-title-text-color)"

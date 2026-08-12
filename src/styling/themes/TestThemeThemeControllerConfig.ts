@@ -11,13 +11,8 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
   public themeSharpness = ThemeSharpness.Neutral;
   public rgbControllerConfig = new TestThemeRGBControllerConfig();
   public rgbLedIndicesMatrixCreators: RGBLedIndicesMatrixCreators = {
-    headerBorder: new BasicRGBLedIndicesMatrixCreator({
-      templateMatrix: [
-        Array.from({ length: 96 }).map((_, i) => i),
-        Array.from({ length: 96 })
-          .map((_, i) => i + 96)
-          .map((number) => number % 144),
-      ],
+    headerBorderBlock: new BasicRGBLedIndicesMatrixCreator({
+      templateMatrix: [Array.from({ length: 96 }).map((_, i) => i)],
       selfLength: 96,
       groupLength: 96,
       boundaryIndex: 144,
@@ -36,12 +31,6 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
       boundaryIndex: 144,
     }),
 
-    heroSectionBorder: new BasicRGBLedIndicesMatrixCreator({
-      templateMatrix: [Array.from({ length: 72 }).map((_, i) => i)],
-      selfLength: 72,
-      groupLength: 72,
-      boundaryIndex: 144,
-    }),
     heroSectionTitle: new BasicRGBLedIndicesMatrixCreator({
       templateMatrix: [
         Array.from({ length: 48 }).map((_, i) => i),
@@ -59,6 +48,12 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
       ],
       selfLength: 144,
       groupLength: 192,
+      boundaryIndex: 144,
+    }),
+    heroSectionBorderBottom: new BasicRGBLedIndicesMatrixCreator({
+      templateMatrix: [Array.from({ length: 96 }).map((_, i) => i)],
+      selfLength: 96,
+      groupLength: 96,
       boundaryIndex: 144,
     }),
 
@@ -162,5 +157,31 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
         groupLength: 24,
         boundaryIndex: 144,
       }),
+
+    callToActionSectionBorderBlock: new BasicRGBLedIndicesMatrixCreator({
+      templateMatrix: [Array.from({ length: 96 }).map((_, i) => i)],
+      selfLength: 96,
+      groupLength: 96,
+      boundaryIndex: 144,
+    }),
+    callToActionSectionTitle: new BasicRGBLedIndicesMatrixCreator({
+      templateMatrix: [
+        Array.from({ length: 48 }).map((_, i) => i),
+        Array.from({ length: 48 }).map((_, i) => i + 48),
+      ],
+      selfLength: 96,
+      groupLength: 192,
+      boundaryIndex: 144,
+    }),
+    callToActionSectionDescription: new BasicRGBLedIndicesMatrixCreator({
+      templateMatrix: [
+        Array.from({ length: 48 }).map((_, i) => i + 96),
+        Array.from({ length: 48 }).map((_, i) => i + 144),
+        Array.from({ length: 48 }).map((_, i) => i + 192),
+      ],
+      selfLength: 144,
+      groupLength: 192,
+      boundaryIndex: 144,
+    }),
   };
 }

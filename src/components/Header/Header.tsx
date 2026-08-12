@@ -7,7 +7,7 @@ import {
   useTransform,
   useVelocity,
 } from 'motion/react';
-import { type ReactElement } from 'react';
+import { type ReactElement, type RefObject } from 'react';
 
 import { ElevationStep } from '@/constants/ElevationSteps.ts';
 import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
@@ -32,12 +32,9 @@ export function Header(): ReactElement {
   );
 }
 
-export function HeaderController(): ReactElement {
+function HeaderController(): ReactElement {
   // Hooks - Elevated State
   const { headerRef, heroSectionRef } = useDomRefsContext();
-
-  // Hooks - Local State
-  const { onPointerEnter, onPointerLeave } = useHoverContext();
 
   // Motion Hooks - Scroll
   const { scrollY: pageScrollMotionValue } = useScroll({ axis: 'y' });
@@ -80,6 +77,29 @@ export function HeaderController(): ReactElement {
       return scrollProgress === 1 ? '-100%' : '0%';
     },
   );
+
+  return (
+    <ActualHeader
+      headerRef={headerRef as RefObject<HTMLElement>}
+      paddingBlockMotionValue={paddingBlockMotionValue}
+      borderThicknessMotionValue={borderThicknessMotionValue}
+      translateYMotionValue={translateYMotionValue as MotionValue<string>}
+    />
+  );
+}
+
+function ActualHeader({
+  headerRef,
+  paddingBlockMotionValue,
+  borderThicknessMotionValue,
+  translateYMotionValue,
+}: {
+  headerRef: RefObject<HTMLElement>;
+  paddingBlockMotionValue: MotionValue<string>;
+  borderThicknessMotionValue: MotionValue<string>;
+  translateYMotionValue: MotionValue<string>;
+}): ReactElement {
+  const { onPointerEnter, onPointerLeave } = useHoverContext();
 
   return (
     <motion.header
@@ -128,7 +148,7 @@ function HeaderContentLayer({
           marginBlock: borderThicknessMotionValue,
         }}
       >
-        <Developer />
+        <Developer isHorizontal={true} />
         <div className="text-white">MENU</div>
       </motion.div>
     </div>
@@ -142,7 +162,7 @@ function HeaderBorderLayer(): ReactElement {
   return (
     <RGBBackground
       className="absolute top-0 right-0 bottom-0 left-0 z-1"
-      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorder.createMatrix()}
+      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorderBlock.createMatrix()}
       isUsingAlternativeColors={isHovered}
       preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
       preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
@@ -177,7 +197,7 @@ function HeaderBlurShadowLayer({
         className="absolute top-0 right-0 bottom-0 left-0 z-0 grid"
       >
         <RGBBackground
-          rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorder.createMatrix()}
+          rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorderBlock.createMatrix()}
           isUsingAlternativeColors={isHovered}
           preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
           preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"

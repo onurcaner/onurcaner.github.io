@@ -21,7 +21,7 @@
   --theme-perspective: 80rem;
 
   --theme-background-opacity: 90%;
-  --theme-elevation-step: 0.25rem;
+  --theme-elevation-step: 1rem;
 
   --theme-blur-shadow-opacity: 100%;
 }

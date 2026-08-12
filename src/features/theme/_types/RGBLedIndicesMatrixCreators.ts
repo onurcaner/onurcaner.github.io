@@ -1,14 +1,14 @@
 import { type RGBLedIndicesMatrixCreator } from './RGBLedIndicesMatrixCreator.ts';
 
 export interface RGBLedIndicesMatrixCreators {
-  headerBorder: RGBLedIndicesMatrixCreator;
+  headerBorderBlock: RGBLedIndicesMatrixCreator;
 
   developerName: RGBLedIndicesMatrixCreator;
   developerJobTitle: RGBLedIndicesMatrixCreator;
 
-  heroSectionBorder: RGBLedIndicesMatrixCreator;
   heroSectionTitle: RGBLedIndicesMatrixCreator;
   heroSectionDescription: RGBLedIndicesMatrixCreator;
+  heroSectionBorderBottom: RGBLedIndicesMatrixCreator;
 
   sectionHeadingIcon: RGBLedIndicesMatrixCreator;
   sectionHeadingTitle: RGBLedIndicesMatrixCreator;
@@ -25,4 +25,8 @@ export interface RGBLedIndicesMatrixCreators {
   educationSlashWorkExperienceDescriptionListTitle: RGBLedIndicesMatrixCreator;
   educationSlashWorkExperienceDescriptionListItemIcon: RGBLedIndicesMatrixCreator;
   educationSlashWorkExperienceDescriptionListItemText: RGBLedIndicesMatrixCreator;
+
+  callToActionSectionBorderBlock: RGBLedIndicesMatrixCreator;
+  callToActionSectionTitle: RGBLedIndicesMatrixCreator;
+  callToActionSectionDescription: RGBLedIndicesMatrixCreator;
 }

@@ -15,7 +15,7 @@ export function HeroSection(): ReactElement {
 
   return (
     <div
-      className="relative z-0"
+      className="relative z-0 pb-(--theme-border-thickness)"
       ref={heroSectionRef as RefObject<HTMLDivElement>}
     >
       <HeroContentLayer />
@@ -27,7 +27,7 @@ export function HeroSection(): ReactElement {
 
 function HeroContentLayer(): ReactElement {
   return (
-    <div className="relative z-1 grid min-h-screen grid-rows-[max-content_1fr] bg-(--theme-component-hero-section-background-color)">
+    <div className="relative z-2 grid min-h-screen grid-rows-[max-content_1fr] bg-(--theme-component-hero-section-background-color)">
       <HeroSectionFakeHeader />
       <div className="max-w-9xl mx-auto grid w-full justify-start self-center px-16 pt-20 pb-40">
         <HeroSectionTitle />
@@ -42,8 +42,8 @@ function HeroBorderLayer(): ReactElement {
 
   return (
     <RGBBackground
-      className="relative z-1 h-(--theme-border-thickness)"
-      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionBorder.createMatrix()}
+      className="absolute top-0 right-0 bottom-0 left-0 z-1"
+      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionBorderBottom.createMatrix()}
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-hero-section-border-color)"
     />
@@ -59,7 +59,7 @@ function HeroBlurShadowLayer(): ReactElement {
       elevationStep={ElevationStep.HeroSection}
     >
       <RGBBackground
-        rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionBorder.createMatrix()}
+        rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionBorderBottom.createMatrix()}
         isUsingAlternativeColors={false}
         preferredNormalFallbackColor="var(--theme-component-hero-section-background-color)"
       />

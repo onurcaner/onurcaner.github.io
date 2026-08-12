@@ -1,11 +1,27 @@
 import { type ReactElement } from 'react';
 
+import { ClassNameJoiner } from '@/utils/ClassNameJoiner.ts';
+
 import { DeveloperJobTitle } from './DeveloperJobTitle.tsx';
 import { DeveloperName } from './DeveloperName.tsx';
 
-export function Developer(): ReactElement {
+export function Developer({
+  isHorizontal,
+  isVertical,
+}: {
+  isVertical?: true;
+  isHorizontal?: true;
+}): ReactElement {
+  if (isHorizontal === isVertical) throw new Error();
+
   return (
-    <div className="relative z-0 flex items-center gap-x-4">
+    <div
+      className={new ClassNameJoiner().join(
+        'relative z-0',
+        isHorizontal && 'flex items-center gap-x-4',
+        isVertical && 'grid',
+      )}
+    >
       <DeveloperName />
       <DeveloperJobTitle />
     </div>

@@ -1,6 +1,8 @@
 import { type ReactElement } from 'react';
 
+import { Footer } from '@/components/Footer.tsx';
 import { Header } from '@/components/Header/Header.tsx';
+import { CallToActionSection } from '@/sections/CallToActionSection/CallToActionSection.tsx';
 import { EducationSection } from '@/sections/EducationSection/EducationSection.tsx';
 import { HeroSection } from '@/sections/HeroSection/HeroSection.tsx';
 import { SkillsSection } from '@/sections/SkillsSection/SkillsSection.tsx';
@@ -16,9 +18,9 @@ export function ResumePage(): ReactElement {
         <SkillsSection />
         <EducationSection />
         <WorkExperienceSection />
-
-        <div className="h-[200vh]" />
       </SectionsLayout>
+      <CallToActionSection />
+      <Footer />
     </>
   );
 }

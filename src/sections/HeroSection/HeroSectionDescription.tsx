@@ -14,12 +14,12 @@ export function HeroSectionDescription(): ReactElement {
 
   return (
     <RGBText
-      parentBackgroundClassName="bg-(--theme-component-hero-section-background-color)"
+      parentBackgroundColor="var(--theme-component-hero-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionDescription.createMatrix()}
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-hero-section-description-text-color)"
     >
-      <p className="text-5 max-w-[40em] font-light">{description}</p>
+      <p className="text-6 max-w-224 font-light">{description}</p>
     </RGBText>
   );
 }

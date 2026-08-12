@@ -114,7 +114,7 @@ function DescriptionListTitle({
 
   return (
     <RGBText
-      parentBackgroundClassName="bg-(--theme-component-section-background-color)"
+      parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-description-list-title-text-color)"
@@ -189,7 +189,7 @@ function DescriptionListItem({
     <li className="relative grid grid-cols-[max-content_minmax(0,1fr)] items-center gap-x-0">
       {/* Icon */}
       <RGBText
-        parentBackgroundClassName="bg-(--theme-component-section-background-color)"
+        parentBackgroundColor="var(--theme-component-section-background-color)"
         rgbLedIndicesMatrix={rgbLedIndicesMatrices.icon}
         isUsingAlternativeColors={false}
         preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-description-list-item-icon-color)"
@@ -201,7 +201,7 @@ function DescriptionListItem({
 
       {/* Text */}
       <RGBText
-        parentBackgroundClassName="bg-(--theme-component-section-background-color)"
+        parentBackgroundColor="var(--theme-component-section-background-color)"
         rgbLedIndicesMatrix={rgbLedIndicesMatrices.text}
         isUsingAlternativeColors={false}
         preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-description-list-item-text-color)"

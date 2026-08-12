@@ -50,7 +50,7 @@ function SectionIcon({
     <RGBText
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
       isUsingAlternativeColors={false}
-      parentBackgroundClassName="bg-(--theme-component-section-background-color)"
+      parentBackgroundColor="var(--theme-component-section-background-color)"
       preferredNormalFallbackColor="var(--theme-component-section-heading-icon-color)"
     >
       <div className="text-8 px-0.5" aria-hidden={true}>
@@ -80,7 +80,7 @@ function SectionTitle({
     <RGBText
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
       isUsingAlternativeColors={false}
-      parentBackgroundClassName="bg-(--theme-component-section-background-color)"
+      parentBackgroundColor="var(--theme-component-section-background-color)"
       preferredNormalFallbackColor="var(--theme-component-section-heading-text-color)"
     >
       <h2 className="text-7 font-bold uppercase">{children}</h2>

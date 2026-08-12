@@ -12,6 +12,7 @@ export function DomRefsContextProvider({
   const skillsSectionRef = useRef<HTMLElement | null>(null);
   const educationSectionRef = useRef<HTMLElement | null>(null);
   const workExperienceSectionRef = useRef<HTMLElement | null>(null);
+  const callToActionSectionRef = useRef<HTMLElement | null>(null);
 
   return (
     <DomRefsContext
@@ -21,6 +22,7 @@ export function DomRefsContextProvider({
         skillsSectionRef: skillsSectionRef,
         educationSectionRef: educationSectionRef,
         workExperienceSectionRef: workExperienceSectionRef,
+        callToActionSectionRef: callToActionSectionRef,
       }}
     >
       {children}

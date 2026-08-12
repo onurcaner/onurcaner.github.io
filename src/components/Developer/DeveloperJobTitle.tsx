@@ -12,7 +12,7 @@ export function DeveloperJobTitle(): ReactElement {
 
   return (
     <RGBText
-      parentBackgroundClassName="bg-(--theme-component-header-background-color)"
+      parentBackgroundColor="var(--theme-component-header-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.developerJobTitle.createMatrix()}
       isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-developer-job-title-text-color)"

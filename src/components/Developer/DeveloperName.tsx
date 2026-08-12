@@ -16,7 +16,7 @@ export function DeveloperName(): ReactElement {
 
   return (
     <RGBText
-      parentBackgroundClassName="bg-(--theme-component-header-background-color)"
+      parentBackgroundColor="var(--theme-component-header-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.developerName.createMatrix()}
       isUsingAlternativeColors={isHovered}
       preferredNormalFallbackColor="var(--theme-component-developer-name-text-color)"
