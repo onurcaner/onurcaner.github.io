@@ -15,7 +15,7 @@ export function HeroSection(): ReactElement {
 
   return (
     <div
-      className="relative z-0 pb-(--theme-border-thickness)"
+      className="relative pb-(--theme-border-thickness)"
       ref={heroSectionRef as RefObject<HTMLDivElement>}
     >
       <HeroContentLayer />

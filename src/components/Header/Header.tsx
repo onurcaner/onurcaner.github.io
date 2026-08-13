@@ -111,7 +111,7 @@ function ActualHeader({
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
     >
-      <div className="relative z-0">
+      <div className="relative">
         <HeaderContentLayer
           paddingBlockMotionValue={paddingBlockMotionValue}
           borderThicknessMotionValue={borderThicknessMotionValue}

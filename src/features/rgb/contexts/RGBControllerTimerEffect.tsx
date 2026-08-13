@@ -1,51 +1,51 @@
-import {
-  type Dispatch,
-  type ReactElement,
-  type SetStateAction,
-  useEffect,
-  useRef,
-} from 'react';
+import { type MotionValue } from 'motion';
+import { type ReactElement, useEffect, useRef } from 'react';
 
 import { type RGBControllerConfig } from '../_types/RGBControllerConfig.ts';
 import { type RGBControllerState } from '../_types/RGBControllerState.ts';
 
 export function RGBControllerTimerEffect({
   rgbControllerConfig,
-  setRGBControllerState,
+  rgbControllerStateMotionValue,
 }: {
   rgbControllerConfig: RGBControllerConfig;
-  setRGBControllerState: Dispatch<SetStateAction<RGBControllerState>>;
+  rgbControllerStateMotionValue: MotionValue<RGBControllerState>;
 }): ReactElement {
   // Hooks - Local States
-  const timerId = useRef<number | null>(null);
+  const rafId = useRef<number | null>(null);
+  const lastTime = useRef<number>(0);
 
   // Hooks - Effect
   useEffect(() => {
-    const handleInterval = (): void => {
-      setRGBControllerState((state) => ({
-        ...state,
-        normalRGBLedStates: rgbControllerConfig.normalRGBLedStatesMapper.map(
-          state.normalRGBLedStates,
-        ),
-        alternativeRGBLedStates:
-          rgbControllerConfig.alternativeRGBLedStatesMapper.map(
-            state.alternativeRGBLedStates,
+    const tickHandler = (): void => {
+      const nowTime = performance.now();
+      const tickPeriod = nowTime - lastTime.current;
+      if (tickPeriod >= rgbControllerConfig.tickIntervalMs) {
+        lastTime.current = performance.now();
+
+        rgbControllerStateMotionValue.set({
+          normalRGBLedStates: rgbControllerConfig.normalRGBLedStatesMapper.map(
+            rgbControllerStateMotionValue.get().normalRGBLedStates,
           ),
-      }));
+          alternativeRGBLedStates:
+            rgbControllerConfig.alternativeRGBLedStatesMapper.map(
+              rgbControllerStateMotionValue.get().alternativeRGBLedStates,
+            ),
+        });
+      }
+
+      rafId.current = requestAnimationFrame(tickHandler);
     };
 
-    timerId.current ??= setInterval(
-      handleInterval,
-      rgbControllerConfig.tickIntervalMs,
-    );
+    rafId.current = requestAnimationFrame(tickHandler);
 
     return () => {
-      if (timerId.current === null) return;
+      if (rafId.current === null) return;
 
-      clearInterval(timerId.current);
-      timerId.current = null;
+      cancelAnimationFrame(rafId.current);
+      rafId.current = null;
     };
-  }, [rgbControllerConfig, setRGBControllerState]);
+  }, [rgbControllerConfig, rgbControllerStateMotionValue]);
 
   return <></>;
 }

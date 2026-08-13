@@ -17,7 +17,7 @@ export function SectionLayout({
 }): ReactElement {
   return (
     <section
-      className="relative z-0 grid min-h-screen content-center items-center py-40"
+      className="relative grid min-h-screen content-center items-center py-40"
       ref={sectionRef}
     >
       <SectionHeading iconName={sectionIconName}>{sectionTitle}</SectionHeading>

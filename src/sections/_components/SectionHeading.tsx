@@ -20,7 +20,7 @@ export function SectionHeading({
   return (
     <div
       className={new ClassNameJoiner().join(
-        'mb-10 grid grid-cols-[max-content_minmax(0,1fr)] items-center gap-x-4',
+        'relative z-0 mb-10 grid grid-cols-[max-content_minmax(0,1fr)] items-center gap-x-4',
         className,
       )}
     >

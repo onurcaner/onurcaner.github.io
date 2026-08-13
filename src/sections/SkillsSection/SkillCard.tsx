@@ -25,7 +25,7 @@ export function SkillCard(props: SkillCardProps) {
 
 function SkillCardLayout({ skill, index }: SkillCardProps): ReactElement {
   return (
-    <div className="relative z-0 grid">
+    <div className="relative grid">
       <SkillCardContentLayer skill={skill} index={index} />
       <SkillCardBorderLayer skill={skill} index={index} />
       <SkillCardBlurShadowLayer skill={skill} index={index} />

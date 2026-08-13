@@ -4,7 +4,7 @@ import { Developer } from '@/components/Developer/Developer.tsx';
 
 export function Footer(): ReactElement {
   return (
-    <footer className="relative z-0 grid min-h-[50vh] content-center bg-(--theme-component-footer-background-color)">
+    <footer className="relative grid min-h-[50vh] content-center bg-(--theme-component-footer-background-color)">
       <div className="max-w-9xl mx-auto grid w-full grid-cols-[repeat(2,minmax(max-content_1fr))] gap-x-16 px-16 pt-40 pb-20">
         <div className="col-start-1 col-end-2 row-start-1 row-end-2 justify-self-start">
           <FooterDeveloper />

@@ -16,7 +16,7 @@ export function RGBBackground({
 }: RGBBackgroundProps): ReactElement {
   return (
     <div className={className} aria-hidden={true}>
-      <div className="relative z-0 h-full w-full">
+      <div className="relative h-full w-full">
         <BackdropBlurLayer />
         <RGBLedGridLayer {...restProps} />
       </div>

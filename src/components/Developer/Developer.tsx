@@ -17,7 +17,7 @@ export function Developer({
   return (
     <div
       className={new ClassNameJoiner().join(
-        'relative z-0',
+        'relative',
         isHorizontal && 'flex items-center gap-x-4',
         isVertical && 'grid',
       )}

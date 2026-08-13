@@ -1,41 +1,59 @@
-import { type ReactElement, useEffect } from 'react';
+import { type MotionValue } from 'motion';
+import { useMotionValueEvent } from 'motion/react';
+import { type ReactElement } from 'react';
+
+import { type RGBControllerState } from '@/features/rgb/_types/RGBControllerState.ts';
 
 import { RGBLedType } from '../_constants/RGBLedType.ts';
 import { type RGBLedState } from '../_types/RGBLedState.ts';
 import { RGBLedCSSVarAdapter } from '../utils/RGBLedCSSVarAdapter.ts';
 
 export function RGBControllerDOMEffect({
-  rgbLedStates,
-  rgbLedType,
+  rgbControllerStateMotionValue,
 }: {
-  rgbLedStates: RGBLedState[];
-  rgbLedType: RGBLedType;
+  rgbControllerStateMotionValue: MotionValue<RGBControllerState>;
 }): ReactElement {
-  useEffect(() => {
-    const root = document.documentElement;
-    rgbLedStates.forEach((rgbLedState, rgbLedIndex) => {
-      const rgbLedCSSVarPropertyNameGenerator = new RGBLedCSSVarAdapter({
-        rgbLedIndex: rgbLedIndex,
-        rgbLedType: rgbLedType,
-      });
-      root.style.setProperty(
-        rgbLedCSSVarPropertyNameGenerator.generateColorPropertyName(),
-        rgbLedState.color,
+  useMotionValueEvent(
+    rgbControllerStateMotionValue,
+    'change',
+    (rgbControllerState) => {
+      rgbControllerState.normalRGBLedStates.forEach(
+        affectRootCSSVars.bind(null, RGBLedType.Normal),
       );
-      root.style.setProperty(
-        rgbLedCSSVarPropertyNameGenerator.generateTransitionDurationPropertyName(),
-        rgbLedState.transitionDuration,
+      rgbControllerState.alternativeRGBLedStates.forEach(
+        affectRootCSSVars.bind(null, RGBLedType.Alternative),
       );
-      root.style.setProperty(
-        rgbLedCSSVarPropertyNameGenerator.generateTransitionTimingFunctionPropertyName(),
-        rgbLedState.transitionTimingFunction,
-      );
-      root.style.setProperty(
-        rgbLedCSSVarPropertyNameGenerator.generateFallbackColorOpacityPropertyName(),
-        rgbLedState.isPreferringFallbackColor ? '100%' : '0%',
-      );
-    });
-  }, [rgbLedStates, rgbLedType]);
+    },
+  );
 
   return <></>;
+}
+
+function affectRootCSSVars(
+  rgbLedType: RGBLedType,
+  rgbLedState: RGBLedState,
+  rgbLedIndex: number,
+): void {
+  const rgbLedCSSVarPropertyNameGenerator = new RGBLedCSSVarAdapter({
+    rgbLedIndex: rgbLedIndex,
+    rgbLedType: rgbLedType,
+  });
+
+  const rootStyle = document.documentElement.style;
+  rootStyle.setProperty(
+    rgbLedCSSVarPropertyNameGenerator.generateColorPropertyName(),
+    rgbLedState.color,
+  );
+  rootStyle.setProperty(
+    rgbLedCSSVarPropertyNameGenerator.generateTransitionDurationPropertyName(),
+    rgbLedState.transitionDuration,
+  );
+  rootStyle.setProperty(
+    rgbLedCSSVarPropertyNameGenerator.generateTransitionTimingFunctionPropertyName(),
+    rgbLedState.transitionTimingFunction,
+  );
+  rootStyle.setProperty(
+    rgbLedCSSVarPropertyNameGenerator.generateFallbackColorOpacityPropertyName(),
+    rgbLedState.isPreferringFallbackColor ? '100%' : '0%',
+  );
 }

@@ -31,7 +31,7 @@ export function RGBText({
 }: RGBTextProps): ReactElement {
   return (
     <div {...restProps}>
-      <div className="relative z-0 grid h-full w-full">
+      <div className="relative grid h-full w-full">
         <BackgroundColorMatchingFilterLayer
           parentBackgroundColor={parentBackgroundColor}
         >

@@ -3,18 +3,19 @@ import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
 import { LinearRGBLedStatesMapper } from '@/features/rgb/utils/LinearRGBLedStatesMapper.ts';
 
 enum Option {
-  TickIntervalMs = 10000000,
-  Period = 12,
+  TickIntervalMs = 1000,
+  Period = 36,
   TransitionDurationMs = 0,
+  Length = 288,
 }
 
 export class TestThemeRGBControllerConfig implements RGBControllerConfig {
   public initialNormalRGBLedStates: RGBLedState[] = Array.from({
-    length: 144,
+    length: Option.Length,
   }).map((_, index): RGBLedState => ({
     color:
       index % Option.Period === 2
-        ? `oklch(0.72 0.12 ${((index * 360) / 144).toString()})`
+        ? `oklch(0.72 0.12 ${((index * 360) / Option.Length).toString()})`
         : 'oklch(0 0 0)',
     isPreferringFallbackColor: index % Option.Period !== 2,
     transitionDuration:
@@ -26,13 +27,13 @@ export class TestThemeRGBControllerConfig implements RGBControllerConfig {
   }));
 
   public initialAlternativeRGBLedStates: RGBLedState[] = Array.from({
-    length: 144,
+    length: Option.Length,
   }).map((_, index): RGBLedState => ({
     color:
       index % Option.Period === 2 ||
       index % Option.Period === 1 ||
       index % Option.Period === 0
-        ? `oklch(0.72 0.12 ${((index * 360) / 144).toString()})`
+        ? `oklch(0.72 0.12 ${((index * 360) / Option.Length).toString()})`
         : 'oklch(0 0 0)',
     isPreferringFallbackColor: !(
       index % Option.Period === 2 ||

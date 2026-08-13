@@ -14,7 +14,7 @@ export function CallToActionSection(): ReactElement {
 
   return (
     <section
-      className="relative z-0 py-(--theme-border-thickness)"
+      className="relative py-(--theme-border-thickness)"
       ref={callToActionSectionRef}
     >
       <CallToActionContentLayer />

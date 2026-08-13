@@ -1,6 +1,6 @@
-import { type ReactElement, type ReactNode, useEffect, useState } from 'react';
+import { useMotionValue } from 'motion/react';
+import { type ReactElement, type ReactNode, useEffect } from 'react';
 
-import { RGBLedType } from '../_constants/RGBLedType.ts';
 import { type RGBControllerConfig } from '../_types/RGBControllerConfig.ts';
 import { type RGBControllerState } from '../_types/RGBControllerState.ts';
 
@@ -16,38 +16,29 @@ export function RGBControllerContextProvider({
   rgbControllerConfig: RGBControllerConfig;
 }): ReactElement {
   // Hooks - Local State
-  const [rgbControllerState, setRgbControllerState] =
-    useState<RGBControllerState>({
+  const rgbControllerStateMotionValue = useMotionValue<RGBControllerState>({
+    normalRGBLedStates: rgbControllerConfig.initialNormalRGBLedStates,
+    alternativeRGBLedStates: rgbControllerConfig.initialAlternativeRGBLedStates,
+  });
+
+  // Hooks - Effects
+  useEffect(() => {
+    rgbControllerStateMotionValue.set({
       normalRGBLedStates: rgbControllerConfig.initialNormalRGBLedStates,
       alternativeRGBLedStates:
         rgbControllerConfig.initialAlternativeRGBLedStates,
     });
-
-  // Hooks - Effects
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setRgbControllerState((state) => ({
-      ...state,
-      normalRGBLedStates: rgbControllerConfig.initialNormalRGBLedStates,
-      alternativeRGBLedStates:
-        rgbControllerConfig.initialAlternativeRGBLedStates,
-    }));
-  }, [rgbControllerConfig]);
+  }, [rgbControllerConfig, rgbControllerStateMotionValue]);
 
   return (
     <>
       <RGBControllerTimerEffect
         rgbControllerConfig={rgbControllerConfig}
-        setRGBControllerState={setRgbControllerState}
+        rgbControllerStateMotionValue={rgbControllerStateMotionValue}
       />
 
       <RGBControllerDOMEffect
-        rgbLedStates={rgbControllerState.normalRGBLedStates}
-        rgbLedType={RGBLedType.Normal}
-      />
-      <RGBControllerDOMEffect
-        rgbLedStates={rgbControllerState.alternativeRGBLedStates}
-        rgbLedType={RGBLedType.Alternative}
+        rgbControllerStateMotionValue={rgbControllerStateMotionValue}
       />
 
       <RGBControllerContext value={{}}>{children}</RGBControllerContext>
