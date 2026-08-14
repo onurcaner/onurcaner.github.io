@@ -1,7 +1,7 @@
 import { type ReactElement, type ReactNode } from 'react';
 
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
-import { EducationSlashWorkExperienceWaterfallOffsetsContext } from '@/sections/EducationSlashWorkExperience/contexts/EducationSlashWorkExperienceWaterfallOffsetsContext.tsx';
+import { EducationSlashWorkExperienceWaterfallOffsetsContext } from '@/sections/EducationSlashExperience/contexts/EducationSlashWorkExperienceWaterfallOffsetsContext.tsx';
 
 import { useEducationSlashWorkExperienceDescriptionListItemCountContext } from './useEducationSlashWorkExperienceDescriptionListItemCountContext.tsx';
 
@@ -20,10 +20,9 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
     itemCountMatrix.map((_, educationSlashWorkExperienceIndex) => {
       const mainLengths = [
         educationSlashWorkExperienceIndex *
-          rgbLedIndicesMatrixCreators.educationSlashWorkExperienceTitle
-            .selfLength,
+          rgbLedIndicesMatrixCreators.educationSlashExperienceTitle.selfLength,
         educationSlashWorkExperienceIndex *
-          rgbLedIndicesMatrixCreators.educationSlashWorkExperienceDateRange
+          rgbLedIndicesMatrixCreators.educationSlashExperienceDateRange
             .selfLength,
         educationSlashWorkExperienceIndex *
           rgbLedIndicesMatrixCreators.educationProviderSlashCompanyName
@@ -32,7 +31,7 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
           rgbLedIndicesMatrixCreators.educationProviderSlashCompanyLocation
             .selfLength,
         educationSlashWorkExperienceIndex *
-          rgbLedIndicesMatrixCreators.educationGradeSlashWorkExperienceLevel
+          rgbLedIndicesMatrixCreators.educationGradeSlashExperienceLevel
             .selfLength,
       ];
 
@@ -42,14 +41,13 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
           const fromTitles =
             itemCounts.length *
             rgbLedIndicesMatrixCreators
-              .educationSlashWorkExperienceDescriptionListTitle.selfLength;
+              .educationSlashExperienceDescriptionListTitle.selfLength;
           const fromItemIcons = itemCounts.reduce(
             (sum, current) =>
               sum +
               current *
                 rgbLedIndicesMatrixCreators
-                  .educationSlashWorkExperienceDescriptionListItemIcon
-                  .selfLength,
+                  .educationSlashExperienceDescriptionListItemIcon.selfLength,
             0,
           );
           const fromItemTexts = itemCounts.reduce(
@@ -57,8 +55,7 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
               sum +
               current *
                 rgbLedIndicesMatrixCreators
-                  .educationSlashWorkExperienceDescriptionListItemText
-                  .selfLength,
+                  .educationSlashExperienceDescriptionListItemText.selfLength,
             0,
           );
 
@@ -76,7 +73,7 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
         const fromTitles =
           descriptionListIndex *
           rgbLedIndicesMatrixCreators
-            .educationSlashWorkExperienceDescriptionListTitle.selfLength;
+            .educationSlashExperienceDescriptionListTitle.selfLength;
         const fromItemIcons = itemCounts
           .slice(0, descriptionListIndex)
           .reduce(
@@ -84,8 +81,7 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
               sum +
               current *
                 rgbLedIndicesMatrixCreators
-                  .educationSlashWorkExperienceDescriptionListItemIcon
-                  .selfLength,
+                  .educationSlashExperienceDescriptionListItemIcon.selfLength,
             0,
           );
         const fromItemTexts = itemCounts
@@ -95,8 +91,7 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
               sum +
               current *
                 rgbLedIndicesMatrixCreators
-                  .educationSlashWorkExperienceDescriptionListItemText
-                  .selfLength,
+                  .educationSlashExperienceDescriptionListItemText.selfLength,
             0,
           );
 

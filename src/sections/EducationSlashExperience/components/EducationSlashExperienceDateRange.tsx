@@ -4,7 +4,7 @@ import { useLanguageContext } from '@/contexts/url/language/useLanguageContext.t
 import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
-import { useEducationSlashWorkExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashWorkExperienceWaterfallOffsetsContext.tsx';
+import { useEducationSlashExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashExperienceWaterfallOffsetsContext.tsx';
 
 export function EducationSlashWorkExperienceDateRange({
   startDate,
@@ -20,19 +20,17 @@ export function EducationSlashWorkExperienceDateRange({
   // Hooks - Elevated States
   const { language } = useLanguageContext();
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
-  const { educationSlashWorkExperienceWaterfallOffsets } =
-    useEducationSlashWorkExperienceWaterfallOffsetsContext();
+  const { educationSlashExperienceWaterfallOffsets } =
+    useEducationSlashExperienceWaterfallOffsetsContext();
 
   // Derived States
   const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixCreators.educationSlashWorkExperienceDateRange.createMatrix(
-      {
-        waterfallLength: educationSlashWorkExperienceWaterfallOffsets.at(
-          educationSlashWorkExperienceIndex,
-        ),
-        waterfallCount: 1,
-      },
-    );
+    rgbLedIndicesMatrixCreators.educationSlashExperienceDateRange.createMatrix({
+      waterfallLength: educationSlashExperienceWaterfallOffsets.at(
+        educationSlashWorkExperienceIndex,
+      ),
+      waterfallCount: 1,
+    });
 
   const isEnded = new Date().getTime() > endDate.getTime();
   const dateTimeFormat = new Intl.DateTimeFormat(language, {

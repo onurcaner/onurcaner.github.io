@@ -6,8 +6,8 @@ import { useListDataQuery } from '@/contexts/remote/list/useListDataQuery.tsx';
 import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
-import { useEducationSlashWorkExperienceDescriptionListItemCountContext } from '../contexts/useEducationSlashWorkExperienceDescriptionListItemCountContext.tsx';
-import { useEducationSlashWorkExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashWorkExperienceWaterfallOffsetsContext.tsx';
+import { useEducationSlashExperienceDescriptionListItemCountContext } from '../contexts/useEducationSlashExperienceDescriptionListItemCountContext.tsx';
+import { useEducationSlashExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashExperienceWaterfallOffsetsContext.tsx';
 
 export function EducationSlashWorkExperienceDescriptionList({
   listId,
@@ -21,7 +21,7 @@ export function EducationSlashWorkExperienceDescriptionList({
   // Hooks - Elevated States
   const list = useListDataQuery({ id: listId });
   const { setItemCount, itemCountMatrix } =
-    useEducationSlashWorkExperienceDescriptionListItemCountContext();
+    useEducationSlashExperienceDescriptionListItemCountContext();
 
   // Hooks - Elevated State Synchronisation
   useLayoutEffect(() => {
@@ -33,7 +33,7 @@ export function EducationSlashWorkExperienceDescriptionList({
 
     setItemCount({
       newItemCount: list.items.length,
-      educationSlashWorkExperienceIndex: educationSlashWorkExperienceIndex,
+      educationSlashExperienceIndex: educationSlashWorkExperienceIndex,
       descriptionListIndex: listIndex,
     });
   }, [
@@ -83,18 +83,18 @@ function DescriptionListTitle({
   // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
   const {
-    educationSlashWorkExperienceWaterfallOffsets,
-    educationSlashWorkExperienceDescriptionListWaterfallOffsets,
-  } = useEducationSlashWorkExperienceWaterfallOffsetsContext();
+    educationSlashExperienceWaterfallOffsets,
+    educationSlashExperienceDescriptionListWaterfallOffsets,
+  } = useEducationSlashExperienceWaterfallOffsetsContext();
 
   // Derived States
   const waterfallOffsets = {
     educationSlashWorkExperience:
-      educationSlashWorkExperienceWaterfallOffsets.at(
+      educationSlashExperienceWaterfallOffsets.at(
         educationSlashWorkExperienceIndex,
       ) ?? 0,
     list:
-      educationSlashWorkExperienceDescriptionListWaterfallOffsets
+      educationSlashExperienceDescriptionListWaterfallOffsets
         .at(educationSlashWorkExperienceIndex)
         ?.at(listIndex) ?? 0,
   };
@@ -102,12 +102,11 @@ function DescriptionListTitle({
     waterfallOffsets.educationSlashWorkExperience + waterfallOffsets.list;
 
   const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixCreators.educationSlashWorkExperienceDescriptionListTitle.createMatrix(
+    rgbLedIndicesMatrixCreators.educationSlashExperienceDescriptionListTitle.createMatrix(
       {
         waterfallLength:
           waterFallOffset +
-          rgbLedIndicesMatrixCreators.educationSlashWorkExperienceTitle
-            .groupLength,
+          rgbLedIndicesMatrixCreators.educationSlashExperienceTitle.groupLength,
         waterfallCount: 1,
       },
     );
@@ -138,48 +137,48 @@ function DescriptionListItem({
   // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
   const {
-    educationSlashWorkExperienceWaterfallOffsets,
-    educationSlashWorkExperienceDescriptionListWaterfallOffsets,
-  } = useEducationSlashWorkExperienceWaterfallOffsetsContext();
+    educationSlashExperienceWaterfallOffsets,
+    educationSlashExperienceDescriptionListWaterfallOffsets,
+  } = useEducationSlashExperienceWaterfallOffsetsContext();
 
   // Derived States
   const waterfallOffsets = {
     educationSlashWorkExperience:
-      educationSlashWorkExperienceWaterfallOffsets.at(
+      educationSlashExperienceWaterfallOffsets.at(
         educationSlashWorkExperienceIndex,
       ) ?? 0,
     list:
-      educationSlashWorkExperienceDescriptionListWaterfallOffsets
+      educationSlashExperienceDescriptionListWaterfallOffsets
         .at(educationSlashWorkExperienceIndex)
         ?.at(listIndex) ?? 0,
     listTitle:
-      rgbLedIndicesMatrixCreators
-        .educationSlashWorkExperienceDescriptionListTitle.selfLength,
+      rgbLedIndicesMatrixCreators.educationSlashExperienceDescriptionListTitle
+        .selfLength,
   };
   const waterFallOffset =
     waterfallOffsets.educationSlashWorkExperience +
-    rgbLedIndicesMatrixCreators.educationSlashWorkExperienceTitle.groupLength +
+    rgbLedIndicesMatrixCreators.educationSlashExperienceTitle.groupLength +
     waterfallOffsets.list +
     waterfallOffsets.listTitle;
 
   const rgbLedIndicesMatrices = {
-    icon: rgbLedIndicesMatrixCreators.educationSlashWorkExperienceDescriptionListItemIcon.createMatrix(
+    icon: rgbLedIndicesMatrixCreators.educationSlashExperienceDescriptionListItemIcon.createMatrix(
       {
         waterfallLength:
           waterFallOffset +
           itemIndex *
             rgbLedIndicesMatrixCreators
-              .educationSlashWorkExperienceDescriptionListItemIcon.groupLength,
+              .educationSlashExperienceDescriptionListItemIcon.groupLength,
         waterfallCount: 1,
       },
     ),
-    text: rgbLedIndicesMatrixCreators.educationSlashWorkExperienceDescriptionListItemText.createMatrix(
+    text: rgbLedIndicesMatrixCreators.educationSlashExperienceDescriptionListItemText.createMatrix(
       {
         waterfallLength:
           waterFallOffset +
           itemIndex *
             rgbLedIndicesMatrixCreators
-              .educationSlashWorkExperienceDescriptionListItemText.groupLength,
+              .educationSlashExperienceDescriptionListItemText.groupLength,
         waterfallCount: 1,
       },
     ),

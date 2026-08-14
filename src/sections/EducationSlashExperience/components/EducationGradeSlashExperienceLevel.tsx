@@ -5,7 +5,7 @@ import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 import { useEducationSlashWorkExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashWorkExperienceWaterfallOffsetsContext.tsx';
 
-export function EducationSlashWorkExperienceTitle({
+export function EducationGradeSlashWorkExperienceLevel({
   children,
   educationSlashWorkExperienceIndex,
 }: {
@@ -19,21 +19,24 @@ export function EducationSlashWorkExperienceTitle({
 
   // Derived States
   const rgbLedIndicesMatrix =
-    rgbLedIndicesMatrixCreators.educationSlashWorkExperienceTitle.createMatrix({
-      waterfallLength: educationSlashWorkExperienceWaterfallOffsets.at(
-        educationSlashWorkExperienceIndex,
-      ),
-      waterfallCount: 1,
-    });
+    rgbLedIndicesMatrixCreators.educationGradeSlashExperienceLevel.createMatrix(
+      {
+        waterfallLength: educationSlashWorkExperienceWaterfallOffsets.at(
+          educationSlashWorkExperienceIndex,
+        ),
+        waterfallCount: 1,
+      },
+    );
 
   return (
     <RGBText
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
       isUsingAlternativeColors={false}
-      preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-title-text-color)"
+      preferredNormalFallbackColor="var(--theme-component-education-grade-slash-work-experience-level-text-color)"
     >
-      <h3 className="text-4-5 font-bold">{children}</h3>
+      {/*<p className="text-4-5 font-extralight capitalize">{children}</p>*/}
+      <p className="text-4 font-light capitalize">{children}</p>
     </RGBText>
   );
 }

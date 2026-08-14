@@ -1,8 +1,8 @@
 import { type ReactElement, useLayoutEffect } from 'react';
 
-import { useEducationSlashWorkExperienceDescriptionListItemCountContext } from '../contexts/useEducationSlashWorkExperienceDescriptionListItemCountContext.tsx';
+import { useEducationSlashExperienceDescriptionListItemCountContext } from '../contexts/useEducationSlashExperienceDescriptionListItemCountContext.tsx';
 
-import { EducationSlashWorkExperienceDescriptionList } from './EducationSlashWorkExperienceDescriptionList.tsx';
+import { EducationSlashExperienceDescriptionList } from './EducationSlashExperienceDescriptionList.tsx';
 
 export function EducationSlashWorkExperienceDescriptionListsList({
   descriptionListIds,
@@ -13,7 +13,7 @@ export function EducationSlashWorkExperienceDescriptionListsList({
 }): ReactElement {
   // Hooks - Elevated State
   const { itemCountMatrix, resetItemCounts } =
-    useEducationSlashWorkExperienceDescriptionListItemCountContext();
+    useEducationSlashExperienceDescriptionListItemCountContext();
 
   // Hooks - Elevated State Synchronisation
   useLayoutEffect(() => {
@@ -24,7 +24,7 @@ export function EducationSlashWorkExperienceDescriptionListsList({
     if (descriptionLists.length === descriptionListIds.length) return;
 
     resetItemCounts({
-      educationSlashWorkExperienceIndex: educationSlashWorkExperienceIndex,
+      educationSlashExperienceIndex: educationSlashWorkExperienceIndex,
       descriptionListCount: descriptionListIds.length,
     });
   }, [
@@ -38,9 +38,9 @@ export function EducationSlashWorkExperienceDescriptionListsList({
     <ul className="grid gap-y-5">
       {descriptionListIds.map((listId, listIndex) => (
         <li key={listId}>
-          <EducationSlashWorkExperienceDescriptionList
+          <EducationSlashExperienceDescriptionList
             listId={listId}
-            educationSlashWorkExperienceIndex={
+            educationSlashExperienceIndex={
               educationSlashWorkExperienceIndex
             }
             listIndex={listIndex}
