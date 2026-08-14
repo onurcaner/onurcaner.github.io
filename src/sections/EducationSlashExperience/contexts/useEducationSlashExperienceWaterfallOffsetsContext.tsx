@@ -1,14 +1,12 @@
 import { useContext } from 'react';
 
-import { EducationSlashWorkExperienceWaterfallOffsetsContext } from './EducationSlashWorkExperienceWaterfallOffsetsContext.tsx';
+import { EducationSlashExperienceWaterfallOffsetsContext } from './EducationSlashExperienceWaterfallOffsetsContext.tsx';
 
-export function useEducationSlashWorkExperienceWaterfallOffsetsContext() {
-  const context = useContext(
-    EducationSlashWorkExperienceWaterfallOffsetsContext,
-  );
+export function useEducationSlashExperienceWaterfallOffsetsContext() {
+  const context = useContext(EducationSlashExperienceWaterfallOffsetsContext);
   if (!context) {
     throw new Error(
-      'useEducationSlashWorkExperienceWaterfallOffsetsContext() is called outside of <EducationSlashWorkExperienceWaterfallOffsetsContextProvider>',
+      'useEducationSlashExperienceWaterfallOffsetsContext() is called outside of <EducationSlashExperienceWaterfallOffsetsContextProvider>',
     );
   }
 

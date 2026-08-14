@@ -3,25 +3,25 @@ import { type ReactElement, type ReactNode } from 'react';
 import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
-import { useEducationSlashWorkExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashWorkExperienceWaterfallOffsetsContext.tsx';
+import { useEducationSlashExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashExperienceWaterfallOffsetsContext.tsx';
 
 export function EducationProviderSlashCompanyName({
   children,
-  educationSlashWorkExperienceIndex,
+  educationSlashExperienceIndex,
 }: {
   children: ReactNode;
-  educationSlashWorkExperienceIndex: number;
+  educationSlashExperienceIndex: number;
 }): ReactElement {
   // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
-  const { educationSlashWorkExperienceWaterfallOffsets } =
-    useEducationSlashWorkExperienceWaterfallOffsetsContext();
+  const { educationSlashExperienceWaterfallOffsets } =
+    useEducationSlashExperienceWaterfallOffsetsContext();
 
   // Derived States
   const rgbLedIndicesMatrix =
     rgbLedIndicesMatrixCreators.educationProviderSlashCompanyName.createMatrix({
-      waterfallLength: educationSlashWorkExperienceWaterfallOffsets.at(
-        educationSlashWorkExperienceIndex,
+      waterfallLength: educationSlashExperienceWaterfallOffsets.at(
+        educationSlashExperienceIndex,
       ),
       waterfallCount: 1,
     });

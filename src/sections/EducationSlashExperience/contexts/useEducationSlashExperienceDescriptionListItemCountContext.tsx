@@ -2,13 +2,13 @@ import { useContext } from 'react';
 
 import { EducationSlashExperienceDescriptionListItemCountContext } from './EducationSlashExperienceDescriptionListItemCountContext.tsx';
 
-export function useEducationSlashWorkExperienceDescriptionListItemCountContext() {
+export function useEducationSlashExperienceDescriptionListItemCountContext() {
   const context = useContext(
     EducationSlashExperienceDescriptionListItemCountContext,
   );
   if (!context) {
     throw new Error(
-      'useEducationSlashWorkExperienceDescriptionListItemCountContext() is called outside of <EducationSlashExperienceDescriptionListItemCountContextProvider>',
+      'useEducationSlashExperienceDescriptionListItemCountContext() is called outside of <EducationSlashExperienceDescriptionListItemCountContextProvider>',
     );
   }
 

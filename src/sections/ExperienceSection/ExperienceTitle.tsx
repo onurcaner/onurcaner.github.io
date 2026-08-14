@@ -1,20 +1,21 @@
 import { type ReactElement } from 'react';
 
-import { EducationSlashExperienceTitle } from '@/sections/EducationSlashExperience/components/EducationSlashExperienceTitle.tsx';
 import { type ExperienceClientData } from '@/services/experience/types/ExperienceClientData.ts';
 
-export function WorkExperienceTitle({
-  workExperience,
-  workExperienceIndex,
+import { EducationSlashExperienceTitle } from '../EducationSlashExperience/components/EducationSlashExperienceTitle.tsx';
+
+export function ExperienceTitle({
+  experience,
+  experienceIndex,
 }: {
-  workExperience: ExperienceClientData;
-  workExperienceIndex: number;
+  experience: ExperienceClientData;
+  experienceIndex: number;
 }): ReactElement {
   return (
     <EducationSlashExperienceTitle
-      educationSlashExperienceIndex={workExperienceIndex}
+      educationSlashExperienceIndex={experienceIndex}
     >
-      {workExperience.title}
+      {experience.title}
     </EducationSlashExperienceTitle>
   );
 }

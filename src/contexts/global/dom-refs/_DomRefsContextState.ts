@@ -5,6 +5,6 @@ export interface _DomRefsContextState {
   heroSectionRef: RefObject<HTMLElement | null>;
   skillsSectionRef: RefObject<HTMLElement | null>;
   educationSectionRef: RefObject<HTMLElement | null>;
-  workExperienceSectionRef: RefObject<HTMLElement | null>;
+  experienceSectionRef: RefObject<HTMLElement | null>;
   callToActionSectionRef: RefObject<HTMLElement | null>;
 }

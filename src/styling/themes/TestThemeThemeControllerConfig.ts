@@ -7,7 +7,7 @@ import { BasicRGBLedIndicesMatrixCreator } from '@/features/theme/utils/BasicRGB
 import { TestThemeRGBControllerConfig } from './TestThemeRGBControllerConfig.ts';
 
 enum Option {
-  BoundaryIndex = 288,
+  BoundaryIndex = 96,
 }
 
 export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
@@ -119,7 +119,7 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
       boundaryIndex: Option.BoundaryIndex,
     }),
 
-    educationSlashWorkExperienceTitle: new BasicRGBLedIndicesMatrixCreator({
+    educationSlashExperienceTitle: new BasicRGBLedIndicesMatrixCreator({
       templateMatrix: [Array.from({ length: 24 }).map((_, i) => i)],
       selfLength: 24,
       groupLength: 96,
@@ -131,7 +131,7 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
       groupLength: 96,
       boundaryIndex: Option.BoundaryIndex,
     }),
-    educationSlashWorkExperienceDateRange: new BasicRGBLedIndicesMatrixCreator({
+    educationSlashExperienceDateRange: new BasicRGBLedIndicesMatrixCreator({
       templateMatrix: [Array.from({ length: 12 }).map((_, i) => 48 + i)],
       selfLength: 12,
       groupLength: 96,
@@ -143,7 +143,7 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
       groupLength: 96,
       boundaryIndex: Option.BoundaryIndex,
     }),
-    educationGradeSlashWorkExperienceLevel: new BasicRGBLedIndicesMatrixCreator(
+    educationGradeSlashExperienceLevel: new BasicRGBLedIndicesMatrixCreator(
       {
         templateMatrix: [Array.from({ length: 24 }).map((_, i) => 72 + i)],
         selfLength: 24,
@@ -152,21 +152,21 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
       },
     ),
 
-    educationSlashWorkExperienceDescriptionListTitle:
+    educationSlashExperienceDescriptionListTitle:
       new BasicRGBLedIndicesMatrixCreator({
         templateMatrix: [Array.from({ length: 24 }).map((_, i) => i)],
         selfLength: 24,
         groupLength: 24,
         boundaryIndex: Option.BoundaryIndex,
       }),
-    educationSlashWorkExperienceDescriptionListItemIcon:
+    educationSlashExperienceDescriptionListItemIcon:
       new BasicRGBLedIndicesMatrixCreator({
         templateMatrix: [[0]],
         selfLength: 1,
         groupLength: 24,
         boundaryIndex: Option.BoundaryIndex,
       }),
-    educationSlashWorkExperienceDescriptionListItemText:
+    educationSlashExperienceDescriptionListItemText:
       new BasicRGBLedIndicesMatrixCreator({
         templateMatrix: [Array.from({ length: 23 }).map((_, i) => 1 + i)],
         selfLength: 23,

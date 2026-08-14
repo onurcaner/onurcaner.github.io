@@ -6,12 +6,12 @@ import { EducationSlashExperienceLayout } from '../EducationSlashExperience/comp
 
 import { CompanyLocation } from './CompanyLocation.tsx';
 import { CompanyName } from './CompanyName.tsx';
-import { WorkExperienceDateRange } from './WorkExperienceDateRange.tsx';
-import { WorkExperienceDescriptionListsList } from './WorkExperienceDescriptionListsList.tsx';
-import { WorkExperienceLevel } from './WorkExperienceLevel.tsx';
-import { WorkExperienceTitle } from './WorkExperienceTitle.tsx';
+import { ExperienceDateRange } from './ExperienceDateRange.tsx';
+import { ExperienceDescriptionListsList } from './ExperienceDescriptionListsList.tsx';
+import { ExperienceLevel } from './ExperienceLevel.tsx';
+import { ExperienceTitle } from './ExperienceTitle.tsx';
 
-export function WorkExperienceItem({
+export function ExperienceItem({
   experience,
   experienceIndex,
 }: {
@@ -22,9 +22,9 @@ export function WorkExperienceItem({
     <li>
       <EducationSlashExperienceLayout
         EducationSlashExperienceTitle={
-          <WorkExperienceTitle
-            workExperience={experience}
-            workExperienceIndex={experienceIndex}
+          <ExperienceTitle
+            experience={experience}
+            experienceIndex={experienceIndex}
           />
         }
 
@@ -43,14 +43,14 @@ export function WorkExperienceItem({
         }
 
         EducationSlashExperienceDateRange={
-          <WorkExperienceDateRange
+          <ExperienceDateRange
             experience={experience}
             experienceIndex={experienceIndex}
           />
         }
 
         EducationGradeSlashExperienceLevel={
-          <WorkExperienceLevel
+          <ExperienceLevel
             experience={experience}
             experienceIndex={experienceIndex}
           />
@@ -58,7 +58,7 @@ export function WorkExperienceItem({
 
         DescriptionListsList={
           experience.descriptionListIds.length > 0 ? (
-            <WorkExperienceDescriptionListsList
+            <ExperienceDescriptionListsList
               experience={experience}
               experienceIndex={experienceIndex}
             />

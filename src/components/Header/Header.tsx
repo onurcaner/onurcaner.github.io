@@ -1,104 +1,71 @@
 import type { MotionValue } from 'motion';
-import {
-  motion,
-  useMotionValue,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-  useVelocity,
-} from 'motion/react';
-import { type ReactElement, type RefObject } from 'react';
+import { motion, useTransform } from 'motion/react';
+import { type ReactElement } from 'react';
 
 import { ElevationStep } from '@/constants/ElevationSteps.ts';
 import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { HoverContextProvider } from '@/contexts/local/hover-context/HoverContextProvider.tsx';
 import { useHoverContext } from '@/contexts/local/hover-context/useHoverContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
+import { ScrollYDirection } from '@/features/scroll-spy/_constants/ScrollYDirection.ts';
+import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpyContext.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 import { BlurShadow } from '../BlurShadow.tsx';
 import { Developer } from '../Developer/Developer.tsx';
 
-enum ScrollDirection {
-  Down = 1,
-  Up,
-}
-
 export function Header(): ReactElement {
-  return (
-    <HoverContextProvider>
-      <HeaderController />
-    </HoverContextProvider>
-  );
-}
-
-function HeaderController(): ReactElement {
   // Hooks - Elevated State
-  const { headerRef, heroSectionRef } = useDomRefsContext();
-
-  // Motion Hooks - Scroll
-  const { scrollY: pageScrollMotionValue } = useScroll({ axis: 'y' });
-  const { scrollYProgress: heroScrollYProgressMotionValue } = useScroll({
-    target: heroSectionRef,
-    offset: ['start start', 'end start'],
-    axis: 'y',
-  });
-
-  // Motion Hooks - Event
-  const pageScrollVelocityMotionValue = useVelocity(pageScrollMotionValue);
-  const scrollDirectionMotionValue = useMotionValue(ScrollDirection.Down);
-  useMotionValueEvent(
-    pageScrollVelocityMotionValue,
-    'change',
-    (latestVelocity) => {
-      if (latestVelocity > 0)
-        scrollDirectionMotionValue.set(ScrollDirection.Down);
-      if (latestVelocity < 0)
-        scrollDirectionMotionValue.set(ScrollDirection.Up);
-    },
-  );
+  const {
+    heroSectionScrollYProgressMotionValue,
+    pageScrollYDirectionMotionValue,
+  } = useScrollSpyContext();
 
   // Motion Hooks - Transformed Values
+  const translateYMotionValue = useTransform(
+    [heroSectionScrollYProgressMotionValue, pageScrollYDirectionMotionValue],
+    (values: number[]): string => {
+      const [heroSectionScrollYProgress, scrollYDirection] = values as [
+        number,
+        ScrollYDirection,
+      ];
+      if (scrollYDirection === ScrollYDirection.Up) return '0%';
+      return heroSectionScrollYProgress === 1 ? '-100%' : '0%';
+    },
+  );
   const paddingBlockMotionValue = useTransform(
-    heroScrollYProgressMotionValue,
+    heroSectionScrollYProgressMotionValue,
     [0, 1],
     ['2.5rem', '1.25rem'],
   );
   const borderThicknessMotionValue = useTransform(
-    heroScrollYProgressMotionValue,
+    heroSectionScrollYProgressMotionValue,
     (heroScrollYProgress) =>
       heroScrollYProgress === 0 ? '0rem' : 'var(--theme-border-thickness)',
   ) as MotionValue<string>;
-  const translateYMotionValue = useTransform(
-    [heroScrollYProgressMotionValue, scrollDirectionMotionValue],
-    ([scrollProgress, scrollDirection]: number[]) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
-      if (scrollDirection === ScrollDirection.Up) return '0%';
-      return scrollProgress === 1 ? '-100%' : '0%';
-    },
-  );
 
   return (
-    <ActualHeader
-      headerRef={headerRef as RefObject<HTMLElement>}
-      paddingBlockMotionValue={paddingBlockMotionValue}
-      borderThicknessMotionValue={borderThicknessMotionValue}
-      translateYMotionValue={translateYMotionValue as MotionValue<string>}
-    />
+    <HoverContextProvider>
+      <ActualHeader
+        translateYMotionValue={translateYMotionValue}
+        paddingBlockMotionValue={paddingBlockMotionValue}
+        borderThicknessMotionValue={borderThicknessMotionValue}
+      />
+    </HoverContextProvider>
   );
 }
 
 function ActualHeader({
-  headerRef,
   paddingBlockMotionValue,
   borderThicknessMotionValue,
   translateYMotionValue,
 }: {
-  headerRef: RefObject<HTMLElement>;
+  translateYMotionValue: MotionValue<string>;
   paddingBlockMotionValue: MotionValue<string>;
   borderThicknessMotionValue: MotionValue<string>;
-  translateYMotionValue: MotionValue<string>;
 }): ReactElement {
+  // Hooks - Elevated States
+  const { headerRef } = useDomRefsContext();
   const { onPointerEnter, onPointerLeave } = useHoverContext();
 
   return (
@@ -132,6 +99,7 @@ function HeaderContentLayer({
   paddingBlockMotionValue: MotionValue<string>;
   borderThicknessMotionValue: MotionValue<string>;
 }): ReactElement {
+  // Motion Hooks - Derived State
   const correctedPaddingBlockMotionValue = useTransform(
     [paddingBlockMotionValue, borderThicknessMotionValue],
     ([paddingBlock, borderThickness]: string[]) => {
@@ -179,7 +147,7 @@ function HeaderBlurShadowLayer({
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
   const { isHovered } = useHoverContext();
 
-  // Hooks - Local States
+  // Motion Hooks - Derived States
   const opacityMotionValue = useTransform(
     borderThicknessMotionValue,
     (borderThickness) => (borderThickness === '0rem' ? '0%' : '100%'),

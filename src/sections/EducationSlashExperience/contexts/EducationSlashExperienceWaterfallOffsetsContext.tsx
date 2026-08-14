@@ -1,7 +1,6 @@
 import { createContext } from 'react';
 
-export const EducationSlashWorkExperienceWaterfallOffsetsContext =
-  createContext<{
-    educationSlashWorkExperienceWaterfallOffsets: number[];
-    educationSlashWorkExperienceDescriptionListWaterfallOffsets: number[][];
-  } | null>(null);
+export const EducationSlashExperienceWaterfallOffsetsContext = createContext<{
+  educationSlashExperienceWaterfallOffsets: number[];
+  educationSlashExperienceDescriptionListWaterfallOffsets: number[][];
+} | null>(null);

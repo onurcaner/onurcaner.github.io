@@ -1,17 +1,17 @@
 import { type ZodType, z } from 'zod';
 
-import { type WorkExperienceServerData } from '../types/WorkExperienceServerData.ts';
+import { type ExperienceServerData } from '../types/ExperienceServerData.ts';
 
-import { WorkExperienceDataSchemaShape as SchemaShape } from './WorkExperienceDataSchemaShape.ts';
+import { ExperienceDataSchemaShape as SchemaShape } from './ExperienceDataSchemaShape.ts';
 
-export const WorkExperienceServerDataSchema: ZodType<WorkExperienceServerData> =
+export const ExperienceServerDataSchema: ZodType<ExperienceServerData> =
   z.object({
     id: new SchemaShape().id,
     content_language_code: new SchemaShape().contentLanguageCode,
 
     title: new SchemaShape().title,
-    associated_work_experience_categories: new SchemaShape()
-      .associatedWorkExperienceCategories,
+    associated_experience_categories: new SchemaShape()
+      .associatedExperienceCategories,
     company_id: new SchemaShape().companyId,
     start_date: new SchemaShape().dateIso,
     end_date: new SchemaShape().dateIso,

@@ -1,21 +1,20 @@
 import { DataTransformer } from '../../_transformers/DataTransformer.ts';
 
-import { type WorkExperienceClientData } from '../types/WorkExperienceClientData.ts';
-import { type WorkExperienceServerData } from '../types/WorkExperienceServerData.ts';
+import { type ExperienceClientData } from '../types/ExperienceClientData.ts';
+import { type ExperienceServerData } from '../types/ExperienceServerData.ts';
 
-export class WorkExperienceServerDataTransformer extends DataTransformer<
-  WorkExperienceServerData,
-  WorkExperienceClientData
+export class ExperienceServerDataTransformer extends DataTransformer<
+  ExperienceServerData,
+  ExperienceClientData
 > {
   protected override async _transformOne(
-    data: WorkExperienceServerData,
-  ): Promise<WorkExperienceClientData> {
+    data: ExperienceServerData,
+  ): Promise<ExperienceClientData> {
     return Promise.resolve({
       id: data.id,
       contentLanguageCode: data.content_language_code,
       title: data.title,
-      associatedWorkExperienceCategories:
-        data.associated_work_experience_categories,
+      associatedExperienceCategories: data.associated_experience_categories,
       companyId: data.company_id,
       startDate: new Date(data.start_date),
       endDate: new Date(data.end_date),

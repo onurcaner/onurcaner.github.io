@@ -1,25 +1,25 @@
 import { type ReactElement } from 'react';
 
-export function EducationSlashWorkExperienceLayout({
-  EducationSlashWorkExperienceTitle,
+export function EducationSlashExperienceLayout({
+  EducationSlashExperienceTitle,
   EducationProviderSlashCompanyName,
   EducationProviderSlashCompanyLocation,
-  EducationSlashWorkExperienceDateRange,
-  EducationGradeSlashWorkExperienceLevel,
+  EducationSlashExperienceDateRange,
+  EducationGradeSlashExperienceLevel,
   DescriptionListsList,
 }: {
-  EducationSlashWorkExperienceTitle: ReactElement;
+  EducationSlashExperienceTitle: ReactElement;
   EducationProviderSlashCompanyName: ReactElement;
   EducationProviderSlashCompanyLocation: ReactElement;
-  EducationSlashWorkExperienceDateRange: ReactElement;
-  EducationGradeSlashWorkExperienceLevel: ReactElement;
+  EducationSlashExperienceDateRange: ReactElement;
+  EducationGradeSlashExperienceLevel: ReactElement;
   DescriptionListsList?: ReactElement;
 }): ReactElement {
   return (
     <div className="grid grid-cols-[minmax(max-content,2fr)_minmax(max-content,1fr)] content-between items-center gap-x-16">
       {/* Title */}
       <div className="text-a col-start-1 col-end-2 row-start-1 row-end-2 text-left">
-        {EducationSlashWorkExperienceTitle}
+        {EducationSlashExperienceTitle}
       </div>
 
       {/* Name */}
@@ -34,12 +34,12 @@ export function EducationSlashWorkExperienceLayout({
 
       {/* Date Range */}
       <div className="col-start-2 col-end-3 row-start-1 row-end-2 text-right">
-        {EducationSlashWorkExperienceDateRange}
+        {EducationSlashExperienceDateRange}
       </div>
 
       {/* Grade / Level */}
       <div className="col-start-1 col-end-2 row-start-3 row-end-4 text-left">
-        {EducationGradeSlashWorkExperienceLevel}
+        {EducationGradeSlashExperienceLevel}
       </div>
 
       {/* Lists */}

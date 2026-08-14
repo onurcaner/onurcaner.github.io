@@ -4,12 +4,12 @@ import { useEducationSlashExperienceDescriptionListItemCountContext } from '../c
 
 import { EducationSlashExperienceDescriptionList } from './EducationSlashExperienceDescriptionList.tsx';
 
-export function EducationSlashWorkExperienceDescriptionListsList({
+export function EducationSlashExperienceDescriptionListsList({
   descriptionListIds,
-  educationSlashWorkExperienceIndex,
+  educationSlashExperienceIndex,
 }: {
   descriptionListIds: string[];
-  educationSlashWorkExperienceIndex: number;
+  educationSlashExperienceIndex: number;
 }): ReactElement {
   // Hooks - Elevated State
   const { itemCountMatrix, resetItemCounts } =
@@ -17,19 +17,17 @@ export function EducationSlashWorkExperienceDescriptionListsList({
 
   // Hooks - Elevated State Synchronisation
   useLayoutEffect(() => {
-    const descriptionLists = itemCountMatrix.at(
-      educationSlashWorkExperienceIndex,
-    );
+    const descriptionLists = itemCountMatrix.at(educationSlashExperienceIndex);
     if (descriptionLists === undefined) return;
     if (descriptionLists.length === descriptionListIds.length) return;
 
     resetItemCounts({
-      educationSlashExperienceIndex: educationSlashWorkExperienceIndex,
+      educationSlashExperienceIndex: educationSlashExperienceIndex,
       descriptionListCount: descriptionListIds.length,
     });
   }, [
     descriptionListIds.length,
-    educationSlashWorkExperienceIndex,
+    educationSlashExperienceIndex,
     itemCountMatrix,
     resetItemCounts,
   ]);
@@ -40,9 +38,7 @@ export function EducationSlashWorkExperienceDescriptionListsList({
         <li key={listId}>
           <EducationSlashExperienceDescriptionList
             listId={listId}
-            educationSlashExperienceIndex={
-              educationSlashWorkExperienceIndex
-            }
+            educationSlashExperienceIndex={educationSlashExperienceIndex}
             listIndex={listIndex}
           />
         </li>

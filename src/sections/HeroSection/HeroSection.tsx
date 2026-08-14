@@ -1,9 +1,11 @@
+import { useMotionValueEvent, useScroll } from 'motion/react';
 import { type ReactElement, type RefObject } from 'react';
 
 import { BlurShadow } from '@/components/BlurShadow.tsx';
 import { ElevationStep } from '@/constants/ElevationSteps.ts';
 import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
+import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpyContext.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 import { HeroSectionDescription } from './HeroSectionDescription.tsx';
@@ -11,7 +13,23 @@ import { HeroSectionFakeHeader } from './HeroSectionFakeHeader.tsx';
 import { HeroSectionTitle } from './HeroSectionTitle.tsx';
 
 export function HeroSection(): ReactElement {
+  // Hooks - Elevated States
   const { heroSectionRef } = useDomRefsContext();
+  const { heroSectionScrollYProgressMotionValue } = useScrollSpyContext();
+
+  // Motion Hooks - Scroll Subscription
+  const { scrollYProgress: scrollYProgressMotionValue } = useScroll({
+    target: heroSectionRef,
+    offset: ['start start', 'end start'],
+    axis: 'y',
+  });
+  useMotionValueEvent(
+    scrollYProgressMotionValue,
+    'change',
+    (scrollYProgress) => {
+      heroSectionScrollYProgressMotionValue.set(scrollYProgress);
+    },
+  );
 
   return (
     <div

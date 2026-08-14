@@ -4,10 +4,10 @@ export enum DataName {
   Developer = 'developer',
   Education = 'education',
   EducationProvider = 'education-provider',
+  Experience = 'experience',
   ExternalLink = 'external-link',
   HeroContent = 'hero-content',
   List = 'list',
   Location = 'location',
   Skill = 'skill',
-  WorkExperience = 'work-experience',
 }

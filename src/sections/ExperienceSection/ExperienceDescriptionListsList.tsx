@@ -4,7 +4,7 @@ import { type ExperienceClientData } from '@/services/experience/types/Experienc
 
 import { EducationSlashExperienceDescriptionListsList } from '../EducationSlashExperience/components/EducationSlashExperienceDescriptionListsList.tsx';
 
-export function WorkExperienceDescriptionListsList({
+export function ExperienceDescriptionListsList({
   experience,
   experienceIndex,
 }: {

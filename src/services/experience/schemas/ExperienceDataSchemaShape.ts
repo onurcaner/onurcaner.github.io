@@ -4,9 +4,9 @@ import { ContentLanguageCodeSchema } from '../../_schemas/ContentLanguageCodeSch
 import { CompanyDataSchemaShape } from '../../company/schemas/CompanyDataSchemaShape.ts';
 import { ListDataSchemaShape } from '../../list/schemas/ListDataSchemaShape.ts';
 
-import { WorkExperienceCategory } from '../constants/WorkExperienceCategory.ts';
+import { ExperienceCategory } from '../constants/ExperienceCategory.ts';
 
-export class WorkExperienceDataSchemaShape {
+export class ExperienceDataSchemaShape {
   public get id() {
     return z.uuidv4();
   }
@@ -16,10 +16,10 @@ export class WorkExperienceDataSchemaShape {
   public get title() {
     return z.string().max(100);
   }
-  public get associatedWorkExperienceCategories() {
+  public get associatedExperienceCategories() {
     return z
-      .array(z.enum(this._workExperienceCategories))
-      .max(this._workExperienceCategories.length);
+      .array(z.enum(this._experienceCategories))
+      .max(this._experienceCategories.length);
   }
   public get companyId() {
     return new CompanyDataSchemaShape().id;
@@ -37,11 +37,11 @@ export class WorkExperienceDataSchemaShape {
     return z.array(new ListDataSchemaShape().id).max(20);
   }
 
-  private get _workExperienceCategories() {
+  private get _experienceCategories() {
     return [
-      WorkExperienceCategory.BackendDevelopment,
-      WorkExperienceCategory.FrontendDevelopment,
-      WorkExperienceCategory.SoftwareDevelopment,
+      ExperienceCategory.BackendDevelopment,
+      ExperienceCategory.FrontendDevelopment,
+      ExperienceCategory.SoftwareDevelopment,
     ];
   }
 }

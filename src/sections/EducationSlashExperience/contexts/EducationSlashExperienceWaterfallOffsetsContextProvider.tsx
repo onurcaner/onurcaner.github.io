@@ -1,11 +1,11 @@
 import { type ReactElement, type ReactNode } from 'react';
 
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
-import { EducationSlashWorkExperienceWaterfallOffsetsContext } from '@/sections/EducationSlashExperience/contexts/EducationSlashWorkExperienceWaterfallOffsetsContext.tsx';
+import { EducationSlashExperienceWaterfallOffsetsContext } from '@/sections/EducationSlashExperience/contexts/EducationSlashExperienceWaterfallOffsetsContext.tsx';
 
-import { useEducationSlashWorkExperienceDescriptionListItemCountContext } from './useEducationSlashWorkExperienceDescriptionListItemCountContext.tsx';
+import { useEducationSlashExperienceDescriptionListItemCountContext } from './useEducationSlashExperienceDescriptionListItemCountContext.tsx';
 
-export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
+export function EducationSlashExperienceWaterfallOffsetsContextProvider({
   children,
 }: {
   children: ReactNode;
@@ -13,30 +13,30 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
   // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
   const { itemCountMatrix } =
-    useEducationSlashWorkExperienceDescriptionListItemCountContext();
+    useEducationSlashExperienceDescriptionListItemCountContext();
 
   // Derived States
-  const educationSlashWorkExperienceWaterfallOffsets: number[] =
-    itemCountMatrix.map((_, educationSlashWorkExperienceIndex) => {
+  const educationSlashExperienceWaterfallOffsets: number[] =
+    itemCountMatrix.map((_, educationSlashExperienceIndex) => {
       const mainLengths = [
-        educationSlashWorkExperienceIndex *
+        educationSlashExperienceIndex *
           rgbLedIndicesMatrixCreators.educationSlashExperienceTitle.selfLength,
-        educationSlashWorkExperienceIndex *
+        educationSlashExperienceIndex *
           rgbLedIndicesMatrixCreators.educationSlashExperienceDateRange
             .selfLength,
-        educationSlashWorkExperienceIndex *
+        educationSlashExperienceIndex *
           rgbLedIndicesMatrixCreators.educationProviderSlashCompanyName
             .selfLength,
-        educationSlashWorkExperienceIndex *
+        educationSlashExperienceIndex *
           rgbLedIndicesMatrixCreators.educationProviderSlashCompanyLocation
             .selfLength,
-        educationSlashWorkExperienceIndex *
+        educationSlashExperienceIndex *
           rgbLedIndicesMatrixCreators.educationGradeSlashExperienceLevel
             .selfLength,
       ];
 
       const listRelatedLengths = itemCountMatrix
-        .slice(0, educationSlashWorkExperienceIndex)
+        .slice(0, educationSlashExperienceIndex)
         .map((itemCounts) => {
           const fromTitles =
             itemCounts.length *
@@ -67,7 +67,7 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
       return allLengths.reduce((sum, current) => sum + current, 0);
     });
 
-  const educationSlashWorkExperienceDescriptionListWaterfallOffsets: number[][] =
+  const educationSlashExperienceDescriptionListWaterfallOffsets: number[][] =
     itemCountMatrix.map((itemCounts): number[] => {
       return itemCounts.map((_, descriptionListIndex, itemCounts): number => {
         const fromTitles =
@@ -100,15 +100,15 @@ export function EducationSlashWorkExperienceWaterfallOffsetsContextProvider({
     });
 
   return (
-    <EducationSlashWorkExperienceWaterfallOffsetsContext
+    <EducationSlashExperienceWaterfallOffsetsContext
       value={{
-        educationSlashWorkExperienceWaterfallOffsets:
-          educationSlashWorkExperienceWaterfallOffsets,
-        educationSlashWorkExperienceDescriptionListWaterfallOffsets:
-          educationSlashWorkExperienceDescriptionListWaterfallOffsets,
+        educationSlashExperienceWaterfallOffsets:
+          educationSlashExperienceWaterfallOffsets,
+        educationSlashExperienceDescriptionListWaterfallOffsets:
+          educationSlashExperienceDescriptionListWaterfallOffsets,
       }}
     >
       {children}
-    </EducationSlashWorkExperienceWaterfallOffsetsContext>
+    </EducationSlashExperienceWaterfallOffsetsContext>
   );
 }

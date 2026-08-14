@@ -1,8 +1,7 @@
 import { type ReactElement } from 'react';
 
+import { EducationSlashExperienceLayout } from '@/sections/EducationSlashExperience/components/EducationSlashExperienceLayout.tsx';
 import { type EducationClientData } from '@/services/education/types/EducationClientData.ts';
-
-import { EducationSlashWorkExperienceLayout } from '../EducationSlashWorkExperience/components/EducationSlashWorkExperienceLayout.tsx';
 
 import { EducationDateRange } from './EducationDateRange.tsx';
 import { EducationDescriptionListsList } from './EducationDescriptionListsList.tsx';
@@ -20,8 +19,8 @@ export function EducationItem({
 }): ReactElement {
   return (
     <li>
-      <EducationSlashWorkExperienceLayout
-        EducationSlashWorkExperienceTitle={
+      <EducationSlashExperienceLayout
+        EducationSlashExperienceTitle={
           <EducationTitle
             education={education}
             educationIndex={educationIndex}
@@ -42,14 +41,14 @@ export function EducationItem({
           />
         }
 
-        EducationSlashWorkExperienceDateRange={
+        EducationSlashExperienceDateRange={
           <EducationDateRange
             education={education}
             educationIndex={educationIndex}
           />
         }
 
-        EducationGradeSlashWorkExperienceLevel={
+        EducationGradeSlashExperienceLevel={
           <EducationGrade
             education={education}
             educationIndex={educationIndex}

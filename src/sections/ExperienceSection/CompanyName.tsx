@@ -1,23 +1,24 @@
 import { type ReactElement } from 'react';
 
 import { useCompanyDataQuery } from '@/contexts/remote/company/useCompanyDataQuery.tsx';
-import { EducationProviderSlashCompanyName } from '@/sections/EducationSlashExperience/components/EducationProviderSlashCompanyName.tsx';
 import { type ExperienceClientData } from '@/services/experience/types/ExperienceClientData.ts';
 
+import { EducationProviderSlashCompanyName } from '../EducationSlashExperience/components/EducationProviderSlashCompanyName.tsx';
+
 export function CompanyName({
-  workExperience,
-  workExperienceIndex,
+  experience,
+  experienceIndex,
 }: {
-  workExperience: ExperienceClientData;
-  workExperienceIndex: number;
+  experience: ExperienceClientData;
+  experienceIndex: number;
 }): ReactElement {
   const company = useCompanyDataQuery({
-    id: workExperience.companyId,
+    id: experience.companyId,
   });
 
   return (
     <EducationProviderSlashCompanyName
-      educationSlashExperienceIndex={workExperienceIndex}
+      educationSlashExperienceIndex={experienceIndex}
     >
       {company.name}
     </EducationProviderSlashCompanyName>

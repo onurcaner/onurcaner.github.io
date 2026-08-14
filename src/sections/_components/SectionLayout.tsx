@@ -20,7 +20,12 @@ export function SectionLayout({
       className="relative grid min-h-screen content-center items-center py-40"
       ref={sectionRef}
     >
-      <SectionHeading iconName={sectionIconName}>{sectionTitle}</SectionHeading>
+      <div className="flex items-center justify-between">
+        <SectionHeading iconName={sectionIconName}>
+          {sectionTitle}
+        </SectionHeading>
+        <div className="text-pink-200">Filters...</div>
+      </div>
 
       {children}
     </section>

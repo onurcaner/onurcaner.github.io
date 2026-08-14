@@ -4,7 +4,7 @@ import { useEducationProviderDataQuery } from '@/contexts/remote/education-provi
 import { useLocationDataQuery } from '@/contexts/remote/location/useLocationDataQuery.tsx';
 import { type EducationClientData } from '@/services/education/types/EducationClientData.ts';
 
-import { EducationProviderSlashCompanyLocation } from '../EducationSlashWorkExperience/components/EducationProviderSlashCompanyLocation.tsx';
+import { EducationProviderSlashCompanyLocation } from '../EducationSlashExperience/components/EducationProviderSlashCompanyLocation.tsx';
 
 export function EducationProviderLocation({
   education,
@@ -22,7 +22,7 @@ export function EducationProviderLocation({
 
   return (
     <EducationProviderSlashCompanyLocation
-      educationSlashWorkExperienceIndex={educationIndex}
+      educationSlashExperienceIndex={educationIndex}
     >
       {location.cityName}, {location.countryName}
     </EducationProviderSlashCompanyLocation>

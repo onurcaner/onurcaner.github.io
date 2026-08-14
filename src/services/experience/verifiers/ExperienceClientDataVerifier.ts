@@ -1,12 +1,12 @@
 import { DataVerifier } from '../../_verifiers/DataVerifier.ts';
 
-import { WorkExperienceClientDataSchema } from '../schemas/WorkExperienceClientDataSchema.ts';
-import { type WorkExperienceClientData } from '../types/WorkExperienceClientData.ts';
+import { ExperienceClientDataSchema } from '../schemas/ExperienceClientDataSchema.ts';
+import { type ExperienceClientData } from '../types/ExperienceClientData.ts';
 
-export class WorkExperienceClientDataVerifier extends DataVerifier<WorkExperienceClientData> {
+export class ExperienceClientDataVerifier extends DataVerifier<ExperienceClientData> {
   protected override async _verifyOne(
     data: unknown,
-  ): Promise<WorkExperienceClientData> {
-    return WorkExperienceClientDataSchema.parseAsync(data);
+  ): Promise<ExperienceClientData> {
+    return ExperienceClientDataSchema.parseAsync(data);
   }
 }

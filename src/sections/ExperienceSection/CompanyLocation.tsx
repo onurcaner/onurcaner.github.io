@@ -2,18 +2,19 @@ import { type ReactElement } from 'react';
 
 import { useCompanyDataQuery } from '@/contexts/remote/company/useCompanyDataQuery.tsx';
 import { useLocationDataQuery } from '@/contexts/remote/location/useLocationDataQuery.tsx';
-import { EducationProviderSlashCompanyLocation } from '@/sections/EducationSlashExperience/components/EducationProviderSlashCompanyLocation.tsx';
 import { type ExperienceClientData } from '@/services/experience/types/ExperienceClientData.ts';
 
+import { EducationProviderSlashCompanyLocation } from '../EducationSlashExperience/components/EducationProviderSlashCompanyLocation.tsx';
+
 export function CompanyLocation({
-  workExperience,
-  workExperienceIndex,
+  experience,
+  experienceIndex,
 }: {
-  workExperience: ExperienceClientData;
-  workExperienceIndex: number;
+  experience: ExperienceClientData;
+  experienceIndex: number;
 }): ReactElement {
   const company = useCompanyDataQuery({
-    id: workExperience.companyId,
+    id: experience.companyId,
   });
   const location = useLocationDataQuery({
     id: company.locationId,
@@ -21,7 +22,7 @@ export function CompanyLocation({
 
   return (
     <EducationProviderSlashCompanyLocation
-      educationSlashExperienceIndex={workExperienceIndex}
+      educationSlashExperienceIndex={experienceIndex}
     >
       {location.cityName}, {location.countryName}
     </EducationProviderSlashCompanyLocation>

@@ -1,26 +1,26 @@
 import { QueryMode } from '../../_constants/QueryMode.ts';
 import { DataQueryModel } from '../../_models/DataQueryModel.ts';
 
-import { InMemoryWorkExperienceRepositoryFindManyQuery } from '../repository-queries-and-mutations/InMemoryWorkExperienceRepositoryFindManyQuery.ts';
-import { WorkExperienceServerDataTransformer } from '../transformers/WorkExperienceServerDataTransformer.ts';
-import { type WorkExperienceClientData } from '../types/WorkExperienceClientData.ts';
-import { type WorkExperienceServerData } from '../types/WorkExperienceServerData.ts';
-import { type WorkExperiencesDataQueryOptions } from '../types/WorkExperiencesDataQueryOptions.ts';
-import { WorkExperienceClientDataVerifier } from '../verifiers/WorkExperienceClientDataVerifier.ts';
-import { WorkExperienceServerDataVerifier } from '../verifiers/WorkExperienceServerDataVerifier.ts';
+import { InMemoryExperienceRepositoryFindManyQuery } from '../repository-queries-and-mutations/InMemoryExperienceRepositoryFindManyQuery.ts';
+import { ExperienceServerDataTransformer } from '../transformers/ExperienceServerDataTransformer.ts';
+import { type ExperienceClientData } from '../types/ExperienceClientData.ts';
+import { type ExperienceServerData } from '../types/ExperienceServerData.ts';
+import { type ExperiencesDataQueryOptions } from '../types/ExperiencesDataQueryOptions.ts';
+import { ExperienceClientDataVerifier } from '../verifiers/ExperienceClientDataVerifier.ts';
+import { ExperienceServerDataVerifier } from '../verifiers/ExperienceServerDataVerifier.ts';
 
-export class WorkExperiencesDataQueryModel extends DataQueryModel<
-  WorkExperiencesDataQueryOptions,
-  WorkExperienceServerData,
-  WorkExperienceClientData,
+export class ExperiencesDataQueryModel extends DataQueryModel<
+  ExperiencesDataQueryOptions,
+  ExperienceServerData,
+  ExperienceClientData,
   QueryMode.Many
 > {
   public constructor() {
     super({
-      repositoryQuery: new InMemoryWorkExperienceRepositoryFindManyQuery(),
-      serverDataVerifier: new WorkExperienceServerDataVerifier(),
-      serverDataTransformer: new WorkExperienceServerDataTransformer(),
-      clientDataVerifier: new WorkExperienceClientDataVerifier(),
+      repositoryQuery: new InMemoryExperienceRepositoryFindManyQuery(),
+      serverDataVerifier: new ExperienceServerDataVerifier(),
+      serverDataTransformer: new ExperienceServerDataTransformer(),
+      clientDataVerifier: new ExperienceClientDataVerifier(),
     });
   }
 }

@@ -2,9 +2,9 @@ import { type ReactElement } from 'react';
 
 import { useEducationsDataQuery } from '@/contexts/remote/education/useEducationsDataQuery.tsx';
 import { useLanguageContext } from '@/contexts/url/language/useLanguageContext.tsx';
-import { EducationSlashWorkExperienceWaterfallOffsetsContextProvider } from '@/sections/EducationSlashWorkExperience/contexts/EducationSlashWorkExperienceWaterfallOffsetsContextProvider.tsx';
 
-import { EducationSlashWorkExperienceDescriptionListItemCountContextProvider } from '../EducationSlashWorkExperience/contexts/EducationSlashWorkExperienceDescriptionListItemCountContextProvider.tsx';
+import { EducationSlashExperienceDescriptionListItemCountContextProvider } from '../EducationSlashExperience/contexts/EducationSlashExperienceDescriptionListItemCountContextProvider.tsx';
+import { EducationSlashExperienceWaterfallOffsetsContextProvider } from '../EducationSlashExperience/contexts/EducationSlashExperienceWaterfallOffsetsContextProvider.tsx';
 
 import { EducationItem } from './EducationItem.tsx';
 
@@ -13,10 +13,10 @@ export function EducationsList(): ReactElement {
   const educations = useEducationsDataQuery({ contentLanguageCode: language });
 
   return (
-    <EducationSlashWorkExperienceDescriptionListItemCountContextProvider
-      educationSlashWorkExperienceCount={educations.length}
+    <EducationSlashExperienceDescriptionListItemCountContextProvider
+      educationSlashExperienceCount={educations.length}
     >
-      <EducationSlashWorkExperienceWaterfallOffsetsContextProvider>
+      <EducationSlashExperienceWaterfallOffsetsContextProvider>
         <ul className="relative z-0 grid gap-y-20">
           {educations.map((education, i) => (
             <EducationItem
@@ -26,7 +26,7 @@ export function EducationsList(): ReactElement {
             />
           ))}
         </ul>
-      </EducationSlashWorkExperienceWaterfallOffsetsContextProvider>
-    </EducationSlashWorkExperienceDescriptionListItemCountContextProvider>
+      </EducationSlashExperienceWaterfallOffsetsContextProvider>
+    </EducationSlashExperienceDescriptionListItemCountContextProvider>
   );
 }

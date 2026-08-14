@@ -6,16 +6,16 @@ import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 import { useEducationSlashExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashExperienceWaterfallOffsetsContext.tsx';
 
-export function EducationSlashWorkExperienceDateRange({
+export function EducationSlashExperienceDateRange({
   startDate,
   endDate,
   hasMonth,
-  educationSlashWorkExperienceIndex,
+  educationSlashExperienceIndex,
 }: {
   startDate: Date;
   endDate: Date;
   hasMonth: boolean;
-  educationSlashWorkExperienceIndex: number;
+  educationSlashExperienceIndex: number;
 }): ReactElement {
   // Hooks - Elevated States
   const { language } = useLanguageContext();
@@ -27,7 +27,7 @@ export function EducationSlashWorkExperienceDateRange({
   const rgbLedIndicesMatrix =
     rgbLedIndicesMatrixCreators.educationSlashExperienceDateRange.createMatrix({
       waterfallLength: educationSlashExperienceWaterfallOffsets.at(
-        educationSlashWorkExperienceIndex,
+        educationSlashExperienceIndex,
       ),
       waterfallCount: 1,
     });
@@ -43,7 +43,7 @@ export function EducationSlashWorkExperienceDateRange({
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
       isUsingAlternativeColors={false}
-      preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-date-range-text-color)"
+      preferredNormalFallbackColor="var(--theme-component-education-slash-experience-date-range-text-color)"
     >
       <p className="text-4-5 font-bold">
         {dateTimeFormat.format(startDate)} -{' '}

@@ -3,7 +3,7 @@ import { type ReactElement } from 'react';
 import { useEducationProviderDataQuery } from '@/contexts/remote/education-provider/useEducationProviderDataQuery.tsx';
 import { type EducationClientData } from '@/services/education/types/EducationClientData.ts';
 
-import { EducationProviderSlashCompanyName } from '../EducationSlashWorkExperience/components/EducationProviderSlashCompanyName.tsx';
+import { EducationProviderSlashCompanyName } from '../EducationSlashExperience/components/EducationProviderSlashCompanyName.tsx';
 
 export function EducationProviderName({
   education,
@@ -18,7 +18,7 @@ export function EducationProviderName({
 
   return (
     <EducationProviderSlashCompanyName
-      educationSlashWorkExperienceIndex={educationIndex}
+      educationSlashExperienceIndex={educationIndex}
     >
       {educationProvider.name}
     </EducationProviderSlashCompanyName>

@@ -1,8 +1,8 @@
 import { ContentLanguageCode } from '../../_constants/ContentLanguageCode.ts';
 
-import { WorkExperienceCategory } from '../constants/WorkExperienceCategory.ts';
+import { ExperienceCategory } from '../constants/ExperienceCategory.ts';
 
-export interface WorkExperiencesDataQueryOptions {
+export interface ExperiencesDataQueryOptions {
   contentLanguageCode: ContentLanguageCode;
-  associatedWorkExperienceCategories: WorkExperienceCategory[];
+  associatedExperienceCategories: ExperienceCategory[];
 }

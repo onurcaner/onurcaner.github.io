@@ -7,17 +7,17 @@ import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpy
 
 import { SectionLayout } from '../_components/SectionLayout.tsx';
 
-import { WorkExperiencesList } from './WorkExperiencesList.tsx';
+import { ExperiencesList } from './ExperiencesList.tsx';
 
-export function WorkExperienceSection(): ReactElement {
-  // Hooks - Local States
+export function ExperienceSection(): ReactElement {
+  // Hooks - Elevated States
   const { experienceSectionRef } = useDomRefsContext();
   const { experienceSectionScrollYProgressMotionValue } = useScrollSpyContext();
 
   // Motion Hooks - Scroll Spy Subscription
   const { scrollYProgress: scrollYProgressMotionValue } = useScroll({
     target: experienceSectionRef,
-    offset: ['start start', 'end start'],
+    offset: ['start end', 'end start'],
     axis: 'y',
   });
   useMotionValueEvent(
@@ -32,9 +32,9 @@ export function WorkExperienceSection(): ReactElement {
     <SectionLayout
       sectionRef={experienceSectionRef}
       sectionIconName={IconName.BriefCase}
-      sectionTitle={'Work Experience'}
+      sectionTitle={'Experience'}
     >
-      <WorkExperiencesList />
+      <ExperiencesList />
     </SectionLayout>
   );
 }

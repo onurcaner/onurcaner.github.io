@@ -52,12 +52,12 @@
     --theme-color-neutral-200
   );
 
-  /* Education / Work Experience Sections */
-  --theme-component-education-slash-work-experience-title-text-color: var(
+  /* Education / Experience Sections */
+  --theme-component-education-slash-experience-title-text-color: var(
     --theme-color-neutral-300
   );
-  --theme-component-education-slash-work-experience-date-range-text-color: var(
-    --theme-component-education-slash-work-experience-title-text-color
+  --theme-component-education-slash-experience-date-range-text-color: var(
+    --theme-component-education-slash-experience-title-text-color
   );
   --theme-component-education-provider-slash-company-name-text-color: var(
     --theme-color-neutral-200
@@ -65,16 +65,16 @@
   --theme-component-education-provider-slash-company-location-text-color: var(
     --theme-component-education-provider-slash-company-name-text-color
   );
-  --theme-component-education-grade-slash-work-experience-level-text-color: var(
+  --theme-component-education-grade-slash-experience-level-text-color: var(
     --theme-color-neutral-200
   );
-  --theme-component-education-slash-work-experience-description-list-title-text-color: var(
+  --theme-component-education-slash-experience-description-list-title-text-color: var(
     --theme-color-neutral-300
   );
-  --theme-component-education-slash-work-experience-description-list-item-icon-color: var(
+  --theme-component-education-slash-experience-description-list-item-icon-color: var(
     --theme-color-neutral-400
   );
-  --theme-component-education-slash-work-experience-description-list-item-text-color: var(
+  --theme-component-education-slash-experience-description-list-item-text-color: var(
     --theme-color-neutral-300
   );
 

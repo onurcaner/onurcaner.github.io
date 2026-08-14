@@ -58,7 +58,7 @@ export class InMemoryListRepository implements InMemoryRepository<ListServerData
         },
       ],
 
-      // Work experience -> ASELSAN
+      // Experience -> ASELSAN
       ...[
         {
           id: '2ab029ed-019d-47ec-934d-092a63e7df3d',
@@ -74,7 +74,7 @@ export class InMemoryListRepository implements InMemoryRepository<ListServerData
         },
       ],
 
-      // Work experience -> Plan-S
+      // Experience -> Plan-S
       ...[
         {
           id: '9f9e3127-24f2-45f4-a073-bc1ea4910823',

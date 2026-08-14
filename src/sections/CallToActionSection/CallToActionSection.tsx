@@ -1,16 +1,35 @@
+import { useMotionValueEvent, useScroll } from 'motion/react';
 import { type ReactElement } from 'react';
 
 import { BlurShadow } from '@/components/BlurShadow.tsx';
 import { ElevationStep } from '@/constants/ElevationSteps.ts';
 import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
+import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpyContext.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 import { CallToActionSectionDescription } from './CallToActionSectionDescription.tsx';
 import { CallToActionSectionTitle } from './CallToActionSectionTitle.tsx';
 
 export function CallToActionSection(): ReactElement {
+  // Hooks - Elevated States
   const { callToActionSectionRef } = useDomRefsContext();
+  const { callToActionSectionScrollYProgressMotionValue } =
+    useScrollSpyContext();
+
+  // Motion Hooks - Scroll Subscription
+  const { scrollYProgress: scrollYProgressMotionValue } = useScroll({
+    target: callToActionSectionRef,
+    offset: ['start end', 'end start'],
+    axis: 'y',
+  });
+  useMotionValueEvent(
+    scrollYProgressMotionValue,
+    'change',
+    (scrollYProgress) => {
+      callToActionSectionScrollYProgressMotionValue.set(scrollYProgress);
+    },
+  );
 
   return (
     <section

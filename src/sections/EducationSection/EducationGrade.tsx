@@ -2,7 +2,7 @@ import { type ReactElement } from 'react';
 
 import { type EducationClientData } from '@/services/education/types/EducationClientData.ts';
 
-import { EducationGradeSlashWorkExperienceLevel } from '../EducationSlashWorkExperience/components/EducationGradeSlashWorkExperienceLevel.tsx';
+import { EducationGradeSlashExperienceLevel } from '../EducationSlashExperience/components/EducationGradeSlashExperienceLevel.tsx';
 
 export function EducationGrade({
   education,
@@ -12,10 +12,10 @@ export function EducationGrade({
   educationIndex: number;
 }): ReactElement {
   return (
-    <EducationGradeSlashWorkExperienceLevel
-      educationSlashWorkExperienceIndex={educationIndex}
+    <EducationGradeSlashExperienceLevel
+      educationSlashExperienceIndex={educationIndex}
     >
       {education.gradeType}: {education.gradeValue}
-    </EducationGradeSlashWorkExperienceLevel>
+    </EducationGradeSlashExperienceLevel>
   );
 }

@@ -39,7 +39,7 @@ function FooterNav(): ReactElement {
     <div className="grid text-pink-200">
       <div>Skills</div>
       <div>Education</div>
-      <div>Work Experience</div>
+      <div>Experience</div>
     </div>
   );
 }

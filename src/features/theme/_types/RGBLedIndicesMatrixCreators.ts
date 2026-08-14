@@ -17,14 +17,14 @@ export interface RGBLedIndicesMatrixCreators {
   skillIcon: RGBLedIndicesMatrixCreator;
   skillLabel: RGBLedIndicesMatrixCreator;
 
-  educationSlashWorkExperienceTitle: RGBLedIndicesMatrixCreator;
+  educationSlashExperienceTitle: RGBLedIndicesMatrixCreator;
   educationProviderSlashCompanyName: RGBLedIndicesMatrixCreator;
-  educationSlashWorkExperienceDateRange: RGBLedIndicesMatrixCreator;
+  educationSlashExperienceDateRange: RGBLedIndicesMatrixCreator;
   educationProviderSlashCompanyLocation: RGBLedIndicesMatrixCreator;
-  educationGradeSlashWorkExperienceLevel: RGBLedIndicesMatrixCreator;
-  educationSlashWorkExperienceDescriptionListTitle: RGBLedIndicesMatrixCreator;
-  educationSlashWorkExperienceDescriptionListItemIcon: RGBLedIndicesMatrixCreator;
-  educationSlashWorkExperienceDescriptionListItemText: RGBLedIndicesMatrixCreator;
+  educationGradeSlashExperienceLevel: RGBLedIndicesMatrixCreator;
+  educationSlashExperienceDescriptionListTitle: RGBLedIndicesMatrixCreator;
+  educationSlashExperienceDescriptionListItemIcon: RGBLedIndicesMatrixCreator;
+  educationSlashExperienceDescriptionListItemText: RGBLedIndicesMatrixCreator;
 
   callToActionSectionBorderBlock: RGBLedIndicesMatrixCreator;
   callToActionSectionTitle: RGBLedIndicesMatrixCreator;

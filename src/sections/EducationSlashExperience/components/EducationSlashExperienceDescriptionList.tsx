@@ -9,13 +9,13 @@ import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 import { useEducationSlashExperienceDescriptionListItemCountContext } from '../contexts/useEducationSlashExperienceDescriptionListItemCountContext.tsx';
 import { useEducationSlashExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashExperienceWaterfallOffsetsContext.tsx';
 
-export function EducationSlashWorkExperienceDescriptionList({
+export function EducationSlashExperienceDescriptionList({
   listId,
-  educationSlashWorkExperienceIndex,
+  educationSlashExperienceIndex,
   listIndex,
 }: {
   listId: string;
-  educationSlashWorkExperienceIndex: number;
+  educationSlashExperienceIndex: number;
   listIndex: number;
 }): ReactElement {
   // Hooks - Elevated States
@@ -26,18 +26,18 @@ export function EducationSlashWorkExperienceDescriptionList({
   // Hooks - Elevated State Synchronisation
   useLayoutEffect(() => {
     const itemCount = itemCountMatrix
-      .at(educationSlashWorkExperienceIndex)
+      .at(educationSlashExperienceIndex)
       ?.at(listIndex);
     if (itemCount === undefined) return;
     if (itemCount === list.items.length) return;
 
     setItemCount({
       newItemCount: list.items.length,
-      educationSlashExperienceIndex: educationSlashWorkExperienceIndex,
+      educationSlashExperienceIndex: educationSlashExperienceIndex,
       descriptionListIndex: listIndex,
     });
   }, [
-    educationSlashWorkExperienceIndex,
+    educationSlashExperienceIndex,
     itemCountMatrix,
     list.items.length,
     listIndex,
@@ -47,7 +47,7 @@ export function EducationSlashWorkExperienceDescriptionList({
   return (
     <div className="grid">
       <DescriptionListTitle
-        educationSlashWorkExperienceIndex={educationSlashWorkExperienceIndex}
+        educationSlashExperienceIndex={educationSlashExperienceIndex}
         listIndex={listIndex}
       >
         {list.title}
@@ -57,9 +57,7 @@ export function EducationSlashWorkExperienceDescriptionList({
         {list.items.map((item, i) => (
           <DescriptionListItem
             key={i}
-            educationSlashWorkExperienceIndex={
-              educationSlashWorkExperienceIndex
-            }
+            educationSlashExperienceIndex={educationSlashExperienceIndex}
             listIndex={listIndex}
             itemIndex={i}
           >
@@ -73,11 +71,11 @@ export function EducationSlashWorkExperienceDescriptionList({
 
 function DescriptionListTitle({
   children,
-  educationSlashWorkExperienceIndex,
+  educationSlashExperienceIndex,
   listIndex,
 }: {
   children: ReactNode;
-  educationSlashWorkExperienceIndex: number;
+  educationSlashExperienceIndex: number;
   listIndex: number;
 }): ReactElement {
   // Hooks - Elevated States
@@ -89,17 +87,17 @@ function DescriptionListTitle({
 
   // Derived States
   const waterfallOffsets = {
-    educationSlashWorkExperience:
+    educationSlashExperience:
       educationSlashExperienceWaterfallOffsets.at(
-        educationSlashWorkExperienceIndex,
+        educationSlashExperienceIndex,
       ) ?? 0,
     list:
       educationSlashExperienceDescriptionListWaterfallOffsets
-        .at(educationSlashWorkExperienceIndex)
+        .at(educationSlashExperienceIndex)
         ?.at(listIndex) ?? 0,
   };
   const waterFallOffset =
-    waterfallOffsets.educationSlashWorkExperience + waterfallOffsets.list;
+    waterfallOffsets.educationSlashExperience + waterfallOffsets.list;
 
   const rgbLedIndicesMatrix =
     rgbLedIndicesMatrixCreators.educationSlashExperienceDescriptionListTitle.createMatrix(
@@ -116,7 +114,7 @@ function DescriptionListTitle({
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
       isUsingAlternativeColors={false}
-      preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-description-list-title-text-color)"
+      preferredNormalFallbackColor="var(--theme-component-education-slash-experience-description-list-title-text-color)"
     >
       <h5 className="text-4 font-semibold">{children}</h5>
     </RGBText>
@@ -125,12 +123,12 @@ function DescriptionListTitle({
 
 function DescriptionListItem({
   children,
-  educationSlashWorkExperienceIndex,
+  educationSlashExperienceIndex,
   listIndex,
   itemIndex,
 }: {
   children: ReactNode;
-  educationSlashWorkExperienceIndex: number;
+  educationSlashExperienceIndex: number;
   listIndex: number;
   itemIndex: number;
 }): ReactElement {
@@ -143,20 +141,20 @@ function DescriptionListItem({
 
   // Derived States
   const waterfallOffsets = {
-    educationSlashWorkExperience:
+    educationSlashExperience:
       educationSlashExperienceWaterfallOffsets.at(
-        educationSlashWorkExperienceIndex,
+        educationSlashExperienceIndex,
       ) ?? 0,
     list:
       educationSlashExperienceDescriptionListWaterfallOffsets
-        .at(educationSlashWorkExperienceIndex)
+        .at(educationSlashExperienceIndex)
         ?.at(listIndex) ?? 0,
     listTitle:
       rgbLedIndicesMatrixCreators.educationSlashExperienceDescriptionListTitle
         .selfLength,
   };
   const waterFallOffset =
-    waterfallOffsets.educationSlashWorkExperience +
+    waterfallOffsets.educationSlashExperience +
     rgbLedIndicesMatrixCreators.educationSlashExperienceTitle.groupLength +
     waterfallOffsets.list +
     waterfallOffsets.listTitle;
@@ -191,7 +189,7 @@ function DescriptionListItem({
         parentBackgroundColor="var(--theme-component-section-background-color)"
         rgbLedIndicesMatrix={rgbLedIndicesMatrices.icon}
         isUsingAlternativeColors={false}
-        preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-description-list-item-icon-color)"
+        preferredNormalFallbackColor="var(--theme-component-education-slash-experience-description-list-item-icon-color)"
       >
         <div className="px-1 text-[0.5rem]" aria-hidden={true}>
           <UIIcon iconName={IconName.Minus} />
@@ -203,7 +201,7 @@ function DescriptionListItem({
         parentBackgroundColor="var(--theme-component-section-background-color)"
         rgbLedIndicesMatrix={rgbLedIndicesMatrices.text}
         isUsingAlternativeColors={false}
-        preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-description-list-item-text-color)"
+        preferredNormalFallbackColor="var(--theme-component-education-slash-experience-description-list-item-text-color)"
       >
         <p className="text-4 font-light">{children}</p>
       </RGBText>

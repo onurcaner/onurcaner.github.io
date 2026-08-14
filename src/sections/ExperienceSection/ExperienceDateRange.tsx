@@ -4,7 +4,7 @@ import { type ExperienceClientData } from '@/services/experience/types/Experienc
 
 import { EducationSlashExperienceDateRange } from '../EducationSlashExperience/components/EducationSlashExperienceDateRange.tsx';
 
-export function WorkExperienceDateRange({
+export function ExperienceDateRange({
   experience,
   experienceIndex,
 }: {

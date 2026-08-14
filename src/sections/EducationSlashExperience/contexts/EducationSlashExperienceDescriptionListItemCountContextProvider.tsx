@@ -6,27 +6,27 @@ import {
   useState,
 } from 'react';
 
-import { EducationSlashWorkExperienceDescriptionListItemCountContext } from './EducationSlashWorkExperienceDescriptionListItemCountContext.tsx';
+import { EducationSlashExperienceDescriptionListItemCountContext } from './EducationSlashExperienceDescriptionListItemCountContext.tsx';
 
-export function EducationSlashWorkExperienceDescriptionListItemCountContextProvider({
+export function EducationSlashExperienceDescriptionListItemCountContextProvider({
   children,
-  educationSlashWorkExperienceCount,
+  educationSlashExperienceCount,
 }: {
   children: ReactNode;
-  educationSlashWorkExperienceCount: number;
+  educationSlashExperienceCount: number;
 }): ReactElement {
   // Hooks - Local States
   const [itemCountMatrix, setItemCountMatrix] = useState<number[][]>(() =>
-    Array.from({ length: educationSlashWorkExperienceCount }).map(() => []),
+    Array.from({ length: educationSlashExperienceCount }).map(() => []),
   );
 
   // Hooks - Props to Local State Synchronization
   useLayoutEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setItemCountMatrix(() =>
-      Array.from({ length: educationSlashWorkExperienceCount }).map(() => []),
+      Array.from({ length: educationSlashExperienceCount }).map(() => []),
     );
-  }, [educationSlashWorkExperienceCount]);
+  }, [educationSlashExperienceCount]);
 
   // Hooks - State Transition Methods
   const resetRow = useCallback(
@@ -62,13 +62,13 @@ export function EducationSlashWorkExperienceDescriptionListItemCountContextProvi
   );
 
   return (
-    <EducationSlashWorkExperienceDescriptionListItemCountContext
+    <EducationSlashExperienceDescriptionListItemCountContext
       value={{
         itemCountMatrix: itemCountMatrix,
 
         resetItemCounts: useCallback(
-          ({ educationSlashWorkExperienceIndex, descriptionListCount }) => {
-            resetRow(educationSlashWorkExperienceIndex, descriptionListCount);
+          ({ educationSlashExperienceIndex, descriptionListCount }) => {
+            resetRow(educationSlashExperienceIndex, descriptionListCount);
           },
           [resetRow],
         ),
@@ -76,12 +76,12 @@ export function EducationSlashWorkExperienceDescriptionListItemCountContextProvi
         setItemCount: useCallback(
           ({
             newItemCount,
-            educationSlashWorkExperienceIndex,
+            educationSlashExperienceIndex,
             descriptionListIndex,
           }) => {
             setCell(
               newItemCount,
-              educationSlashWorkExperienceIndex,
+              educationSlashExperienceIndex,
               descriptionListIndex,
             );
           },
@@ -90,6 +90,6 @@ export function EducationSlashWorkExperienceDescriptionListItemCountContextProvi
       }}
     >
       {children}
-    </EducationSlashWorkExperienceDescriptionListItemCountContext>
+    </EducationSlashExperienceDescriptionListItemCountContext>
   );
 }

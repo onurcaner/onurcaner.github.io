@@ -1,12 +1,14 @@
+import { useMotionValueEvent } from 'motion/react';
 import { type ReactElement } from 'react';
 
 import { Footer } from '@/components/Footer.tsx';
 import { Header } from '@/components/Header/Header.tsx';
+import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpyContext.tsx';
 import { CallToActionSection } from '@/sections/CallToActionSection/CallToActionSection.tsx';
 import { EducationSection } from '@/sections/EducationSection/EducationSection.tsx';
+import { ExperienceSection } from '@/sections/ExperienceSection/ExperienceSection.tsx';
 import { HeroSection } from '@/sections/HeroSection/HeroSection.tsx';
 import { SkillsSection } from '@/sections/SkillsSection/SkillsSection.tsx';
-import { WorkExperienceSection } from '@/sections/WorkExperienceSection/WorkExperienceSection.tsx';
 import { SectionsLayout } from '@/sections/_components/SectionsLayout.tsx';
 
 export function ResumePage(): ReactElement {
@@ -17,7 +19,7 @@ export function ResumePage(): ReactElement {
       <SectionsLayout>
         <SkillsSection />
         <EducationSection />
-        <WorkExperienceSection />
+        <ExperienceSection />
       </SectionsLayout>
       <CallToActionSection />
       <Footer />

@@ -5,12 +5,12 @@ import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 
 import { useEducationSlashExperienceWaterfallOffsetsContext } from '../contexts/useEducationSlashExperienceWaterfallOffsetsContext.tsx';
 
-export function EducationSlashWorkExperienceTitle({
+export function EducationSlashExperienceTitle({
   children,
-  educationSlashWorkExperienceIndex,
+  educationSlashExperienceIndex,
 }: {
   children: ReactNode;
-  educationSlashWorkExperienceIndex: number;
+  educationSlashExperienceIndex: number;
 }): ReactElement {
   // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
@@ -21,7 +21,7 @@ export function EducationSlashWorkExperienceTitle({
   const rgbLedIndicesMatrix =
     rgbLedIndicesMatrixCreators.educationSlashExperienceTitle.createMatrix({
       waterfallLength: educationSlashExperienceWaterfallOffsets.at(
-        educationSlashWorkExperienceIndex,
+        educationSlashExperienceIndex,
       ),
       waterfallCount: 1,
     });
@@ -31,7 +31,7 @@ export function EducationSlashWorkExperienceTitle({
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
       isUsingAlternativeColors={false}
-      preferredNormalFallbackColor="var(--theme-component-education-slash-work-experience-title-text-color)"
+      preferredNormalFallbackColor="var(--theme-component-education-slash-experience-title-text-color)"
     >
       <h3 className="text-4-5 font-bold">{children}</h3>
     </RGBText>

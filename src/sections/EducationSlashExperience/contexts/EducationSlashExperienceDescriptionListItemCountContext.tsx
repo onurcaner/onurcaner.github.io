@@ -1,17 +1,17 @@
 import { createContext } from 'react';
 
-export const EducationSlashWorkExperienceDescriptionListItemCountContext =
+export const EducationSlashExperienceDescriptionListItemCountContext =
   createContext<{
     itemCountMatrix: number[][];
 
     setItemCount: (options: {
-      educationSlashWorkExperienceIndex: number;
+      educationSlashExperienceIndex: number;
       descriptionListIndex: number;
       newItemCount: number;
     }) => void;
 
     resetItemCounts: (options: {
-      educationSlashWorkExperienceIndex: number;
+      educationSlashExperienceIndex: number;
       descriptionListCount: number;
     }) => void;
   } | null>(null);

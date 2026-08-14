@@ -2,7 +2,7 @@ import { type ReactElement } from 'react';
 
 import { type EducationClientData } from '@/services/education/types/EducationClientData.ts';
 
-import { EducationSlashWorkExperienceDateRange } from '../EducationSlashWorkExperience/components/EducationSlashWorkExperienceDateRange.tsx';
+import { EducationSlashExperienceDateRange } from '../EducationSlashExperience/components/EducationSlashExperienceDateRange.tsx';
 
 export function EducationDateRange({
   education,
@@ -12,11 +12,11 @@ export function EducationDateRange({
   educationIndex: number;
 }): ReactElement {
   return (
-    <EducationSlashWorkExperienceDateRange
+    <EducationSlashExperienceDateRange
       startDate={education.startDate}
       endDate={education.endDate}
       hasMonth={false}
-      educationSlashWorkExperienceIndex={educationIndex}
+      educationSlashExperienceIndex={educationIndex}
     />
   );
 }

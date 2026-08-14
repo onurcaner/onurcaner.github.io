@@ -1,13 +1,13 @@
 import { ContentLanguageCode } from '../../_constants/ContentLanguageCode.ts';
 
-import { WorkExperienceCategory } from '../constants/WorkExperienceCategory.ts';
+import { ExperienceCategory } from '../constants/ExperienceCategory.ts';
 
-export interface WorkExperienceClientData {
+export interface ExperienceClientData {
   id: string;
   contentLanguageCode: ContentLanguageCode;
 
   title: string;
-  associatedWorkExperienceCategories: WorkExperienceCategory[];
+  associatedExperienceCategories: ExperienceCategory[];
   companyId: string;
   startDate: Date;
   endDate: Date;
