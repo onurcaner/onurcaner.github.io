@@ -4,8 +4,6 @@ import { type ReactElement } from 'react';
 
 import { ElevationStep } from '@/constants/ElevationSteps.ts';
 import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
-import { HoverContextProvider } from '@/contexts/local/hover-context/HoverContextProvider.tsx';
-import { useHoverContext } from '@/contexts/local/hover-context/useHoverContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
 import { ScrollYDirection } from '@/features/scroll-spy/_constants/ScrollYDirection.ts';
 import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpyContext.tsx';
@@ -45,13 +43,11 @@ export function Header(): ReactElement {
   ) as MotionValue<string>;
 
   return (
-    <HoverContextProvider>
-      <ActualHeader
-        translateYMotionValue={translateYMotionValue}
-        paddingBlockMotionValue={paddingBlockMotionValue}
-        borderThicknessMotionValue={borderThicknessMotionValue}
-      />
-    </HoverContextProvider>
+    <ActualHeader
+      translateYMotionValue={translateYMotionValue}
+      paddingBlockMotionValue={paddingBlockMotionValue}
+      borderThicknessMotionValue={borderThicknessMotionValue}
+    />
   );
 }
 
@@ -66,7 +62,6 @@ function ActualHeader({
 }): ReactElement {
   // Hooks - Elevated States
   const { headerRef } = useDomRefsContext();
-  const { onPointerEnter, onPointerLeave } = useHoverContext();
 
   return (
     <motion.header
@@ -75,8 +70,6 @@ function ActualHeader({
       style={{
         translateY: translateYMotionValue,
       }}
-      onPointerEnter={onPointerEnter}
-      onPointerLeave={onPointerLeave}
     >
       <div className="relative">
         <HeaderContentLayer
@@ -125,15 +118,12 @@ function HeaderContentLayer({
 
 function HeaderBorderLayer(): ReactElement {
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
-  const { isHovered } = useHoverContext();
 
   return (
     <RGBBackground
       className="absolute top-0 right-0 bottom-0 left-0 z-1"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorderBlock.createMatrix()}
-      isUsingAlternativeColors={isHovered}
-      preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
-      preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
+      preferredNormalFallbackColor="var(--theme-component-header-border-color)"
     />
   );
 }
@@ -145,7 +135,6 @@ function HeaderBlurShadowLayer({
 }): ReactElement {
   // Hooks - Elevated States
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
-  const { isHovered } = useHoverContext();
 
   // Motion Hooks - Derived States
   const opacityMotionValue = useTransform(
@@ -166,9 +155,7 @@ function HeaderBlurShadowLayer({
       >
         <RGBBackground
           rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.headerBorderBlock.createMatrix()}
-          isUsingAlternativeColors={isHovered}
-          preferredNormalFallbackColor="var(--theme-component-header-border-color--normal)"
-          preferredAlternativeFallbackColor="var(--theme-component-header-border-color--hover)"
+          preferredNormalFallbackColor="var(--theme-component-header-border-color)"
         />
       </BlurShadow>
     </motion.div>

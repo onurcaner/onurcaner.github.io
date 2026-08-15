@@ -14,7 +14,7 @@ export function BlurShadow({
       className={className}
       aria-hidden={true}
       style={{
-        filter: `blur(calc(${elevationStep.toString()} * var(--theme-elevation-step))) opacity(var(--theme-blur-shadow-opacity))`,
+        filter: `blur(calc(${elevationStep.toString()} * var(--theme-component-blur-shadow-elevation-step))) opacity(var(--theme-component-blur-shadow-opacity))`,
       }}
     >
       {children}

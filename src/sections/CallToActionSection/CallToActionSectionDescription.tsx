@@ -16,7 +16,6 @@ export function CallToActionSectionDescription(): ReactElement {
     <RGBText
       parentBackgroundColor="var(--theme-component-call-to-action-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.callToActionSectionDescription.createMatrix()}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-call-to-action-section-description-text-color)"
     >
       <p className="text-5 max-w-192 font-light">{description}</p>

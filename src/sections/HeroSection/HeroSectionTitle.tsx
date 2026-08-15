@@ -17,7 +17,6 @@ export function HeroSectionTitle(): ReactElement {
       className="mb-7"
       parentBackgroundColor="var(--theme-component-hero-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionTitle.createMatrix()}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-hero-section-title-text-color)"
     >
       <h1 className="text-18 font-extrabold uppercase">{title}</h1>

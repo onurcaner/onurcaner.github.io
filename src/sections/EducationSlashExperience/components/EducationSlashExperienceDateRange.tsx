@@ -42,7 +42,6 @@ export function EducationSlashExperienceDateRange({
     <RGBText
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-education-slash-experience-date-range-text-color)"
     >
       <p className="text-4-5 font-bold">

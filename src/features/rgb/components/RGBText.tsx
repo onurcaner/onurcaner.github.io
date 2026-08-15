@@ -1,23 +1,15 @@
-import {
-  type DetailedHTMLProps,
-  type HTMLAttributes,
-  type ReactElement,
-} from 'react';
+import { type ReactElement } from 'react';
 
 import { type RGBBaseComponentProps } from '../_types/RGBBaseComponentProps.ts';
 import { type RGBLedIndex } from '../_types/RGBLedIndex.ts';
 
 import { RGBLedGrid } from './RGBLedGrid.tsx';
 
-type ReactDivProps = DetailedHTMLProps<
-  HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->;
-
-interface RGBTextProps extends RGBBaseComponentProps, ReactDivProps {
+interface RGBTextProps extends RGBBaseComponentProps {
   children: ReactElement;
   parentBackgroundColor: string; /* Required for background color matching */
   rgbLedIndicesMatrix: RGBLedIndex[][];
+  className?: string;
 }
 
 export function RGBText({
@@ -27,10 +19,10 @@ export function RGBText({
   isUsingAlternativeColors,
   preferredNormalFallbackColor,
   preferredAlternativeFallbackColor,
-  ...restProps
+  className,
 }: RGBTextProps): ReactElement {
   return (
-    <div {...restProps}>
+    <div className={className}>
       <div className="relative grid h-full w-full">
         <BackgroundColorMatchingFilterLayer
           parentBackgroundColor={parentBackgroundColor}
@@ -61,7 +53,7 @@ function BackgroundColorMatchingFilterLayer({
 }): ReactElement {
   return (
     <div
-      className="relative z-3 col-span-full row-span-full text-black mix-blend-screen"
+      className="relative z-3 col-span-full row-span-full text-black mix-blend-screen transition-colors duration-(--theme-transition-duration) ease-(--theme-transition-timing-function)"
       style={{
         backgroundColor: parentBackgroundColor,
       }}

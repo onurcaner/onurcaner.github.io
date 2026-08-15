@@ -32,7 +32,6 @@ export function EducationProviderSlashCompanyLocation({
     <RGBText
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-education-provider-slash-company-location-text-color)"
     >
       <p className="text-4-5 font-medium">{children}</p>

@@ -15,12 +15,13 @@ export function useSearchValue<TValue extends string>({
   // Derived States and Actions
   const searchValue = (searchParams.get(key) ?? defaultValue) as TValue;
   const changeValue = (newValue: TValue): void => {
-    searchParams.set(key, newValue);
-    if (searchParams.get(key) === defaultValue) {
-      searchParams.delete(key);
+    const nextSearchParams = new URLSearchParams(searchParams);
+    nextSearchParams.set(key, newValue);
+    if (nextSearchParams.get(key) === defaultValue) {
+      nextSearchParams.delete(key);
     }
 
-    setSearchParams(searchParams, { replace });
+    setSearchParams(nextSearchParams, { replace });
   };
 
   return [searchValue, changeValue] as const;

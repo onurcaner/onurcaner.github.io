@@ -13,7 +13,7 @@ export class InMemoryExperienceRepository implements InMemoryRepository<Experien
         {
           id: '5c4e610e-a2d9-48cb-bb5a-7e79e29602ec',
           content_language_code: ContentLanguageCode.English,
-          title: 'Embedded Software Engineering',
+          title: 'Embedded Software Engineer',
           associated_experience_categories: [
             ExperienceCategory.SoftwareDevelopment,
           ],
@@ -26,7 +26,7 @@ export class InMemoryExperienceRepository implements InMemoryRepository<Experien
         {
           id: '23d1e4bd-11ad-49d7-86d5-b58c7614f840',
           content_language_code: ContentLanguageCode.Turkish,
-          title: 'Gömülü Yazılım Mühendisliği',
+          title: 'Gömülü Yazılım Mühendisi',
           associated_experience_categories: [
             ExperienceCategory.SoftwareDevelopment,
           ],
@@ -43,7 +43,7 @@ export class InMemoryExperienceRepository implements InMemoryRepository<Experien
         {
           id: '2106042a-2812-42f9-bfc7-4e1aa0174465',
           content_language_code: ContentLanguageCode.English,
-          title: 'Embedded Software Engineering',
+          title: 'Embedded Software Engineer',
           associated_experience_categories: [
             ExperienceCategory.SoftwareDevelopment,
           ],
@@ -56,7 +56,7 @@ export class InMemoryExperienceRepository implements InMemoryRepository<Experien
         {
           id: '5bd935e6-0885-4644-bc24-7febfcde22b9',
           content_language_code: ContentLanguageCode.Turkish,
-          title: 'Gömülü Yazılım Mühendisliği',
+          title: 'Gömülü Yazılım Mühendisi',
           associated_experience_categories: [
             ExperienceCategory.SoftwareDevelopment,
           ],

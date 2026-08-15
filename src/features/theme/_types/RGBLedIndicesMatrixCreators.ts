@@ -13,6 +13,10 @@ export interface RGBLedIndicesMatrixCreators {
   sectionHeadingIcon: RGBLedIndicesMatrixCreator;
   sectionHeadingTitle: RGBLedIndicesMatrixCreator;
 
+  sectionSideNavigationBorder: RGBLedIndicesMatrixCreator;
+  sectionSideNavigationLinkIcon: RGBLedIndicesMatrixCreator;
+  sectionSideNavigationLinkText: RGBLedIndicesMatrixCreator;
+
   skillBorder: RGBLedIndicesMatrixCreator;
   skillIcon: RGBLedIndicesMatrixCreator;
   skillLabel: RGBLedIndicesMatrixCreator;

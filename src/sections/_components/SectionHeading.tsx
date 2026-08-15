@@ -20,7 +20,7 @@ export function SectionHeading({
   return (
     <div
       className={new ClassNameJoiner().join(
-        'relative z-0 mb-10 grid grid-cols-[max-content_minmax(0,1fr)] items-center gap-x-4',
+        'relative z-0 grid grid-cols-[max-content_minmax(0,1fr)] items-center gap-x-4',
         className,
       )}
     >
@@ -49,7 +49,6 @@ function SectionIcon({
   return (
     <RGBText
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-      isUsingAlternativeColors={false}
       parentBackgroundColor="var(--theme-component-section-background-color)"
       preferredNormalFallbackColor="var(--theme-component-section-heading-icon-color)"
     >
@@ -79,7 +78,6 @@ function SectionTitle({
   return (
     <RGBText
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-      isUsingAlternativeColors={false}
       parentBackgroundColor="var(--theme-component-section-background-color)"
       preferredNormalFallbackColor="var(--theme-component-section-heading-text-color)"
     >

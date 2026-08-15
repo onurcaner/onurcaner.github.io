@@ -32,7 +32,6 @@ export function EducationGradeSlashExperienceLevel({
     <RGBText
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-education-grade-slash-experience-level-text-color)"
     >
       {/*<p className="text-4-5 font-extralight capitalize">{children}</p>*/}

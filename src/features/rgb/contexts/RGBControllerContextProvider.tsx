@@ -2,10 +2,9 @@ import { useMotionValue } from 'motion/react';
 import { type ReactElement, type ReactNode, useEffect } from 'react';
 
 import { type RGBControllerConfig } from '../_types/RGBControllerConfig.ts';
-import { type RGBControllerState } from '../_types/RGBControllerState.ts';
+import { type RGBLedState } from '../_types/RGBLedState.ts';
 
 import { RGBControllerContext } from './RGBControllerContext.tsx';
-import { RGBControllerDOMEffect } from './RGBControllerDOMEffect.tsx';
 import { RGBControllerTimerEffect } from './RGBControllerTimerEffect.tsx';
 
 export function RGBControllerContextProvider({
@@ -16,32 +15,31 @@ export function RGBControllerContextProvider({
   rgbControllerConfig: RGBControllerConfig;
 }): ReactElement {
   // Hooks - Local State
-  const rgbControllerStateMotionValue = useMotionValue<RGBControllerState>({
-    normalRGBLedStates: rgbControllerConfig.initialNormalRGBLedStates,
-    alternativeRGBLedStates: rgbControllerConfig.initialAlternativeRGBLedStates,
-  });
+  const rgbLedStatesMotionValue = useMotionValue<RGBLedState[]>(
+    rgbControllerConfig.initialRGBLedStates,
+  );
 
   // Hooks - Effects
   useEffect(() => {
-    rgbControllerStateMotionValue.set({
-      normalRGBLedStates: rgbControllerConfig.initialNormalRGBLedStates,
-      alternativeRGBLedStates:
-        rgbControllerConfig.initialAlternativeRGBLedStates,
-    });
-  }, [rgbControllerConfig, rgbControllerStateMotionValue]);
+    rgbLedStatesMotionValue.set(rgbControllerConfig.initialRGBLedStates);
+  }, [rgbLedStatesMotionValue, rgbControllerConfig]);
 
   return (
     <>
       <RGBControllerTimerEffect
         rgbControllerConfig={rgbControllerConfig}
-        rgbControllerStateMotionValue={rgbControllerStateMotionValue}
+        rgbLedStatesMotionValue={rgbLedStatesMotionValue}
       />
 
-      <RGBControllerDOMEffect
-        rgbControllerStateMotionValue={rgbControllerStateMotionValue}
-      />
+      {/*<RGBControllerDOMEffect*/}
+      {/*  rgbLedStatesMotionValue={rgbLedStatesMotionValue}*/}
+      {/*/>*/}
 
-      <RGBControllerContext value={{}}>{children}</RGBControllerContext>
+      <RGBControllerContext
+        value={{ rgbLedStatesMotionValue: rgbLedStatesMotionValue }}
+      >
+        {children}
+      </RGBControllerContext>
     </>
   );
 }

@@ -30,7 +30,6 @@ export function EducationSlashExperienceTitle({
     <RGBText
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-education-slash-experience-title-text-color)"
     >
       <h3 className="text-4-5 font-bold">{children}</h3>

@@ -2,14 +2,14 @@ import { type MotionValue } from 'motion';
 import { type ReactElement, useEffect, useRef } from 'react';
 
 import { type RGBControllerConfig } from '../_types/RGBControllerConfig.ts';
-import { type RGBControllerState } from '../_types/RGBControllerState.ts';
+import { type RGBLedState } from '../_types/RGBLedState.ts';
 
 export function RGBControllerTimerEffect({
   rgbControllerConfig,
-  rgbControllerStateMotionValue,
+  rgbLedStatesMotionValue,
 }: {
   rgbControllerConfig: RGBControllerConfig;
-  rgbControllerStateMotionValue: MotionValue<RGBControllerState>;
+  rgbLedStatesMotionValue: MotionValue<RGBLedState[]>;
 }): ReactElement {
   // Hooks - Local States
   const rafId = useRef<number | null>(null);
@@ -23,15 +23,11 @@ export function RGBControllerTimerEffect({
       if (tickPeriod >= rgbControllerConfig.tickIntervalMs) {
         lastTime.current = performance.now();
 
-        rgbControllerStateMotionValue.set({
-          normalRGBLedStates: rgbControllerConfig.normalRGBLedStatesMapper.map(
-            rgbControllerStateMotionValue.get().normalRGBLedStates,
+        rgbLedStatesMotionValue.set(
+          rgbControllerConfig.rgbLedStatesMapper.map(
+            rgbLedStatesMotionValue.get(),
           ),
-          alternativeRGBLedStates:
-            rgbControllerConfig.alternativeRGBLedStatesMapper.map(
-              rgbControllerStateMotionValue.get().alternativeRGBLedStates,
-            ),
-        });
+        );
       }
 
       rafId.current = requestAnimationFrame(tickHandler);
@@ -45,7 +41,7 @@ export function RGBControllerTimerEffect({
       cancelAnimationFrame(rafId.current);
       rafId.current = null;
     };
-  }, [rgbControllerConfig, rgbControllerStateMotionValue]);
+  }, [rgbControllerConfig, rgbLedStatesMotionValue]);
 
   return <></>;
 }

@@ -113,7 +113,6 @@ function DescriptionListTitle({
     <RGBText
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-education-slash-experience-description-list-title-text-color)"
     >
       <h5 className="text-4 font-semibold">{children}</h5>
@@ -188,7 +187,6 @@ function DescriptionListItem({
       <RGBText
         parentBackgroundColor="var(--theme-component-section-background-color)"
         rgbLedIndicesMatrix={rgbLedIndicesMatrices.icon}
-        isUsingAlternativeColors={false}
         preferredNormalFallbackColor="var(--theme-component-education-slash-experience-description-list-item-icon-color)"
       >
         <div className="px-1 text-[0.5rem]" aria-hidden={true}>
@@ -200,7 +198,6 @@ function DescriptionListItem({
       <RGBText
         parentBackgroundColor="var(--theme-component-section-background-color)"
         rgbLedIndicesMatrix={rgbLedIndicesMatrices.text}
-        isUsingAlternativeColors={false}
         preferredNormalFallbackColor="var(--theme-component-education-slash-experience-description-list-item-text-color)"
       >
         <p className="text-4 font-light">{children}</p>

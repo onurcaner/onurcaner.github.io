@@ -20,7 +20,7 @@ export function SectionLayout({
       className="relative grid min-h-screen content-center items-center py-40"
       ref={sectionRef}
     >
-      <div className="flex items-center justify-between">
+      <div className="mb-10 grid grid-cols-[minmax(0,1fr)_max-content] items-center">
         <SectionHeading iconName={sectionIconName}>
           {sectionTitle}
         </SectionHeading>

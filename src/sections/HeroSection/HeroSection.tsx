@@ -62,7 +62,6 @@ function HeroBorderLayer(): ReactElement {
     <RGBBackground
       className="absolute top-0 right-0 bottom-0 left-0 z-1"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionBorderBottom.createMatrix()}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-hero-section-border-color)"
     />
   );
@@ -78,7 +77,6 @@ function HeroBlurShadowLayer(): ReactElement {
     >
       <RGBBackground
         rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionBorderBottom.createMatrix()}
-        isUsingAlternativeColors={false}
         preferredNormalFallbackColor="var(--theme-component-hero-section-background-color)"
       />
     </BlurShadow>

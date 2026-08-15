@@ -16,7 +16,9 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
   public rgbControllerConfig = new TestThemeRGBControllerConfig();
   public rgbLedIndicesMatrixCreators: RGBLedIndicesMatrixCreators = {
     headerBorderBlock: new BasicRGBLedIndicesMatrixCreator({
-      templateMatrix: [Array.from({ length: 96 }).map((_, i) => i)],
+      templateMatrix: [
+        Array.from({ length: 96 }).map((_, i) => i % Option.BoundaryIndex),
+      ],
       selfLength: 96,
       groupLength: 96,
       boundaryIndex: Option.BoundaryIndex,
@@ -37,7 +39,7 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
 
     heroSectionTitle: new BasicRGBLedIndicesMatrixCreator({
       templateMatrix: [
-        Array.from({ length: 48 }).map((_, i) => i),
+        Array.from({ length: 48 }).map((_, i) => i % Option.BoundaryIndex),
         Array.from({ length: 48 }).map(
           (_, i) => (i + 48) % Option.BoundaryIndex,
         ),
@@ -80,9 +82,46 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
       boundaryIndex: Option.BoundaryIndex,
     }),
     sectionHeadingTitle: new BasicRGBLedIndicesMatrixCreator({
-      templateMatrix: [Array.from({ length: 34 }).map((_, i) => i + 2)],
+      templateMatrix: [
+        Array.from({ length: 34 }).map(
+          (_, i) => (i + 2) % Option.BoundaryIndex,
+        ),
+      ],
       selfLength: 34,
       groupLength: 36,
+      boundaryIndex: Option.BoundaryIndex,
+    }),
+
+    sectionSideNavigationBorder: new BasicRGBLedIndicesMatrixCreator({
+      templateMatrix: [
+        [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89],
+        [77, ...Array.from({ length: 10 }).map(() => null), 90],
+        [76, ...Array.from({ length: 10 }).map(() => null), 91],
+        [75, ...Array.from({ length: 10 }).map(() => null), 92],
+        [74, ...Array.from({ length: 10 }).map(() => null), 93],
+        [73, ...Array.from({ length: 10 }).map(() => null), 94],
+        [72, ...Array.from({ length: 10 }).map(() => null), 95],
+        [73, ...Array.from({ length: 10 }).map(() => null), 94],
+        [74, ...Array.from({ length: 10 }).map(() => null), 93],
+        [75, ...Array.from({ length: 10 }).map(() => null), 92],
+        [76, ...Array.from({ length: 10 }).map(() => null), 91],
+        [77, ...Array.from({ length: 10 }).map(() => null), 90],
+        [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89],
+      ],
+      selfLength: 24,
+      groupLength: 24,
+      boundaryIndex: Option.BoundaryIndex,
+    }),
+    sectionSideNavigationLinkIcon: new BasicRGBLedIndicesMatrixCreator({
+      templateMatrix: [[81]],
+      selfLength: 1,
+      groupLength: 24,
+      boundaryIndex: Option.BoundaryIndex,
+    }),
+    sectionSideNavigationLinkText: new BasicRGBLedIndicesMatrixCreator({
+      templateMatrix: [[82, 83, 84, 85, 86]],
+      selfLength: 5,
+      groupLength: 24,
       boundaryIndex: Option.BoundaryIndex,
     }),
 
@@ -143,14 +182,12 @@ export class TestThemeThemeControllerConfig implements ThemeControllerConfig {
       groupLength: 96,
       boundaryIndex: Option.BoundaryIndex,
     }),
-    educationGradeSlashExperienceLevel: new BasicRGBLedIndicesMatrixCreator(
-      {
-        templateMatrix: [Array.from({ length: 24 }).map((_, i) => 72 + i)],
-        selfLength: 24,
-        groupLength: 96,
-        boundaryIndex: Option.BoundaryIndex,
-      },
-    ),
+    educationGradeSlashExperienceLevel: new BasicRGBLedIndicesMatrixCreator({
+      templateMatrix: [Array.from({ length: 24 }).map((_, i) => 72 + i)],
+      selfLength: 24,
+      groupLength: 96,
+      boundaryIndex: Option.BoundaryIndex,
+    }),
 
     educationSlashExperienceDescriptionListTitle:
       new BasicRGBLedIndicesMatrixCreator({

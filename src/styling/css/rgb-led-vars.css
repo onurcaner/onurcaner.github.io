@@ -1,12 +1,14 @@
 /* Will be affected by RGB Controller */
 :root {
   --rgb-led-n-normal-color: white;
-  --rgb-led-n-normal-transition-duration: 10ms;
-  --rgb-led-n-normal-transition-timing-function: ease-out;
-  --rgb-led-n-normal-fallback-color-opacity: 0;
-
   --rgb-led-n-alternative-color: white;
+
+  --rgb-led-n-normal-transition-duration: 10ms;
   --rgb-led-n-alternative-transition-duration: 10ms;
+
+  --rgb-led-n-normal-transition-timing-function: ease-out;
   --rgb-led-n-alternative-transition-timing-function: ease-out;
+
+  --rgb-led-n-normal-fallback-color-opacity: 0;
   --rgb-led-n-alternative-fallback-color-opacity: 0;
 }

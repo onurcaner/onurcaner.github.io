@@ -20,7 +20,7 @@
 :root {
   --theme-perspective: 80rem;
 
-  --theme-background-opacity: 90%;
+  --theme-background-opacity: 90%; /* Unused, mix-blend ignores alpha */
   --theme-elevation-step: 2rem;
 
   --theme-blur-shadow-opacity: 100%;
@@ -28,6 +28,6 @@
 
 /* Animation */
 :root {
-  --theme-transition-timing-function-ease-out: 'cubic-bezier(0.16, 1, 0.3, 1)'; /* easeOutExpo */
-  --theme-transition-duration: 0.4s;
+  --theme-transition-timing-function-ease-out: 'cubic-bezier(0.16, 1, 0.3, 1)'; /* https://easings.net/#easeOutExpo */
+  --theme-transition-duration: 2s;
 }

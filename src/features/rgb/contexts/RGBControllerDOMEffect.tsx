@@ -2,58 +2,70 @@ import { type MotionValue } from 'motion';
 import { useMotionValueEvent } from 'motion/react';
 import { type ReactElement } from 'react';
 
-import { type RGBControllerState } from '@/features/rgb/_types/RGBControllerState.ts';
-
 import { RGBLedType } from '../_constants/RGBLedType.ts';
 import { type RGBLedState } from '../_types/RGBLedState.ts';
 import { RGBLedCSSVarAdapter } from '../utils/RGBLedCSSVarAdapter.ts';
 
 export function RGBControllerDOMEffect({
-  rgbControllerStateMotionValue,
+  rgbLedStatesMotionValue,
 }: {
-  rgbControllerStateMotionValue: MotionValue<RGBControllerState>;
+  rgbLedStatesMotionValue: MotionValue<RGBLedState[]>;
 }): ReactElement {
-  useMotionValueEvent(
-    rgbControllerStateMotionValue,
-    'change',
-    (rgbControllerState) => {
-      rgbControllerState.normalRGBLedStates.forEach(
-        affectRootCSSVars.bind(null, RGBLedType.Normal),
-      );
-      rgbControllerState.alternativeRGBLedStates.forEach(
-        affectRootCSSVars.bind(null, RGBLedType.Alternative),
-      );
-    },
-  );
+  useMotionValueEvent(rgbLedStatesMotionValue, 'change', (rgbLedStates) => {
+    rgbLedStates.forEach(affectRootCSSVars);
+  });
 
   return <></>;
 }
 
 function affectRootCSSVars(
-  rgbLedType: RGBLedType,
   rgbLedState: RGBLedState,
   rgbLedIndex: number,
 ): void {
-  const rgbLedCSSVarPropertyNameGenerator = new RGBLedCSSVarAdapter({
+  const normalRgbLedCSSVarPropertyNameGenerator = new RGBLedCSSVarAdapter({
     rgbLedIndex: rgbLedIndex,
-    rgbLedType: rgbLedType,
+    rgbLedType: RGBLedType.Normal,
+  });
+  const alternativeRgbLedCSSVarPropertyNameGenerator = new RGBLedCSSVarAdapter({
+    rgbLedIndex: rgbLedIndex,
+    rgbLedType: RGBLedType.Alternative,
   });
 
   const rootStyle = document.documentElement.style;
+
   rootStyle.setProperty(
-    rgbLedCSSVarPropertyNameGenerator.generateColorPropertyName(),
-    rgbLedState.color,
+    normalRgbLedCSSVarPropertyNameGenerator.generateColorPropertyName(),
+    rgbLedState.normalColor,
   );
   rootStyle.setProperty(
-    rgbLedCSSVarPropertyNameGenerator.generateTransitionDurationPropertyName(),
-    rgbLedState.transitionDuration,
+    alternativeRgbLedCSSVarPropertyNameGenerator.generateColorPropertyName(),
+    rgbLedState.alternativeColor,
+  );
+
+  rootStyle.setProperty(
+    normalRgbLedCSSVarPropertyNameGenerator.generateTransitionDurationPropertyName(),
+    rgbLedState.normalTransitionDuration,
   );
   rootStyle.setProperty(
-    rgbLedCSSVarPropertyNameGenerator.generateTransitionTimingFunctionPropertyName(),
-    rgbLedState.transitionTimingFunction,
+    alternativeRgbLedCSSVarPropertyNameGenerator.generateTransitionDurationPropertyName(),
+    rgbLedState.alternativeTransitionDuration,
+  );
+
+  rootStyle.setProperty(
+    normalRgbLedCSSVarPropertyNameGenerator.generateTransitionTimingFunctionPropertyName(),
+    rgbLedState.normalTransitionDuration,
   );
   rootStyle.setProperty(
-    rgbLedCSSVarPropertyNameGenerator.generateFallbackColorOpacityPropertyName(),
-    rgbLedState.isPreferringFallbackColor ? '100%' : '0%',
+    alternativeRgbLedCSSVarPropertyNameGenerator.generateTransitionTimingFunctionPropertyName(),
+    rgbLedState.alternativeTransitionDuration,
+  );
+
+  rootStyle.setProperty(
+    normalRgbLedCSSVarPropertyNameGenerator.generateFallbackColorOpacityPropertyName(),
+    rgbLedState.isNormalColorPreferringFallbackColor ? '100%' : '0%',
+  );
+  rootStyle.setProperty(
+    alternativeRgbLedCSSVarPropertyNameGenerator.generateFallbackColorOpacityPropertyName(),
+    rgbLedState.isAlternativeColorPreferringFallbackColor ? '100%' : '0%',
   );
 }

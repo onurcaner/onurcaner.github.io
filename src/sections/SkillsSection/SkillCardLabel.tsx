@@ -24,7 +24,7 @@ export function SkillCardLabel({
       preferredNormalFallbackColor="var(--theme-component-skill-label-text-color--normal)"
       preferredAlternativeFallbackColor="var(--theme-component-skill-label-text-color--hover)"
     >
-      <h3 className="text-4-5 font-normal">{children}</h3>
+      <h3 className="text-4-5 font-medium">{children}</h3>
     </RGBText>
   );
 }

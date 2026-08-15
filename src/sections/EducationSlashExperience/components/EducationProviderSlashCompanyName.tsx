@@ -30,8 +30,7 @@ export function EducationProviderSlashCompanyName({
     <RGBText
       parentBackgroundColor="var(--theme-component-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-      isUsingAlternativeColors={false}
-      preferredNormalFallbackColor="var(--theme-component-education-provider-slash-company-name-text-color)"
+      preferredNormalFallbackColor="var(--theme-component-education-provider-slash-company-name-text-color--normal)"
     >
       <h4 className="text-4-5 font-medium">{children}</h4>
     </RGBText>

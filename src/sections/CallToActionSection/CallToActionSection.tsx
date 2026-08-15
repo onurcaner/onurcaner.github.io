@@ -61,7 +61,6 @@ function CallToActionBorderLayer(): ReactElement {
     <RGBBackground
       className="absolute top-0 right-0 bottom-0 left-0 z-1 grid"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.callToActionSectionBorderBlock.createMatrix()}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-call-to-action-section-border-color)"
     />
   );
@@ -77,7 +76,6 @@ function CallToActionBlurShadowLayer(): ReactElement {
     >
       <RGBBackground
         rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.callToActionSectionBorderBlock.createMatrix()}
-        isUsingAlternativeColors={false}
         preferredNormalFallbackColor="var(--theme-component-call-to-action-section-background-color)"
       />
     </BlurShadow>

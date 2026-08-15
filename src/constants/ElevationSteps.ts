@@ -2,6 +2,7 @@
 export enum ElevationStep {
   Header = 2,
   HeroSection = 2,
-  SkillItem = 2,
+  SkillCard = 2,
+  Menu = 2,
   CallToActionSection = 2,
 }

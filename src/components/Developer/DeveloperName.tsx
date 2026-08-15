@@ -15,16 +15,19 @@ export function DeveloperName(): ReactElement {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <RGBText
-      parentBackgroundColor="var(--theme-component-header-background-color)"
-      rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.developerName.createMatrix()}
-      isUsingAlternativeColors={isHovered}
-      preferredNormalFallbackColor="var(--theme-component-developer-name-text-color)"
-      preferredAlternativeFallbackColor="var(--theme-component-developer-name-text-color--hover)"
+    <div
       onPointerEnter={setIsHovered.bind(null, true)}
       onPointerLeave={setIsHovered.bind(null, false)}
     >
-      <p className="text-4 font-medium uppercase">{developer.name}</p>
-    </RGBText>
+      <RGBText
+        parentBackgroundColor="var(--theme-component-header-background-color)"
+        rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.developerName.createMatrix()}
+        isUsingAlternativeColors={isHovered}
+        preferredNormalFallbackColor="var(--theme-component-developer-name-text-color)"
+        preferredAlternativeFallbackColor="var(--theme-component-developer-name-text-color--hover)"
+      >
+        <p className="text-4 font-medium uppercase">{developer.name}</p>
+      </RGBText>
+    </div>
   );
 }

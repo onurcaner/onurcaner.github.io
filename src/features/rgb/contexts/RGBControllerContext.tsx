@@ -1,3 +1,6 @@
 import { createContext } from 'react';
 
-export const RGBControllerContext = createContext<object | null>(null);
+import { type RGBControllerContextState } from '../_types/RGBControllerContextState.ts';
+
+export const RGBControllerContext =
+  createContext<RGBControllerContextState | null>(null);

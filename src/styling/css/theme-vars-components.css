@@ -1,13 +1,14 @@
+/* RGB */
 :root {
   --theme-component-rgb-diffuser-color: oklch(1 0 0 / 0%);
   --theme-component-rgb-diffuser-blur-length: 0.5rem;
 
-  /* Header */
-  --theme-component-header-background-color: var(--theme-color-neutral-800);
-  --theme-component-header-border-color--normal: var(--theme-color-neutral-700);
-  --theme-component-header-border-color--hover: var(--theme-color-neutral-600);
+  --theme-component-blur-shadow-elevation-step: var(--theme-elevation-step);
+  --theme-component-blur-shadow-opacity: var(--theme-blur-shadow-opacity);
+}
 
-  /* Developer */
+/* Developer */
+:root {
   --theme-component-developer-name-text-color: var(--theme-color-neutral-300);
   --theme-component-developer-name-text-color--hover: var(
     --theme-color-neutral-200
@@ -15,8 +16,45 @@
   --theme-component-developer-job-title-text-color: var(
     --theme-color-neutral-400
   );
+}
 
-  /* Hero Section */
+/* Header and Footer */
+:root {
+  --theme-component-header-background-color: var(--theme-color-neutral-800);
+  --theme-component-header-border-color: var(--theme-color-neutral-700);
+
+  --theme-component-footer-background-color: var(
+    --theme-component-header-background-color
+  );
+}
+
+/* Menu */
+:root {
+  --theme-component-menu-background-color: var(--theme-color-neutral-800);
+  --theme-component-menu-border-color--normal: var(--theme-color-neutral-700);
+  --theme-component-menu-border-color--hover: var(--theme-color-neutral-600);
+  --theme-component-menu-button-background-color--normal: var(
+    --theme-component-menu-background-color
+  );
+  --theme-component-menu-button-background-color--hover: var(
+    --theme-component-menu-border-color--normal
+  );
+  --theme-component-menu-button-text-color--normal: var(
+    --theme-color-neutral-300
+  );
+  --theme-component-menu-button-text-color--hover: var(
+    --theme-color-neutral-200
+  );
+  --theme-component-menu-button-icon-color--normal: var(
+    --theme-color-neutral-400
+  );
+  --theme-component-menu-button-icon-color--hover: var(
+    --theme-color-neutral-300
+  );
+}
+
+/* Hero Section */
+:root {
   --theme-component-hero-section-background-color: var(
     --theme-color-neutral-800
   );
@@ -27,15 +65,35 @@
     --theme-color-neutral-300
   );
   --theme-component-hero-section-border-color: var(
-    --theme-component-header-border-color--normal
+    --theme-component-header-border-color
   );
+}
 
-  /* Sections */
+/* Call To Action Section */
+:root {
+  --theme-component-call-to-action-section-background-color: var(
+    --theme-component-hero-section-background-color
+  );
+  --theme-component-call-to-action-section-title-text-color: var(
+    --theme-component-hero-section-title-text-color
+  );
+  --theme-component-call-to-action-section-description-text-color: var(
+    --theme-component-hero-section-description-text-color
+  );
+  --theme-component-call-to-action-section-border-color: var(
+    --theme-component-header-border-color
+  );
+}
+
+/* Sections - Common */
+:root {
   --theme-component-section-background-color: var(--theme-color-neutral-900);
   --theme-component-section-heading-text-color: var(--theme-color-neutral-400);
   --theme-component-section-heading-icon-color: var(--theme-color-neutral-500);
+}
 
-  /* Skills Section */
+/* Skills Section */
+:root {
   --theme-component-skill-card-background-color: var(--theme-color-neutral-900);
   --theme-component-skill-card-border-color--normal: var(
     --theme-color-neutral-800
@@ -51,19 +109,24 @@
   --theme-component-skill-label-text-color--hover: var(
     --theme-color-neutral-200
   );
+}
 
-  /* Education / Experience Sections */
+/* Education / Experience Section */
+:root {
   --theme-component-education-slash-experience-title-text-color: var(
     --theme-color-neutral-300
   );
   --theme-component-education-slash-experience-date-range-text-color: var(
     --theme-component-education-slash-experience-title-text-color
   );
-  --theme-component-education-provider-slash-company-name-text-color: var(
+  --theme-component-education-provider-slash-company-name-text-color--normal: var(
     --theme-color-neutral-200
   );
+  --theme-component-education-provider-slash-company-name-text-color--hover: var(
+    --theme-color-neutral-100
+  );
   --theme-component-education-provider-slash-company-location-text-color: var(
-    --theme-component-education-provider-slash-company-name-text-color
+    --theme-component-education-provider-slash-company-name-text-color--normal
   );
   --theme-component-education-grade-slash-experience-level-text-color: var(
     --theme-color-neutral-200
@@ -77,23 +140,26 @@
   --theme-component-education-slash-experience-description-list-item-text-color: var(
     --theme-color-neutral-300
   );
+}
 
-  /* Call to Action Section */
-  --theme-component-call-to-action-section-background-color: var(
-    --theme-component-hero-section-background-color
-  );
-  --theme-component-call-to-action-section-title-text-color: var(
-    --theme-component-hero-section-title-text-color
-  );
-  --theme-component-call-to-action-section-description-text-color: var(
-    --theme-component-hero-section-description-text-color
-  );
-  --theme-component-call-to-action-section-border-color: var(
-    --theme-component-header-border-color--normal
-  );
+:root {
+  --theme-component-rgb-diffuser-color: oklch(1 0 0 / 0%);
+  --theme-component-rgb-diffuser-blur-length: 0.5rem;
 
-  /* Footer */
-  --theme-component-footer-background-color: var(
+  /* Primary Button */
+
+  /* Secondary Button */
+
+  /* Tertiary Button */
+
+  /* Section Side Navigation Menu */
+  --theme-component-section-navigation-background-color: var(
     --theme-component-header-background-color
+  );
+  --theme-component-section-navigation-border-color--normal: var(
+    --theme-component-header-border-color
+  );
+  --theme-component-section-navigation-border-color--hover: var(
+    --theme-component-header-border-color--hover
   );
 }

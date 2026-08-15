@@ -17,7 +17,6 @@ export function CallToActionSectionTitle(): ReactElement {
       className="mb-6"
       parentBackgroundColor="var(--theme-component-call-to-action-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.callToActionSectionTitle.createMatrix()}
-      isUsingAlternativeColors={false}
       preferredNormalFallbackColor="var(--theme-component-call-to-action-section-title-text-color)"
     >
       <h2 className="text-16 font-extrabold uppercase">{title}</h2>
