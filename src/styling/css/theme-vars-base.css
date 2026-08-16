@@ -21,9 +21,9 @@
   --theme-perspective: 80rem;
 
   --theme-background-opacity: 90%; /* Unused, mix-blend ignores alpha */
-  --theme-elevation-step: 2rem;
+  --theme-elevation-step: 0.5rem;
 
-  --theme-blur-shadow-opacity: 100%;
+  --theme-blur-shadow-opacity: 50%;
 }
 
 /* Animation */

@@ -1,51 +1,38 @@
-import { useMotionValueEvent } from 'motion/react';
-import { type ReactElement, useRef, useState } from 'react';
+import { type ReactElement, useRef } from 'react';
 
 import { IconName } from '@/assets/_constants/IconName.ts';
-import { BlurShadow } from '@/components/BlurShadow.tsx';
 import { ElevationStep } from '@/constants/ElevationSteps.ts';
 import { SectionName } from '@/constants/SectionName.ts';
 import { HoverContextProvider } from '@/contexts/local/hover-context/HoverContextProvider.tsx';
 import { useHoverContext } from '@/contexts/local/hover-context/useHoverContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
-import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpyContext.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
 import { useRectSize } from '@/hooks/useRectSize.tsx';
 
-import { SectionNavigationItem } from './SectionNavigationItem.tsx';
+import { BlurShadow } from '../BlurShadow.tsx';
 
-export function SectionSideNavigation(): ReactElement {
+import { SideNavigationItem } from './SideNavigationItem.tsx';
+
+export function SideNavigation(): ReactElement {
   return (
     <HoverContextProvider>
-      <ActualSectionSideNavigation />
+      <ActualSideNavigation />
     </HoverContextProvider>
   );
 }
 
-function ActualSectionSideNavigation(): ReactElement {
+function ActualSideNavigation(): ReactElement {
   // Hooks - Elevated States
-  const { activeSectionNameMotionValue } = useScrollSpyContext();
   const { onPointerEnter, onPointerLeave } = useHoverContext();
 
   // Hooks - Local States
   const navRef = useRef<HTMLElement>(null);
   const { height } = useRectSize(navRef);
-  const [activeSectionName, setActiveSectionName] =
-    useState<SectionName | null>(null);
-
-  // Motion Hooks - Elevated to Local State Synchronisation
-  useMotionValueEvent(
-    activeSectionNameMotionValue,
-    'change',
-    (activeSectionName) => {
-      setActiveSectionName(activeSectionName);
-    },
-  );
 
   return (
     <nav
       ref={navRef}
-      className="sticky top-1/2 z-0 -translate-y-1/2"
+      className="sticky top-1/2 z-1 -translate-y-1/2"
       style={{
         marginTop: typeof height === 'number' ? height / 2 : undefined,
         marginBottom: typeof height === 'number' ? -height / 2 : undefined,
@@ -54,46 +41,43 @@ function ActualSectionSideNavigation(): ReactElement {
       onPointerLeave={onPointerLeave}
     >
       <div className="relative p-(--theme-border-thickness)">
-        <SectionSideNavigationContentLayer
-          activeSectionName={activeSectionName}
-        />
-        <SectionSideNavigationBorderLayer />
-        <SectionSideNavigationBlurShadowLayer />
+        <SideNavigationContentLayer />
+        <SideNavigationBorderLayer />
+        <SideNavigationBlurShadowLayer />
       </div>
     </nav>
   );
 }
 
-function SectionSideNavigationContentLayer({
-  activeSectionName,
-}: {
-  activeSectionName: SectionName | null;
-}): ReactElement {
+function SideNavigationContentLayer(): ReactElement {
   return (
-    <ul className="relative z-2 m-auto grid rounded-(--theme-border-radius) bg-(--theme-component-menu-background-color) px-16 py-20">
-      <SectionNavigationItem
+    <ul className="relative z-2 m-auto grid gap-y-0.5 rounded-(--theme-border-radius) bg-(--theme-component-menu-background-color) px-16 py-20">
+      <SideNavigationItem
         itemIndex={0}
+        sectionName={SectionName.Skills}
         iconName={IconName.Box}
-        label="Skills"
-        isActive={activeSectionName === SectionName.Skills}
-      />
-      <SectionNavigationItem
+      >
+        Skills
+      </SideNavigationItem>
+      <SideNavigationItem
         itemIndex={0}
+        sectionName={SectionName.Education}
         iconName={IconName.GraduationCap}
-        label="Education"
-        isActive={activeSectionName === SectionName.Education}
-      />
-      <SectionNavigationItem
+      >
+        Education
+      </SideNavigationItem>
+      <SideNavigationItem
         itemIndex={0}
+        sectionName={SectionName.Experience}
         iconName={IconName.BriefCase}
-        label="Experience"
-        isActive={activeSectionName === SectionName.Experience}
-      />
+      >
+        Experience
+      </SideNavigationItem>
     </ul>
   );
 }
 
-function SectionSideNavigationBorderLayer(): ReactElement {
+function SideNavigationBorderLayer(): ReactElement {
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
   const { isHovered } = useHoverContext();
 
@@ -108,13 +92,13 @@ function SectionSideNavigationBorderLayer(): ReactElement {
   );
 }
 
-function SectionSideNavigationBlurShadowLayer(): ReactElement {
+function SideNavigationBlurShadowLayer(): ReactElement {
   const { rgbLedIndicesMatrixCreators } = useThemeContext();
   const { isHovered } = useHoverContext();
 
   return (
     <BlurShadow
-      className="absolute top-0 right-0 bottom-0 left-0 z-0 grid rounded-(--theme-border-radius)"
+      className="absolute top-0 right-0 bottom-0 left-0 z-0 grid overflow-hidden rounded-(--theme-border-radius)"
       elevationStep={ElevationStep.Menu}
     >
       <RGBBackground

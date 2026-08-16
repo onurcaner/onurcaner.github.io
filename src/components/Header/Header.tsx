@@ -110,7 +110,12 @@ function HeaderContentLayer({
         }}
       >
         <Developer isHorizontal={true} />
-        <div className="text-white">MENU</div>
+
+        <div className="grid items-center justify-center rounded-(--theme-border-radius) bg-neutral-700 p-(--theme-border-thickness)">
+          <div className="grid items-center justify-center rounded-(--theme-border-radius) bg-neutral-800 p-2">
+            <div className="size-8 rounded-(--theme-border-radius) bg-neutral-400" />
+          </div>
+        </div>
       </motion.div>
     </div>
   );

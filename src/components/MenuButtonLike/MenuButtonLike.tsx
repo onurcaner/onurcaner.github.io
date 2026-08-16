@@ -17,6 +17,7 @@ interface MenuButtonLikeProps {
   textRGBLedIndicesMatrix: RGBLedIndex[][];
 }
 
+// Wrap by <Link> or <Button>
 export function MenuButtonLike(props: MenuButtonLikeProps): ReactElement {
   return (
     <HoverContextProvider>
@@ -25,7 +26,6 @@ export function MenuButtonLike(props: MenuButtonLikeProps): ReactElement {
   );
 }
 
-// Wrap by <Link> or <Button>
 export function Button({
   children,
   iconName,
@@ -40,7 +40,7 @@ export function Button({
   return (
     <div
       className={new ClassNameJoiner().join(
-        'grid items-center rounded-(--theme-border-radius) px-4 py-1.5 transition-colors duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)',
+        'grid cursor-pointer items-center rounded-(--theme-border-radius) px-4 py-1.5 transition-colors duration-(--theme-transition-duration) ease-(--theme-transition-timing-function-ease-out)',
         isHovered &&
           'bg-(--theme-component-menu-button-background-color--hover)',
         !isHovered &&

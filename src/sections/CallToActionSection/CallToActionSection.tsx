@@ -3,6 +3,7 @@ import { type ReactElement } from 'react';
 
 import { BlurShadow } from '@/components/BlurShadow.tsx';
 import { ElevationStep } from '@/constants/ElevationSteps.ts';
+import { SectionName } from '@/constants/SectionName.ts';
 import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
 import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpyContext.tsx';
@@ -33,8 +34,9 @@ export function CallToActionSection(): ReactElement {
 
   return (
     <section
-      className="relative py-(--theme-border-thickness)"
+      className="relative z-1 py-(--theme-border-thickness)"
       ref={callToActionSectionRef}
+      id={SectionName.CallToAction}
     >
       <CallToActionContentLayer />
       <CallToActionBorderLayer />

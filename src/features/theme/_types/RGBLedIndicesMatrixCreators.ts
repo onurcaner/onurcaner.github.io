@@ -8,6 +8,11 @@ export interface RGBLedIndicesMatrixCreators {
 
   heroSectionTitle: RGBLedIndicesMatrixCreator;
   heroSectionDescription: RGBLedIndicesMatrixCreator;
+  heroSectionPrimaryButton: RGBLedIndicesMatrixCreator;
+  heroSectionSecondaryButtonLeadingIcon: RGBLedIndicesMatrixCreator;
+  heroSectionSecondaryButtonTrailingIcon: RGBLedIndicesMatrixCreator;
+  heroSectionSecondaryButtonLabel: RGBLedIndicesMatrixCreator;
+  heroSectionSecondaryButtonBorder: RGBLedIndicesMatrixCreator;
   heroSectionBorderBottom: RGBLedIndicesMatrixCreator;
 
   sectionHeadingIcon: RGBLedIndicesMatrixCreator;
@@ -33,4 +38,6 @@ export interface RGBLedIndicesMatrixCreators {
   callToActionSectionBorderBlock: RGBLedIndicesMatrixCreator;
   callToActionSectionTitle: RGBLedIndicesMatrixCreator;
   callToActionSectionDescription: RGBLedIndicesMatrixCreator;
+
+  footerNavigationLink: RGBLedIndicesMatrixCreator;
 }

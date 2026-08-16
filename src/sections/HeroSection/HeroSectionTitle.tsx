@@ -14,7 +14,7 @@ export function HeroSectionTitle(): ReactElement {
 
   return (
     <RGBText
-      className="mb-7"
+      className="relative z-0 mb-7"
       parentBackgroundColor="var(--theme-component-hero-section-background-color)"
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.heroSectionTitle.createMatrix()}
       preferredNormalFallbackColor="var(--theme-component-hero-section-title-text-color)"

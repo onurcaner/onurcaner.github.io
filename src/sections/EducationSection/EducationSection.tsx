@@ -2,6 +2,7 @@ import { useMotionValueEvent, useScroll } from 'motion/react';
 import { type ReactElement } from 'react';
 
 import { IconName } from '@/assets/_constants/IconName.ts';
+import { SectionName } from '@/constants/SectionName.ts';
 import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.tsx';
 import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpyContext.tsx';
 
@@ -31,6 +32,7 @@ export function EducationSection(): ReactElement {
   return (
     <SectionLayout
       sectionRef={educationSectionRef}
+      sectionName={SectionName.Education}
       sectionIconName={IconName.GraduationCap}
       sectionTitle={'Education'}
     >

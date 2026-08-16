@@ -71,7 +71,7 @@ function SkillCardBlurShadowLayer({ index }: SkillCardProps): ReactElement {
 
   return (
     <BlurShadow
-      className="absolute top-0 right-0 bottom-0 left-0 z-0 grid rounded-(--theme-border-radius)"
+      className="absolute top-0 right-0 bottom-0 left-0 z-0 grid overflow-hidden rounded-(--theme-border-radius)"
       elevationStep={ElevationStep.SkillCard}
     >
       <RGBBackground

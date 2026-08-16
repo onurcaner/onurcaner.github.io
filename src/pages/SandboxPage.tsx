@@ -12,7 +12,7 @@ export function SandboxPage(): ReactElement {
   return (
     <div className="grid bg-neutral-900 p-16">
       <div className="text-32 text-neutral-100">
-        <UIIcon iconName={IconName.BriefCase} />
+        <UIIcon iconName={IconName.Rocket} />
       </div>
     </div>
   );

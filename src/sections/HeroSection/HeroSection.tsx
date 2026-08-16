@@ -7,6 +7,8 @@ import { useDomRefsContext } from '@/contexts/global/dom-refs/useDomRefsContext.
 import { RGBBackground } from '@/features/rgb/components/RGBBackground.tsx';
 import { useScrollSpyContext } from '@/features/scroll-spy/contexts/useScrollSpyContext.tsx';
 import { useThemeContext } from '@/features/theme/contexts/useThemeContext.tsx';
+import { HeroSectionPrimaryButton } from '@/sections/HeroSection/HeroSectionPrimaryButton.tsx';
+import { HeroSectionSecondaryButton } from '@/sections/HeroSection/HeroSectionSecondaryButton.tsx';
 
 import { HeroSectionDescription } from './HeroSectionDescription.tsx';
 import { HeroSectionFakeHeader } from './HeroSectionFakeHeader.tsx';
@@ -33,7 +35,7 @@ export function HeroSection(): ReactElement {
 
   return (
     <div
-      className="relative pb-(--theme-border-thickness)"
+      className="relative z-1 pb-(--theme-border-thickness)"
       ref={heroSectionRef as RefObject<HTMLDivElement>}
     >
       <HeroContentLayer />
@@ -50,6 +52,10 @@ function HeroContentLayer(): ReactElement {
       <div className="max-w-9xl mx-auto grid w-full justify-start self-center px-16 pt-20 pb-40">
         <HeroSectionTitle />
         <HeroSectionDescription />
+        <div className="flex gap-x-8">
+          <HeroSectionPrimaryButton />
+          <HeroSectionSecondaryButton />
+        </div>
       </div>
     </div>
   );

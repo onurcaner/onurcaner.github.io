@@ -6,12 +6,10 @@ import { useHoverContext } from '@/contexts/local/hover-context/useHoverContext.
 import { type RGBLedIndex } from '@/features/rgb/_types/RGBLedIndex.ts';
 import { RGBText } from '@/features/rgb/components/RGBText.tsx';
 
-export function MenuButtonLikeIcon({
-  isUsingAlternativeColors,
+export function SecondaryButtonLikeIcon({
   iconName,
   rgbLedIndicesMatrix,
 }: {
-  isUsingAlternativeColors: boolean;
   iconName: IconName;
   rgbLedIndicesMatrix: RGBLedIndex[][];
 }): ReactElement {
@@ -21,15 +19,15 @@ export function MenuButtonLikeIcon({
     <RGBText
       parentBackgroundColor={
         isHovered
-          ? 'var(--theme-component-menu-button-background-color--hover)'
-          : 'var(--theme-component-menu-button-background-color--normal)'
+          ? 'var(--theme-component-secondary-button-background-color--hover)'
+          : 'var(--theme-component-secondary-button-background-color--normal)'
       }
-      isUsingAlternativeColors={isUsingAlternativeColors}
       rgbLedIndicesMatrix={rgbLedIndicesMatrix}
-      preferredNormalFallbackColor="var(--theme-component-menu-button-icon-color--normal)"
-      preferredAlternativeFallbackColor="(--theme-component-menu-button-icon-color--hover)"
+      isUsingAlternativeColors={isHovered}
+      preferredNormalFallbackColor="var(--theme-component-secondary-button-icon-color--normal)"
+      preferredAlternativeFallbackColor="var(--theme-component-secondary-button-icon-color--hover)"
     >
-      <div className="text-4-5 px-0.75" aria-hidden={true}>
+      <div className="text-6 mx-0.5" aria-hidden={true}>
         <UIIcon iconName={iconName} />
       </div>
     </RGBText>

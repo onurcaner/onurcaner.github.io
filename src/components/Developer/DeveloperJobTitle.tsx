@@ -16,7 +16,7 @@ export function DeveloperJobTitle(): ReactElement {
       rgbLedIndicesMatrix={rgbLedIndicesMatrixCreators.developerJobTitle.createMatrix()}
       preferredNormalFallbackColor="var(--theme-component-developer-job-title-text-color)"
     >
-      <p className="text-4 font-light capitalize">{developer.jobTitle}</p>
+      <p className="text-4-5 font-light capitalize">{developer.jobTitle}</p>
     </RGBText>
   );
 }

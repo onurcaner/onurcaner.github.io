@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-import { SectionSideNavigation } from '@/sections/_components/SectionNavigation/SectionSideNavigation.tsx';
+import { SideNavigation } from '@/components/SideNavigation/SideNavigation.tsx';
 
 export function SectionsLayout({ children }: { children: ReactNode }) {
   return (
@@ -8,7 +8,7 @@ export function SectionsLayout({ children }: { children: ReactNode }) {
       <div className="max-w-9xl mx-auto grid grid-cols-[1fr_max-content] gap-x-16 px-16">
         <div>{children}</div>
         <div className="py-20">
-          <SectionSideNavigation />
+          <SideNavigation />
         </div>
       </div>
     </div>

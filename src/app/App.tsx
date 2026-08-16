@@ -28,7 +28,7 @@ function Loading(): ReactElement {
         Loading...
       </p>
       <p className="text-8 mb-4 text-(--theme-component-hero-section-description-text-color)">
-        This page is still under development.
+        This page is in development.
       </p>
       <p className="text-8 text-(--theme-component-hero-section-description-text-color)">
         The contents might be outdated.

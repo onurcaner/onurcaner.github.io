@@ -4,12 +4,12 @@ import { type RGBLedState } from '@/features/rgb/_types/RGBLedState.ts';
 import { LinearRGBLedStatesMapper } from '@/features/rgb/utils/LinearRGBLedStatesMapper.ts';
 
 enum Option {
-  TickIntervalMs = 50,
+  TickIntervalMs = 100,
   SnakeEvery = 16,
   NormalSnakeSize = 1,
   AlternativeSnakeSize = 8,
   TotalLength = 96,
-  TransitionDurationMs = 0,
+  TransitionDurationMs = 2000,
 }
 
 export class TestThemeRGBControllerConfig implements RGBControllerConfig {
@@ -36,12 +36,12 @@ export class TestThemeRGBControllerConfig implements RGBControllerConfig {
 
     normalTransitionDuration:
       index % Option.SnakeEvery < Option.NormalSnakeSize
-        ? `${(Option.TransitionDurationMs * 1).toString()}ms`
-        : `${(Option.TransitionDurationMs * 1).toString()}ms`,
+        ? `${Option.TickIntervalMs.toString()}ms`
+        : `${Option.TransitionDurationMs.toString()}ms`,
     alternativeTransitionDuration:
       index % Option.SnakeEvery < Option.AlternativeSnakeSize
-        ? `${(Option.TransitionDurationMs * 1).toString()}ms`
-        : `${(Option.TransitionDurationMs * 1).toString()}ms`,
+        ? `${Option.TickIntervalMs.toString()}ms`
+        : `${Option.TransitionDurationMs.toString()}ms`,
 
     normalTransitionTimingFunction:
       'var(--theme-transition-timing-function-ease-out)',

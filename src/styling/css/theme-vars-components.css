@@ -7,24 +7,56 @@
   --theme-component-blur-shadow-opacity: var(--theme-blur-shadow-opacity);
 }
 
-/* Developer */
+/* Buttons */
 :root {
-  --theme-component-developer-name-text-color: var(--theme-color-neutral-300);
-  --theme-component-developer-name-text-color--hover: var(
+  --theme-component-primary-button-background-color--normal: var(
+    --theme-color-neutral-800
+  );
+  --theme-component-primary-button-background-color--hover: var(
+    --theme-color-neutral-700
+  );
+  --theme-component-primary-button-border-color--normal: var(
+    --theme-color-neutral-700
+  );
+  --theme-component-primary-button-border-color--hover: var(
+    --theme-color-neutral-600
+  );
+  --theme-component-primary-button-icon-color--normal: var(
     --theme-color-neutral-200
   );
-  --theme-component-developer-job-title-text-color: var(
-    --theme-color-neutral-400
+  --theme-component-primary-button-icon-color--hover: var(
+    --theme-color-neutral-300
   );
-}
+  --theme-component-primary-button-label-color--normal: var(
+    --theme-color-neutral-100
+  );
+  --theme-component-primary-button-label-color--hover: var(
+    --theme-color-neutral-200
+  );
 
-/* Header and Footer */
-:root {
-  --theme-component-header-background-color: var(--theme-color-neutral-800);
-  --theme-component-header-border-color: var(--theme-color-neutral-700);
-
-  --theme-component-footer-background-color: var(
-    --theme-component-header-background-color
+  --theme-component-secondary-button-background-color--normal: var(
+    --theme-color-neutral-800
+  );
+  --theme-component-secondary-button-background-color--hover: var(
+    --theme-color-neutral-700
+  );
+  --theme-component-secondary-button-border-color--normal: var(
+    --theme-color-neutral-700
+  );
+  --theme-component-secondary-button-border-color--hover: var(
+    --theme-color-neutral-600
+  );
+  --theme-component-secondary-button-icon-color--normal: var(
+    --theme-color-neutral-200
+  );
+  --theme-component-secondary-button-icon-color--hover: var(
+    --theme-color-neutral-300
+  );
+  --theme-component-secondary-button-label-color--normal: var(
+    --theme-color-neutral-100
+  );
+  --theme-component-secondary-button-label-color--hover: var(
+    --theme-color-neutral-200
   );
 }
 
@@ -50,6 +82,33 @@
   );
   --theme-component-menu-button-icon-color--hover: var(
     --theme-color-neutral-300
+  );
+}
+
+/* Header and Footer */
+:root {
+  --theme-component-header-background-color: var(--theme-color-neutral-800);
+  --theme-component-header-border-color: var(--theme-color-neutral-700);
+
+  --theme-component-footer-background-color: var(
+    --theme-component-header-background-color
+  );
+  --theme-component-footer-navigation-link-text-color--normal: var(
+    --theme-color-neutral-300
+  );
+  --theme-component-footer-navigation-link-text-color--hover: var(
+    --theme-color-neutral-200
+  );
+}
+
+/* Developer */
+:root {
+  --theme-component-developer-name-text-color: var(--theme-color-neutral-300);
+  --theme-component-developer-name-text-color--hover: var(
+    --theme-color-neutral-200
+  );
+  --theme-component-developer-job-title-text-color: var(
+    --theme-color-neutral-400
   );
 }
 
@@ -139,27 +198,5 @@
   );
   --theme-component-education-slash-experience-description-list-item-text-color: var(
     --theme-color-neutral-300
-  );
-}
-
-:root {
-  --theme-component-rgb-diffuser-color: oklch(1 0 0 / 0%);
-  --theme-component-rgb-diffuser-blur-length: 0.5rem;
-
-  /* Primary Button */
-
-  /* Secondary Button */
-
-  /* Tertiary Button */
-
-  /* Section Side Navigation Menu */
-  --theme-component-section-navigation-background-color: var(
-    --theme-component-header-background-color
-  );
-  --theme-component-section-navigation-border-color--normal: var(
-    --theme-component-header-border-color
-  );
-  --theme-component-section-navigation-border-color--hover: var(
-    --theme-component-header-border-color--hover
   );
 }
